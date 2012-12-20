@@ -340,14 +340,18 @@
 					quid       	"50C3B94201A1"
 					supplier   	"Logical View::audinsa::audiologia::Examen"
 					quidu      	"50C3B7CC03AF"
-					supplier_cardinality 	(value cardinality "1..1")
-					client_cardinality 	(value cardinality "1..1"))
+					supplier_cardinality 	(value cardinality "1")
+					client_cardinality 	(value cardinality "1"))
 				    (object Uses_Relationship
 					quid       	"50C3B99B03B7"
 					supplier   	"Logical View::audinsa::audiologia::Grafico"
 					quidu      	"50C3B6460075"
 					supplier_cardinality 	(value cardinality "2")
-					client_cardinality 	(value cardinality "1")))
+					client_cardinality 	(value cardinality "1"))
+				    (object Uses_Relationship
+					quid       	"50D27D6C0097"
+					supplier   	"Logical View::audinsa::audiologia::Perfil"
+					quidu      	"50D27BD40012"))
 				operations 	(list Operations
 				    (object Operation "Borrar"
 					quid       	"50C3B7A30256"
@@ -597,6 +601,39 @@
 				    (object ClassAttribute "IntesidadLocutor"
 					quid       	"50C3BF3E01A1"
 					type       	"Double"
+					exportControl 	"Public")))
+			    (object Class "Perfil"
+				quid       	"50D27BD40012"
+				used_nodes 	(list uses_relationship_list
+				    (object Uses_Relationship
+					quid       	"50D27E0A033D"
+					supplier   	"Logical View::audinsa::audiologia::Resultado"
+					quidu      	"50C3B6E60051"
+					supplier_cardinality 	(value cardinality "n")
+					client_cardinality 	(value cardinality "1")))
+				class_attributes 	(list class_attribute_list
+				    (object ClassAttribute "IdPerfil"
+					quid       	"50D27BEE03AE"
+					type       	"Integer"
+					quidu      	"39CD6BC50328"
+					exportControl 	"Public")
+				    (object ClassAttribute "Nombre"
+					quid       	"50D27C1602C2"
+					type       	"String"
+					quidu      	"39CD6AE1011A"
+					exportControl 	"Public")
+				    (object ClassAttribute "FechaNacimiento"
+					quid       	"50D27C2103D1"
+					type       	"Date"
+					exportControl 	"Public")
+				    (object ClassAttribute "CorreoElectronico"
+					quid       	"50D27C2C0009"
+					type       	"String"
+					quidu      	"39CD6AE1011A"
+					exportControl 	"Public")
+				    (object ClassAttribute "Resultados"
+					quid       	"50D27CAE0159"
+					type       	"ArrayList<Resultado>"
 					exportControl 	"Public"))))
 			logical_presentations 	(list unit_reference_list)))
 		logical_presentations 	(list unit_reference_list)))
@@ -604,17 +641,17 @@
 	    (object ClassDiagram "Package Hierarchy"
 		quid       	"39C9261001B8"
 		title      	"Package Hierarchy"
-		zoom       	100
+		zoom       	99
 		max_height 	28350
 		max_width  	21600
-		origin_x   	960
-		origin_y   	0
+		origin_x   	202
+		origin_y   	3120
 		items      	(list diagram_item_list
 		    (object ClassView "Class" "Logical View::audinsa::audiologia::Consejo" @8
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(880, 240)
+			location   	(864, 560)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -626,7 +663,7 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@8
-			    location   	(701, 144)
+			    location   	(685, 461)
 			    fill_color 	13434879
 			    nlines     	1
 			    max_width  	358
@@ -638,7 +675,7 @@
 			quidu      	"50C3B5C40055"
 			compartment 	(object Compartment
 			    Parent_View 	@8
-			    location   	(701, 244)
+			    location   	(685, 545)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -652,7 +689,7 @@
 			    fill_color 	13434879
 			    anchor     	2
 			    nlines     	2
-			    max_width  	355
+			    max_width  	384
 			    justify    	1)
 			width      	376
 			height     	214
@@ -662,7 +699,7 @@
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(2912, 702)
+			location   	(3136, 1024)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -674,10 +711,10 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@9
-			    location   	(2754, 539)
+			    location   	(2966, 841)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	316
+			    max_width  	340
 			    justify    	0
 			    label      	"Grafico")
 			icon_style 	"Icon"
@@ -686,7 +723,7 @@
 			quidu      	"50C3B6460075"
 			compartment 	(object Compartment
 			    Parent_View 	@9
-			    location   	(2754, 639)
+			    location   	(2966, 930)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -700,17 +737,17 @@
 			    fill_color 	13434879
 			    anchor     	2
 			    nlines     	5
-			    max_width  	313
+			    max_width  	381
 			    justify    	1)
-			width      	334
-			height     	348
+			width      	358
+			height     	382
 			annotation 	8
 			autoResize 	TRUE)
 		    (object ClassView "Class" "Logical View::audinsa::audiologia::Resultado" @10
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(2272, 702)
+			location   	(2048, 1024)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -722,10 +759,10 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@10
-			    location   	(2056, 404)
+			    location   	(1820, 691)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	432
+			    max_width  	456
 			    justify    	0
 			    label      	"Resultado")
 			icon_style 	"Icon"
@@ -734,7 +771,7 @@
 			quidu      	"50C3B6E60051"
 			compartment 	(object Compartment
 			    Parent_View 	@10
-			    location   	(2056, 504)
+			    location   	(1820, 775)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -748,17 +785,17 @@
 			    fill_color 	13434879
 			    anchor     	2
 			    nlines     	11
-			    max_width  	432
+			    max_width  	508
 			    justify    	1)
-			width      	450
-			height     	618
+			width      	474
+			height     	682
 			annotation 	8
 			autoResize 	TRUE)
 		    (object ClassView "Class" "Logical View::audinsa::audiologia::Examen" @11
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(1008, 704)
+			location   	(992, 1024)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -770,10 +807,10 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@11
-			    location   	(703, 473)
+			    location   	(678, 766)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	610
+			    max_width  	628
 			    justify    	0
 			    label      	"Examen")
 			icon_style 	"Icon"
@@ -782,7 +819,7 @@
 			quidu      	"50C3B7CC03AF"
 			compartment 	(object Compartment
 			    Parent_View 	@11
-			    location   	(703, 573)
+			    location   	(678, 850)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -796,17 +833,17 @@
 			    fill_color 	13434879
 			    anchor     	2
 			    nlines     	8
-			    max_width  	608
+			    max_width  	684
 			    justify    	1)
-			width      	628
-			height     	484
+			width      	646
+			height     	532
 			annotation 	8
 			autoResize 	TRUE)
 		    (object ClassView "Class" "Logical View::audinsa::audiologia::Pregunta" @12
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(528, 1728)
+			location   	(512, 2064)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -818,7 +855,7 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@12
-			    location   	(354, 1610)
+			    location   	(338, 1947)
 			    fill_color 	13434879
 			    nlines     	1
 			    max_width  	348
@@ -830,7 +867,7 @@
 			quidu      	"50C3BA210238"
 			compartment 	(object Compartment
 			    Parent_View 	@12
-			    location   	(354, 1710)
+			    location   	(338, 2049)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -844,7 +881,7 @@
 			    fill_color 	13434879
 			    anchor     	2
 			    nlines     	3
-			    max_width  	350
+			    max_width  	378
 			    justify    	1)
 			width      	366
 			height     	258
@@ -854,7 +891,7 @@
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(533, 1344)
+			location   	(512, 1680)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -866,10 +903,10 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@13
-			    location   	(334, 1248)
+			    location   	(313, 1572)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	398
+			    max_width  	399
 			    justify    	0
 			    label      	"Ex1_Cuestionario")
 			icon_style 	"Icon"
@@ -878,7 +915,7 @@
 			quidu      	"50C3B8F20280"
 			compartment 	(object Compartment
 			    Parent_View 	@13
-			    location   	(334, 1348)
+			    location   	(313, 1678)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -892,10 +929,10 @@
 			    fill_color 	13434879
 			    anchor     	2
 			    nlines     	2
-			    max_width  	407
+			    max_width  	440
 			    justify    	1)
-			width      	416
-			height     	214
+			width      	417
+			height     	240
 			annotation 	8
 			autoResize 	TRUE)
 		    (object UsesView "" @14
@@ -914,14 +951,14 @@
 			client     	@13
 			supplier   	@12
 			vertices   	(list Points
-			    (530, 1451)
-			    (529, 1598))
+			    (512, 1800)
+			    (512, 1934))
 			line_style 	0)
 		    (object ClassView "Class" "Logical View::audinsa::audiologia::SonidoDifFrecuencias" @15
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(1017, 1728)
+			location   	(1008, 2048)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -933,10 +970,10 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@15
-			    location   	(768, 1632)
+			    location   	(755, 1950)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	498
+			    max_width  	506
 			    justify    	0
 			    label      	"SonidoDifFrecuencias")
 			icon_style 	"Icon"
@@ -945,7 +982,7 @@
 			quidu      	"50C3BAB5001C"
 			compartment 	(object Compartment
 			    Parent_View 	@15
-			    location   	(768, 1732)
+			    location   	(755, 2056)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -959,17 +996,17 @@
 			    fill_color 	13434879
 			    anchor     	2
 			    nlines     	2
-			    max_width  	510
+			    max_width  	537
 			    justify    	1)
-			width      	516
-			height     	214
+			width      	524
+			height     	221
 			annotation 	8
 			autoResize 	TRUE)
 		    (object ClassView "Class" "Logical View::audinsa::audiologia::SonidoSensibilidadOido" @16
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(1752, 1728)
+			location   	(1739, 2048)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -981,10 +1018,10 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@16
-			    location   	(1511, 1632)
+			    location   	(1489, 1950)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	482
+			    max_width  	500
 			    justify    	0
 			    label      	"SonidoSensibilidadOido")
 			icon_style 	"Icon"
@@ -993,7 +1030,7 @@
 			quidu      	"50C3BAF20361"
 			compartment 	(object Compartment
 			    Parent_View 	@16
-			    location   	(1511, 1732)
+			    location   	(1489, 2056)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -1007,17 +1044,17 @@
 			    fill_color 	13434879
 			    anchor     	2
 			    nlines     	2
-			    max_width  	482
+			    max_width  	512
 			    justify    	1)
-			width      	500
-			height     	214
+			width      	518
+			height     	221
 			annotation 	8
 			autoResize 	TRUE)
 		    (object ClassView "Class" "Logical View::audinsa::audiologia::Sonido" @17
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(1361, 2352)
+			location   	(1392, 2656)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -1029,10 +1066,10 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@17
-			    location   	(1130, 2099)
+			    location   	(1130, 2359)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	462
+			    max_width  	525
 			    justify    	0
 			    label      	"Sonido")
 			icon_style 	"Icon"
@@ -1041,7 +1078,7 @@
 			quidu      	"50C3BB2A0238"
 			compartment 	(object Compartment
 			    Parent_View 	@17
-			    location   	(1130, 2199)
+			    location   	(1130, 2465)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -1055,17 +1092,17 @@
 			    fill_color 	13434879
 			    anchor     	2
 			    nlines     	9
-			    max_width  	475
+			    max_width  	561
 			    justify    	1)
-			width      	480
-			height     	528
+			width      	543
+			height     	619
 			annotation 	8
 			autoResize 	TRUE)
 		    (object ClassView "Class" "Logical View::audinsa::audiologia::Ex2_SensibilidadOido" @18
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(1744, 1353)
+			location   	(1728, 1680)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -1077,7 +1114,7 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@18
-			    location   	(1532, 1257)
+			    location   	(1516, 1585)
 			    fill_color 	13434879
 			    nlines     	1
 			    max_width  	424
@@ -1089,7 +1126,7 @@
 			quidu      	"50C3BD20004B"
 			compartment 	(object Compartment
 			    Parent_View 	@18
-			    location   	(1532, 1357)
+			    location   	(1516, 1687)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -1103,7 +1140,7 @@
 			    fill_color 	13434879
 			    anchor     	2
 			    nlines     	2
-			    max_width  	375
+			    max_width  	403
 			    justify    	1)
 			width      	442
 			height     	214
@@ -1125,14 +1162,14 @@
 			client     	@18
 			supplier   	@16
 			vertices   	(list Points
-			    (1746, 1460)
-			    (1749, 1620))
+			    (1730, 1787)
+			    (1735, 1937))
 			line_style 	0)
 		    (object ClassView "Class" "Logical View::audinsa::audiologia::Ex3_DifFrecuencias" @20
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(1007, 1344)
+			location   	(1008, 1680)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -1144,10 +1181,10 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@20
-			    location   	(809, 1248)
+			    location   	(803, 1572)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	396
+			    max_width  	411
 			    justify    	0
 			    label      	"Ex3_DifFrecuencias")
 			icon_style 	"Icon"
@@ -1156,7 +1193,7 @@
 			quidu      	"50C3BDD70381"
 			compartment 	(object Compartment
 			    Parent_View 	@20
-			    location   	(809, 1348)
+			    location   	(803, 1678)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -1170,10 +1207,10 @@
 			    fill_color 	13434879
 			    anchor     	2
 			    nlines     	2
-			    max_width  	375
+			    max_width  	403
 			    justify    	1)
-			width      	414
-			height     	214
+			width      	429
+			height     	240
 			annotation 	8
 			autoResize 	TRUE)
 		    (object UsesView "" @21
@@ -1192,8 +1229,8 @@
 			client     	@20
 			supplier   	@15
 			vertices   	(list Points
-			    (1009, 1451)
-			    (1013, 1620))
+			    (1008, 1800)
+			    (1008, 1937))
 			line_style 	0)
 		    (object InheritView "" @22
 			stereotype 	TRUE
@@ -1202,32 +1239,152 @@
 			client     	@20
 			supplier   	@11
 			vertices   	(list Points
-			    (1007, 1236)
-			    (1007, 946))
+			    (1005, 1559)
+			    (998, 1290))
 			line_style 	0)
 		    (object InheritView "" @23
 			stereotype 	TRUE
 			line_color 	3342489
-			quidu      	"50C3BCEB034E"
-			client     	@15
-			supplier   	@17
+			quidu      	"50C3BA84039C"
+			client     	@13
+			supplier   	@11
 			vertices   	(list Points
-			    (1017, 1835)
-			    (1017, 2354)
-			    (1120, 2353))
+			    (509, 1559)
+			    (509, 1471)
+			    (989, 1471)
+			    (989, 1290))
 			line_style 	0)
-		    (object InheritView "" @24
+		    (object ClassView "Class" "Logical View::audinsa::audiologia::Ex4_HablaEnRuido" @24
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(2416, 1712)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@24
+			    location   	(2157, 1585)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	519
+			    justify    	0
+			    label      	"Ex4_HablaEnRuido")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"50C3BF1F005B"
+			compartment 	(object Compartment
+			    Parent_View 	@24
+			    location   	(2157, 1691)
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	3
+			    max_width  	518
+			    justify    	1)
+			width      	537
+			height     	278
+			annotation 	8
+			autoResize 	TRUE)
+		    (object InheritTreeView "" @25
+			location   	(989, 1469)
+			line_color 	3342489
+			fill_color 	13434879
+			supplier   	@11
+			vertices   	(list Points
+			    (989, 1469)
+			    (989, 1290)))
+		    (object InheritView "" @26
 			stereotype 	TRUE
 			line_color 	3342489
-			quidu      	"50C3BD0F01E8"
-			client     	@16
-			supplier   	@17
+			quidu      	"50C3BE7503CA"
+			client     	@18
+			supplier   	@11
 			vertices   	(list Points
-			    (1752, 1835)
-			    (1752, 2354)
-			    (1601, 2353))
-			line_style 	0)
-		    (object UsesView "" @25
+			    (1727, 1573)
+			    (1727, 1469))
+			line_style 	3
+			origin_attachment 	(1727, 1573)
+			terminal_attachment 	(1727, 1469)
+			drawSupplier 	@25)
+		    (object InheritView "" @27
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"50C3BF57010F"
+			client     	@24
+			supplier   	@11
+			vertices   	(list Points
+			    (2397, 1572)
+			    (2397, 1469))
+			line_style 	3
+			origin_attachment 	(2397, 1572)
+			terminal_attachment 	(2397, 1469)
+			drawSupplier 	@25)
+		    (object ClassView "Class" "Logical View::audinsa::audiologia::Perfil" @28
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(2051, 272)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@28
+			    location   	(1679, 51)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	744
+			    justify    	0
+			    label      	"Perfil")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"50D27BD40012"
+			compartment 	(object Compartment
+			    Parent_View 	@28
+			    location   	(1679, 157)
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	6
+			    max_width  	744
+			    justify    	1)
+			width      	762
+			height     	466
+			annotation 	8
+			autoResize 	TRUE)
+		    (object UsesView "" @29
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -1243,10 +1400,10 @@
 			client     	@10
 			supplier   	@11
 			vertices   	(list Points
-			    (2046, 702)
-			    (1322, 703))
+			    (1810, 1024)
+			    (1315, 1024))
 			line_style 	0)
-		    (object UsesView "" @26
+		    (object UsesView "" @30
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -1262,26 +1419,10 @@
 			client     	@10
 			supplier   	@9
 			vertices   	(list Points
-			    (2497, 702)
-			    (2744, 702))
+			    (2285, 1024)
+			    (2956, 1024))
 			line_style 	0)
-		    (object InheritView "" @27
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"50C3BA84039C"
-			client     	@13
-			supplier   	@11
-			vertices   	(list Points
-			    (529, 1236)
-			    (527, 1150)
-			    (1007, 1150)
-			    (1007, 946))
-			line_style 	0)
-		    (object ClassView "Class" "Logical View::audinsa::audiologia::Ex4_HablaEnRuido" @28
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(2414, 1382)
+		    (object UsesView "" @31
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -1291,74 +1432,37 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@28
-			    location   	(2168, 1264)
-			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	492
-			    justify    	0
-			    label      	"Ex4_HablaEnRuido")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"50C3BF1F005B"
-			compartment 	(object Compartment
-			    Parent_View 	@28
-			    location   	(2168, 1364)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    icon_style 	"Icon"
-			    fill_color 	13434879
-			    anchor     	2
-			    nlines     	3
-			    max_width  	490
-			    justify    	1)
-			width      	510
-			height     	258
-			annotation 	8
-			autoResize 	TRUE)
-		    (object InheritTreeView "" @29
-			location   	(1007, 1152)
-			line_color 	3342489
-			fill_color 	13434879
-			supplier   	@11
-			vertices   	(list Points
-			    (1007, 1152)
-			    (1007, 946)))
-		    (object InheritView "" @30
 			stereotype 	TRUE
 			line_color 	3342489
-			quidu      	"50C3BE7503CA"
-			client     	@18
-			supplier   	@11
-			vertices   	(list Points
-			    (1743, 1246)
-			    (1743, 1152))
-			line_style 	3
-			origin_attachment 	(1743, 1246)
-			terminal_attachment 	(1743, 1152)
-			drawSupplier 	@29)
-		    (object InheritView "" @31
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"50C3BF57010F"
+			quidu      	"50D27E0A033D"
 			client     	@28
-			supplier   	@11
+			supplier   	@10
 			vertices   	(list Points
-			    (2413, 1253)
-			    (2413, 1152))
-			line_style 	3
-			origin_attachment 	(2413, 1253)
-			terminal_attachment 	(2413, 1152)
-			drawSupplier 	@29)))
+			    (2049, 505)
+			    (2048, 682))
+			line_style 	0)
+		    (object InheritView "" @32
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"50C3BCEB034E"
+			client     	@15
+			supplier   	@17
+			vertices   	(list Points
+			    (1007, 2158)
+			    (1007, 2687)
+			    (1120, 2677))
+			line_style 	0)
+		    (object InheritView "" @33
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"50C3BD0F01E8"
+			client     	@16
+			supplier   	@17
+			vertices   	(list Points
+			    (1741, 2158)
+			    (1758, 2700)
+			    (1663, 2688))
+			line_style 	0)))
 	    (object ClassDiagram "Legend"
 		quid       	"39CD51840059"
 		title      	"Legend"
@@ -1368,7 +1472,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object NoteView @32
+		    (object NoteView @34
 			location   	(224, 624)
 			font       	(object Font
 			    size       	10
@@ -1383,7 +1487,7 @@
 			fill_color 	12632256
 			width      	300
 			height     	132)
-		    (object NoteView @33
+		    (object NoteView @35
 			location   	(704, 624)
 			font       	(object Font
 			    size       	10
@@ -1398,7 +1502,7 @@
 			fill_color 	8421631
 			width      	300
 			height     	132)
-		    (object NoteView @34
+		    (object NoteView @36
 			location   	(1200, 624)
 			font       	(object Font
 			    size       	10
@@ -1413,7 +1517,7 @@
 			fill_color 	12615680
 			width      	300
 			height     	132)
-		    (object NoteView @35
+		    (object NoteView @37
 			location   	(1664, 624)
 			font       	(object Font
 			    size       	10
@@ -1428,7 +1532,7 @@
 			fill_color 	16777215
 			width      	300
 			height     	132)
-		    (object Label @36
+		    (object Label @38
 			location   	(81, 369)
 			font       	(object Font
 			    size       	12
@@ -1443,7 +1547,7 @@
 			max_width  	1163
 			justify    	1
 			label      	"J2EE: Java 2 Platform, Enterprise Edition - v 1.2.1")
-		    (object Label @37
+		    (object Label @39
 			location   	(96, 608)
 			font       	(object Font
 			    size       	10
@@ -1458,7 +1562,7 @@
 			max_width  	268
 			justify    	1
 			label      	"Abstract Class")
-		    (object Label @38
+		    (object Label @40
 			location   	(592, 608)
 			font       	(object Font
 			    size       	10
@@ -1473,7 +1577,7 @@
 			max_width  	225
 			justify    	1
 			label      	"Final Class")
-		    (object Label @39
+		    (object Label @41
 			location   	(1104, 608)
 			font       	(object Font
 			    size       	10
@@ -1488,7 +1592,7 @@
 			max_width  	206
 			justify    	1
 			label      	"Interface")
-		    (object Label @40
+		    (object Label @42
 			location   	(1552, 608)
 			font       	(object Font
 			    size       	10
@@ -2498,7 +2602,7 @@
 		    (object Attribute
 			tool       	"Java"
 			name       	"ClassPath"
-			value      	".;C:\\Program Files (x86)\\Java\\jre7\\lib\\ext\\QTJava.zip")
+			value      	".;C:\\Program Files (x86)\\Java\\jre6\\lib\\ext\\QTJava.zip")
 		    (object Attribute
 			tool       	"Java"
 			name       	"EditorType"
