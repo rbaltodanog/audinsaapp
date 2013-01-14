@@ -50,9 +50,9 @@ public class PerfilDataSource {
 	        allColumns, MySQLiteHelper.TABLA_PERFIL_COLUMNA_ID + " = " + insertId, null,
 	        null, null, null);
 	    cursor.moveToFirst();
-	    Perfil newComment = cursorAPerfil(cursor);
+	    Perfil newPerfil = cursorAPerfil(cursor);
 	    cursor.close();
-	    return newComment;
+	    return newPerfil;
 	  }
 
 	  public void borrarPerfil(Perfil perfil) {
