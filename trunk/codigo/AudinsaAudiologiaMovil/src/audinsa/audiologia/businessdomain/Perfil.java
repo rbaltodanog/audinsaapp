@@ -1,4 +1,4 @@
-package audinsa.audiologia;
+package audinsa.audiologia.businessdomain;
 
 import java.util.Date;
 

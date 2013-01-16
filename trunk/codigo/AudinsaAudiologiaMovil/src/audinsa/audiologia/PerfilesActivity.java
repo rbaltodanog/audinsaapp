@@ -1,14 +1,15 @@
 package audinsa.audiologia;
 
-import java.util.Date;
 import java.util.List;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import audinsa.audiologia.businessdomain.Perfil;
 import audinsa.audiologia.datasources.PerfilDataSource;
 
 public class PerfilesActivity extends Activity {
@@ -21,9 +22,6 @@ public class PerfilesActivity extends Activity {
 
 		dataSource = new PerfilDataSource(this);
 		dataSource.open();
-		
-		dataSource.crearPerfil("Roberto Baltodano", new Date(1987, 5, 16), "roberto.baltodano@fiserv.com");
-		dataSource.crearPerfil("Marco Chacon", new Date(1984, 4, 7), "marco.chacon@fiserv.com");
 
 		List<Perfil> perfiles = dataSource.obtenerTodosLosPerfiles();
 
@@ -37,13 +35,14 @@ public class PerfilesActivity extends Activity {
 
 	// Will be called via the onClick attribute
 	// of the buttons in main.xml
-	public void onClick(View view) {
+	public void onAgregarPerfilClick(View view) {
 		ListView lstView = (ListView)findViewById(R.id.list);
 		@SuppressWarnings("unchecked")
 		ArrayAdapter<Perfil> adapter = (ArrayAdapter<Perfil>)lstView.getAdapter();
 		switch (view.getId()) {
 		case R.id.add:
-			// Ir a mantenimientos de perfil
+			Intent intentCrearPerfil = new Intent(view.getContext(), PerfilesMantenimientoActivity.class);
+			startActivity(intentCrearPerfil);
 			break;
 		}
 		adapter.notifyDataSetChanged();
