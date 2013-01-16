@@ -4,5 +4,6 @@
     <string name="app_name">Audinsa Audiologia Movil</string>
     <string name="perfiles_agregarperfil">Agregar Perfil</string>
     <string name="menu_settings">Settings</string>
+    <string name="title_activity_perfiles_mantenimiento">Perfil</string>
 
 </resources>

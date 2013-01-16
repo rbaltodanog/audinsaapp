@@ -19,8 +19,8 @@
             android:id="@+id/add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/perfiles_agregarperfil" 
-            android:onClick="onClick"/>
+            android:onClick="onAgregarPerfilClick"
+            android:text="@string/perfiles_agregarperfil" />
     
     </LinearLayout>
 

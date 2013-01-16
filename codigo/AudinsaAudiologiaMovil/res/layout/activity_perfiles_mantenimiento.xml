@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PerfilesMantenimientoActivity" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txtNombre"
+        android:layout_alignParentLeft="true"
+        android:contentDescription="@string/imgPerfilTitleContentDescription"
+        android:src="@drawable/ic_perfiles_mantenimiento" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/imageView1"
+        android:text="@string/title_activity_perfiles_mantenimiento"
+        android:textSize="28sp" />
+
+    <EditText
+        android:id="@+id/txtNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="@string/lblNombre"
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
+    
+    <EditText
+        android:id="@+id/txtFechaNacimiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txtNombre"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="@string/lblFechaNacimiento"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/txtCorreoElectronico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txtFechaNacimiento"
+        android:ems="10"
+        android:layout_marginTop="25dp"
+        android:hint="@string/lblCorreoElectronico"
+        android:inputType="textEmailAddress" />
+    
+    <Button
+        android:id="@+id/btnAceptar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnCancelar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:onClick="onAgregarClick"
+        android:text="@string/btnAceptarAgregar" />
+
+    <Button
+        android:id="@+id/btnCancelar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/btnCancelar" />
+
+</RelativeLayout>
