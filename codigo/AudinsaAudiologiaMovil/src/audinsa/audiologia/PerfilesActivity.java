@@ -7,6 +7,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import audinsa.audiologia.businessdomain.Perfil;
@@ -19,44 +21,25 @@ public class PerfilesActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_perfiles);
-
-		dataSource = new PerfilDataSource(this);
-		dataSource.open();
-
-		List<Perfil> perfiles = dataSource.obtenerTodosLosPerfiles();
-
-		ArrayAdapter<Perfil> adapter = new ArrayAdapter<Perfil>(this,
-				android.R.layout.simple_list_item_1, perfiles);
-
-		ListView lstView = (ListView)findViewById(R.id.list);
-
-		lstView.setAdapter(adapter);
+		loadData();
+		setOnListViewItemClickListener();
 	}
 
 	// Will be called via the onClick attribute
 	// of the buttons in main.xml
 	public void onAgregarPerfilClick(View view) {
-		ListView lstView = (ListView)findViewById(R.id.list);
-		@SuppressWarnings("unchecked")
-		ArrayAdapter<Perfil> adapter = (ArrayAdapter<Perfil>)lstView.getAdapter();
-		switch (view.getId()) {
-		case R.id.add:
-			Intent intentCrearPerfil = new Intent(view.getContext(), PerfilesMantenimientoActivity.class);
-			startActivity(intentCrearPerfil);
-			break;
-		}
-		adapter.notifyDataSetChanged();
+		Intent intentCrearPerfil = new Intent(view.getContext(), PerfilesMantenimientoActivity.class);
+		startActivity(intentCrearPerfil);
 	}
 
 	@Override
 	protected void onResume() {
-		dataSource.open();
 		super.onResume();
+		loadData();
 	}
 
 	@Override
 	protected void onPause() {
-		dataSource.close();
 		super.onPause();
 	}
 
@@ -67,4 +50,35 @@ public class PerfilesActivity extends Activity {
 		return true;
 	}
 
+	private void loadData()
+	{
+		dataSource = new PerfilDataSource(this);
+		dataSource.open();
+
+		List<Perfil> perfiles = dataSource.obtenerTodosLosPerfiles();
+
+		ArrayAdapter<Perfil> adapter = new ArrayAdapter<Perfil>(this,
+				android.R.layout.simple_list_item_1, perfiles);
+
+		ListView lstView = (ListView)findViewById(R.id.listPerfiles);
+
+		lstView.setAdapter(adapter);
+
+		dataSource.close();
+	}
+
+	private void setOnListViewItemClickListener() {
+		ListView lstView = (ListView)findViewById(R.id.listPerfiles);
+		OnItemClickListener listener = new OnItemClickListener() {
+			@Override public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+			{
+				//long idPerfil = 0;
+				//idPerfil = ((Perfil)parent.getItemAtPosition(position)).getIdPerfil();
+				Intent intent = new Intent(view.getContext(), ExamenesActivity.class);
+				startActivity(intent);
+				// TODO: Pasar id del perfil al activity de Examenes (ya esta hecho)
+			}
+		};
+		lstView.setOnItemClickListener(listener );
+	}
 }

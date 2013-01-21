@@ -7,7 +7,6 @@ import java.util.Locale;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -53,12 +52,9 @@ public class PerfilesMantenimientoActivity extends Activity {
 		dataSource.crearPerfil(nombre, fechaNacimiento, correoElectronico);
 		dataSource.close();
 		
-		Intent intentPerfiles = new Intent(view.getContext(), PerfilesActivity.class);
-		startActivity(intentPerfiles);
-		
 		// Agregar pop up de creado de perfil exitoso
-		// Ir a la pantalla de examenes
 		
+		this.finish();		
 	}
 
 }
