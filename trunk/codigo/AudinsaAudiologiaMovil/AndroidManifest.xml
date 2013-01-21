@@ -26,6 +26,10 @@
             android:name="audinsa.audiologia.PerfilesMantenimientoActivity"
             android:label="@string/title_activity_perfiles_mantenimiento" >
         </activity>
+        <activity
+            android:name="audinsa.audiologia.ExamenesActivity"
+            android:label="@string/title_activity_examenes" >
+        </activity>
     </application>
 
 </manifest>

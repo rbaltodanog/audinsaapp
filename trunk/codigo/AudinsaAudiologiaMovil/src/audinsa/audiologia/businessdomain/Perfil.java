@@ -7,9 +7,20 @@ public class Perfil {
 	private String nombre;
 	private Date fechaNacimiento;
 	private String correoElectronico;
-	
+
 	public long getIdPerfil() {
 		return idPerfil;
+	}
+	public Perfil()
+	{
+	}
+	public Perfil(long idPerfil, String nombre, Date fechaNacimiento,
+			String correoElectronico) {
+		super();
+		this.idPerfil = idPerfil;
+		this.nombre = nombre;
+		this.fechaNacimiento = fechaNacimiento;
+		this.correoElectronico = correoElectronico;
 	}
 	public void setIdPerfil(long idPerfil) {
 		this.idPerfil = idPerfil;
@@ -32,7 +43,7 @@ public class Perfil {
 	public void setCorreoElectronico(String correoElectronico) {
 		this.correoElectronico = correoElectronico;
 	}
-	
+
 	@Override
 	public String toString()
 	{

@@ -5,7 +5,7 @@
     tools:context=".PerfilesActivity" >
 
     <ListView
-        android:id="@+id/list"
+        android:id="@+id/listPerfiles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/group" />
