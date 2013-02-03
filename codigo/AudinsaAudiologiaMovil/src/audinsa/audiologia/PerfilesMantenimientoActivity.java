@@ -52,7 +52,7 @@ public class PerfilesMantenimientoActivity extends Activity {
 		dataSource.crearPerfil(nombre, fechaNacimiento, correoElectronico);
 		dataSource.close();
 		
-		// Agregar pop up de creado de perfil exitoso
+		//TODO: Agregar pop up de creado de perfil exitoso
 		
 		this.finish();		
 	}

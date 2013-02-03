@@ -44,9 +44,10 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 			+ " (" + TABLA_TIPOEXAMEN_COLUMNA_NOMBRE_EXAMEN + "," + TABLA_TIPOEXAMEN_COLUMNA_INSTRUCCIONES + ")"
 			+ " values ('Habla en ruido', '¿Que tan bien oye en ruido?');";
 	
-	private static final String CREAR_TIPO_EXAMEN_DIF_FRECUENCIAS = "insert into " + TABLA_TIPOEXAMEN 
+	/*private static final String CREAR_TIPO_EXAMEN_DIF_FRECUENCIAS = "insert into " + TABLA_TIPOEXAMEN 
 			+ " (" + TABLA_TIPOEXAMEN_COLUMNA_NOMBRE_EXAMEN + "," + TABLA_TIPOEXAMEN_COLUMNA_INSTRUCCIONES + ")"
-			+ " values ('Diferenciación de frecuencias', '¿Cuál es la más baja diferencia entre frecuencias que puede notar?');";
+			+ " values ('Diferenciación de frecuencias', '¿Cuál es la más baja diferencia entre frecuencias que puede notar?');";*/
+	
 	
 	private static final String CREAR_TIPO_EXAMEN_CUESTIONARIO = "insert into " + TABLA_TIPOEXAMEN 
 			+ " (" + TABLA_TIPOEXAMEN_COLUMNA_NOMBRE_EXAMEN + "," + TABLA_TIPOEXAMEN_COLUMNA_INSTRUCCIONES + ")"
@@ -62,7 +63,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 		database.execSQL(CREAR_TABLA_TIPO_EXAMEN);
 		database.execSQL(CREAR_TIPO_EXAMEN_SENSIBILIDAD_OIDO);
 		database.execSQL(CREAR_TIPO_EXAMEN_HABLA_RUIDO);
-		database.execSQL(CREAR_TIPO_EXAMEN_DIF_FRECUENCIAS);
+		//database.execSQL(CREAR_TIPO_EXAMEN_DIF_FRECUENCIAS);
 		database.execSQL(CREAR_TIPO_EXAMEN_CUESTIONARIO);
 	}
 
