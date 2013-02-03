@@ -3,15 +3,15 @@
 
     <string name="app_name">Audinsa Audiología Movil</string>
     <string name="menu_settings">Settings</string>
-    
+
     <!-- Perfiles Activity -->
     <string name="title_activity_perfiles_mantenimiento">Perfil</string>
     <string name="perfiles_agregarperfil">Agregar Perfil</string>
-    
+
     <!-- Examenes Activity -->
     <string name="title_activity_examenes">Exámenes</string>
-    
-     <!-- Perfiles Mantenimiento Activity -->
+
+    <!-- Perfiles Mantenimiento Activity -->
     <string name="lblNombre">Nombre</string>
     <string name="lblFechaNacimiento">Fecha de nacimiento</string>
     <string name="lblCorreoElectronico">Correo electrónico</string>
@@ -19,5 +19,28 @@
     <string name="btnAceptarAgregar">Agregar</string>
     <string name="btnAceptarModificar">Modificar</string>
     <string name="btnCancelar">Cancelar</string>
+
+    <!-- Cuestionario Instrucciones Activity -->
+    <string name="lblInstrucciones">Las siguientes 10 preguntas pretenden medir su nivel de escucha en situaciones diarias.</string>
+    <string name="title_activity_cuestionario_instrucciones">Cuestionario</string>
+    <string name="btnEmpezar">Empezar</string>
+
+    <!-- Cuestionario Examen Activity -->
+    <string name="title_activity_cuestionario_examen">Cuestionario</string>
+    <string name="btnSi">Si</string>
+    <string name="btnNo">No</string>
+
+    <string-array name="Preguntas">
+        <item name="Pgta1">¿Considera que sube mucho el volumen del televisor?</item>
+        <item name="Pgta2">¿Pide que le repitan constantemente las cosas?</item>
+        <item name="Pgta3">¿Tiene dificultad para entender lo que le dicen en reuniones o lugares ruidosos?</item>
+        <item name="Pgta4">¿Tiene que sentarse adelante en reuniones o en la iglesia para poder escuchar mejor?</item>
+        <item name="Pgta5">¿Tiene dificultad para entender las voces femeninas o de los niños?</item>
+        <item name="Pgta6">¿Escucha ruidos en el oído?</item>
+        <item name="Pgta7">¿Tiene problemas para identificar de dónde vienen los sonidos?</item>
+        <item name="Pgta8">¿Le cuesta entender cuando alguien le habla del otro lado de la habitación  u otro cuarto de la casa?</item>
+        <item name="Pgta9">¿Le han dicho otras personas que usted no escucha bien?</item>
+        <item name="Pgta10">¿Evita reuniones familiares o sociales por que le cuesta entender lo que le dicen?</item>
+    </string-array>
 
 </resources>

@@ -1,10 +1,16 @@
 package audinsa.audiologia;
 
+import java.util.HashMap;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.AdapterView.OnItemClickListener;
 import audinsa.audiologia.datasources.TipoExamenDataSource;
 
 public class ExamenesActivity extends Activity {
@@ -17,15 +23,16 @@ public class ExamenesActivity extends Activity {
 
 		dataSource = new TipoExamenDataSource(this);
 		dataSource.open();
-		
+
 		SimpleAdapter adapter = new SimpleAdapter(
 				this, dataSource.obtenerTodosLosTiposExamenesTwoLineItems(),
 				android.R.layout.simple_list_item_2,
-				new String[] {"First Line", "Second Line"},
+				new String[] {"Nombre", "Instrucciones"},
 				new int[] {android.R.id.text1, android.R.id.text2});
-		
+
 		ListView lstView = (ListView)findViewById(R.id.listExamenes);
 		lstView.setAdapter(adapter);
+		setOnListViewItemClickListener();
 	}
 
 	@Override
@@ -35,4 +42,20 @@ public class ExamenesActivity extends Activity {
 		return true;
 	}
 
+	private void setOnListViewItemClickListener() {
+		ListView lstView = (ListView)findViewById(R.id.listExamenes);
+		OnItemClickListener listener = new OnItemClickListener() {
+			@Override public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+			{
+				@SuppressWarnings("unchecked")
+				String examen = ((HashMap<String, String>)parent.getItemAtPosition(position)).get("Nombre").toString();
+				if (examen.equals("Cuestionario"))
+				{
+					Intent intent = new Intent(view.getContext(), CuestionarioInstruccionesActivity.class);
+					startActivity(intent);
+				}
+			}
+		};
+		lstView.setOnItemClickListener(listener);
+	}	
 }
