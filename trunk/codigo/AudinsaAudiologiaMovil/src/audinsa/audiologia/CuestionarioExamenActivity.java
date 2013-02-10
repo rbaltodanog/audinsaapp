@@ -15,7 +15,7 @@ public class CuestionarioExamenActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		String[] preguntas = null;
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cuestionario_examen);
 		cuestionario = new Cuestionario();
@@ -26,7 +26,7 @@ public class CuestionarioExamenActivity extends Activity {
 		{
 			cuestionario.getPreguntas().add(preguntas[i]);
 		}
-		
+
 		// Mostrar primera pregunta
 		obtenerSiguientePregunta();
 	}
@@ -37,15 +37,14 @@ public class CuestionarioExamenActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_cuestionario_examen, menu);
 		return true;
 	}
-	
+
 	public void btnSiClick(View view)
 	{
-		
+
 		int puntaje=0;
 		if (cuestionario.getPreguntas().size() == 0)
 		{
 			//TODO: Ir a pantalla de resultados
-	
 		}
 		else
 		{
@@ -53,21 +52,26 @@ public class CuestionarioExamenActivity extends Activity {
 			puntaje++;
 			cuestionario.setPuntaje(puntaje);
 			obtenerSiguientePregunta();	
-				
+
 		}
 	}
-	
-	//Obtiene la siguiente pregunta válida del arreglo y la elimina del mismo.
-	 public void obtenerSiguientePregunta(){
-		 
-			lblPregunta.setText(cuestionario.getPreguntas().get(0));
-			cuestionario.getPreguntas().remove(0);
 
-	 }
-	
 	public void btnNoClick(View view)
 	{
-		obtenerSiguientePregunta();
+		if (cuestionario.getPreguntas().size() == 0)
+		{
+			//TODO: Ir a pantalla de resultados
+		}
+		else
+		{
+			obtenerSiguientePregunta();	
+		}
 	}
 
+	//Obtiene la siguiente pregunta válida del arreglo y la elimina del mismo.
+	public void obtenerSiguientePregunta(){
+		lblPregunta.setText(cuestionario.getPreguntas().get(0));
+		cuestionario.getPreguntas().remove(0);
+
+	}
 }

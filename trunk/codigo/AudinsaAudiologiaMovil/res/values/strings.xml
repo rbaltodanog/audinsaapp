@@ -2,7 +2,14 @@
 <resources>
 
     <string name="app_name">Audinsa Audiología Movil</string>
-    <string name="menu_settings">Settings</string>
+
+    <!-- Items del menu -->
+    <string name="menu_perfil">Perfil</string>
+    <string name="menu_resultados">Resultados</string>
+    <string name="menu_articulos">Articulos</string>
+    <string name="menu_localizar">Localizar</string>
+    <string name="menu_acerca_de">Acerca De</string>
+    <string name="menu_salir">Salir</string>
 
     <!-- Perfiles Activity -->
     <string name="title_activity_perfiles_mantenimiento">Perfil</string>
@@ -42,5 +49,9 @@
         <item name="Pgta9">¿Le han dicho otras personas que usted no escucha bien?</item>
         <item name="Pgta10">¿Evita reuniones familiares o sociales por que le cuesta entender lo que le dicen?</item>
     </string-array>
+
+    <!-- Articulos Activity -->
+    <string name="title_activity_articulos">Articulos</string>
+    <string name="imgTweetDescription">Avatar del tweet</string>
 
 </resources>

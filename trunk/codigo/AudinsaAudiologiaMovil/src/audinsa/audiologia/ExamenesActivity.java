@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -58,4 +59,20 @@ public class ExamenesActivity extends Activity {
 		};
 		lstView.setOnItemClickListener(listener);
 	}	
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	        case R.id.menu_salir:
+	            System.exit(0);
+	            return true;
+	        case R.id.menu_articulos:
+	        	Intent intent = new Intent(this.getBaseContext(), ArticulosActivity.class);
+				startActivity(intent);
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
 }

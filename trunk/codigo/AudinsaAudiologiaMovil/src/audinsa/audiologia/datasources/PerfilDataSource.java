@@ -14,7 +14,6 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import audinsa.audiologia.MySQLiteHelper;
 import audinsa.audiologia.businessdomain.Perfil;
 
 public class PerfilDataSource {
