@@ -5,24 +5,19 @@ import java.util.ArrayList;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ListView;
+import audinsa.audiologia.Adapters.TweetItemAdapter;
 import audinsa.audiologia.businessdomain.Tweet;
-import audinsa.audiologia.datasources.TwitterDataSource;
 
 public class ArticulosActivity extends Activity {
-	private TwitterDataSource dataSource;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_articulos);
-		
-		dataSource = new TwitterDataSource();
-		ArrayList<Tweet> tweets = new ArrayList<Tweet>();
-		
-		tweets = dataSource.getTweets("aundinsaprueba", 1);
-
-		ListView listView = (ListView)findViewById(R.id.listArticulos);
-		listView.setAdapter(new TweetItemAdapter(this, android.R.layout.simple_list_item_1, tweets));
+		ActualizarArticulosTask actualizarArticulosTask = new ActualizarArticulosTask(this);
+		actualizarArticulosTask.execute("aundinsaprueba");
 	}
 
 	@Override
@@ -32,4 +27,17 @@ public class ArticulosActivity extends Activity {
 		return true;
 	}
 
+	public void showArticles(ArrayList<Tweet> tweets)
+	{
+		findViewById(R.id.lblCargandoArticulos).setVisibility(View.INVISIBLE);
+		findViewById(R.id.prgCargaArticulos).setVisibility(View.INVISIBLE);
+		findViewById(R.id.lstTweets).setVisibility(View.VISIBLE);
+
+		TweetItemAdapter adapter = new TweetItemAdapter(this, 
+				R.layout.listview_articles_item_row, tweets);
+		ListView listView = (ListView) findViewById(R.id.lstTweets);
+		View header = (View)getLayoutInflater().inflate(R.layout.listview_articles_header_row, null);
+		listView.addHeaderView(header);
+		listView.setAdapter(adapter);
+	}
 }

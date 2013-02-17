@@ -65,7 +65,8 @@ public class ExamenesActivity extends Activity {
 	    // Handle item selection
 	    switch (item.getItemId()) {
 	        case R.id.menu_salir:
-	            System.exit(0);
+	            // TODO: Averiguar como salir de aplicacion por completo
+	        	//System.exit(0);
 	            return true;
 	        case R.id.menu_articulos:
 	        	Intent intent = new Intent(this.getBaseContext(), ArticulosActivity.class);
