@@ -56,9 +56,9 @@
     <string name="lblCargandoArticulos">Cargando artículos</string>
     
     <!-- ListView Articles Header Row -->
-    <string name="title_listview_articles">Twitter de aundinsaprueba</string>
+    <string name="title_listview_articles">Blog de Audinsa</string>
 
     <!-- ListView Articles Item Row -->
-     <string name="imgTweetContentDescription">Avatar del tweet</string>
+     <string name="imgBlogContentDescription">Avatar del blog</string>
      
 </resources>

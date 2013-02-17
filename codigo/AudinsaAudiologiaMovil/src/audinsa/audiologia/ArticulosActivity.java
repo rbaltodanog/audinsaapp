@@ -7,8 +7,8 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ListView;
-import audinsa.audiologia.Adapters.TweetItemAdapter;
-import audinsa.audiologia.businessdomain.Tweet;
+import audinsa.audiologia.Adapters.BlogItemAdapter;
+import audinsa.audiologia.businessdomain.Blog;
 
 public class ArticulosActivity extends Activity {
 
@@ -17,7 +17,7 @@ public class ArticulosActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_articulos);
 		ActualizarArticulosTask actualizarArticulosTask = new ActualizarArticulosTask(this);
-		actualizarArticulosTask.execute("aundinsaprueba");
+		actualizarArticulosTask.execute("saludauditivaaudinsa");
 	}
 
 	@Override
@@ -27,13 +27,13 @@ public class ArticulosActivity extends Activity {
 		return true;
 	}
 
-	public void showArticles(ArrayList<Tweet> tweets)
+	public void showArticles(ArrayList<Blog> tweets)
 	{
 		findViewById(R.id.lblCargandoArticulos).setVisibility(View.INVISIBLE);
 		findViewById(R.id.prgCargaArticulos).setVisibility(View.INVISIBLE);
 		findViewById(R.id.lstTweets).setVisibility(View.VISIBLE);
 
-		TweetItemAdapter adapter = new TweetItemAdapter(this, 
+		BlogItemAdapter adapter = new BlogItemAdapter(this, 
 				R.layout.listview_articles_item_row, tweets);
 		ListView listView = (ListView) findViewById(R.id.lstTweets);
 		View header = (View)getLayoutInflater().inflate(R.layout.listview_articles_header_row, null);

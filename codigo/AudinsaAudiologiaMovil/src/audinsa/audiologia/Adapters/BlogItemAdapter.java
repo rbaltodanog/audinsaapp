@@ -10,14 +10,14 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import audinsa.audiologia.R;
-import audinsa.audiologia.businessdomain.Tweet;
+import audinsa.audiologia.businessdomain.Blog;
 
-public class TweetItemAdapter extends ArrayAdapter<Tweet> {
+public class BlogItemAdapter extends ArrayAdapter<Blog> {
 	private Context context;
 	int layoutResourceId;
-	private ArrayList<Tweet> tweets;
+	private ArrayList<Blog> tweets;
 
-	public TweetItemAdapter(Context context, int layoutResourceId, ArrayList<Tweet> tweets) {
+	public BlogItemAdapter(Context context, int layoutResourceId, ArrayList<Blog> tweets) {
 		super(context, layoutResourceId, tweets);
 		this.context = context;
 		this.layoutResourceId = layoutResourceId;
@@ -44,7 +44,7 @@ public class TweetItemAdapter extends ArrayAdapter<Tweet> {
 			holder = (TweetHolder)row.getTag();
 		}
 
-		Tweet tweet = tweets.get(position);
+		Blog tweet = tweets.get(position);
 		holder.txtTitle.setText("El " + tweet.getTweetedDateAsString() + " a las " + tweet.getTweetedHourAsString() + ":");
 		holder.txtContent.setText(tweet.getMessage());
 

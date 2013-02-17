@@ -3,12 +3,12 @@ package audinsa.audiologia;
 import java.util.ArrayList;
 
 import android.os.AsyncTask;
-import audinsa.audiologia.businessdomain.Tweet;
-import audinsa.audiologia.datasources.TwitterDataSource;
+import audinsa.audiologia.businessdomain.Blog;
+import audinsa.audiologia.datasources.BlogDataSource;
 
-public class ActualizarArticulosTask extends AsyncTask<String, Integer, ArrayList<Tweet>>
+public class ActualizarArticulosTask extends AsyncTask<String, Integer, ArrayList<Blog>>
 {
-	private TwitterDataSource dataSource;
+	private BlogDataSource dataSource;
 	private ArticulosActivity host;
 	
 	public ActualizarArticulosTask(ArticulosActivity host)
@@ -17,22 +17,22 @@ public class ActualizarArticulosTask extends AsyncTask<String, Integer, ArrayLis
 	}
 
 	@Override
-	protected ArrayList<Tweet> doInBackground(String... params) {
-		ArrayList<Tweet> result = new ArrayList<Tweet>();
+	protected ArrayList<Blog> doInBackground(String... params) {
+		ArrayList<Blog> result = new ArrayList<Blog>();
 		result = getTweetsFromUser(params[0]);
 		return result;
 	}
 	
 	@Override
-	protected void onPostExecute(ArrayList<Tweet> result)
+	protected void onPostExecute(ArrayList<Blog> result)
 	{
 		super.onPostExecute(result);
 		host.showArticles(result);
 	}
 
-	private ArrayList<Tweet> getTweetsFromUser(String searchTerm)
+	private ArrayList<Blog> getTweetsFromUser(String searchTerm)
 	{
-		dataSource = new TwitterDataSource();
+		dataSource = new BlogDataSource();
 		return dataSource.getTweets(searchTerm, 1);
 	}
 }
