@@ -6,10 +6,11 @@
     <!-- Items del menu -->
     <string name="menu_perfil">Perfil</string>
     <string name="menu_resultados">Resultados</string>
-    <string name="menu_articulos">Articulos</string>
+    <string name="menu_articulos">Artículos</string>
     <string name="menu_localizar">Localizar</string>
     <string name="menu_acerca_de">Acerca De</string>
     <string name="menu_salir">Salir</string>
+    <string name="menu_actualizar">Actualizar</string>
 
     <!-- Perfiles Activity -->
     <string name="title_activity_perfiles_mantenimiento">Perfil</string>
@@ -51,7 +52,13 @@
     </string-array>
 
     <!-- Articulos Activity -->
-    <string name="title_activity_articulos">Articulos</string>
-    <string name="imgTweetDescription">Avatar del tweet</string>
+    <string name="title_activity_articulos">Artículos</string>
+    <string name="lblCargandoArticulos">Cargando artículos</string>
+    
+    <!-- ListView Articles Header Row -->
+    <string name="title_listview_articles">Twitter de aundinsaprueba</string>
 
+    <!-- ListView Articles Item Row -->
+     <string name="imgTweetContentDescription">Avatar del tweet</string>
+     
 </resources>
