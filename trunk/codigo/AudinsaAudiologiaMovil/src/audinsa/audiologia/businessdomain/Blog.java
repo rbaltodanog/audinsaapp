@@ -4,31 +4,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class Tweet {
-	public String username;
+public class Blog {
 	public String message;
-	public String image_url;
 	public Date tweeted_date;
 
-	public Tweet(String username, String message, String url, Date tweetedDate) {
-		this.username = username;
+	public Blog(String message, Date tweetedDate) {
 		this.message = message;
-		this.image_url = url;
 		this.tweeted_date = tweetedDate;
 	}
 	
-	public Tweet() {
-		this.username = "";
+	public Blog() {
 		this.message = "";
-		this.image_url = "";
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getMessage() {
@@ -39,14 +25,6 @@ public class Tweet {
 		this.message = message;
 	}
 
-	public String getImage_url() {
-		return image_url;
-	}
-
-	public void setImage_url(String image_url) {
-		this.image_url = image_url;
-	}
-	
 	public Date getTweeted_date() {
 		return tweeted_date;
 	}
