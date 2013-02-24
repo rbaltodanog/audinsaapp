@@ -60,5 +60,10 @@
 
     <!-- ListView Articles Item Row -->
      <string name="imgBlogContentDescription">Avatar del blog</string>
+    
+    <!--Generales Para Resultado de Exam. -->
+    <string name="lblResultado">Resultado</string>
+ 
+     
      
 </resources>
