@@ -15,9 +15,9 @@ public class TipoExamenDataSource {
 	// Database fields
 	private SQLiteDatabase database;
 	private MySQLiteHelper dbHelper;
-	private String[] allColumns = { MySQLiteHelper.TABLA_TIPOEXAMEN_COLUMNA_ID,
-			MySQLiteHelper.TABLA_TIPOEXAMEN_COLUMNA_NOMBRE_EXAMEN,
-			MySQLiteHelper.TABLA_TIPOEXAMEN_COLUMNA_INSTRUCCIONES};
+	private String[] allColumns = { MySQLiteHelper.TABLA_TIPO_EXAMEN_COLUMNA_ID,
+			MySQLiteHelper.TABLA_TIPO_EXAMEN_COLUMNA_NOMBRE_EXAMEN,
+			MySQLiteHelper.TABLA_TIPO_EXAMEN_COLUMNA_INSTRUCCIONES};
 
 	public TipoExamenDataSource(Context context) {
 		dbHelper = new MySQLiteHelper(context);
@@ -34,7 +34,7 @@ public class TipoExamenDataSource {
 	public List<TipoExamen> obtenerTodosLosTiposExamenes() {
 		List<TipoExamen> tiposExamenes = new ArrayList<TipoExamen>();
 
-		Cursor cursor = database.query(MySQLiteHelper.TABLA_TIPOEXAMEN,
+		Cursor cursor = database.query(MySQLiteHelper.TABLA_TIPO_EXAMEN,
 				allColumns, null, null, null, null, null);
 
 		cursor.moveToFirst();
@@ -52,7 +52,7 @@ public class TipoExamenDataSource {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		Map<String, String> data = null;
 
-		Cursor cursor = database.query(MySQLiteHelper.TABLA_TIPOEXAMEN,
+		Cursor cursor = database.query(MySQLiteHelper.TABLA_TIPO_EXAMEN,
 				allColumns, null, null, null, null, null);
 
 		cursor.moveToFirst();

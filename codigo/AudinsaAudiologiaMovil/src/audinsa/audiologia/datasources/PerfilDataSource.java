@@ -37,21 +37,27 @@ public class PerfilDataSource {
 	    dbHelper.close();
 	  }
 
-	  public Perfil crearPerfil(String nombre, Date fechaNacimiento, String correoElectronico) {
-	    ContentValues values = new ContentValues();
+	  public void crearPerfil(String nombre, Date fechaNacimiento, String correoElectronico) {
+	    ContentValues values = new ContentValues();	    
 	    DateFormat df = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
 	    values.put(MySQLiteHelper.TABLA_PERFIL_COLUMNA_NOMBRE, nombre);
 	    values.put(MySQLiteHelper.TABLA_PERFIL_COLUMNA_FECHA_NACIMIENTO, df.format(fechaNacimiento));
 	    values.put(MySQLiteHelper.TABLA_PERFIL_COLUMNA_CORREO_ELECTRONICO, correoElectronico);
-	    long insertId = database.insert(MySQLiteHelper.TABLA_PERFIL, null,
-	        values);
-	    Cursor cursor = database.query(MySQLiteHelper.TABLA_PERFIL,
-	        allColumns, MySQLiteHelper.TABLA_PERFIL_COLUMNA_ID + " = " + insertId, null,
-	        null, null, null);
-	    cursor.moveToFirst();
-	    Perfil newPerfil = cursorAPerfil(cursor);
-	    cursor.close();
-	    return newPerfil;
+	    
+	   database.insert(MySQLiteHelper.TABLA_PERFIL, null,
+		        values);
+	  }
+	  
+	  public Perfil buscarPerfil(long insertId){
+		 	 
+			    Cursor cursor = database.query(MySQLiteHelper.TABLA_PERFIL,
+			        allColumns, MySQLiteHelper.TABLA_PERFIL_COLUMNA_ID + " = " + insertId, null,
+			        null, null, null);
+			    cursor.moveToFirst();
+			    Perfil newPerfil = cursorAPerfil(cursor);
+			    cursor.close();
+			    return newPerfil;
+		  
 	  }
 
 	  public void borrarPerfil(Perfil perfil) {

@@ -79,6 +79,6 @@ public class PerfilesActivity extends Activity {
 				// TODO: Pasar id del perfil al activity de Examenes (ya esta hecho)
 			}
 		};
-		lstView.setOnItemClickListener(listener );
+		lstView.setOnItemClickListener(listener);
 	}
 }
