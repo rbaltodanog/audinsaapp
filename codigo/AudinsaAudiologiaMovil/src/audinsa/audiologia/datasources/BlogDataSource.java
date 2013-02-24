@@ -65,29 +65,27 @@ public class BlogDataSource {
 
 		for(Object t : entries) {
 			Blog blog = new Blog();
+			JSONArray blogLinkArray = null;
 			try {
 				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.US);
 
 				String titulo=((JSONObject)((JSONObject)t).get("title")).get("$t").toString();
 				Date fecha=formatter.parse(((JSONObject)((JSONObject)t).get("published")).get("$t").toString());
+				blogLinkArray = (JSONArray)((JSONObject)t).get("link");
+				// El ultimo del array posee el link verdadero del blog
+				String blogUrl = ((JSONObject)blogLinkArray.get(blogLinkArray.size() - 1)).get("href").toString();
 
-				if(titulo.trim().length()!=0){
-
-					blog = new Blog(titulo,fecha);
+				// Verififica si el blog tiene un titulo definido
+				if(titulo.trim().length()!=0) {
+					blog = new Blog(titulo,fecha,blogUrl);
 					blogs.add(blog);
 				}
-
-
 			}
-
-
 			catch (Exception e) {
-				Log.v("Error parseando objeto tweet","Exception: " + e.getMessage());
+				Log.v("Error parseando objeto blog","Exception: " + e.getMessage());
 				e.printStackTrace();
 			}
 		}
-
-
 		return blogs;
 	}
 }

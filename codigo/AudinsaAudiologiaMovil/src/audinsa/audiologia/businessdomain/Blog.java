@@ -7,14 +7,23 @@ import java.util.Locale;
 public class Blog {
 	public String message;
 	public Date tweeted_date;
+	public String url;
 
-	public Blog(String message, Date tweetedDate) {
+	public Blog(String message, Date tweetedDate, String url) {
 		this.message = message;
 		this.tweeted_date = tweetedDate;
+		this.url = url;
 	}
 	
 	public Blog() {
-		this.message = "";
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public String getMessage() {
@@ -44,10 +53,4 @@ public class Blog {
 		SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss", Locale.US);
 		return df.format(getTweeted_date());
 	}
-	
-	/*@Override
-	public String toString()
-	{
-		
-	}*/
 }
