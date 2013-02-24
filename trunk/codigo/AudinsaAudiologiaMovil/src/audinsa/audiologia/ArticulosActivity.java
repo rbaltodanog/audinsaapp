@@ -2,11 +2,15 @@ package audinsa.audiologia;
 
 import java.util.ArrayList;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 import audinsa.audiologia.Adapters.BlogItemAdapter;
 import audinsa.audiologia.businessdomain.Blog;
 
@@ -39,5 +43,21 @@ public class ArticulosActivity extends Activity {
 		View header = (View)getLayoutInflater().inflate(R.layout.listview_articles_header_row, null);
 		listView.addHeaderView(header);
 		listView.setAdapter(adapter);
+		setOnListViewItemClickListener();
+	}
+	
+	private void setOnListViewItemClickListener() {
+		ListView lstView = (ListView)findViewById(R.id.lstTweets);
+		OnItemClickListener listener = new OnItemClickListener() {
+			@Override public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+			{
+				String blogUrl = "";
+				blogUrl = ((Blog)parent.getItemAtPosition(position)).getUrl();
+				Intent i = new Intent(Intent.ACTION_VIEW);
+				i.setData(Uri.parse(blogUrl));
+				startActivity(i);
+			}
+		};
+		lstView.setOnItemClickListener(listener );
 	}
 }
