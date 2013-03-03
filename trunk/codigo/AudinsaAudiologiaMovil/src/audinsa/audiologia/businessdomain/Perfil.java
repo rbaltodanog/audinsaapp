@@ -3,7 +3,7 @@ package audinsa.audiologia.businessdomain;
 import java.util.Date;
 
 public class Perfil {
-	private long idPerfil;
+	private int idPerfil;
 	private String nombre;
 	private Date fechaNacimiento;
 	private String correoElectronico;
@@ -14,7 +14,7 @@ public class Perfil {
 	public Perfil()
 	{
 	}
-	public Perfil(long idPerfil, String nombre, Date fechaNacimiento,
+	public Perfil(int idPerfil, String nombre, Date fechaNacimiento,
 			String correoElectronico) {
 		super();
 		this.idPerfil = idPerfil;
@@ -22,7 +22,7 @@ public class Perfil {
 		this.fechaNacimiento = fechaNacimiento;
 		this.correoElectronico = correoElectronico;
 	}
-	public void setIdPerfil(long idPerfil) {
+	public void setIdPerfil(int idPerfil) {
 		this.idPerfil = idPerfil;
 	}
 	public String getNombre() {
