@@ -53,7 +53,7 @@ public class PerfilesActivity extends Activity {
 	private void loadData()
 	{
 		dataSource = new PerfilDataSource(this);
-		dataSource.open();
+		dataSource.open(); // pasar al datasource.!!! cambiar del activity.
 
 		List<Perfil> perfiles = dataSource.obtenerTodosLosPerfiles();
 
