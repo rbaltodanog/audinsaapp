@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:padding="1dp" >
+    <TableRow
+        android:layout_height="1dp"
+        android:background="#BDBDBD" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_span="2"
+            android:text="" >
+        </TextView>
+    </TableRow>
+	<TableRow
+	    android:id="@+id/row_contactar_clinica"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:gravity="center_vertical" >
+	
+	    <ImageView
+	        android:id="@+id/imgContactarClinica"
+	        android:layout_width="32dp"
+	        android:layout_height="32dp"
+	        android:contentDescription="@string/imgContactarClinicaContentDescription"
+	        android:src="@drawable/ic_contactar_clinica" />
+	
+	    <TextView
+	        android:id="@+id/lblContactarClinica"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/lblContactarClinica"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />
+	    
+	</TableRow>
+	<TableRow
+        android:layout_height="1dp"
+        android:background="#BDBDBD" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_span="2"
+            android:text="" >
+        </TextView>
+    </TableRow>
+	<TableRow
+	    android:id="@+id/row_borrar_resultado"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:gravity="center_vertical" >
+
+		<ImageView
+		    android:id="@+id/imgBorrarResultado"
+		    android:layout_width="32dp"
+		    android:layout_height="32dp"
+		    android:contentDescription="@string/imgBorrarContentDescription"
+		    android:src="@drawable/ic_borrar" />
+		
+		<TextView
+	        android:id="@+id/lblBorrar"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/lblBorrar"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+	</TableRow>
+	<TableRow
+        android:layout_height="1dp"
+        android:background="#BDBDBD" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_span="2"
+            android:text="" >
+        </TextView>
+    </TableRow>
+    <TableRow
+	    android:id="@+id/row_compartir_resultado"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:gravity="center_vertical" >
+
+		<ImageView
+		    android:id="@+id/imgCompartirResultado"
+		    android:layout_width="32dp"
+		    android:layout_height="32dp"
+		    android:contentDescription="@string/imgCompartirContentDescription"
+		    android:src="@drawable/ic_compartir" />
+		
+		<TextView
+	        android:id="@+id/lblCompartir"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/lblCompartir"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+	</TableRow>
+</TableLayout>
