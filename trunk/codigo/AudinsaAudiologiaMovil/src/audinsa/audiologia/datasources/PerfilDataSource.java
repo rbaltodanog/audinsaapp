@@ -43,6 +43,8 @@ public class PerfilDataSource {
 		values.put(MySQLiteHelper.TABLA_PERFIL_COLUMNA_FECHA_NACIMIENTO, df.format(fechaNacimiento));
 		values.put(MySQLiteHelper.TABLA_PERFIL_COLUMNA_CORREO_ELECTRONICO, correoElectronico);
 
+		
+
 		database.insert(MySQLiteHelper.TABLA_PERFIL, null,
 				values);
 	}

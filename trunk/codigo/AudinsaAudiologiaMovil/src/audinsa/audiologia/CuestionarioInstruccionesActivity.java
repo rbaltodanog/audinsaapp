@@ -27,7 +27,13 @@ public class CuestionarioInstruccionesActivity extends Activity {
 	}
 
 	public void onEmpezarClick(View view) {
+		
+		long perfil=getIntent().getLongExtra("idPerfil",0);
+		long tipoExamen=getIntent().getLongExtra("idTipoExamen",0);
+				
 		Intent intent = new Intent(view.getContext(), CuestionarioExamenActivity.class);
+		intent.putExtra("idPerfil", perfil);
+		intent.putExtra("idTipoExamen", tipoExamen);
 		startActivity(intent);
 	}
 	

@@ -48,22 +48,25 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 			+ " text not null);";
 
 	
-	private static final String CREAR_TABLA_RESULTADO ="create table"
+	private static final String CREAR_TABLA_RESULTADO ="create table "
 			+ TABLA_RESULTADO + "(" + TABLA_RESULTADO_COLUMNA_ID
 			+ " integer primary key autoincrement, " 
-			+ "foreign key (" +TABLA_RESULTADO_COLUMNA_ID_PERFIL +") References "+TABLA_PERFIL +"("+TABLA_PERFIL_COLUMNA_ID +"),"			
-			+ "foreign key (" +TABLA_RESULTADO_COLUMNA_ID_EXAMEN +") References "+TABLA_EXAMEN 	+"("+TABLA_EXAMEN_COLUMNA_ID +"),"
-		    + TABLA_RESULTADO_COLUMNA_VALOR_EXAMEN + "real not null,"
-		    + TABLA_RESULTADO_COLUMNA_DURACION_REAL +"real not null"
+			+ TABLA_RESULTADO_COLUMNA_ID_PERFIL + " integer not null,"
+		    + TABLA_RESULTADO_COLUMNA_ID_EXAMEN +" integer not null,"
+		    + TABLA_RESULTADO_COLUMNA_VALOR_EXAMEN + " real not null,"
+		    + TABLA_RESULTADO_COLUMNA_DURACION_REAL +" text,"
+		    + "foreign key (" +TABLA_RESULTADO_COLUMNA_ID_PERFIL +") References "+TABLA_PERFIL +"("+TABLA_PERFIL_COLUMNA_ID +"),"			
+			+ "foreign key (" +TABLA_RESULTADO_COLUMNA_ID_EXAMEN +") References "+TABLA_EXAMEN 	+"("+TABLA_EXAMEN_COLUMNA_ID +")"
 			+ " );";
 
-	private static final String CREAR_TABLA_EXAMEN ="create table"
+	private static final String CREAR_TABLA_EXAMEN ="create table "
 			+ TABLA_EXAMEN + "(" + TABLA_EXAMEN_COLUMNA_ID
-			+ " integer primary key autoincrement, " 
-			+ "foreign key (" +TABLA_EXAMEN_COLUMNA_ID_TIPO_EXAMEN +") References "+TABLA_TIPO_EXAMEN +"("+TABLA_TIPO_EXAMEN_COLUMNA_ID +"),"			
-			+ TABLA_EXAMEN_COLUMNA_FECHA_INICIO + "text not null,"
-		    + TABLA_EXAMEN_COLUMNA_DURACION_APROXIMADA +"real not null,"
-		    + TABLA_EXAMEN_COLUMNA_PORCENTAJE_COMPLETADO +"real not null,"
+			+ " integer primary key autoincrement, "
+			+ TABLA_EXAMEN_COLUMNA_ID_TIPO_EXAMEN + " integer not null,"
+			+ TABLA_EXAMEN_COLUMNA_FECHA_INICIO + " text not null,"
+		    + TABLA_EXAMEN_COLUMNA_DURACION_APROXIMADA +" real not null,"
+		    + TABLA_EXAMEN_COLUMNA_PORCENTAJE_COMPLETADO +" real not null,"
+		    + "foreign key (" +TABLA_EXAMEN_COLUMNA_ID_TIPO_EXAMEN +") References "+TABLA_TIPO_EXAMEN +"("+TABLA_TIPO_EXAMEN_COLUMNA_ID +")"
 		    + " );";
 	
 	

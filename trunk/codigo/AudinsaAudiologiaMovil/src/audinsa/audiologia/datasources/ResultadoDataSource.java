@@ -1,8 +1,12 @@
 package audinsa.audiologia.datasources;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -35,17 +39,42 @@ public class ResultadoDataSource {
 	}
 
 
-
-	public void crearResultado(int id_perfil,int id_examen,
-			int valor_examen,int duracion_real) {
+	//Almacena primero el examen luego el resultado
+	public void crearResultado(long idPerfil,long idTipoExamen,int valor_examen,Date fechaHoraInicio) {
 		ContentValues values = new ContentValues();	    
-
-		values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL, id_perfil);
-		values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_EXAMEN,id_examen);
+		
+ 	//Fecha del sistema en este momento
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss", Locale.US);  
+		Date date = new Date(); 
+		dateFormat.format(date);
+		
+		//convierte fecha inicio para almacenar en bd
+		String fechaInicio=dateFormat.format(fechaHoraInicio);
+		 
+	
+		//duracion_real debe de restar la HORA de este momento menos la HORA recibida que viene.
+					
+		String hh =  Integer.toString(date.getHours()-fechaHoraInicio.getHours());
+		String mm = Integer.toString(date.getMinutes()-fechaHoraInicio.getMinutes());
+		String ss = Integer.toString(date.getSeconds()-fechaHoraInicio.getHours());
+ 
+		String duracionReal= hh+mm+ss;
+		
+		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_ID_TIPO_EXAMEN, idTipoExamen);
+		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_FECHA_INICIO,fechaInicio);
+		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_DURACION_APROXIMADA,0);
+		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_PORCENTAJE_COMPLETADO,0);
+	//TODO FALTA DURACION APROX Y PORC DE EXAMEN
+		
+		long idExamen=database.insert(MySQLiteHelper.TABLA_EXAMEN, null,values);
+		
+	 	values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL, idPerfil);
+		values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_EXAMEN,idExamen);
 		values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_VALOR_EXAMEN, valor_examen);
-		values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_DURACION_REAL, duracion_real);
+		values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_DURACION_REAL, duracionReal);
 
-		database.insert(MySQLiteHelper.TABLA_RESULTADO, null,values);
+		database.insert(MySQLiteHelper.TABLA_RESULTADO, null,values);		
+		 
 	}
 
 	public Resultado buscarResultado(int insertId){
@@ -91,7 +120,7 @@ public class ResultadoDataSource {
 		resultado.setId_examen(cursor.getInt(2));
 		resultado.setValor_examen(cursor.getInt(3));
 		resultado.setDuracion_real(cursor.getInt(4));
-
+//TODO revisar que viaje bien la duracion
 		//revisar lo de la duracion	
 		return resultado;
 	}

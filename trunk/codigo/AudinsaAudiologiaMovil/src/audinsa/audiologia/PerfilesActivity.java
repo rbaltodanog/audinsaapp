@@ -53,7 +53,7 @@ public class PerfilesActivity extends Activity {
 	private void loadData()
 	{
 		dataSource = new PerfilDataSource(this);
-		dataSource.open(); // pasar al datasource.!!! cambiar del activity.
+		dataSource.open(); // TODO pasar al datasource.!!! cambiar del activity.
 
 		List<Perfil> perfiles = dataSource.obtenerTodosLosPerfiles();
 
@@ -72,12 +72,12 @@ public class PerfilesActivity extends Activity {
 		OnItemClickListener listener = new OnItemClickListener() {
 			@Override public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 			{
-				//long idPerfil = 0;
-				//idPerfil = ((Perfil)parent.getItemAtPosition(position)).getIdPerfil();
+				long idPerfil = 0;
+				idPerfil = ((Perfil)parent.getItemAtPosition(position)).getIdPerfil();
 				Intent intent = new Intent(view.getContext(), ExamenesActivity.class);
+				intent.putExtra("idPerfil", idPerfil);
 				startActivity(intent);
-				// TODO: Pasar id del perfil al activity de Examenes (ya esta hecho)
-			}
+		 }
 		};
 		lstView.setOnItemClickListener(listener);
 	}
