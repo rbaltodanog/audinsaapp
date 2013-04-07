@@ -1,7 +1,6 @@
 package audinsa.audiologia;
-
+//import java.util.Date;
 import java.util.HashMap;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -12,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.AdapterView.OnItemClickListener;
+
 import audinsa.audiologia.datasources.TipoExamenDataSource;
 
 public class ExamenesActivity extends Activity {
@@ -28,12 +28,13 @@ public class ExamenesActivity extends Activity {
 		SimpleAdapter adapter = new SimpleAdapter(
 				this, dataSource.obtenerTodosLosTiposExamenesTwoLineItems(),
 				android.R.layout.simple_list_item_2,
-				new String[] {"Nombre", "Instrucciones"},
+				new String[] {"Nombre", "Instrucciones","idTipoExamen"},
 				new int[] {android.R.id.text1, android.R.id.text2});
 
 		ListView lstView = (ListView)findViewById(R.id.listExamenes);
 		lstView.setAdapter(adapter);
 		setOnListViewItemClickListener();
+		dataSource.close();
 	}
 
 	@Override
@@ -49,13 +50,26 @@ public class ExamenesActivity extends Activity {
 			@Override public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 			{
 				@SuppressWarnings("unchecked")
-				String examen = ((HashMap<String, String>)parent.getItemAtPosition(position)).get("Nombre").toString();
+				HashMap<String, String> hashMap = ((HashMap<String, String>)parent.getItemAtPosition(position));
+				String examen = hashMap.get("Nombre").toString();
+				long perfil, idTipoExamen;
+				perfil=getIntent().getLongExtra("idPerfil",0);
+				idTipoExamen =Long.valueOf(hashMap.get("idTipoExamen").toString());
+			
 				if (examen.equals("Cuestionario"))
 				{
 					Intent intent = new Intent(view.getContext(), CuestionarioInstruccionesActivity.class);
+					intent.putExtra("idPerfil", perfil);
+					intent.putExtra("idTipoExamen", idTipoExamen);
+				//	Date fechaInicio= COLOCARLE FECHA DE SISTEMA
+					// PASARSELA PARA QUE AL TERMINAR EL EXAM LA CALCULE
+					//INSERTAR  PRIMERO EN EXAM LUEGOP EN RESULTADO;
+					//intent.putExtra("fechaInicio",)
 					startActivity(intent);
 				}
 			}
+
+			
 		};
 		lstView.setOnItemClickListener(listener);
 	}	

@@ -58,9 +58,10 @@ public class TipoExamenDataSource {
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			TipoExamen tipoExamen = cursorATipoExamen(cursor);
-			data =  new HashMap<String, String>(2);
+			data =  new HashMap<String, String>(3);
 			data.put("Nombre", tipoExamen.getNombreExamen());
 			data.put("Instrucciones", tipoExamen.getInstrucciones());
+			data.put("idTipoExamen",String.valueOf(tipoExamen.getIdTipoExamen()));
 			list.add(data);
 			cursor.moveToNext();
 		}
