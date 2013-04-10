@@ -48,8 +48,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 			+ " text not null);";
 
 	
-	private static final String CREAR_TABLA_RESULTADO ="create table "
-			+ TABLA_RESULTADO + "(" + TABLA_RESULTADO_COLUMNA_ID
+	private static final String CREAR_TABLA_RESULTADO ="create table"
+			+ " " + TABLA_RESULTADO + "(" + TABLA_RESULTADO_COLUMNA_ID
 			+ " integer primary key autoincrement, " 
 			+ TABLA_RESULTADO_COLUMNA_ID_PERFIL + " integer not null,"
 		    + TABLA_RESULTADO_COLUMNA_ID_EXAMEN +" integer not null,"

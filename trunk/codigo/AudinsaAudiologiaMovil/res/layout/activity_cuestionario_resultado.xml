@@ -4,27 +4,27 @@
     android:layout_height="match_parent" >
 
     <TableRow
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_margin="2dp" >
 
         <TextView
             android:id="@+id/lblTitulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="@string/lblResultadoCuestionario"
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </TableRow>
 
     <TableRow
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_margin="2dp" >
 
         <TextView
             android:id="@+id/txtFechaResultado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_span="2"
             android:text="2013/03/03 - 9:43pm"
             android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -35,211 +35,216 @@
         android:background="#BDBDBD" >
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_span="2"
             android:text="" >
         </TextView>
     </TableRow>
 
-    <TableLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="horizontal"
-        android:padding="1dp" >
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="2dp" >
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:padding="1dip" >
+        <TextView
+            android:id="@+id/lblSuResultado"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_span="1"
+            android:gravity="center"
+            android:text="Su calificación"
+            android:textSize="20sp" />
+    </TableRow>
 
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1" >
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="2dp" >
 
-                <TextView
-                    android:id="@+id/lblSuResultado"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_gravity="center"
-                    android:layout_span="1"
-                    android:text="Su calificación"
-                    android:textSize="15sp" />
-            </FrameLayout>
+        <ImageView
+            android:id="@+id/imgResult"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_green_light" />
+    </TableRow>
 
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1" >
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="2dp" >
 
-                <TextView
-                    android:id="@+id/lblAcciones"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_gravity="center"
-                    android:layout_span="1"
-                    android:text="Acciones"
-                    android:textSize="15sp" />
-            </FrameLayout>
-        </TableRow>
+        <TextView
+            android:id="@+id/txtResultadoDescription"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="bottom|center"
+            android:text="No se detectaron problemas de escucha"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="10sp"
+            android:textStyle="italic" />
+    </TableRow>
+
+    <TableRow
+        android:layout_height="1dp"
+        android:background="#BDBDBD" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_span="2"
+            android:text="" >
+        </TextView>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="2dp" >
+
+        <TextView
+            android:id="@+id/lblAcciones"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_span="1"
+            android:text="Acciones"
+            android:textSize="20sp" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="2dp" >
 
         <TableLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
             android:padding="0dp" >
 
             <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:padding="0dip" >
+                android:id="@+id/row_contactar_clinica"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical" >
 
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1" >
-                </FrameLayout>
+                <ImageView
+                    android:id="@+id/imgContactarClinica"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:contentDescription="@string/imgContactarClinicaContentDescription"
+                    android:src="@drawable/ic_contactar_clinica" />
 
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1" >
+                <TextView
+                    android:id="@+id/lblContactarClinica"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/lblContactarClinica"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="18sp" />
+            </TableRow>
 
-                    <TableLayout
-                        xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:layout_width="fill_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:padding="1dp" >
+            <TableRow
+                android:layout_height="1dp"
+                android:background="#BDBDBD" >
 
-                        <TableRow
-                            android:layout_height="1dp"
-                            android:background="#BDBDBD" >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_span="2"
+                    android:text="" >
+                </TextView>
+            </TableRow>
 
-                            <TextView
-                                android:layout_width="fill_parent"
-                                android:layout_height="1dp"
-                                android:layout_span="2"
-                                android:text="" >
-                            </TextView>
-                        </TableRow>
+            <TableRow
+                android:id="@+id/row_borrar_resultado"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical" >
 
-                        <TableRow
-                            android:id="@+id/row_contactar_clinica"
-                            android:layout_width="match_parent"
-                            android:gravity="center_vertical" >
+                <ImageView
+                    android:id="@+id/imgBorrarResultado"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:contentDescription="@string/imgBorrarContentDescription"
+                    android:src="@drawable/ic_borrar" />
 
-                            <ImageView
-                                android:id="@+id/imgContactarClinica"
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
-                                android:contentDescription="@string/imgContactarClinicaContentDescription"
-                                android:src="@drawable/ic_contactar_clinica" />
+                <TextView
+                    android:id="@+id/lblBorrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/lblBorrar"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="18sp" />
+            </TableRow>
 
-                            <TextView
-                                android:id="@+id/lblContactarClinica"
-                                android:layout_width="wrap_content"
-                                android:layout_height="60dp"
-                                android:gravity="center_vertical"
-                                android:text="@string/lblContactarClinica"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textSize="12sp" />
+            <TableRow
+                android:layout_height="1dp"
+                android:background="#BDBDBD" >
 
-                        </TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_span="2"
+                    android:text="" >
+                </TextView>
+            </TableRow>
 
-                        <TableRow
-                            android:layout_height="1dp"
-                            android:background="#BDBDBD" >
+            <TableRow
+                android:id="@+id/row_compartir_resultado"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical" >
 
-                            <TextView
-                                android:layout_width="fill_parent"
-                                android:layout_height="1dp"
-                                android:layout_span="2"
-                                android:text="" >
-                            </TextView>
-                        </TableRow>
+                <ImageView
+                    android:id="@+id/imgCompartirResultado"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:contentDescription="@string/imgCompartirContentDescription"
+                    android:src="@drawable/ic_compartir" />
 
-                        <TableRow
-                            android:id="@+id/row_borrar_resultado"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical" >
+                <TextView
+                    android:id="@+id/lblCompartir"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/lblCompartir"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="18sp" />
+            </TableRow>
 
-                            <ImageView
-                                android:id="@+id/imgBorrarResultado"
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
-                                android:contentDescription="@string/imgBorrarContentDescription"
-                                android:src="@drawable/ic_borrar" />
+            <TableRow
+                android:layout_height="1dp"
+                android:background="#BDBDBD" >
 
-                            <TextView
-                                android:id="@+id/lblBorrar"
-                                android:layout_width="wrap_content"
-                                android:layout_height="60dp"
-                                android:gravity="center_vertical"
-                                android:text="@string/lblBorrar"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textSize="12sp" />
-
-                        </TableRow>
-
-                        <TableRow
-                            android:layout_height="1dp"
-                            android:background="#BDBDBD" >
-
-                            <TextView
-                                android:layout_width="fill_parent"
-                                android:layout_height="1dp"
-                                android:layout_span="2"
-                                android:text="" >
-                            </TextView>
-                        </TableRow>
-
-                        <TableRow
-                            android:id="@+id/row_compartir_resultado"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical" >
-
-                            <ImageView
-                                android:id="@+id/imgCompartirResultado"
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
-                                android:contentDescription="@string/imgCompartirContentDescription"
-                                android:src="@drawable/ic_compartir" />
-
-                            <TextView
-                                android:id="@+id/lblCompartir"
-                                android:layout_width="wrap_content"
-                                android:layout_height="60dp"
-                                android:gravity="center_vertical"
-                                android:text="@string/lblCompartir"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textSize="12sp" />
-
-                        </TableRow>
-                        
-                        <TableRow
-                            android:layout_height="1dp"
-                            android:background="#BDBDBD" >
-
-                            <TextView
-                                android:layout_width="fill_parent"
-                                android:layout_height="1dp"
-                                android:layout_span="2"
-                                android:text="" >
-                            </TextView>
-                        </TableRow>
-                    </TableLayout>
-                </FrameLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_span="2"
+                    android:text="" >
+                </TextView>
             </TableRow>
         </TableLayout>
-    </TableLayout>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:layout_margin="2dp"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/btnRegresar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regresar" />
+    </TableRow>
+
 </TableLayout>
