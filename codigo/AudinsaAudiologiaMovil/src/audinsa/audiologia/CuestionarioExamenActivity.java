@@ -56,10 +56,18 @@ public class CuestionarioExamenActivity extends Activity {
 		dataSource.crearResultado(idPerfil,idTipoExamen,puntaje, DateTime.now());
 		dataSource.close();
 		
-		//TODO: Agregar pop up de creado de resultado exitoso	
 		Intent intent = new Intent(view.getContext(), CuestionarioResultadoActivity.class);
+		if(puntaje >= 8) {
+			String positivo= this.getString(R.string.strResultadoPositivo) ;
+		intent.putExtra("strResultado",positivo);
+		}
+		else
+		{
+			String negativo= this.getString(R.string.strResultadoNegativo);
+			intent.putExtra("strResultado", negativo);
+		}
 		startActivity(intent);
-		this.finish();			
+		this.finish();					
 	}
 
 	public void btnSiClick(View view)

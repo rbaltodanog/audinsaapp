@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_span="2"
-            android:text="2013/03/03 - 9:43pm"
+            android:text=""
             android:textAppearance="?android:attr/textAppearanceSmall" />
     </TableRow>
 
@@ -85,7 +85,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="bottom|center"
-            android:text="No se detectaron problemas de escucha"
+            android:text=""
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="10sp"
             android:textStyle="italic" />
