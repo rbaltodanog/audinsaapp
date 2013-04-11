@@ -126,7 +126,6 @@
                         android:text="No se detectaron problemas de escucha"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textStyle="italic" />
-
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -174,7 +173,6 @@
                                 android:text="@string/lblContactarClinica"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                 android:textSize="12sp" />
-
                         </TableRow>
 
                         <TableRow
@@ -210,7 +208,6 @@
                                 android:text="@string/lblBorrar"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                 android:textSize="12sp" />
-
                         </TableRow>
 
                         <TableRow
@@ -246,9 +243,8 @@
                                 android:text="@string/lblCompartir"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                 android:textSize="12sp" />
-
                         </TableRow>
-                        
+
                         <TableRow
                             android:layout_height="1dp"
                             android:background="#BDBDBD" >
@@ -266,10 +262,15 @@
         </TableLayout>
     </TableLayout>
 
-    <Button
-        android:id="@+id/btnRegresar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Regresar" />
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical|center_horizontal"
+        android:padding="1dip" >
+
+        <Button
+            android:id="@+id/btnRegresar"
+            android:text="Regresar" />
+    </TableRow>
 
 </TableLayout>
