@@ -18,7 +18,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	public static final String TABLA_EXAMEN_COLUMNA_ID = "id_examen";
 	public static final String TABLA_EXAMEN_COLUMNA_ID_TIPO_EXAMEN = "id_tipo_examen";
 	public static final String TABLA_EXAMEN_COLUMNA_FECHA_INICIO = "fecha_inicio";
-	public static final String TABLA_EXAMEN_COLUMNA_DURACION_APROXIMADA = "duracion_aproximada";
+	public static final String TABLA_EXAMEN_COLUMNA_DURACION_REAL = "duracion_real";
 	public static final String TABLA_EXAMEN_COLUMNA_PORCENTAJE_COMPLETADO = "porcentaje_completado";
 	
 	/* TABLA TIPOEXAMEN */
@@ -54,7 +54,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 			+ TABLA_RESULTADO_COLUMNA_ID_PERFIL + " integer not null,"
 		    + TABLA_RESULTADO_COLUMNA_ID_EXAMEN +" integer not null,"
 		    + TABLA_RESULTADO_COLUMNA_VALOR_EXAMEN + " real not null,"
-		    + TABLA_RESULTADO_COLUMNA_DURACION_REAL +" text,"
 		    + "foreign key (" +TABLA_RESULTADO_COLUMNA_ID_PERFIL +") References "+TABLA_PERFIL +"("+TABLA_PERFIL_COLUMNA_ID +"),"			
 			+ "foreign key (" +TABLA_RESULTADO_COLUMNA_ID_EXAMEN +") References "+TABLA_EXAMEN 	+"("+TABLA_EXAMEN_COLUMNA_ID +")"
 			+ " );";
@@ -64,7 +63,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 			+ " integer primary key autoincrement, "
 			+ TABLA_EXAMEN_COLUMNA_ID_TIPO_EXAMEN + " integer not null,"
 			+ TABLA_EXAMEN_COLUMNA_FECHA_INICIO + " text not null,"
-		    + TABLA_EXAMEN_COLUMNA_DURACION_APROXIMADA +" real not null,"
+		    + TABLA_EXAMEN_COLUMNA_DURACION_REAL +" text not null,"
 		    + TABLA_EXAMEN_COLUMNA_PORCENTAJE_COMPLETADO +" real not null,"
 		    + "foreign key (" +TABLA_EXAMEN_COLUMNA_ID_TIPO_EXAMEN +") References "+TABLA_TIPO_EXAMEN +"("+TABLA_TIPO_EXAMEN_COLUMNA_ID +")"
 		    + " );";

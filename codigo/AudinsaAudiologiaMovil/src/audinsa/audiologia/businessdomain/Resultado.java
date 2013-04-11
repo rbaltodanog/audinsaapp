@@ -7,7 +7,6 @@ public class Resultado {
 	private int id_perfil;
 	private int id_examen;
 	private int valor_examen;
-	private int  duracion_real;
 
 	public Resultado()
 	{
@@ -19,7 +18,6 @@ public class Resultado {
 		this.id_examen = id_examen;
 		this.id_perfil = id_perfil;
 		this.valor_examen = valor_examen;
-		this.duracion_real = duracion_real;
 	}
 
 	public int getId_resultado() {
@@ -46,11 +44,4 @@ public class Resultado {
 	public void setValor_examen(int valor_examen) {
 		this.valor_examen = valor_examen;
 	}
-	public int getDuracion_real() {
-		return duracion_real;
-	}
-	public void setDuracion_real(int duracion_real) {
-		this.duracion_real = duracion_real;
-	}
-
 }

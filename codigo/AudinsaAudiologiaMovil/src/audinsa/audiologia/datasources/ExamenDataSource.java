@@ -10,8 +10,6 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import audinsa.audiologia.businessdomain.Examen;
 
-
-
 public class ExamenDataSource {
 	// Database fields
 	private SQLiteDatabase database;
@@ -19,11 +17,10 @@ public class ExamenDataSource {
 	private String[] allColumns = { MySQLiteHelper.TABLA_EXAMEN_COLUMNA_ID,
 			MySQLiteHelper.TABLA_EXAMEN_COLUMNA_ID_TIPO_EXAMEN, /* llave fK tipo exam*/
 			MySQLiteHelper.TABLA_EXAMEN_COLUMNA_FECHA_INICIO,
-			MySQLiteHelper.TABLA_EXAMEN_COLUMNA_DURACION_APROXIMADA,
+			MySQLiteHelper.TABLA_EXAMEN_COLUMNA_DURACION_REAL,
 			MySQLiteHelper.TABLA_EXAMEN_COLUMNA_PORCENTAJE_COMPLETADO
 
 	};
-
 
 	public ExamenDataSource(Context context) {
 		dbHelper = new MySQLiteHelper(context);
@@ -77,14 +74,10 @@ public class ExamenDataSource {
 		Fincio= new Date(fechaInicio);
 		examen.setFecha_inicio(Fincio);	
 
-		examen.setDuracion_aproximada(cursor.getInt(3));
+		examen.setDuracion_real(cursor.getString(3));
 		examen.setPorcentaje_completado(cursor.getDouble(4));
 
 
 		return examen;
 	}
-
-
-
-
 }

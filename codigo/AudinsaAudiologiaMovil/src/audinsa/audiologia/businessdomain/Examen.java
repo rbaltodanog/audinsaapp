@@ -8,24 +8,21 @@ public class Examen {
 	private int id_examen;
 	private int id_tipo_examen;
 	private Date fecha_inicio;
-	private int  duracion_aproximada;
+	private String duracion_real;
 	public double porcentaje_completado;
-
-
 
 	public Examen()
 	{
 	}
 	public Examen(int id_examen,int id_tipo_examen,Date fecha_inicio,
-			int duracion_aproximada,double porcentaje_completado) {
+			String duracion_real,double porcentaje_completado) {
 		super();
 		this.id_examen = id_examen;
 		this.id_tipo_examen = id_tipo_examen;
 		this.fecha_inicio = fecha_inicio;
-		this.duracion_aproximada = duracion_aproximada;
+		this.setDuracion_real(duracion_real);
 		this.porcentaje_completado = porcentaje_completado;
 	}
-
 
 	public long getId_examen() {
 		return id_examen;
@@ -45,12 +42,7 @@ public class Examen {
 	public void setFecha_inicio(Date fecha_inicio) {
 		this.fecha_inicio = fecha_inicio;
 	}
-	public int getDuracion_aproximada() {
-		return duracion_aproximada;
-	}
-	public void setDuracion_aproximada(int duracion_aproximada) {
-		this.duracion_aproximada = duracion_aproximada;
-	}
+	
 	public double getPorcentaje_completado() {
 		return porcentaje_completado;
 	}
@@ -59,5 +51,11 @@ public class Examen {
 	}
 	public long getIdExamen() {
 		return id_examen;
+	}
+	public String getDuracion_real() {
+		return duracion_real;
+	}
+	public void setDuracion_real(String duracion_real) {
+		this.duracion_real = duracion_real;
 	}
 }
