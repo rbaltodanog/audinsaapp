@@ -51,6 +51,11 @@
         <item name="Pgta10">¿Evita reuniones familiares o sociales por que le cuesta entender lo que le dicen?</item>
     </string-array>
 
+   <!-- Cuestionario Resultado Activity -->
+
+    <string name="strResultadoNegativo">Consulte a un especialista</string>
+    <string name="strResultadoPositivo">Su escucha está al 100%</string>
+   
     <!-- Articulos Activity -->
     <string name="title_activity_articulos">Artículos</string>
     <string name="lblCargandoArticulos">Cargando artículos</string>
