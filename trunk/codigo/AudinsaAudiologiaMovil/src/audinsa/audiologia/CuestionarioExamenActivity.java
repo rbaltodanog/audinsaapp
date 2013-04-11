@@ -2,9 +2,7 @@ package audinsa.audiologia;
 
 
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import org.joda.time.DateTime;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -19,7 +17,6 @@ import audinsa.audiologia.datasources.ResultadoDataSource;
 public class CuestionarioExamenActivity extends Activity {
 	private Cuestionario cuestionario;
 	private ResultadoDataSource dataSource;
-	private Date fechaHoraInicio;
 	int puntaje=0;
 	TextView lblPregunta = null;
 
@@ -33,13 +30,6 @@ public class CuestionarioExamenActivity extends Activity {
 		lblPregunta = (TextView)findViewById(R.id.lblPregunta);
 		Resources res = this.getResources();
 		preguntas = res.getStringArray(R.array.Preguntas);
-		if(preguntas.length!=0){
-			
-			SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss", Locale.US);  
-			fechaHoraInicio = new Date(); 
-			dateFormat.format(fechaHoraInicio);
-			
-		}
 		for (int i = 0; i < preguntas.length; i++)
 		{
 			cuestionario.getPreguntas().add(preguntas[i]);
@@ -63,16 +53,13 @@ public class CuestionarioExamenActivity extends Activity {
 		idTipoExamen=getIntent().getLongExtra("idTipoExamen",0);
 		dataSource = new ResultadoDataSource(this);
 		dataSource.open();
-		dataSource.crearResultado(idPerfil,idTipoExamen,puntaje,fechaHoraInicio);
+		dataSource.crearResultado(idPerfil,idTipoExamen,puntaje, DateTime.now());
 		dataSource.close();
-		//TODO: Agregar pop up de creado de resultado exitoso
-			
 		
+		//TODO: Agregar pop up de creado de resultado exitoso	
 		Intent intent = new Intent(view.getContext(), CuestionarioResultadoActivity.class);
 		startActivity(intent);
 		this.finish();			
-
-
 	}
 
 	public void btnSiClick(View view)
