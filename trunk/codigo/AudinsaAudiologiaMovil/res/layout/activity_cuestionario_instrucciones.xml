@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="top"
     tools:context=".CuestionarioInstruccionesActivity" >
 
     <TextView
@@ -13,33 +14,42 @@
         android:text="@string/title_activity_cuestionario_instrucciones"
         android:textSize="28sp" />
 
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true" >
+
+        <TableRow
+            android:id="@+id/TableRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal" >
+
+            <Button
+                android:id="@+id/btnEmpezar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onEmpezarClick"
+                android:text="@string/btnEmpezar" />
+
+            <Button
+                android:id="@+id/btnCancelar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onCancelarClick"
+                android:text="@string/btnCancelar" />
+        </TableRow>
+    </TableLayout>
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/tableLayout1"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="78dp"
+        android:layout_marginBottom="19dp"
         android:text="@string/lblInstrucciones" />
-
-    <Button
-        android:id="@+id/btnEmpezar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/textView1"
-        android:layout_centerVertical="true"
-        android:onClick="onEmpezarClick"
-        android:text="@string/btnEmpezar" />
-
-    <Button
-        android:id="@+id/btnCancelar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/textView1"
-        android:onClick="onCancelarClick"
-        android:text="@string/btnCancelar" />
 
 </RelativeLayout>
