@@ -2,37 +2,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="top"
     tools:context=".CuestionarioExamenActivity" >
-
+    
     <TextView
         android:id="@+id/lblPregunta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="68dp"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_above="@+id/tableLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+        android:textSize="22sp" />
 
-    <Button
-        android:id="@+id/btnSi"
-        android:layout_width="wrap_content"
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/lblPregunta"
-        android:layout_marginTop="100dp"
-        android:onClick="btnSiClick"
-        android:text="@string/btnSi" />
+        android:layout_centerVertical="true" >
 
-    <Button
-        android:id="@+id/btnNo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/btnSi"
-         android:onClick="btnNoClick"
-        android:text="@string/btnNo" />
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal" >
 
+            <Button
+                android:id="@+id/btnSi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="btnSiClick"
+                android:text="@string/btnSi" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal" >
+
+            <Button
+                android:id="@+id/btnNo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:onClick="btnNoClick"
+                android:text="@string/btnNo" />
+        </TableRow>
+    </TableLayout>
 </RelativeLayout>
