@@ -1,25 +1,61 @@
 package audinsa.audiologia;
 
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import audinsa.audiologia.businessdomain.Perfil;
 import audinsa.audiologia.datasources.PerfilDataSource;
 
 public class PerfilesMantenimientoActivity extends Activity {
 	private PerfilDataSource dataSource;
+	EditText txtNombre = null;
+	EditText txtFechaNacimiento= null;
+	EditText txtCorreoElectronico= null;	
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState);		
 		setContentView(R.layout.activity_perfiles_mantenimiento);
+		if(getIntent().getBooleanExtra("actualizacion",false)){
+		long idPerfil=getIntent().getLongExtra("idPerfil",0);
+		Perfil p=onGetPerfil(idPerfil);
+		if (p.getNombre()!= null){
+			onActualizar(p);		
+		}
+		}
+
+	}
+
+	private void onActualizar(Perfil p) {
+		//this..setText(cuestionario.getPreguntas().get(0));
+		//lblPregunta = (TextView)findViewById(R.id.lblPregunta);
+		 
+		 txtNombre =(EditText)findViewById(R.id.txtNombre);
+		 txtFechaNacimiento=(EditText)findViewById(R.id.txtFechaNacimiento);
+		 txtCorreoElectronico=(EditText)findViewById(R.id.txtCorreoElectronico);		
+		 String dates="270387";
+		
+		 try{
+	 txtFechaNacimiento.setText(dates);
+		 }
+		catch(android.net.ParseException d){
+			 
+			 
+			 
+		 }
+		 txtNombre.setText(p.getNombre().toString());			 
+		txtCorreoElectronico.setText(p.getCorreoElectronico().toString());
+		 
+		
 	}
 
 	@Override
@@ -56,5 +92,26 @@ public class PerfilesMantenimientoActivity extends Activity {
 		
 		this.finish();		
 	}
+	
+	
+	//obtiene el perfil por actualizar
+		public Perfil onGetPerfil(long idPerfil) {
+				
+			dataSource = new PerfilDataSource(this);
+			dataSource.open();
+			Perfil p= new Perfil();
+			try
+			{
+				p=dataSource.buscarPerfil(idPerfil);
+			}
+			catch (Exception ex)
+			{
+				Log.w(PerfilDataSource.class.getName(), "Error tratando de obtener el perfil.");
+			}
+			
+			dataSource.close();
+			
+		return p;
+		}
 
 }

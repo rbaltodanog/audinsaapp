@@ -83,4 +83,11 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_cuestionario_resultado">Resultado Cuestionario</string>
 
+    
+   <!-- Sensibilidad de oídos -->  
+   
+   
+    <!-- Resultado Sensibilidad de oídos Activity -->
+    <string name="lblResultadoSensibilidaOido">Resultado del Exam. Sensibilidad de Oído</string>
+   
 </resources>

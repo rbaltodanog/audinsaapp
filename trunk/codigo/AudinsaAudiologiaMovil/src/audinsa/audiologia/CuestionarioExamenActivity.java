@@ -3,7 +3,6 @@ package audinsa.audiologia;
 
 
 import org.joda.time.DateTime;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -93,7 +92,7 @@ public class CuestionarioExamenActivity extends Activity {
 	{
 		if (cuestionario.getPreguntas().size() == 0)
 		{
-			//TODO: Ir a pantalla de resultados
+			guardarResultado(view);
 		}
 		else
 		{
