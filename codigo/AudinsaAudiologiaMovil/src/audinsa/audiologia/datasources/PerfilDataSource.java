@@ -90,6 +90,7 @@ public class PerfilDataSource {
 		Date dtFechaNacimiento = new Date();
 		perfil.setIdPerfil(cursor.getInt(0));
 		perfil.setNombre(cursor.getString(1));
+		
 		try
 		{
 			dtFechaNacimiento = dtFormat.parse(cursor.getString(2));
@@ -101,6 +102,7 @@ public class PerfilDataSource {
 		}
 
 		perfil.setFechaNacimiento(dtFechaNacimiento);
+		perfil.setCorreoElectronico(cursor.getString(3));
 
 		return perfil;
 	}

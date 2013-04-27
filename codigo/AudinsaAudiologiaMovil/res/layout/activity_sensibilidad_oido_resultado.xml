@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tableLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+ 
+    <!--1 columna -->
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dip" >
+ 
+        <TextView
+            android:id="@+id/txtViewResultado"
+            android:text="@string/lblResultado"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </TableRow>
+ <!-- linea negra -->
+    <View
+        android:layout_height="2dip"
+        android:background="#000000" />
+ 
+ <!--tabla de 3 columns la del medio en blanco -->
+      
+    
+          <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dip" >
+  
+  <!-- inicia columna uno -->
+        <TableRow
+        android:id="@+id/tr1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dip"
+        android:layout_gravity="left"
+        android:gravity="right" >
+				 <!-- valor columna uno -->
+		        <EditText
+		            android:id="@+id/editText1"
+		            android:inputType="text"            
+		            android:text="graficos" 
+		             />
+     </TableRow>
+     
+
+   <!-- fin columna uno -->
+         
+     
+     
+  <!-- inicia columna tres -->
+        <TableRow
+        android:id="@+id/tr333"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:padding="5dip"
+        android:gravity="right" >
+       
+ <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="0dp" >
+   <TableRow
+            android:id="@+id/row_contactar_clinica"
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical" >
+ 
+            <TextView
+                android:id="@+id/lblAcciones"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                android:text="Acciones"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="15sp" />
+  </TableRow>
+   <TableRow
+            android:layout_height="1dp"
+            android:background="#000000" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_span="2" />
+  </TableRow>
+     
+        <TableRow
+            android:id="@+id/row_contactar_clinica"
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical" >
+ <ImageView
+            android:id="@+id/imgContactarClinica"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+             android:gravity="left"
+            android:contentDescription="@string/imgContactarClinicaContentDescription"
+            android:src="@drawable/ic_contactar_clinica" />
+    
+            <TextView
+                android:id="@+id/lblContactarClinica"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/lblContactarClinica"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_height="1dp"
+            android:background="#BDBDBD" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_span="2" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_borrar_resultado"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical" >
+
+            <ImageView
+                android:id="@+id/imgBorrarResultado"
+              android:layout_width="16dp"
+            android:layout_height="16dp"
+             android:gravity="left"
+                android:contentDescription="@string/imgBorrarContentDescription"
+                android:src="@drawable/ic_borrar" />
+
+            <TextView
+                android:id="@+id/lblBorrar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/lblBorrar"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_height="1dp"
+            android:background="#BDBDBD" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_span="2" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row_compartir_resultado"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical" >
+
+            <ImageView
+                android:id="@+id/imgCompartirResultado"
+                  android:layout_width="16dp"
+            android:layout_height="16dp"
+             android:gravity="left"
+                android:contentDescription="@string/imgCompartirContentDescription"
+                android:src="@drawable/ic_compartir" />
+
+            <TextView
+                android:id="@+id/lblCompartir"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/lblCompartir"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="12sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_height="1dp"
+            android:background="#BDBDBD" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_span="2" />
+        </TableRow>
+    </TableLayout>
+
+
+        
+     </TableRow>
+     
+ <!-- fin columna tres -->        
+          
+          
+    </TableRow>
+  
+ 
+    <!-- edittext span 2 column -->
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dip" >
+ 
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_span="2"
+            android:text="Diagnóstico" />
+    </TableRow>
+ 
+    
+<TextView
+            android:id="@+id/txtViewDiagnostico"
+            android:text="debe de contener el diagnostico"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+ 
+</TableLayout>

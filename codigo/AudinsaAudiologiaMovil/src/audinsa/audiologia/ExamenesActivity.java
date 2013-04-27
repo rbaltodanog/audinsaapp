@@ -1,5 +1,4 @@
 package audinsa.audiologia;
-//import java.util.Date;
 import java.util.HashMap;
 import android.os.Bundle;
 import android.app.Activity;
@@ -11,11 +10,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.AdapterView.OnItemClickListener;
-
 import audinsa.audiologia.datasources.TipoExamenDataSource;
 
 public class ExamenesActivity extends Activity {
 	private TipoExamenDataSource dataSource;
+	private long perfil=0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +51,7 @@ public class ExamenesActivity extends Activity {
 				@SuppressWarnings("unchecked")
 				HashMap<String, String> hashMap = ((HashMap<String, String>)parent.getItemAtPosition(position));
 				String examen = hashMap.get("Nombre").toString();
-				long perfil, idTipoExamen;
+				long idTipoExamen;
 				perfil=getIntent().getLongExtra("idPerfil",0);
 				idTipoExamen =Long.valueOf(hashMap.get("idTipoExamen").toString());
 			
@@ -76,18 +75,34 @@ public class ExamenesActivity extends Activity {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle item selection
+		Intent intent=null;
+	
+		
+		//	Handle item selection
 	    switch (item.getItemId()) {
 	        case R.id.menu_salir:
-	            // TODO: Averiguar como salir de aplicacion por completo
-	        	//System.exit(0);
+	            this.finish();
+	            // Indica que la aplicación debe cerrarse
 	            return true;
 	        case R.id.menu_articulos:
-	        	Intent intent = new Intent(this.getBaseContext(), ArticulosActivity.class);
+	        	intent = new Intent(this.getBaseContext(), ArticulosActivity.class);
 				startActivity(intent);
 	            return true;
+	        case R.id.menu_perfil:	        	
+	        	perfil=getIntent().getLongExtra("idPerfil",0);
+			     intent = new Intent();
+	        	 intent.setClass(ExamenesActivity.this,PerfilesMantenimientoActivity.class);
+                   intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                 intent.putExtra("idPerfil", perfil);
+                 intent.putExtra("actualizacion", true);
+                 startActivity(intent);
+                 
+                 return true;
+				
 	        default:
 	            return super.onOptionsItemSelected(item);
+	            
+	            
 	    }
 	}
 }
