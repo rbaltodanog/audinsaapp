@@ -68,6 +68,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:onClick="onCancelarClick"
         android:text="@string/btnCancelar" />
 
 </RelativeLayout>
