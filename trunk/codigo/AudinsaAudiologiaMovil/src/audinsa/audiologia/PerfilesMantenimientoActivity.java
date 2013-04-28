@@ -1,6 +1,7 @@
 package audinsa.audiologia;
 
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,25 +37,25 @@ public class PerfilesMantenimientoActivity extends Activity {
 	}
 
 	private void onActualizar(Perfil p) {
-		//this..setText(cuestionario.getPreguntas().get(0));
-		//lblPregunta = (TextView)findViewById(R.id.lblPregunta);
 		 
 		 txtNombre =(EditText)findViewById(R.id.txtNombre);
 		 txtFechaNacimiento=(EditText)findViewById(R.id.txtFechaNacimiento);
-		 txtCorreoElectronico=(EditText)findViewById(R.id.txtCorreoElectronico);		
-		 String dates="270387";
-		
+		 txtCorreoElectronico=(EditText)findViewById(R.id.txtCorreoElectronico);
+	     DateFormat df = new SimpleDateFormat("MM/dd/yyyy",Locale.US);
+       
+		 
 		 try{
-	 txtFechaNacimiento.setText(dates);
+			 Date fecha=p.getFechaNacimiento();
+		     String dates = df.format(fecha);
+			 txtFechaNacimiento.setText(dates);
+			 txtNombre.setText(p.getNombre().toString());			 
+			 txtCorreoElectronico.setText(p.getCorreoElectronico().toString());
 		 }
 		catch(android.net.ParseException d){
 			 
 			 
 			 
-		 }
-		 txtNombre.setText(p.getNombre().toString());			 
-		txtCorreoElectronico.setText(p.getCorreoElectronico().toString());
-		 
+		 } 
 		
 	}
 

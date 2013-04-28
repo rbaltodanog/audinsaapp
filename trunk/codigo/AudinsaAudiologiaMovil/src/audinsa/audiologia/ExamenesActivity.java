@@ -92,7 +92,7 @@ public class ExamenesActivity extends Activity {
 	        	perfil=getIntent().getLongExtra("idPerfil",0);
 			     intent = new Intent();
 	        	 intent.setClass(ExamenesActivity.this,PerfilesMantenimientoActivity.class);
-                   intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                  intent.putExtra("idPerfil", perfil);
                  intent.putExtra("actualizacion", true);
                  startActivity(intent);
