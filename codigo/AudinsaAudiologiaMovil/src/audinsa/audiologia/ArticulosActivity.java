@@ -58,6 +58,6 @@ public class ArticulosActivity extends Activity {
 				startActivity(i);
 			}
 		};
-		lstView.setOnItemClickListener(listener );
+		lstView.setOnItemClickListener(listener);
 	}
 }

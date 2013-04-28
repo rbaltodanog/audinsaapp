@@ -4,21 +4,11 @@
     android:layout_height="match_parent"
     tools:context=".PerfilesMantenimientoActivity" >
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/txtNombre"
-        android:layout_alignParentLeft="true"
-        android:contentDescription="@string/imgPerfilTitleContentDescription"
-        android:src="@drawable/ic_perfiles_mantenimiento" />
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/imageView1"
         android:text="@string/title_activity_perfiles_mantenimiento"
         android:textSize="28sp" />
 
