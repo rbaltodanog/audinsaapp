@@ -48,6 +48,10 @@
             android:name="audinsa.audiologia.CuestionarioResultadoActivity"
             android:label="@string/title_activity_cuestionario_resultado" >
         </activity>
+        <activity
+            android:name="audinsa.audiologia.SensibilidadOidosInstrucciones"
+            android:label="@string/title_activity_sensibilidad_oidos_instrucciones" >
+        </activity>
     </application>
 
 </manifest>

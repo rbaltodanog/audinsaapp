@@ -14,18 +14,13 @@
         android:text="@string/title_activity_cuestionario_instrucciones"
         android:textSize="28sp" />
 
-    <TableLayout
+   <TableLayout
         android:id="@+id/tableLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true" >
 
-        <TableRow
-            android:id="@+id/TableRow"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|center_horizontal" >
 
             <Button
                 android:id="@+id/btnEmpezar"
@@ -40,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="onCancelarClick"
                 android:text="@string/btnCancelar" />
-        </TableRow>
+
     </TableLayout>
 
     <TextView

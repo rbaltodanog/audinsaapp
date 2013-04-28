@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 import android.content.ContentValues;
 import android.content.Context;
@@ -43,32 +42,36 @@ public class PerfilDataSource {
 		values.put(MySQLiteHelper.TABLA_PERFIL_COLUMNA_FECHA_NACIMIENTO, df.format(fechaNacimiento));
 		values.put(MySQLiteHelper.TABLA_PERFIL_COLUMNA_CORREO_ELECTRONICO, correoElectronico);
 
-		
+
 
 		database.insert(MySQLiteHelper.TABLA_PERFIL, null,
 				values);
 	}
 
 	public Perfil buscarPerfil(long insertId){
-
+		open();
 		Cursor cursor = database.query(MySQLiteHelper.TABLA_PERFIL,
 				allColumns, MySQLiteHelper.TABLA_PERFIL_COLUMNA_ID + " = " + insertId, null,
 				null, null, null);
 		cursor.moveToFirst();
 		Perfil newPerfil = cursorAPerfil(cursor);
 		cursor.close();
+		close();
 		return newPerfil;
 
 	}
 
-	public void borrarPerfil(Perfil perfil) {
-		long id = perfil.getIdPerfil();
-		database.delete(MySQLiteHelper.TABLA_PERFIL, MySQLiteHelper.TABLA_PERFIL_COLUMNA_ID
-				+ " = " + id, null);
+	public boolean borrarPerfil(long id) {
+		open();
+		boolean resultado = database.delete(MySQLiteHelper.TABLA_PERFIL, MySQLiteHelper.TABLA_PERFIL_COLUMNA_ID
+				+ " = " + id, null) > 0;
+		close();
+		return resultado;
 	}
 
-	public List<Perfil> obtenerTodosLosPerfiles() {
-		List<Perfil> perfiles = new ArrayList<Perfil>();
+	public ArrayList<Perfil> obtenerTodosLosPerfiles() {
+		open();
+		ArrayList<Perfil> perfiles = new ArrayList<Perfil>();
 
 		Cursor cursor = database.query(MySQLiteHelper.TABLA_PERFIL,
 				allColumns, null, null, null, null, null);
@@ -81,6 +84,7 @@ public class PerfilDataSource {
 		}
 		// Make sure to close the cursor
 		cursor.close();
+		close();
 		return perfiles;
 	}
 

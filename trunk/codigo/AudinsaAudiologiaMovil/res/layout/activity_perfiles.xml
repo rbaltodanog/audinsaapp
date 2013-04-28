@@ -8,7 +8,8 @@
         android:id="@+id/listPerfiles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/group" />
+        android:layout_below="@+id/group"
+        android:listSelector="@drawable/list_selector" />
     
     <LinearLayout
         android:id="@+id/group"

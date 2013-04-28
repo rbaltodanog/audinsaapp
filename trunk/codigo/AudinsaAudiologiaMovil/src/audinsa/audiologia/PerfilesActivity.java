@@ -1,16 +1,23 @@
 package audinsa.audiologia;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+import audinsa.audiologia.Adapters.ProfileItemAdapter;
 import audinsa.audiologia.businessdomain.Perfil;
 import audinsa.audiologia.datasources.PerfilDataSource;
 
@@ -22,6 +29,8 @@ public class PerfilesActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_perfiles);
 		loadData();
+		ListView listView = (ListView) findViewById(R.id.listPerfiles);
+		registerForContextMenu(listView);
 		setOnListViewItemClickListener();
 	}
 
@@ -53,18 +62,12 @@ public class PerfilesActivity extends Activity {
 	private void loadData()
 	{
 		dataSource = new PerfilDataSource(this);
-		dataSource.open(); // TODO pasar al datasource.!!! cambiar del activity.
+		ArrayList<Perfil> perfiles = dataSource.obtenerTodosLosPerfiles();
 
-		List<Perfil> perfiles = dataSource.obtenerTodosLosPerfiles();
-
-		ArrayAdapter<Perfil> adapter = new ArrayAdapter<Perfil>(this,
-				android.R.layout.simple_list_item_1, perfiles);
-
-		ListView lstView = (ListView)findViewById(R.id.listPerfiles);
-
-		lstView.setAdapter(adapter);
-
-		dataSource.close();
+		ProfileItemAdapter adapter = new ProfileItemAdapter(this, 
+				R.layout.listview_perfiles_item_row, perfiles);
+		ListView listView = (ListView) findViewById(R.id.listPerfiles);
+		listView.setAdapter(adapter);
 	}
 
 	private void setOnListViewItemClickListener() {
@@ -72,13 +75,62 @@ public class PerfilesActivity extends Activity {
 		OnItemClickListener listener = new OnItemClickListener() {
 			@Override public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 			{
-				long idPerfil = 0;
-				idPerfil = ((Perfil)parent.getItemAtPosition(position)).getIdPerfil();
 				Intent intent = new Intent(view.getContext(), ExamenesActivity.class);
-				intent.putExtra("idPerfil", idPerfil);
+				intent.putExtra("idPerfil", view.getId());
 				startActivity(intent);
-		 }
+			}
 		};
 		lstView.setOnItemClickListener(listener);
+
 	}
+
+	@Override  
+	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo); 
+		Resources res = this.getResources();
+		menu.setHeaderTitle(res.getString(R.string.txtPerfilesMenuContextualTitulo));  
+		menu.add(0, 0, 0, res.getString(R.string.txtPerfilesMenuContextualEliminar));  
+	}
+
+	@Override  
+	public boolean onContextItemSelected(MenuItem item) {
+		Resources res = this.getResources();
+		AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+	    long id = info.id;
+		if(item.getTitle()== res.getString(R.string.txtPerfilesMenuContextualEliminar))
+		{
+			eliminarPerfil(id);
+		}  
+		else {return false;}  
+		return true;  
+	}  
+
+	public void eliminarPerfil(final long id) {
+		Resources res = this.getResources();
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(res.getString(R.string.txtPerfilesDialogoTitulo))
+        .setMessage(res.getString(R.string.txtPerfilesDialogoDeseaEliminar))
+        .setCancelable(false)
+        .setPositiveButton(res.getString(R.string.txtPerfilesDialogoOk),new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            	try
+            	{
+            		dataSource.borrarPerfil(id);
+            		loadData();
+            		Toast.makeText(getBaseContext(), getBaseContext().getResources().getString(R.string.txtPerfilesToastPerfilEliminado), Toast.LENGTH_SHORT).show();
+            	}
+            	catch (Exception ex)
+            	{
+            		Toast.makeText(getBaseContext(), getBaseContext().getResources().getString(R.string.txtPerfilesToastPerfilErrorAlBorrar) + ": " + ex.getMessage(), Toast.LENGTH_SHORT).show(); 
+            	}
+            }
+        })
+        .setNegativeButton(res.getString(R.string.txtPerfilesDialogoCancel),new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 }

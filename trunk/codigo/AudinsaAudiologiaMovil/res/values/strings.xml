@@ -2,6 +2,8 @@
 <resources>
 
     <string name="app_name">Audinsa Audiología Movil</string>
+    <string name="txtPerfilesDialogoOk">Aceptar</string>
+    <string name="txtPerfilesDialogoCancel">Cancelar</string>
 
     <!-- Items del menu -->
     <string name="menu_perfil">Perfil</string>
@@ -15,6 +17,15 @@
     <!-- Perfiles Activity -->
     <string name="title_activity_perfiles_mantenimiento">Perfil</string>
     <string name="perfiles_agregarperfil">Agregar Perfil</string>
+    <string name="imgBorrarContentDescription">Icono para borrar</string>
+    <string name="imgPerfilContentDescription">Icono del perfil</string>
+    <!-- Menu contextual y cuadros de dialogo para los perfiles -->
+    <string name="txtPerfilesMenuContextualTitulo">Acciones</string>
+    <string name="txtPerfilesMenuContextualEliminar">Eliminar Perfil</string>
+    <string name="txtPerfilesDialogoTitulo">Confirmar acción</string>
+    <string name="txtPerfilesDialogoDeseaEliminar">¿Está seguro que desea eliminar el perfil? (Esta acción no se puede revertir)</string>
+    <string name="txtPerfilesToastPerfilEliminado">Perfil eliminado exitosamente</string>
+    <string name="txtPerfilesToastPerfilErrorAlBorrar">Error al borrar el perfil</string>
 
     <!-- Examenes Activity -->
     <string name="title_activity_examenes">Exámenes</string>
@@ -23,7 +34,6 @@
     <string name="lblNombre">Nombre</string>
     <string name="lblFechaNacimiento">Fecha de nacimiento</string>
     <string name="lblCorreoElectronico">Correo electrónico</string>
-    <string name="imgPerfilTitleContentDescription">Icono de mantenimiento de perfiles</string>
     <string name="btnAceptarAgregar">Agregar</string>
     <string name="btnAceptarModificar">Modificar</string>
     <string name="btnCancelar">Cancelar</string>
@@ -51,11 +61,11 @@
         <item name="Pgta10">¿Evita reuniones familiares o sociales por que le cuesta entender lo que le dicen?</item>
     </string-array>
 
-   <!-- Cuestionario Resultado Activity -->
+    <!-- Cuestionario Resultado Activity -->
 
     <string name="strResultadoNegativo">Consulte a un especialista</string>
     <string name="strResultadoPositivo">Su escucha está al 100%</string>
-   
+
     <!-- Articulos Activity -->
     <string name="title_activity_articulos">Artículos</string>
     <string name="lblCargandoArticulos">Cargando artículos</string>
@@ -77,11 +87,10 @@
     <string name="lblContactarClinica">Contactar a la clínica</string>
     <string name="imgCompartirContentDescription">Icono de compartir resultado</string>
     <string name="lblCompartir">Compartir</string>
-    <string name="imgBorrarContentDescription">Icono de borrar resultado</string>
     <string name="lblBorrar">Borrar</string>
-    <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_cuestionario_resultado">Resultado Cuestionario</string>
+    <string name="title_activity_sensibilidad_oidos_instrucciones">SensibilidadOidosInstrucciones</string>
 
     
    <!-- Sensibilidad de oídos -->  

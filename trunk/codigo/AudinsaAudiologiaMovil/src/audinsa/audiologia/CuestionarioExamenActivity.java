@@ -47,7 +47,6 @@ public class CuestionarioExamenActivity extends Activity {
 
 	private void guardarResultado(View view) {
 		long idPerfil, idTipoExamen;
-
 		idPerfil=getIntent().getLongExtra("idPerfil",0);
 		idTipoExamen=getIntent().getLongExtra("idTipoExamen",0);
 		dataSource = new ResultadoDataSource(this);
