@@ -75,8 +75,10 @@ public class PerfilesActivity extends Activity {
 		OnItemClickListener listener = new OnItemClickListener() {
 			@Override public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 			{
+				long idPerfil = 0;
+				idPerfil = ((Perfil)parent.getItemAtPosition(position)).getIdPerfil();
 				Intent intent = new Intent(view.getContext(), ExamenesActivity.class);
-				intent.putExtra("idPerfil", view.getId());
+				intent.putExtra("idPerfil", idPerfil);
 				startActivity(intent);
 			}
 		};

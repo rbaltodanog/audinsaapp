@@ -25,7 +25,6 @@
     <string name="txtPerfilesDialogoTitulo">Confirmar acción</string>
     <string name="txtPerfilesDialogoDeseaEliminar">¿Está seguro que desea eliminar el perfil? (Esta acción no se puede revertir)</string>
     <string name="txtPerfilesToastPerfilEliminado">Perfil eliminado exitosamente</string>
-    <string name="txtPerfilesToastPerfilErrorAlBorrar">Error al borrar el perfil</string>
 
     <!-- Examenes Activity -->
     <string name="title_activity_examenes">Exámenes</string>
@@ -93,10 +92,16 @@
     <string name="title_activity_sensibilidad_oidos_instrucciones">SensibilidadOidosInstrucciones</string>
 
     
-   <!-- Sensibilidad de oídos -->  
+    <!-- Sensibilidad de oídos -->  
    
    
     <!-- Resultado Sensibilidad de oídos Activity -->
     <string name="lblResultadoSensibilidaOido">Resultado del Exam. Sensibilidad de Oído</string>
-   
+    
+    <!-- MENSAJES DE INFORMACION -->
+    <string name="txtMantenimientoPerfilesToastPerfilAgregado">Perfil agregado satisfactoriamente</string>
+    
+    <!-- MENSAJES DE ERROR -->
+    <string name="txtPerfilesToastPerfilErrorAlBorrar">Error al borrar el perfil</string>
+    <string name="txtMantenimientoPerfilesToastErrorParsearDatos">Error al parsear datos del perfil</string>
 </resources>

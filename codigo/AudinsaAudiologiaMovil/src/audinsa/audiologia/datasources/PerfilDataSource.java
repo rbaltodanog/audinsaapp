@@ -36,6 +36,7 @@ public class PerfilDataSource {
 	}
 
 	public void crearPerfil(String nombre, Date fechaNacimiento, String correoElectronico) {
+		open();
 		ContentValues values = new ContentValues();	    
 		DateFormat df = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
 		values.put(MySQLiteHelper.TABLA_PERFIL_COLUMNA_NOMBRE, nombre);
@@ -46,6 +47,7 @@ public class PerfilDataSource {
 
 		database.insert(MySQLiteHelper.TABLA_PERFIL, null,
 				values);
+		close();
 	}
 
 	public Perfil buscarPerfil(long insertId){

@@ -11,7 +11,9 @@ import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import audinsa.audiologia.businessdomain.Perfil;
 import audinsa.audiologia.datasources.PerfilDataSource;
 
@@ -19,7 +21,8 @@ public class PerfilesMantenimientoActivity extends Activity {
 	private PerfilDataSource dataSource;
 	EditText txtNombre = null;
 	EditText txtFechaNacimiento= null;
-	EditText txtCorreoElectronico= null;	
+	EditText txtCorreoElectronico= null;
+	Button btnAceptar= null;
 
 
 	@Override
@@ -27,36 +30,35 @@ public class PerfilesMantenimientoActivity extends Activity {
 		super.onCreate(savedInstanceState);		
 		setContentView(R.layout.activity_perfiles_mantenimiento);
 		if(getIntent().getBooleanExtra("actualizacion",false)){
-		long idPerfil=getIntent().getLongExtra("idPerfil",0);
-		Perfil p=onGetPerfil(idPerfil);
-		if (p.getNombre()!= null){
-			onActualizar(p);		
-		}
+			long idPerfil=getIntent().getLongExtra("idPerfil",0);
+			Perfil p=onGetPerfil(idPerfil);
+			if (p.getNombre()!= null){
+				onActualizar(p);		
+			}
 		}
 
 	}
 
 	private void onActualizar(Perfil p) {
-		 
-		 txtNombre =(EditText)findViewById(R.id.txtNombre);
-		 txtFechaNacimiento=(EditText)findViewById(R.id.txtFechaNacimiento);
-		 txtCorreoElectronico=(EditText)findViewById(R.id.txtCorreoElectronico);
-	     DateFormat df = new SimpleDateFormat("MM/dd/yyyy",Locale.US);
-       
-		 
-		 try{
-			 Date fecha=p.getFechaNacimiento();
-		     String dates = df.format(fecha);
-			 txtFechaNacimiento.setText(dates);
-			 txtNombre.setText(p.getNombre().toString());			 
-			 txtCorreoElectronico.setText(p.getCorreoElectronico().toString());
-		 }
-		catch(android.net.ParseException d){
-			 
-			 
-			 
-		 } 
-		
+
+		txtNombre =(EditText)findViewById(R.id.txtNombre);
+		txtFechaNacimiento=(EditText)findViewById(R.id.txtFechaNacimiento);
+		txtCorreoElectronico=(EditText)findViewById(R.id.txtCorreoElectronico);
+		btnAceptar=(Button)findViewById(R.id.btnAceptar);
+		DateFormat df = new SimpleDateFormat("MM/dd/yyyy",Locale.US);
+		try{
+			Date fecha=p.getFechaNacimiento();
+			String dates = df.format(fecha);
+			txtFechaNacimiento.setText(dates);
+			txtNombre.setText(p.getNombre().toString());			 
+			txtCorreoElectronico.setText(p.getCorreoElectronico().toString());
+			btnAceptar.setText(this.getResources().getString(R.string.btnAceptarModificar));
+		}
+		catch(android.net.ParseException ex){
+			Toast.makeText(getBaseContext(), getBaseContext().getResources().getString(R.string.txtMantenimientoPerfilesToastErrorParsearDatos) + ": " + ex.getMessage(), Toast.LENGTH_SHORT).show();
+			this.finish();
+		} 
+
 	}
 
 	@Override
@@ -70,7 +72,6 @@ public class PerfilesMantenimientoActivity extends Activity {
 	// of the buttons in main.xml
 	public void onAgregarClick(View view) {
 		dataSource = new PerfilDataSource(this);
-		dataSource.open();
 		Date fechaNacimiento = null;
 		String nombre = ((EditText)findViewById(R.id.txtNombre)).getText().toString();
 		String fechaNacimientoText = ((EditText)findViewById(R.id.txtFechaNacimiento)).getText().toString();
@@ -85,34 +86,32 @@ public class PerfilesMantenimientoActivity extends Activity {
 			Log.w(PerfilDataSource.class.getName(), "Error tratando de agregar la fecha de nacimiento al nuevo perfil: " + nombre + ". Seteando la fecha de nacimiento a la fecha mínima del sistema.");
 			fechaNacimiento = new Date(Long.MIN_VALUE);
 		}
-		
+
 		dataSource.crearPerfil(nombre, fechaNacimiento, correoElectronico);
-		dataSource.close();
-		
-		//TODO: Agregar pop up de creado de perfil exitoso
-		
+		Toast.makeText(getBaseContext(), getBaseContext().getResources().getString(R.string.txtMantenimientoPerfilesToastPerfilAgregado), Toast.LENGTH_SHORT).show();
 		this.finish();		
 	}
-	
-	
-	//obtiene el perfil por actualizar
-		public Perfil onGetPerfil(long idPerfil) {
-				
-			dataSource = new PerfilDataSource(this);
-			dataSource.open();
-			Perfil p= new Perfil();
-			try
-			{
-				p=dataSource.buscarPerfil(idPerfil);
-			}
-			catch (Exception ex)
-			{
-				Log.w(PerfilDataSource.class.getName(), "Error tratando de obtener el perfil.");
-			}
-			
-			dataSource.close();
-			
-		return p;
+
+	// Will be called via the onClick attribute
+	// of the buttons in main.xml
+	public void onCancelarClick(View view) {
+		this.finish();		
+	}
+
+
+	//Obtiene el perfil por actualizar
+	public Perfil onGetPerfil(long idPerfil) {
+		dataSource = new PerfilDataSource(this);
+		Perfil p= new Perfil();
+		try
+		{
+			p=dataSource.buscarPerfil(idPerfil);
 		}
+		catch (Exception ex)
+		{
+			Log.w(PerfilDataSource.class.getName(), "Error tratando de obtener el perfil.");
+		}
+		return p;
+	}
 
 }
