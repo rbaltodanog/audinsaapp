@@ -1,9 +1,6 @@
 package audinsa.audiologia.datasources;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -31,8 +28,9 @@ public class TipoExamenDataSource {
 		dbHelper.close();
 	}
 
-	public List<TipoExamen> obtenerTodosLosTiposExamenes() {
-		List<TipoExamen> tiposExamenes = new ArrayList<TipoExamen>();
+	public ArrayList<TipoExamen> obtenerTodosLosTiposExamenes() {
+		open();
+		ArrayList<TipoExamen> tiposExamenes = new ArrayList<TipoExamen>();
 
 		Cursor cursor = database.query(MySQLiteHelper.TABLA_TIPO_EXAMEN,
 				allColumns, null, null, null, null, null);
@@ -45,29 +43,8 @@ public class TipoExamenDataSource {
 		}
 		// Make sure to close the cursor
 		cursor.close();
+		close();
 		return tiposExamenes;
-	}
-	
-	public List<Map<String, String>> obtenerTodosLosTiposExamenesTwoLineItems() {
-		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-		Map<String, String> data = null;
-
-		Cursor cursor = database.query(MySQLiteHelper.TABLA_TIPO_EXAMEN,
-				allColumns, null, null, null, null, null);
-
-		cursor.moveToFirst();
-		while (!cursor.isAfterLast()) {
-			TipoExamen tipoExamen = cursorATipoExamen(cursor);
-			data =  new HashMap<String, String>(3);
-			data.put("Nombre", tipoExamen.getNombreExamen());
-			data.put("Instrucciones", tipoExamen.getInstrucciones());
-			data.put("idTipoExamen",String.valueOf(tipoExamen.getIdTipoExamen()));
-			list.add(data);
-			cursor.moveToNext();
-		}
-		// Make sure to close the cursor
-		cursor.close();
-		return list;
 	}
 
 	private TipoExamen cursorATipoExamen(Cursor cursor) {

@@ -98,7 +98,6 @@ public class PerfilesMantenimientoActivity extends Activity {
 		this.finish();		
 	}
 
-
 	//Obtiene el perfil por actualizar
 	public Perfil onGetPerfil(long idPerfil) {
 		dataSource = new PerfilDataSource(this);
