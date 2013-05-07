@@ -78,7 +78,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	
 	private static final String CREAR_TIPO_EXAMEN_SENSIBILIDAD_OIDO = "insert into " + TABLA_TIPO_EXAMEN 
 			+ " (" + TABLA_TIPO_EXAMEN_COLUMNA_NOMBRE_EXAMEN + "," + TABLA_TIPO_EXAMEN_COLUMNA_INSTRUCCIONES + ")"
-			+ " values ('Sensibilidad de oído', '¿Cuál es el sonido más alto/bajo que puede oír?');";
+			+ " values ('Sensibilidad de oído', '¿Cuál es el sonido más bajo/alto que puede oír?');";
 	
 
 	private static final String CREAR_TIPO_EXAMEN_HABLA_RUIDO = "insert into " + TABLA_TIPO_EXAMEN 

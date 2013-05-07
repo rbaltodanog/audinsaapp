@@ -17,7 +17,7 @@
     <!-- Perfiles Activity -->
     <string name="title_activity_perfiles_mantenimiento">Perfil</string>
     <string name="perfiles_agregarperfil">Agregar Perfil</string>
-    <string name="imgBorrarContentDescription">Icono para borrar</string>
+    <string name="imgFlechaContentDescription">Icono para entrar al perfil</string>
     <string name="imgPerfilContentDescription">Icono del perfil</string>
     <!-- Menu contextual y cuadros de dialogo para los perfiles -->
     <string name="txtPerfilesMenuContextualTitulo">Acciones</string>
@@ -64,6 +64,7 @@
 
     <string name="strResultadoNegativo">Consulte a un especialista</string>
     <string name="strResultadoPositivo">Su escucha está al 100%</string>
+    <string name="imgBorrarContentDescription">Icono para borrar el resultado</string>
 
     <!-- Articulos Activity -->
     <string name="title_activity_articulos">Artículos</string>

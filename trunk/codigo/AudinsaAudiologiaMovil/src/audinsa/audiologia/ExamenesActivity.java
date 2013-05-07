@@ -1,5 +1,5 @@
 package audinsa.audiologia;
-import java.util.HashMap;
+import java.util.ArrayList;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -8,8 +8,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.AdapterView.OnItemClickListener;
+import audinsa.audiologia.Adapters.TestItemAdapter;
+import audinsa.audiologia.businessdomain.TipoExamen;
 import audinsa.audiologia.datasources.TipoExamenDataSource;
 
 public class ExamenesActivity extends Activity {
@@ -20,20 +21,19 @@ public class ExamenesActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_examenes);
-
-		dataSource = new TipoExamenDataSource(this);
-		dataSource.open();
-
-		SimpleAdapter adapter = new SimpleAdapter(
-				this, dataSource.obtenerTodosLosTiposExamenesTwoLineItems(),
-				android.R.layout.simple_list_item_2,
-				new String[] {"Nombre", "Instrucciones","idTipoExamen"},
-				new int[] {android.R.id.text1, android.R.id.text2});
-
-		ListView lstView = (ListView)findViewById(R.id.listExamenes);
-		lstView.setAdapter(adapter);
+		loadData();
 		setOnListViewItemClickListener();
-		dataSource.close();
+	}
+	
+	private void loadData()
+	{
+		dataSource = new TipoExamenDataSource(this);
+		ArrayList<TipoExamen> tipoExamenes = dataSource.obtenerTodosLosTiposExamenes();
+
+		TestItemAdapter adapter = new TestItemAdapter(this, 
+				R.layout.listview_examenes_item_row, tipoExamenes);
+		ListView listView = (ListView) findViewById(R.id.listExamenes);
+		listView.setAdapter(adapter);
 	}
 
 	@Override
@@ -48,22 +48,20 @@ public class ExamenesActivity extends Activity {
 		OnItemClickListener listener = new OnItemClickListener() {
 			@Override public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 			{
-				@SuppressWarnings("unchecked")
-				HashMap<String, String> hashMap = ((HashMap<String, String>)parent.getItemAtPosition(position));
-				String examen = hashMap.get("Nombre").toString();
+				TipoExamen tipoExamenSeleccionado = null;
+				TestItemAdapter adapter = (TestItemAdapter)parent.getAdapter();
+				tipoExamenSeleccionado = adapter.getItem(position);
+				
+				String examen = tipoExamenSeleccionado.getNombreExamen();
 				long idTipoExamen;
-				perfil=getIntent().getLongExtra("idPerfil",0);
-				idTipoExamen =Long.valueOf(hashMap.get("idTipoExamen").toString());
+				perfil = getIntent().getLongExtra("idPerfil", 0);
+				idTipoExamen = tipoExamenSeleccionado.getIdTipoExamen();
 			
 				if (examen.equals("Cuestionario"))
 				{
 					Intent intent = new Intent(view.getContext(), CuestionarioInstruccionesActivity.class);
 					intent.putExtra("idPerfil", perfil);
 					intent.putExtra("idTipoExamen", idTipoExamen);
-				//	Date fechaInicio= COLOCARLE FECHA DE SISTEMA
-					// PASARSELA PARA QUE AL TERMINAR EL EXAM LA CALCULE
-					//INSERTAR  PRIMERO EN EXAM LUEGOP EN RESULTADO;
-					//intent.putExtra("fechaInicio",)
 					startActivity(intent);
 				}
 			}
@@ -76,8 +74,6 @@ public class ExamenesActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent intent=null;
-	
-		
 		//	Handle item selection
 	    switch (item.getItemId()) {
 	        case R.id.menu_salir:

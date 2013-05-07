@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 import audinsa.audiologia.R;
 import audinsa.audiologia.businessdomain.Perfil;
@@ -35,11 +34,11 @@ public class ProfileItemAdapter extends ArrayAdapter<Perfil> {
 	}
 	
 	public Perfil getItemById(long id) {
-		for(int i = 0; i < perfiles.size(); i++)
+		for(int i = 0; i < getCount(); i++)
 		{
-			if (perfiles.get(i).getIdPerfil() == id)
+			if (getItem(i).getIdPerfil() == id)
 			{
-				return perfiles.get(i);
+				return getItem(i);
 			}
 		}
 		return null;
@@ -60,7 +59,6 @@ public class ProfileItemAdapter extends ArrayAdapter<Perfil> {
 
 			holder = new ProfileHolder();
 			holder.txtNombrePerfil = (TextView)row.findViewById(R.id.txtNombrePerfil);
-			holder.imgBorrarPerfil = (ImageView)row.findViewById(R.id.imgBorrarPerfil);
 			row.setTag(holder);
 		}
 		else
@@ -77,6 +75,5 @@ public class ProfileItemAdapter extends ArrayAdapter<Perfil> {
 	static class ProfileHolder
 	{
 		TextView txtNombrePerfil;
-		ImageView imgBorrarPerfil;
 	}
 }
