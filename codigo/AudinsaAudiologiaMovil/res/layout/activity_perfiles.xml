@@ -8,22 +8,17 @@
         android:id="@+id/listPerfiles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/group"
         android:listSelector="@drawable/list_selector" />
     
-    <LinearLayout
-        android:id="@+id/group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <Button
-            android:id="@+id/add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onAgregarPerfilClick"
-            android:text="@string/perfiles_agregarperfil" />
-    
-    </LinearLayout>
-
+	<Button
+	    android:id="@+id/btnAgregarPerfil"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/listPerfiles"
+	    android:background="@drawable/agregarperfil_custom_button"
+	    android:drawableLeft="@drawable/ic_agregar_perfil"
+	    android:gravity="center_vertical"
+	    android:onClick="onAgregarPerfilClick"
+	    android:text="@string/perfiles_agregarperfil" />
 
 </RelativeLayout>
