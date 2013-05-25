@@ -36,6 +36,7 @@ public class PerfilDataSource {
 	}
 
 	public void crearPerfil(String nombre, Date fechaNacimiento, String correoElectronico) {
+		 
 		open();
 		ContentValues values = new ContentValues();	    
 		DateFormat df = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
@@ -49,7 +50,20 @@ public class PerfilDataSource {
 				values);
 		close();
 	}
+	public int actualizarPerfil(String nombre, Date fechaNacimiento, String correoElectronico,long id) {
+		int resultado=0; 
+		open();
+		ContentValues values = new ContentValues();	    
+		DateFormat df = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
+		values.put(MySQLiteHelper.TABLA_PERFIL_COLUMNA_NOMBRE, nombre);
+		values.put(MySQLiteHelper.TABLA_PERFIL_COLUMNA_FECHA_NACIMIENTO, df.format(fechaNacimiento));
+		values.put(MySQLiteHelper.TABLA_PERFIL_COLUMNA_CORREO_ELECTRONICO, correoElectronico);
 
+		resultado= database.update(MySQLiteHelper.TABLA_PERFIL,values,MySQLiteHelper.TABLA_PERFIL_COLUMNA_ID+ " = " + id,null);
+		close();
+		
+		return resultado; 
+	}
 	public Perfil buscarPerfil(long insertId){
 		open();
 		Cursor cursor = database.query(MySQLiteHelper.TABLA_PERFIL,

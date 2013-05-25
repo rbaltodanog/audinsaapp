@@ -85,7 +85,7 @@ public class ExamenesActivity extends Activity {
 				startActivity(intent);
 	            return true;
 	        case R.id.menu_perfil:	        	
-	        	perfil=getIntent().getLongExtra("idPerfil",0);
+	        	 perfil=getIntent().getLongExtra("idPerfil",0);
 			     intent = new Intent();
 	        	 intent.setClass(ExamenesActivity.this,PerfilesMantenimientoActivity.class);
                  intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -94,7 +94,20 @@ public class ExamenesActivity extends Activity {
                  startActivity(intent);
                  
                  return true;
-				
+	        case R.id.menu_localizar:		        	
+	        	 perfil=getIntent().getLongExtra("idPerfil",0);
+			   try{
+				   intent = new Intent();
+		        	 intent.setClass(ExamenesActivity.this,MapaActivity.class);
+		        	
+	        		 startActivity(intent);
+	        	 }
+	        	 catch(Exception e){
+	        		 
+	        		 
+	        	 }
+	        	 
+	        	  return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	            
