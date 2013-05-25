@@ -52,6 +52,10 @@
             android:name="audinsa.audiologia.SensibilidadOidosInstrucciones"
             android:label="@string/title_activity_sensibilidad_oidos_instrucciones" >
         </activity>
+        <activity
+            android:name="audinsa.audiologia.MapaActivity"
+            android:label="@string/title_activity_mapa_localizacion" >
+        </activity>
     </application>
 
 </manifest>

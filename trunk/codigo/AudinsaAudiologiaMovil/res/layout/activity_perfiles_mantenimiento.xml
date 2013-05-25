@@ -26,30 +26,16 @@
 
         <requestFocus />
     </EditText>
-    
-    <EditText
-        android:id="@+id/txtFechaNacimiento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/txtNombre"
-        android:layout_marginTop="25dp"
-        android:ems="10"
-        android:hint="@string/lblFechaNacimiento"
-        android:inputType="date" />
+ 
 
-    <EditText
-        android:id="@+id/txtCorreoElectronico"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/txtFechaNacimiento"
-        android:ems="10"
-        android:layout_marginTop="25dp"
-        android:hint="@string/lblCorreoElectronico"
-        android:inputType="textEmailAddress" />
+ 
+
+ <TextView
+     android:id="@+id/dateDisplay"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignBaseline="@+id/pickDate"
+     android:paddingLeft="4dip" />
     
     <Button
         android:id="@+id/btnAceptar"
@@ -70,5 +56,27 @@
         android:layout_alignParentRight="true"
         android:onClick="onCancelarClick"
         android:text="@string/btnCancelar" />
+
+    <EditText
+        android:id="@+id/txtCorreoElectronico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txtNombre"
+        android:layout_marginTop="69dp"
+        android:ems="10"
+        android:hint="@string/lblCorreoElectronico"
+        android:inputType="textEmailAddress" />
+
+    <Button
+        android:id="@+id/pickDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtNombre"
+        android:layout_marginTop="14dp"
+        android:layout_toRightOf="@+id/dateDisplay"
+        android:paddingLeft="4dip"
+        android:text="@string/lblFechaNacimiento" />
 
 </RelativeLayout>

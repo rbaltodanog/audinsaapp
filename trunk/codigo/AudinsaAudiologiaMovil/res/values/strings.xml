@@ -92,6 +92,8 @@
     <string name="title_activity_cuestionario_resultado">Resultado Cuestionario</string>
     <string name="title_activity_sensibilidad_oidos_instrucciones">SensibilidadOidosInstrucciones</string>
 
+    <!--Mapa Localizaci'on -->
+     <string name="title_activity_mapa_localizacion">Localización Clínica</string>
     
     <!-- Sensibilidad de oídos -->  
    
@@ -101,6 +103,8 @@
     
     <!-- MENSAJES DE INFORMACION -->
     <string name="txtMantenimientoPerfilesToastPerfilAgregado">Perfil agregado satisfactoriamente</string>
+    <string name="txtMantenimientoPerfilesToastPerfilActualizado">Perfil actualizado satisfactoriamente</string>
+    
     
     <!-- MENSAJES DE ERROR -->
     <string name="txtPerfilesToastPerfilErrorAlBorrar">Error al borrar el perfil</string>
