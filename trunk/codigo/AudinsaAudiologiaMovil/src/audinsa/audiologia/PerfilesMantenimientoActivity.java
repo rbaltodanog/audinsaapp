@@ -20,17 +20,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 import audinsa.audiologia.businessdomain.Perfil;
 import audinsa.audiologia.datasources.PerfilDataSource;
-import android.widget.TextView;
 
 public class PerfilesMantenimientoActivity extends Activity {
 	private PerfilDataSource dataSource;
 	private EditText txtNombre = null;
-	private TextView txtFechaNacimiento= null;
+	private EditText txtFechaNacimiento = null;
 	private EditText txtCorreoElectronico= null;
 	private Button btnAceptar= null;
-//Estas variables son para el date time picker
-	private TextView mDateDisplay; 
-	private Button mPickDate; 
+	//Estas variables son para el date time picker
 	private int mYear; 
 	private int mMonth; 
 	private int mDay; 
@@ -40,80 +37,77 @@ public class PerfilesMantenimientoActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);		
 		setContentView(R.layout.activity_perfiles_mantenimiento);
-		
+
+		// Componentes de la pantalla
+		txtFechaNacimiento = (EditText)findViewById(R.id.txtFechaNacimiento);
+		//add click listener
+		txtFechaNacimiento.setOnClickListener(new View.OnClickListener()
+		{
+			public void onClick(View v){
+				showDialog(DATE_DIALOG_ID);
+			}
+		});
+
 		// En caso de que el perfil se solicite mediante el context menu
+		final Calendar c= Calendar.getInstance();
 		if(getIntent().getBooleanExtra("actualizacion",false)){
 			long idPerfil=getIntent().getLongExtra("idPerfil",0);
 			Perfil p=onGetPerfil(idPerfil);
 			if (p!= null){
-				onActualizar(p);		
+				onActualizar(p);
+				mYear = p.getFechaNacimiento().getDay();
+				mMonth = p.getFechaNacimiento().getMonth();
+				mDay = p.getFechaNacimiento().getYear();
 			}
 		}
-		// componentes de la pantalla
-		mDateDisplay=(TextView)findViewById(R.id.dateDisplay);
-		mPickDate=(Button)findViewById(R.id.pickDate);
-		//add click listener
-		mPickDate.setOnClickListener(new View.OnClickListener()
+		else
 		{
-		     public void onClick(View v){
-			showDialog(DATE_DIALOG_ID);
+			//GET CURRENT DATE
+			mYear = c.get(Calendar.YEAR);
+			mMonth = c.get(Calendar.MONTH);
+			mDay = c.get(Calendar.DAY_OF_MONTH);
 		}
-		});
-		//GET CURRENT DATE
-
-		final Calendar c= Calendar.getInstance();
-		mYear=c.get(Calendar.YEAR);
-		mMonth=c.get(Calendar.MONTH);
-		mDay=c.get(Calendar.DAY_OF_MONTH);
-
-
-		updateDisplay();
 	}
-  
 
-	   protected Dialog onCreateDialog(int id) {
-	        switch (id) {
-	 
-	        case DATE_DIALOG_ID:
-	            return new DatePickerDialog(this,
-	                mDateSetListener,
-	                mYear, mMonth, mDay);
-	        }
-	        return null;
-	    }
-			
-   private DatePickerDialog.OnDateSetListener mDateSetListener =
-	        new DatePickerDialog.OnDateSetListener() {
-	 
-	        public void onDateSet(DatePicker view, int year, int monthOfYear,
-	                int dayOfMonth) {
-	            mYear = year;
-	            mMonth = monthOfYear;
-	            mDay = dayOfMonth;
-	            updateDisplay();
-	        }
-	    };
-	    // actualiza la fecha del date time picker
+
+	protected Dialog onCreateDialog(int id) {
+		switch (id) {
+
+		case DATE_DIALOG_ID:
+			return new DatePickerDialog(this,
+					mDateSetListener,
+					mYear, mMonth, mDay);
+		}
+		return null;
+	}
+
+	private DatePickerDialog.OnDateSetListener mDateSetListener =
+			new DatePickerDialog.OnDateSetListener() {
+
+		public void onDateSet(DatePicker view, int year, int monthOfYear,
+				int dayOfMonth) {
+			mYear = year;
+			mMonth = monthOfYear;
+			mDay = dayOfMonth;
+			updateDisplay();
+		}
+	};
+
+	// Actualiza la fecha del date time picker
 	private void updateDisplay(){
-		
-		
 		StringBuilder fecha=  new StringBuilder()
-			.append(mDay).append("-") 
-			.append(mMonth + 1).append("-") 
-			.append(mYear).append(" "); 
-	mDateDisplay.setText(fecha); 
-mDateDisplay.setEnabled(false);
-mPickDate.setText(fecha);
+		.append(mDay).append("/") 
+		.append(mMonth + 1).append("/") 
+		.append(mYear); 
+		txtFechaNacimiento.setText(fecha); 
 	}
 
 	private void onActualizar(Perfil p) {
-		
-
 		txtNombre =(EditText)findViewById(R.id.txtNombre);
-		txtFechaNacimiento=(TextView)findViewById(R.id.dateDisplay);
 		txtCorreoElectronico=(EditText)findViewById(R.id.txtCorreoElectronico);
-		btnAceptar=(Button)findViewById(R.id.btnAceptar);
-		DateFormat df = new SimpleDateFormat("MM/dd/yyyy",Locale.US);
+		txtFechaNacimiento = (EditText)findViewById(R.id.txtFechaNacimiento);
+		btnAceptar=(Button)findViewById(R.id.btnAceptarPerfilMantenimiento);
+		DateFormat df = new SimpleDateFormat("M/d/yyyy",Locale.US);
 		try{
 			Date fecha=p.getFechaNacimiento();
 			String dates = df.format(fecha);
@@ -142,14 +136,14 @@ mPickDate.setText(fecha);
 		dataSource = new PerfilDataSource(this);
 		Date fechaNacimiento = null;
 		String nombre = ((EditText)findViewById(R.id.txtNombre)).getText().toString();
-		String fechaNacimientoText = ((TextView)findViewById(R.id.dateDisplay)).getText().toString();
+		String fechaNacimientoText = txtFechaNacimiento.getText().toString();
 		String correoElectronico = ((EditText)findViewById(R.id.txtCorreoElectronico)).getText().toString();
-		SimpleDateFormat dtFormat = new SimpleDateFormat("MM/dd/yyyy");
-		
+		SimpleDateFormat dtFormat = new SimpleDateFormat("M/d/yyyy", Locale.US);
+
 		long idPerfil=getIntent().getLongExtra("idPerfil",-1);
 
-		
-		
+
+
 		try
 		{
 			fechaNacimiento = (Date) dtFormat.parse(fechaNacimientoText);
@@ -161,15 +155,15 @@ mPickDate.setText(fecha);
 		}
 		if(idPerfil != -1){
 
-		   int resultado= dataSource.actualizarPerfil(nombre, fechaNacimiento, correoElectronico, idPerfil);
-		 	if(resultado==1)
-		 		Toast.makeText(getBaseContext(), getBaseContext().getResources().getString(R.string.txtMantenimientoPerfilesToastPerfilActualizado), Toast.LENGTH_SHORT).show();
+			int resultado= dataSource.actualizarPerfil(nombre, fechaNacimiento, correoElectronico, idPerfil);
+			if(resultado==1)
+				Toast.makeText(getBaseContext(), getBaseContext().getResources().getString(R.string.txtMantenimientoPerfilesToastPerfilActualizado), Toast.LENGTH_SHORT).show();
 		}
 		else { 
-		     dataSource.crearPerfil(nombre, fechaNacimiento, correoElectronico);
-		 	Toast.makeText(getBaseContext(), getBaseContext().getResources().getString(R.string.txtMantenimientoPerfilesToastPerfilAgregado), Toast.LENGTH_SHORT).show();
-    	}
-	
+			dataSource.crearPerfil(nombre, fechaNacimiento, correoElectronico);
+			Toast.makeText(getBaseContext(), getBaseContext().getResources().getString(R.string.txtMantenimientoPerfilesToastPerfilAgregado), Toast.LENGTH_SHORT).show();
+		}
+
 		this.finish();		
 	}
 
