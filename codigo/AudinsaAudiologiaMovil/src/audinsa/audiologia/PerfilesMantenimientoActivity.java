@@ -53,11 +53,12 @@ public class PerfilesMantenimientoActivity extends Activity {
 		if(getIntent().getBooleanExtra("actualizacion",false)){
 			long idPerfil=getIntent().getLongExtra("idPerfil",0);
 			Perfil p=onGetPerfil(idPerfil);
+			DateFormat year = new SimpleDateFormat("yyyy",Locale.US);
 			if (p!= null){
 				onActualizar(p);
-				mYear = p.getFechaNacimiento().getDay();
+				mYear =  Integer.valueOf(year.format(p.getFechaNacimiento()));
 				mMonth = p.getFechaNacimiento().getMonth();
-				mDay = p.getFechaNacimiento().getYear();
+				mDay = p.getFechaNacimiento().getDate();
 			}
 		}
 		else
@@ -97,7 +98,7 @@ public class PerfilesMantenimientoActivity extends Activity {
 	private void updateDisplay(){
 		StringBuilder fecha=  new StringBuilder()
 		.append(mDay).append("/") 
-		.append(mMonth + 1).append("/") 
+		.append(mMonth + 1).append("/")
 		.append(mYear); 
 		txtFechaNacimiento.setText(fecha); 
 	}
@@ -107,7 +108,7 @@ public class PerfilesMantenimientoActivity extends Activity {
 		txtCorreoElectronico=(EditText)findViewById(R.id.txtCorreoElectronico);
 		txtFechaNacimiento = (EditText)findViewById(R.id.txtFechaNacimiento);
 		btnAceptar=(Button)findViewById(R.id.btnAceptarPerfilMantenimiento);
-		DateFormat df = new SimpleDateFormat("M/d/yyyy",Locale.US);
+		DateFormat df = new SimpleDateFormat("d/M/yyyy",Locale.US);
 		try{
 			Date fecha=p.getFechaNacimiento();
 			String dates = df.format(fecha);
@@ -138,7 +139,7 @@ public class PerfilesMantenimientoActivity extends Activity {
 		String nombre = ((EditText)findViewById(R.id.txtNombre)).getText().toString();
 		String fechaNacimientoText = txtFechaNacimiento.getText().toString();
 		String correoElectronico = ((EditText)findViewById(R.id.txtCorreoElectronico)).getText().toString();
-		SimpleDateFormat dtFormat = new SimpleDateFormat("M/d/yyyy", Locale.US);
+		SimpleDateFormat dtFormat = new SimpleDateFormat("d/M/yyyy", Locale.US);
 
 		long idPerfil=getIntent().getLongExtra("idPerfil",-1);
 
