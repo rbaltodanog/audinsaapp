@@ -76,6 +76,11 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyCa3cziD2eqoyP1qMQB_dIHHZi-R9S9SAo" />
+
+        <activity
+            android:name="audinsa.audiologia.AcercaDeActivity"
+            android:label="@string/title_activity_acerca_de" >
+        </activity>
     </application>
 
 </manifest>
