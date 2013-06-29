@@ -12,7 +12,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
 public class MapaActivity extends FragmentActivity  implements OnMapClickListener {
-	private final LatLng UPV = new LatLng(9.975571,-84.118366);
+	private final LatLng UPV = new LatLng(9.949407,-84.058312);
+	private final LatLng UPV2 = new LatLng(9.975042,-84.118026);
 	private GoogleMap mapa;
 
 	@Override
@@ -23,17 +24,30 @@ public class MapaActivity extends FragmentActivity  implements OnMapClickListene
 		mapa = ((SupportMapFragment) getSupportFragmentManager()
 				.findFragmentById(R.id.map)).getMap();
 		mapa.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-		mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(UPV, 15));
+		mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(UPV2, 15));
+		
 		mapa.setMyLocationEnabled(true);
 		mapa.getUiSettings().setZoomControlsEnabled(false);
 		mapa.getUiSettings().setCompassEnabled(true);
+		//Marcador Audinsa Guadalupe
 		mapa.addMarker(new MarkerOptions()
 		.position(UPV)
 		.title("UPV")
+		.snippet("Audinsa-Guadalupe")
+		.icon(BitmapDescriptorFactory
+				.fromResource(R.drawable.ic_launcher))
+				.anchor(0.5f, 0.5f));
+		
+		
+		//Marcador Audinsa Heredia
+		mapa.addMarker(new MarkerOptions()
+		.position(UPV2)
+		.title("UPV2")
 		.snippet("Audinsa-Heredia")
 		.icon(BitmapDescriptorFactory
 				.fromResource(R.drawable.ic_launcher))
 				.anchor(0.5f, 0.5f));
+		
 		mapa.setOnMapClickListener(this);
 	}
 

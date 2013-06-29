@@ -12,7 +12,9 @@
     <string name="menu_localizar">Localizar</string>
     <string name="menu_acerca_de">Acerca De</string>
     <string name="menu_salir">Salir</string>
+    <string name="menu_regresar">Regresar</string>
     <string name="menu_actualizar">Actualizar</string>
+  
 
     <!-- Perfiles Activity -->
     <string name="title_activity_perfiles_mantenimiento">Perfil</string>
