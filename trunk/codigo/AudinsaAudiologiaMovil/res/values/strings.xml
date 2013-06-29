@@ -101,6 +101,9 @@
     <!-- Resultado Sensibilidad de oídos Activity -->
     <string name="lblResultadoSensibilidaOido">Resultado del Exam. Sensibilidad de Oído</string>
     
+    <!-- Acerca de Activity -->
+    <string name="title_activity_acerca_de">Acerca De</string>
+    
     <!-- MENSAJES DE INFORMACION -->
     <string name="txtMantenimientoPerfilesToastPerfilAgregado">Perfil agregado satisfactoriamente</string>
     <string name="txtMantenimientoPerfilesToastPerfilActualizado">Perfil actualizado satisfactoriamente</string>
@@ -109,4 +112,5 @@
     <!-- MENSAJES DE ERROR -->
     <string name="txtPerfilesToastPerfilErrorAlBorrar">Error al borrar el perfil</string>
     <string name="txtMantenimientoPerfilesToastErrorParsearDatos">Error al parsear datos del perfil</string>
+    
 </resources>
