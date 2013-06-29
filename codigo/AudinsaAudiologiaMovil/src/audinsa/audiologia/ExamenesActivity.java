@@ -77,8 +77,7 @@ public class ExamenesActivity extends Activity {
 		//	Handle item selection
 	    switch (item.getItemId()) {
 	        case R.id.menu_salir:
-	            this.finish();
-	            // Indica que la aplicación debe cerrarse
+	            finish();
 	            return true;
 	        case R.id.menu_articulos:
 	        	intent = new Intent(this.getBaseContext(), ArticulosActivity.class);
