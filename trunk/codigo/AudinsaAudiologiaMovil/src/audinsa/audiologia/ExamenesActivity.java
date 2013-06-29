@@ -84,6 +84,10 @@ public class ExamenesActivity extends Activity {
 	        	intent = new Intent(this.getBaseContext(), ArticulosActivity.class);
 				startActivity(intent);
 	            return true;
+	        case R.id.menu_acerca_de:
+	        	intent = new Intent(this.getBaseContext(), AcercaDeActivity.class);
+				startActivity(intent);
+	            return true;
 	        case R.id.menu_perfil:	        	
 	        	 perfil=getIntent().getLongExtra("idPerfil",0);
 			     intent = new Intent();

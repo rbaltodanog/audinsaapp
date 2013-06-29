@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SensibilidadDeOidoInstrucciones" >
+
+    <TextView
+        android:id="@+id/txtPaso1Sensibilidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="44dp"
+        android:text="Paso 1:"
+        android:textStyle="bold" />
+
+    <CheckBox
+        android:id="@+id/chkPaso1InstrSensibilidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txtPaso1Sensibilidad"
+        android:text="Vaya a un lugar tranquilo" />
+
+    <TextView
+        android:id="@+id/txtPaso2Sensibilidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/chkPaso1InstrSensibilidad"
+        android:text="Paso 2"
+        android:textStyle="bold" />
+
+    <CheckBox
+        android:id="@+id/chkPaso2InstrSensibilidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txtPaso2Sensibilidad"
+        android:text="Conecte sus audífonos" />
+
+    <TextView
+        android:id="@+id/txtPaso3Sensibilidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/chkPaso2InstrSensibilidad"
+        android:text="Paso 3:"
+        android:textStyle="bold" />
+
+    <SeekBar
+        android:id="@+id/sldVolume"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txtPaso3InstrSensibilidad" />
+
+    <TextView
+        android:id="@+id/txtPaso3InstrSensibilidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txtPaso3Sensibilidad"
+        android:layout_marginTop="14dp"
+        android:text="Establezca el volumen al máximo" />
+
+</RelativeLayout>
