@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 public class CuestionarioInstruccionesActivity extends Activity {
@@ -37,6 +38,18 @@ public class CuestionarioInstruccionesActivity extends Activity {
 		startActivity(intent);
 	}
 	
-	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		
+	    switch (item.getItemId()) {
+	        case R.id.menu_regresar:
+	            finish();
+	            return true;
+	     	        default:
+	            return super.onOptionsItemSelected(item);
+	            
+	            
+	    }
+	}
 	
 }

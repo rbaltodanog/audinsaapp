@@ -4,6 +4,6 @@
         android:id="@+id/menu_salir"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="@string/menu_salir"/>
+        android:title="@string/menu_regresar"/>
 
 </menu>

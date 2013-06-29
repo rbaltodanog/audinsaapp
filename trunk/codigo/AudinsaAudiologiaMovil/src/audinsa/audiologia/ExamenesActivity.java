@@ -31,7 +31,7 @@ public class ExamenesActivity extends Activity {
 		ArrayList<TipoExamen> tipoExamenes = dataSource.obtenerTodosLosTiposExamenes();
 
 		TestItemAdapter adapter = new TestItemAdapter(this, 
-				R.layout.listview_examenes_item_row, tipoExamenes);
+		R.layout.listview_examenes_item_row, tipoExamenes);
 		ListView listView = (ListView) findViewById(R.id.listExamenes);
 		listView.setAdapter(adapter);
 	}
@@ -76,7 +76,7 @@ public class ExamenesActivity extends Activity {
 		Intent intent=null;
 		//	Handle item selection
 	    switch (item.getItemId()) {
-	        case R.id.menu_salir:
+	        case R.id.menu_regresar:
 	            finish();
 	            return true;
 	        case R.id.menu_articulos:
