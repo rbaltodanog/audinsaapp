@@ -4,6 +4,7 @@ package audinsa.audiologia;
 
 import org.joda.time.DateTime;
 import android.os.Bundle;
+import android.graphics.*;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
