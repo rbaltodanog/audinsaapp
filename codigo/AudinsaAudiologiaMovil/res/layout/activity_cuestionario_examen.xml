@@ -4,16 +4,9 @@
     android:layout_height="match_parent"
     android:gravity="top"
     tools:context=".CuestionarioExamenActivity" >
-    
-    <TextView
-        android:id="@+id/lblPregunta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tableLayout1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="22dp"
-        android:textSize="22sp" />
 
+    O
+    
     <TableLayout
         android:id="@+id/tableLayout1"
         android:layout_width="fill_parent"
@@ -30,21 +23,74 @@
                 android:id="@+id/btnSi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/forma_circular"
+                android:drawableTop="@drawable/ic_compartir"
                 android:onClick="btnSiClick"
-                android:text="@string/btnSi" />
+                android:text="@string/btnSi"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+    <TextView
+            android:id="@+id/imgNo"
+            android:drawableTop="@drawable/ic_compartir"
+            android:background="@drawable/forma_yesnobutton"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:onClick="btnClick" />
+    
+    
+         <Button
+             android:id="@+id/btnNo"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:background="@drawable/forma_circular"
+             android:drawableTop="@drawable/ic_no"
+             android:onClick="btnNoClick"
+             android:text="@string/btnNo"
+             android:textAppearance="?android:attr/textAppearanceLarge"
+             android:textSize="20sp"
+             android:textStyle="bold" />
+            
         </TableRow>
-
+<!--  
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal" >
-
-            <Button
+            
+        <TextView
+            android:id="@+id/imgNo"
+            android:drawableTop="@drawable/ic_compartir"
+            android:background="@drawable/forma_yesnobutton"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:onClick="btnClick" />
+        
+        
+        <Button
                 android:id="@+id/btnNo"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                 android:drawableTop="@drawable/ic_compartir"
                 android:onClick="btnNoClick"
-                android:text="@string/btnNo" />
-        </TableRow>
-    </TableLayout>
+                android:text="@string/btnNo"
+                android:background="@drawable/forma_circular"
+                android:textStyle="bold" 
+                android:textAppearance="?android:attr/textAppearanceLarge"   
+                android:textSize="20sp"
+        		/>
+        </TableRow>-->
+    </TableLayout>  
+
+    <TextView
+        android:id="@+id/lblPregunta"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tableLayout1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="49dp"
+        android:background="@drawable/shape_circle"
+        android:gravity="center_vertical|center_horizontal"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
 </RelativeLayout>

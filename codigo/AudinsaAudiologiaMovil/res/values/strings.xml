@@ -46,7 +46,7 @@
 
     <!-- Cuestionario Examen Activity -->
     <string name="title_activity_cuestionario_examen">Cuestionario</string>
-    <string name="btnSi">Si</string>
+    <string name="btnSi">Sí</string>
     <string name="btnNo">No</string>
 
     <string-array name="Preguntas">
