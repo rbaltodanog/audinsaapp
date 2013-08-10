@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_resultado_reprobado"
+    android:gravity="top"
+    tools:context=".CuestionarioResultadoReprobado" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/lblResultado"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#262626"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="06/07/2013. Duración: 56 segundos"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#262626" />
+
+    <ImageView
+        android:id="@+id/imgViewCuestionarioReprobado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:maxHeight="400dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/animation_resultado_reprobado" />
+
+</RelativeLayout>
