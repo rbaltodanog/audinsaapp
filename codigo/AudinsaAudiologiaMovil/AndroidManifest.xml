@@ -81,6 +81,14 @@
             android:name="audinsa.audiologia.AcercaDeActivity"
             android:label="@string/title_activity_acerca_de" >
         </activity>
+        <activity
+            android:name="audinsa.audiologia.CuestionarioResultadoAprobado"
+            android:label="@string/lblResultadoCuestionario" >
+        </activity>
+        <activity
+            android:name="audinsa.audiologia.CuestionarioResultadoReprobado"
+            android:label="@string/lblResultadoCuestionario" >
+        </activity>
     </application>
 
 </manifest>

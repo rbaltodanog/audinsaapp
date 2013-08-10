@@ -4,33 +4,6 @@
     android:layout_height="match_parent" >
 
     <TableRow
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp" >
-
-        <TextView
-            android:id="@+id/lblTitulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lblResultadoCuestionario"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp" >
-
-        <TextView
-            android:id="@+id/txtFechaResultado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_span="2"
-            android:text="2013/03/03 - 9:43pm"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-    </TableRow>
-
-    <TableRow
         android:layout_height="1dp"
         android:background="#BDBDBD" >
 
@@ -107,13 +80,14 @@
                     android:gravity="center" >
 
                     <ImageView
-                        android:id="@+id/imgResult"
+                        android:id="@+id/imgViewCuestionarioAprobado"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:layout_above="@+id/txtResultadoDescription"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/ic_green_light" />
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:adjustViewBounds="true"
+                        android:maxHeight="100dp"
+                        android:scaleType="fitStart"
+                        android:src="@drawable/animation_resultado_aprobado" />
 
                     <TextView
                         android:id="@+id/txtResultadoDescription"
@@ -123,7 +97,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentRight="true"
                         android:gravity="bottom|center"
-                        android:text="No se detectaron problemas de escucha"
+                        android:text=""
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textStyle="italic" />
                 </RelativeLayout>
@@ -140,18 +114,6 @@
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
                         android:padding="1dp" >
-
-                        <TableRow
-                            android:layout_height="1dp"
-                            android:background="#BDBDBD" >
-
-                            <TextView
-                                android:layout_width="fill_parent"
-                                android:layout_height="1dp"
-                                android:layout_span="2"
-                                android:text="" >
-                            </TextView>
-                        </TableRow>
 
                         <TableRow
                             android:id="@+id/row_contactar_clinica"

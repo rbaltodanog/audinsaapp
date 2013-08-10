@@ -14,7 +14,6 @@
     <string name="menu_salir">Salir</string>
     <string name="menu_regresar">Regresar</string>
     <string name="menu_actualizar">Actualizar</string>
-  
 
     <!-- Perfiles Activity -->
     <string name="title_activity_perfiles_mantenimiento">Perfil</string>
@@ -94,25 +93,25 @@
     <string name="title_activity_cuestionario_resultado">Resultado Cuestionario</string>
     <string name="title_activity_sensibilidad_oidos_instrucciones">SensibilidadOidosInstrucciones</string>
 
-    <!--Mapa Localizaci'on -->
-     <string name="title_activity_mapa_localizacion">Localización Clínica</string>
-    
-    <!-- Sensibilidad de oídos -->  
-   
-   
+    <!-- Mapa Localizaci'on -->
+    <string name="title_activity_mapa_localizacion">Localización Clínica</string>
+
+    <!-- Sensibilidad de oídos -->
+
+
     <!-- Resultado Sensibilidad de oídos Activity -->
     <string name="lblResultadoSensibilidaOido">Resultado del Exam. Sensibilidad de Oído</string>
-    
+
     <!-- Acerca de Activity -->
     <string name="title_activity_acerca_de">Acerca De</string>
-    
+
     <!-- MENSAJES DE INFORMACION -->
     <string name="txtMantenimientoPerfilesToastPerfilAgregado">Perfil agregado satisfactoriamente</string>
     <string name="txtMantenimientoPerfilesToastPerfilActualizado">Perfil actualizado satisfactoriamente</string>
-    
-    
+
     <!-- MENSAJES DE ERROR -->
     <string name="txtPerfilesToastPerfilErrorAlBorrar">Error al borrar el perfil</string>
     <string name="txtMantenimientoPerfilesToastErrorParsearDatos">Error al parsear datos del perfil</string>
-    
+    <string name="hello_world">Hello world!</string>
+
 </resources>

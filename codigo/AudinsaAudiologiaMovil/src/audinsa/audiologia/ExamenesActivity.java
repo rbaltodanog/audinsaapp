@@ -84,7 +84,7 @@ public class ExamenesActivity extends Activity {
 				startActivity(intent);
 	            return true;
 	        case R.id.menu_acerca_de:
-	        	intent = new Intent(this.getBaseContext(), AcercaDeActivity.class);
+	        	intent = new Intent(this.getBaseContext(), CuestionarioResultadoAprobado.class);
 				startActivity(intent);
 	            return true;
 	        case R.id.menu_perfil:	        	
