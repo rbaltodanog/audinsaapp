@@ -54,16 +54,18 @@ public class CuestionarioExamenActivity extends Activity {
 		dataSource.open();
 		dataSource.crearResultado(idPerfil,idTipoExamen,puntaje, DateTime.now());
 		dataSource.close();
-		
+
 		Intent intent = new Intent(view.getContext(), CuestionarioResultadoActivity.class);
 		if(puntaje >= 8) {
 			String positivo= this.getString(R.string.strResultadoPositivo) ;
-		intent.putExtra("strResultado",positivo);
+			intent.putExtra("strResultado",positivo);
+			intent.putExtra("bolAprobado", true);
 		}
 		else
 		{
 			String negativo= this.getString(R.string.strResultadoNegativo);
 			intent.putExtra("strResultado", negativo);
+			intent.putExtra("bolAprobado", false);
 		}
 		startActivity(intent);
 		this.finish();					
