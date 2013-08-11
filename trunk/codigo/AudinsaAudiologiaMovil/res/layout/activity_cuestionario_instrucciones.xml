@@ -14,18 +14,34 @@
         android:text="@string/title_activity_cuestionario_instrucciones"
         android:textSize="28sp" />
 
-   <TableLayout
-        android:id="@+id/tableLayout1"
+    <TextView
+        android:id="@+id/textView2"
+        style="@android:style/Widget.Button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true" >
+        android:layout_margin="50sp"
+        android:background="@drawable/shape_instructions_quesionnaire"
+        android:clickable="false"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/lblInstrucciones"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp" />
 
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/textView2"
+        android:gravity="center_vertical|center_horizontal" >
+
+        <TableRow>
 
             <Button
                 android:id="@+id/btnEmpezar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="23dp"
                 android:onClick="onEmpezarClick"
                 android:text="@string/btnEmpezar" />
 
@@ -35,16 +51,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="onCancelarClick"
                 android:text="@string/btnCancelar" />
-
+        </TableRow>
     </TableLayout>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tableLayout1"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="19dp"
-        android:text="@string/lblInstrucciones" />
 
 </RelativeLayout>
