@@ -5,8 +5,6 @@
     android:gravity="top"
     tools:context=".CuestionarioExamenActivity" >
 
-    O
-    
     <TableLayout
         android:id="@+id/tableLayout1"
         android:layout_width="fill_parent"
@@ -23,35 +21,28 @@
                 android:id="@+id/btnSi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/forma_circular"
-                android:drawableTop="@drawable/ic_compartir"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/shape_button_questionare"
+                android:drawableTop="@drawable/ic_tick_button"
                 android:onClick="btnSiClick"
                 android:text="@string/btnSi"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="20sp"
                 android:textStyle="bold" />
-    <TextView
-            android:id="@+id/imgNo"
-            android:drawableTop="@drawable/ic_compartir"
-            android:background="@drawable/forma_yesnobutton"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:onClick="btnClick" />
-    
-    
-         <Button
-             android:id="@+id/btnNo"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:background="@drawable/forma_circular"
-             android:drawableTop="@drawable/ic_no"
-             android:onClick="btnNoClick"
-             android:text="@string/btnNo"
-             android:textAppearance="?android:attr/textAppearanceLarge"
-             android:textSize="20sp"
-             android:textStyle="bold" />
-            
+
+            <Button
+                android:id="@+id/btnNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_button_questionare"
+                android:drawableTop="@drawable/ic_cross_button"
+                android:onClick="btnNoClick"
+                android:text="@string/btnNo"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </TableRow>
-<!--  
+        <!--
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -77,8 +68,9 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"   
                 android:textSize="20sp"
         		/>
-        </TableRow>-->
-    </TableLayout>  
+        </TableRow>
+        -->
+    </TableLayout>
 
     <TextView
         android:id="@+id/lblPregunta"
@@ -88,7 +80,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="49dp"
-        android:background="@drawable/shape_circle"
+        android:background="@drawable/header_circular_questionnaire"
         android:gravity="center_vertical|center_horizontal"
         android:textSize="20sp"
         android:textStyle="bold" />
