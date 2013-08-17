@@ -39,7 +39,7 @@
     <string name="btnCancelar">Cancelar</string>
 
     <!-- Cuestionario Instrucciones Activity -->
-    <string name="lblInstrucciones">Las siguientes 10 preguntas pretenden medir su nivel de escucha en situaciones diarias.</string>
+    <string name="lblInstrucciones">Las siguientes 10 preguntas pretenden deben de ser respondidas con plena conciencia y honestidad con la ide de medir su nivel de escucha en situaciones diarias.</string>
     <string name="title_activity_cuestionario_instrucciones">Cuestionario</string>
     <string name="btnEmpezar">Empezar</string>
 
