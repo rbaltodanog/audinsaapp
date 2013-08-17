@@ -2,22 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="top"
+    android:gravity="center"
     tools:context=".CuestionarioInstruccionesActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/title_activity_cuestionario_instrucciones"
-        android:textSize="28sp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtViewInstrucciones"
         style="@android:style/Widget.Button"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="50sp"
         android:background="@drawable/shape_instructions_quesionnaire"
@@ -26,13 +18,13 @@
         android:text="@string/lblInstrucciones"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="20sp" />
-
+    
     <TableLayout
-        android:id="@+id/tableLayout1"
+        android:id="@+id/tableBttns"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/txtViewInstrucciones"
         android:gravity="center_vertical|center_horizontal" >
 
         <TableRow>
@@ -43,14 +35,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="23dp"
                 android:onClick="onEmpezarClick"
-                android:text="@string/btnEmpezar" />
+                android:text="@string/btnEmpezar" 
+                 android:background="@drawable/shape_button_questionare"
+               />
 
             <Button
                 android:id="@+id/btnCancelar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onCancelarClick"
-                android:text="@string/btnCancelar" />
+                android:text="@string/btnCancelar"
+                 android:background="@drawable/shape_button_questionare"
+                />
         </TableRow>
     </TableLayout>
 
