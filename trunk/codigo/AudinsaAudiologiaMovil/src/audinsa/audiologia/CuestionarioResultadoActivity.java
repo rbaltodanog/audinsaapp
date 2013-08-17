@@ -36,6 +36,7 @@ public class CuestionarioResultadoActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present(pantalla horizontal).
 		
 		getMenuInflater().inflate(R.menu.activity_cuestionario_resultado, menu);		
+		@SuppressWarnings("unused")
 		TextView txtResultadoDescription = (TextView)findViewById(R.id.txtResultadoDescription);
 				
 		return true;
