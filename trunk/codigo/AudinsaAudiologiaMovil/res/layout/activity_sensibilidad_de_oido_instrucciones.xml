@@ -2,66 +2,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SensibilidadDeOidoInstrucciones" >
+    android:layout_gravity="center_vertical|center_horizontal"
+    android:gravity="center_vertical"
+    tools:context=".SensibilidadDeOidoInstruccionesActivity" >
 
-    <TextView
-        android:id="@+id/txtPaso1Sensibilidad"
+    <TableLayout
+        android:id="@+id/tableInstrucciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="44dp"
-        android:text="Paso 1:"
-        android:textStyle="bold" />
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/shape_instructions_sensibilidad_oido" >
 
-    <CheckBox
-        android:id="@+id/chkPaso1InstrSensibilidad"
+        <TableRow>
+
+            <TextView
+                android:id="@+id/txtPaso1Sensibilidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Pasos:"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="20sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <CheckBox
+                android:id="@+id/chkPaso1InstrSensibilidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vaya a un lugar tranquilo" />
+        </TableRow>
+
+        <TableRow>
+
+            <CheckBox
+                android:id="@+id/chkPaso2InstrSensibilidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Este seguro de que tiene los audifonos conectados seg&apos;un el o&apos;ido" />
+        </TableRow>
+    </TableLayout>
+    
+      <TableLayout
+        android:id="@+id/tableBttns"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/txtPaso1Sensibilidad"
-        android:text="Vaya a un lugar tranquilo" />
+        android:layout_below="@id/tableInstrucciones"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:gravity="center_vertical|center_horizontal" >
 
-    <TextView
-        android:id="@+id/txtPaso2Sensibilidad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/chkPaso1InstrSensibilidad"
-        android:text="Paso 2"
-        android:textStyle="bold" />
+        <TableRow>
 
-    <CheckBox
-        android:id="@+id/chkPaso2InstrSensibilidad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/txtPaso2Sensibilidad"
-        android:text="Conecte sus audífonos" />
+            <Button
+                android:id="@+id/btnEmpezar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/shape_button_questionare"
+                android:onClick="onEmpezarClick"
+                android:text="@string/btnEmpezar" />
 
-    <TextView
-        android:id="@+id/txtPaso3Sensibilidad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/chkPaso2InstrSensibilidad"
-        android:text="Paso 3:"
-        android:textStyle="bold" />
-
-    <SeekBar
-        android:id="@+id/sldVolume"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/txtPaso3InstrSensibilidad" />
-
-    <TextView
-        android:id="@+id/txtPaso3InstrSensibilidad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/txtPaso3Sensibilidad"
-        android:layout_marginTop="14dp"
-        android:text="Establezca el volumen al máximo" />
+            <Button
+                android:id="@+id/btnCancelar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_button_questionare"
+                android:onClick="onCancelarClick"
+                android:text="@string/btnCancelar" />
+        </TableRow>
+    </TableLayout>
 
 </RelativeLayout>

@@ -65,7 +65,7 @@
             android:label="@string/title_activity_cuestionario_resultado" >
         </activity>
         <activity
-            android:name="audinsa.audiologia.SensibilidadOidosInstrucciones"
+            android:name="audinsa.audiologia.SensibilidadDeOidoInstruccionesActivity"
             android:label="@string/title_activity_sensibilidad_oidos_instrucciones" >
         </activity>
         <activity

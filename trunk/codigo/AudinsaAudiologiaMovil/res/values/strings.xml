@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name">Audinsa Audiología Movil</string>
@@ -9,17 +8,18 @@
     <string name="menu_perfil">Perfil</string>
     <string name="menu_resultados">Resultados</string>
     <string name="menu_articulos">Artículos</string>
-    <string name="menu_localizar">Localizar</string>
     <string name="menu_acerca_de">Acerca De</string>
     <string name="menu_salir">Salir</string>
     <string name="menu_regresar">Regresar</string>
     <string name="menu_actualizar">Actualizar</string>
-
+  <string name="menu_localizar">Consultorios</string>
+      
+  
     <!-- Perfiles Activity -->
-    <string name="title_activity_perfiles_mantenimiento">Perfil</string>
     <string name="perfiles_agregarperfil">Agregar Perfil</string>
     <string name="imgFlechaContentDescription">Icono para entrar al perfil</string>
     <string name="imgPerfilContentDescription">Icono del perfil</string>
+    <string name="title_activity_perfiles_mantenimiento">Perfil</string>
     <!-- Menu contextual y cuadros de dialogo para los perfiles -->
     <string name="txtPerfilesMenuContextualTitulo">Acciones</string>
     <string name="txtPerfilesMenuContextualEliminar">Eliminar Perfil</string>
@@ -113,5 +113,6 @@
     <string name="txtPerfilesToastPerfilErrorAlBorrar">Error al borrar el perfil</string>
     <string name="txtMantenimientoPerfilesToastErrorParsearDatos">Error al parsear datos del perfil</string>
     <string name="hello_world">Hello world!</string>
+    
 
 </resources>

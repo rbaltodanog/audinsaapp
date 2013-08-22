@@ -64,6 +64,13 @@ public class ExamenesActivity extends Activity {
 					intent.putExtra("idTipoExamen", idTipoExamen);
 					startActivity(intent);
 				}
+				else if (examen.equals("Sensibilidad de oído"))
+				{
+					Intent intent = new Intent(view.getContext(), SensibilidadDeOidoInstruccionesActivity.class);
+					intent.putExtra("idPerfil", perfil);
+					intent.putExtra("idTipoExamen", idTipoExamen);
+					startActivity(intent);
+				}
 			}
 
 			
