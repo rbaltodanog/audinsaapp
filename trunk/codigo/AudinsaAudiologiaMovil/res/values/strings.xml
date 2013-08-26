@@ -12,9 +12,8 @@
     <string name="menu_salir">Salir</string>
     <string name="menu_regresar">Regresar</string>
     <string name="menu_actualizar">Actualizar</string>
-  <string name="menu_localizar">Consultorios</string>
-      
-  
+    <string name="menu_localizar">Consultorios</string>
+
     <!-- Perfiles Activity -->
     <string name="perfiles_agregarperfil">Agregar Perfil</string>
     <string name="imgFlechaContentDescription">Icono para entrar al perfil</string>
@@ -63,8 +62,8 @@
 
     <!-- Cuestionario Resultado Activity -->
 
-    <string name="strResultadoNegativo">Consulte a un especialista</string>
-    <string name="strResultadoPositivo">Su escucha está al 100%</string>
+    <string name="strResultadoNegativo">Usted podría estar presentando una dificultad auditiva. Le recomendamos contactar a la clínica</string>
+    <string name="strResultadoPositivo">Usted no presenta una dificultad auditiva. Le recomendamos una valoración anual</string>
     <string name="imgBorrarContentDescription">Icono para borrar el resultado</string>
 
     <!-- Articulos Activity -->
@@ -96,8 +95,12 @@
     <!-- Mapa Localizaci'on -->
     <string name="title_activity_mapa_localizacion">Localización Clínica</string>
 
-    <!-- Sensibilidad de oídos -->
+    <!-- Instrucciones Sensibilidad de oídos -->
 
+    <string name="txtPasos">Pasos</string>
+    <string name="txtPaso1">1. Asegúrese de estar en un lugar silencioso.</string>
+    <string name="txtPaso2">2. Coloque sus audífonos según corresponda el oído</string>
+    <string name="txtPaso3">3. El volumen del teléfono debe estar al 100%</string>
 
     <!-- Resultado Sensibilidad de oídos Activity -->
     <string name="lblResultadoSensibilidaOido">Resultado del Exam. Sensibilidad de Oído</string>
@@ -111,8 +114,6 @@
 
     <!-- MENSAJES DE ERROR -->
     <string name="txtPerfilesToastPerfilErrorAlBorrar">Error al borrar el perfil</string>
-    <string name="txtMantenimientoPerfilesToastErrorParsearDatos">Error al parsear datos del perfil</string>
-    <string name="hello_world">Hello world!</string>
-    
+    <string name="txtMantenimientoPerfilesToastErrorParsearDatos">Error al transformar datos del perfil</string>
 
 </resources>
