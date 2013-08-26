@@ -23,8 +23,9 @@
                 android:id="@+id/txtPaso1Sensibilidad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:gravity="left"
-                android:text="Pasos:"
+                android:text="@string/txtPasos"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="20sp" />
         </TableRow>
@@ -35,7 +36,8 @@
                 android:id="@+id/chkPaso1InstrSensibilidad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vaya a un lugar tranquilo" />
+                android:layout_marginBottom="10dp"
+                android:text="@string/txtPaso1" />
         </TableRow>
 
         <TableRow>
@@ -44,11 +46,21 @@
                 android:id="@+id/chkPaso2InstrSensibilidad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Este seguro de que tiene los audifonos conectados seg&apos;un el o&apos;ido" />
+                android:layout_marginBottom="10dp"
+                android:text="@string/txtPaso2" />
+        </TableRow>
+
+        <TableRow>
+
+            <CheckBox
+                android:id="@+id/chkPaso3InstrSensibilidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtPaso3" />
         </TableRow>
     </TableLayout>
-    
-      <TableLayout
+
+    <TableLayout
         android:id="@+id/tableBttns"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,7 +68,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         android:gravity="center_vertical|center_horizontal" >
-
+@
         <TableRow>
 
             <Button

@@ -21,16 +21,18 @@ public class SensibilidadDeOidoInstruccionesActivity extends Activity {
 				R.menu.activity_sensibilidad_de_oido_instrucciones, menu);
 		return true;
 	}
+
 	public void onCancelarClick(View view) {
 		this.finish();
 	}
 
 	public void onEmpezarClick(View view) {
-		
-		long perfil=getIntent().getLongExtra("idPerfil",0);
-		long tipoExamen=getIntent().getLongExtra("idTipoExamen",0);
-				
-		Intent intent = new Intent(view.getContext(), CuestionarioExamenActivity.class);
+
+		long perfil = getIntent().getLongExtra("idPerfil", 0);
+		long tipoExamen = getIntent().getLongExtra("idTipoExamen", 0);
+
+		Intent intent = new Intent(view.getContext(),
+				CuestionarioExamenActivity.class);
 		intent.putExtra("idPerfil", perfil);
 		intent.putExtra("idTipoExamen", tipoExamen);
 		startActivity(intent);
