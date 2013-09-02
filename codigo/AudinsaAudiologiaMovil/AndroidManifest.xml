@@ -89,6 +89,10 @@
             android:name="audinsa.audiologia.CuestionarioResultadoReprobado"
             android:label="@string/lblResultadoCuestionario" >
         </activity>
+        <activity
+            android:name="audinsa.audiologia.HablaEnRuidoInstruccionesActivity"
+            android:label="@string/title_activity_habla_en_ruido_instrucciones" >
+        </activity>
     </application>
 
 </manifest>
