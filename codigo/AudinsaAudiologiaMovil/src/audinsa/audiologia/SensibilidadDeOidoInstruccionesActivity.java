@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 public class SensibilidadDeOidoInstruccionesActivity extends Activity {
@@ -24,6 +25,19 @@ public class SensibilidadDeOidoInstruccionesActivity extends Activity {
 
 	public void onCancelarClick(View view) {
 		this.finish();
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()) {
+		case R.id.menu_regresar:
+			finish();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+
+		}
 	}
 
 	public void onEmpezarClick(View view) {

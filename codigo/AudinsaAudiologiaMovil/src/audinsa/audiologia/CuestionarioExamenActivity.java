@@ -1,7 +1,5 @@
 package audinsa.audiologia;
 
-
-
 import org.joda.time.DateTime;
 import android.os.Bundle;
 import android.app.Activity;
@@ -16,7 +14,7 @@ import audinsa.audiologia.datasources.ResultadoDataSource;
 public class CuestionarioExamenActivity extends Activity {
 	private Cuestionario cuestionario;
 	private ResultadoDataSource dataSource;
-	int puntaje=0;
+	int puntaje = 0;
 	TextView lblPregunta = null;
 
 	@Override
@@ -26,11 +24,10 @@ public class CuestionarioExamenActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cuestionario_examen);
 		cuestionario = new Cuestionario();
-		lblPregunta = (TextView)findViewById(R.id.lblPregunta);
+		lblPregunta = (TextView) findViewById(R.id.lblPregunta);
 		Resources res = this.getResources();
 		preguntas = res.getStringArray(R.array.Preguntas);
-		for (int i = 0; i < preguntas.length; i++)
-		{
+		for (int i = 0; i < preguntas.length; i++) {
 			cuestionario.getPreguntas().add(preguntas[i]);
 		}
 
@@ -47,62 +44,53 @@ public class CuestionarioExamenActivity extends Activity {
 
 	private void guardarResultado(View view) {
 		long idPerfil, idTipoExamen;
-		idPerfil=getIntent().getLongExtra("idPerfil",0);
-		idTipoExamen=getIntent().getLongExtra("idTipoExamen",0);
+		idPerfil = getIntent().getLongExtra("idPerfil", 0);
+		idTipoExamen = getIntent().getLongExtra("idTipoExamen", 0);
 		dataSource = new ResultadoDataSource(this);
 		dataSource.open();
-		dataSource.crearResultado(idPerfil,idTipoExamen,puntaje, DateTime.now());
+		dataSource.crearResultado(idPerfil, idTipoExamen, puntaje,
+				DateTime.now());
 		dataSource.close();
 
-		Intent intent = new Intent(view.getContext(), CuestionarioResultadoActivity.class);
-		if(puntaje >= 8) {
-			String positivo= this.getString(R.string.strResultadoPositivo) ;
-			intent.putExtra("strResultado",positivo);
+		Intent intent = new Intent(view.getContext(),
+				CuestionarioResultadoActivity.class);
+		if (puntaje >= 8) {
+			String positivo = this.getString(R.string.strResultadoPositivo);
+			intent.putExtra("strResultado", positivo);
 			intent.putExtra("bolAprobado", true);
-		}
-		else
-		{
-			String negativo= this.getString(R.string.strResultadoNegativo);
+		} else {
+			String negativo = this.getString(R.string.strResultadoNegativo);
 			intent.putExtra("strResultado", negativo);
 			intent.putExtra("bolAprobado", false);
 		}
 		startActivity(intent);
-		this.finish();					
+		this.finish();
 	}
 
-	public void btnSiClick(View view)
-	{
+	public void btnSiClick(View view) {
 
-		if (cuestionario.getPreguntas().size() == 0)
-		{
-			//TODO:guardar resultado e  Ir a pantalla de resultados
+		if (cuestionario.getPreguntas().size() == 0) {
+			// TODO:guardar resultado e Ir a pantalla de resultados
 			guardarResultado(view);
-		}
-		else
-		{
-			puntaje=cuestionario.getPuntaje();
+		} else {
+			puntaje = cuestionario.getPuntaje();
 			puntaje++;
 			cuestionario.setPuntaje(puntaje);
-			obtenerSiguientePregunta();	
+			obtenerSiguientePregunta();
 
 		}
 	}
 
-
-	public void btnNoClick(View view)
-	{
-		if (cuestionario.getPreguntas().size() == 0)
-		{
+	public void btnNoClick(View view) {
+		if (cuestionario.getPreguntas().size() == 0) {
 			guardarResultado(view);
-		}
-		else
-		{
-			obtenerSiguientePregunta();	
+		} else {
+			obtenerSiguientePregunta();
 		}
 	}
 
-	//Obtiene la siguiente pregunta válida del arreglo y la elimina del mismo.
-	public void obtenerSiguientePregunta(){
+	// Obtiene la siguiente pregunta válida del arreglo y la elimina del mismo.
+	public void obtenerSiguientePregunta() {
 		lblPregunta.setText(cuestionario.getPreguntas().get(0));
 		cuestionario.getPreguntas().remove(0);
 

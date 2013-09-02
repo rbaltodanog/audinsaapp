@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical|center_horizontal"
     android:gravity="center_vertical"
-    tools:context=".SensibilidadDeOidoInstruccionesActivity" >
+    tools:context=".HablaEnRuidoInstruccionesActivity" >
 
     <TableLayout
         android:id="@+id/tableInstrucciones"
@@ -15,12 +15,12 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="0dp"
-        android:background="@drawable/shape_instructions_sensibilidad_oido" >
+        android:background="@drawable/shape_instructions_habla_ruido" >
 
         <TableRow>
 
             <TextView
-                android:id="@+id/txtPaso1Sensibilidad"
+                android:id="@+id/txtPaso1Habla"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -33,30 +33,30 @@
         <TableRow>
 
             <CheckBox
-                android:id="@+id/chkPaso1InstrSensibilidad"
+                android:id="@+id/chkPaso1InstrHabla"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="@string/txtPasoSensibilidad1" />
+                android:text="@string/txtPasoHabla1" />
         </TableRow>
 
         <TableRow>
 
             <CheckBox
-                android:id="@+id/chkPaso2InstrSensibilidad"
+                android:id="@+id/chkPaso2InstrHablaEnRuido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="@string/txtPasoSensibilidad2" />
+                android:text="@string/txtPasoHabla2" />
         </TableRow>
 
         <TableRow>
 
             <CheckBox
-                android:id="@+id/chkPaso3InstrSensibilidad"
+                android:id="@+id/chkPaso3InstrHabla"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtPasoSensibilidad3" />
+                android:text="@string/txtPasoHabla3" />
         </TableRow>
     </TableLayout>
 
