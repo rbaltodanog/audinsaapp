@@ -1,6 +1,8 @@
 package audinsa.audiologia.Adapters;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Hashtable;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,14 +18,17 @@ import audinsa.audiologia.businessdomain.TipoExamen;
 public class TestItemAdapter extends ArrayAdapter<TipoExamen> {
 
 	private Context context;
-	int layoutResourceId;
+	Dictionary<String, Integer> testLayouts;
 	private ArrayList<TipoExamen> tipoExamenes;
 
-	public TestItemAdapter(Context context, int layoutResourceId, ArrayList<TipoExamen> tipoExamenes) {
-		super(context, layoutResourceId, tipoExamenes);
+	public TestItemAdapter(Context context, ArrayList<TipoExamen> tipoExamenes) {
+		super(context, R.layout.listview_hablaruido_item_row, tipoExamenes);
 		this.context = context;
-		this.layoutResourceId = layoutResourceId;
 		this.tipoExamenes = tipoExamenes;
+		testLayouts = new Hashtable<String, Integer>();
+		testLayouts.put("sensibilidad de oído", R.layout.listview_sensibilidadoido_item_row);
+		testLayouts.put("habla en ruido", R.layout.listview_hablaruido_item_row);
+		testLayouts.put("cuestionario", R.layout.listview_cuestionario_item_row);
 	}
 
 	public int getCount() {
@@ -52,12 +57,15 @@ public class TestItemAdapter extends ArrayAdapter<TipoExamen> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View row = convertView;
 		TestHolder holder = null;
+		
+		TipoExamen tipoExamen = getItem(position);
 
 		if(row == null)
 		{
+			//Setea dinamicamente el estilo dependiendo del examen
 			LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-			row = inflater.inflate(layoutResourceId, parent, false);
-
+			row = inflater.inflate(testLayouts.get(tipoExamen.getNombreExamen().toLowerCase()), parent, false);
+			
 			holder = new TestHolder();
 			holder.txtNombreExamen = (TextView)row.findViewById(R.id.txtNombreExamen);
 			holder.txtDescripcionExamen = (TextView)row.findViewById(R.id.txtDescripcionExamen);
@@ -67,8 +75,7 @@ public class TestItemAdapter extends ArrayAdapter<TipoExamen> {
 		{
 			holder = (TestHolder)row.getTag();
 		}
-
-		TipoExamen tipoExamen = getItem(position);
+		
 		holder.txtNombreExamen.setText(tipoExamen.getNombreExamen());
 		holder.txtDescripcionExamen.setText(tipoExamen.getInstrucciones());
 
