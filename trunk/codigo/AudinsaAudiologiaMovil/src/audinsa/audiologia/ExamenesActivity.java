@@ -1,5 +1,4 @@
 package audinsa.audiologia;
-
 import java.util.ArrayList;
 import android.os.Bundle;
 import android.app.Activity;
@@ -16,7 +15,7 @@ import audinsa.audiologia.datasources.TipoExamenDataSource;
 
 public class ExamenesActivity extends Activity {
 	private TipoExamenDataSource dataSource;
-	private long perfil = 0;
+	private long perfil=0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +24,14 @@ public class ExamenesActivity extends Activity {
 		loadData();
 		setOnListViewItemClickListener();
 	}
-
-	private void loadData() {
+	
+	private void loadData()
+	{
 		dataSource = new TipoExamenDataSource(this);
-		ArrayList<TipoExamen> tipoExamenes = dataSource
-				.obtenerTodosLosTiposExamenes();
+		ArrayList<TipoExamen> tipoExamenes = dataSource.obtenerTodosLosTiposExamenes();
 
-		TestItemAdapter adapter = new TestItemAdapter(this,
-				R.layout.listview_examenes_item_row, tipoExamenes);
+		TestItemAdapter adapter = new TestItemAdapter(this, 
+		tipoExamenes);
 		ListView listView = (ListView) findViewById(R.id.listExamenes);
 		listView.setAdapter(adapter);
 	}
@@ -83,49 +82,51 @@ public class ExamenesActivity extends Activity {
 		};
 		lstView.setOnItemClickListener(listener);
 	}
-
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		Intent intent = null;
-		// Handle item selection
-		switch (item.getItemId()) {
-		case R.id.menu_regresar:
-			finish();
-			return true;
-		case R.id.menu_articulos:
-			intent = new Intent(this.getBaseContext(), ArticulosActivity.class);
-			startActivity(intent);
-			return true;
-		case R.id.menu_acerca_de:
-			intent = new Intent(this.getBaseContext(), AcercaDeActivity.class);
-			startActivity(intent);
-			return true;
-		case R.id.menu_perfil:
-			perfil = getIntent().getLongExtra("idPerfil", 0);
-			intent = new Intent();
-			intent.setClass(ExamenesActivity.this,
-					PerfilesMantenimientoActivity.class);
-			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			intent.putExtra("idPerfil", perfil);
-			intent.putExtra("actualizacion", true);
-			startActivity(intent);
-
-			return true;
-		case R.id.menu_localizar:
-			perfil = getIntent().getLongExtra("idPerfil", 0);
-			try {
-				intent = new Intent();
-				intent.setClass(ExamenesActivity.this, MapaActivity.class);
-
+		Intent intent=null;
+		//	Handle item selection
+	    switch (item.getItemId()) {
+	        case R.id.menu_regresar:
+	            finish();
+	            return true;
+	        case R.id.menu_articulos:
+	        	intent = new Intent(this.getBaseContext(), ArticulosActivity.class);
 				startActivity(intent);
-			} catch (Exception e) {
-
-			}
-
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
-
-		}
+	            return true;
+	        case R.id.menu_acerca_de:
+	        	intent = new Intent(this.getBaseContext(), AcercaDeActivity.class);
+				startActivity(intent);
+	            return true;
+	        case R.id.menu_perfil:	        	
+	        	 perfil=getIntent().getLongExtra("idPerfil",0);
+			     intent = new Intent();
+	        	 intent.setClass(ExamenesActivity.this,PerfilesMantenimientoActivity.class);
+                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                 intent.putExtra("idPerfil", perfil);
+                 intent.putExtra("actualizacion", true);
+                 startActivity(intent);
+                 
+                 return true;
+	        case R.id.menu_localizar:		        	
+	        	 perfil=getIntent().getLongExtra("idPerfil",0);
+			   try{
+				   intent = new Intent();
+		        	 intent.setClass(ExamenesActivity.this,MapaActivity.class);
+		        	
+	        		 startActivity(intent);
+	        	 }
+	        	 catch(Exception e){
+	        		 
+	        		 
+	        	 }
+	        	 
+	        	  return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	            
+	            
+	    }
 	}
 }
