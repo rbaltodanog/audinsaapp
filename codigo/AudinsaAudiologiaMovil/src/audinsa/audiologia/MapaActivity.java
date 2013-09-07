@@ -17,7 +17,7 @@ public class MapaActivity extends FragmentActivity implements
 		OnMapClickListener {
 	private final LatLng UPV = new LatLng(9.949407, -84.058312);
 	private final LatLng UPV2 = new LatLng(9.975042, -84.118026);
-	private static String title = "Contacto: Silvia Bonilla, Tel:88959807";
+	private static String title = "Contacto: Silvia Bonilla, Tel:(506)-(88959807)";
 	private GoogleMap mapa;
 
 	@Override

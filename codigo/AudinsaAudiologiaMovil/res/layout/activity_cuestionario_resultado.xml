@@ -14,7 +14,7 @@
             android:layout_height="match_parent"
             android:layout_span="1"
             android:gravity="center"
-            android:text="Su calificación"
+            android:text="@string/strCalificacion"
             android:textSize="20sp" />
     </TableRow>
 

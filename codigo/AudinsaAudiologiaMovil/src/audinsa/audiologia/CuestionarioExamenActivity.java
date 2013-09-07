@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import audinsa.audiologia.businessdomain.Cuestionario;
@@ -57,11 +58,11 @@ public class CuestionarioExamenActivity extends Activity {
 		if (puntaje >= 8) {
 			String positivo = this.getString(R.string.strResultadoPositivo);
 			intent.putExtra("strResultado", positivo);
-			intent.putExtra("bolAprobado", true);
+			intent.putExtra("bolAprobado", false);
 		} else {
 			String negativo = this.getString(R.string.strResultadoNegativo);
 			intent.putExtra("strResultado", negativo);
-			intent.putExtra("bolAprobado", false);
+			intent.putExtra("bolAprobado", true);
 		}
 		startActivity(intent);
 		this.finish();
@@ -94,5 +95,18 @@ public class CuestionarioExamenActivity extends Activity {
 		lblPregunta.setText(cuestionario.getPreguntas().get(0));
 		cuestionario.getPreguntas().remove(0);
 
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()) {
+		case R.id.menu_regresar:
+			finish();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+
+		}
 	}
 }

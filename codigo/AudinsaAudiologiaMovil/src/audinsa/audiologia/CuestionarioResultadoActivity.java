@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.drawable.AnimationDrawable;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,7 +40,18 @@ public class CuestionarioResultadoActivity extends Activity {
 
 		return true;
 	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
 
+		switch (item.getItemId()) {
+		case R.id.menu_regresar:
+			finish();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+
+		}
+	}
 	public void onWindowFocusChanged(boolean hasFocus) {
 
 		super.onWindowFocusChanged(hasFocus);
