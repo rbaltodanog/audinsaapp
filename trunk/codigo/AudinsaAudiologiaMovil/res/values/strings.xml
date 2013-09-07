@@ -67,7 +67,8 @@
     <string name="strResultadoNegativo">Usted podría estar presentando una dificultad auditiva. Le recomendamos contactar a la clínica</string>
     <string name="strResultadoPositivo">Usted no presenta una dificultad auditiva. Le recomendamos una valoración anual</string>
     <string name="imgBorrarContentDescription">Icono para borrar el resultado</string>
-
+    <string name="strCalificacion">De acuerdo a sus respuestas</string>
+    
     <!-- Articulos Activity -->
     <string name="title_activity_articulos">Artículos</string>
     <string name="lblCargandoArticulos">Cargando artículos</string>

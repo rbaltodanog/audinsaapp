@@ -8,14 +8,18 @@ import java.util.Date;
 import java.util.Locale;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import audinsa.audiologia.businessdomain.Perfil;
 import audinsa.audiologia.datasources.PerfilDataSource;
@@ -149,9 +153,11 @@ public class PerfilesMantenimientoActivity extends Activity {
 			Log.w(PerfilDataSource.class.getName(),
 					"Error tratando de agregar la fecha de nacimiento al nuevo perfil: "
 							+ nombre
-							+ ". Seteando la fecha de nacimiento a la fecha mínima del sistema.");
+							+ ". Estableciendo la fecha de nacimiento a la fecha mínima del sistema.");
 			fechaNacimiento = new Date(Long.MIN_VALUE);
 		}
+		
+		if(validarPerfil(nombre,correoElectronico)){
 		if (idPerfil != -1) {
 
 			int resultado = dataSource.actualizarPerfil(nombre,
@@ -174,8 +180,29 @@ public class PerfilesMantenimientoActivity extends Activity {
 									R.string.txtMantenimientoPerfilesToastPerfilAgregado),
 					Toast.LENGTH_SHORT).show();
 		}
+		}
+		else{			
+			
+			AlertDialog.Builder popupBuilder = new AlertDialog.Builder(this);
+			TextView myMsg = new TextView(this);
+			myMsg.setText("Debe de completar la información solicitada");
+			myMsg.setGravity(Gravity.CENTER_HORIZONTAL);
+			popupBuilder.setView(myMsg);
+		}
 
 		this.finish();
+	}
+
+		
+	
+	private boolean validarPerfil(String nombre,String correoElectronico) {
+		boolean bandera=true;
+		
+		if(nombre.trim().length()<= 0  || correoElectronico.trim().length()<= 0 )
+		   bandera=false;
+		
+		
+		return bandera;
 	}
 
 	// Will be called via the onClick attribute
@@ -195,6 +222,19 @@ public class PerfilesMantenimientoActivity extends Activity {
 					"Error tratando de obtener el perfil.");
 		}
 		return p;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()) {
+		case R.id.menu_regresar:
+			finish();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+
+		}
 	}
 
 }
