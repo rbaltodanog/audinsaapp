@@ -46,7 +46,7 @@ public class SensibilidadDeOidoInstruccionesActivity extends Activity {
 		long tipoExamen = getIntent().getLongExtra("idTipoExamen", 0);
 
 		Intent intent = new Intent(view.getContext(),
-				CuestionarioExamenActivity.class);
+				SensibilidadOidoExamen.class);
 		intent.putExtra("idPerfil", perfil);
 		intent.putExtra("idTipoExamen", tipoExamen);
 		startActivity(intent);

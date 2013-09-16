@@ -39,7 +39,7 @@
                     android:layout_height="fill_parent"
                     android:layout_gravity="center"
                     android:layout_span="1"
-                    android:text="Su calificación"
+                    android:text="@string/strCalificacion"
                     android:textSize="15sp" />
             </FrameLayout>
 
@@ -237,7 +237,9 @@
 
         <Button
             android:id="@+id/btnRegresar"
+            android:onClick="onRegresarClick"
             android:text="Regresar" />
+
     </TableRow>
 
 </TableLayout>

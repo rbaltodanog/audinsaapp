@@ -36,6 +36,7 @@ public class CuestionarioInstruccionesActivity extends Activity {
 				CuestionarioExamenActivity.class);
 		intent.putExtra("idPerfil", perfil);
 		intent.putExtra("idTipoExamen", tipoExamen);
+		this.finish();
 		startActivity(intent);
 	}
 

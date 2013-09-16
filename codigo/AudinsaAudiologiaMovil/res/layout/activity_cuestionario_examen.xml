@@ -79,7 +79,7 @@
         android:layout_above="@+id/tableLayout1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="49dp"
+        android:layout_marginBottom="35dp"
         android:background="@drawable/header_circular_questionnaire"
         android:gravity="center_vertical|center_horizontal"
         android:textSize="20sp"

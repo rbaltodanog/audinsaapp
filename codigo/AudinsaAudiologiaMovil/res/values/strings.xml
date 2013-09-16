@@ -93,25 +93,28 @@
     <string name="lblBorrar">Borrar</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_cuestionario_resultado">Resultado Cuestionario</string>
- 
+
     <!-- Mapa Localización -->
     <string name="title_activity_mapa_localizacion">Localización Clínica</string>
 
-    
-        <!-- Instrucciones Habla en Ruido -->
- 
-      <string name="title_activity_habla_en_ruido_instrucciones">Habla En Ruido</string>
-      <string name="txtPasoHabla1">1. Asegúrese de estar en un lugar silencioso.</string>
-      <string name="txtPasoHabla2">2. Coloque sus audífonos según corresponda el oído</string>
-      <string name="txtPasoHabla3">3. El volumen del teléfono debe estar al 100%</string>
-      
-    
+    <!-- Instrucciones Habla en Ruido -->
+
+    <string name="title_activity_habla_en_ruido_instrucciones">Habla En Ruido</string>
+    <string name="txtPasoHabla1">1. Asegúrese de estar en un lugar silencioso.</string>
+    <string name="txtPasoHabla2">2. Coloque sus audífonos según corresponda el oído</string>
+    <string name="txtPasoHabla3">3. El volumen del teléfono debe estar al 100%</string>
+
     <!-- Instrucciones Sensibilidad de oídos -->
-   <string name="title_activity_sensibilidad_oidos_instrucciones">Sensibilidad de Oídos</string>
+    <string name="title_activity_sensibilidad_oidos_instrucciones">Sensibilidad de Oídos</string>
     <string name="txtPasos">Pasos</string>
     <string name="txtPasoSensibilidad1">1. Asegúrese de estar en un lugar silencioso.</string>
     <string name="txtPasoSensibilidad2">2. Coloque sus audífonos según corresponda el oído</string>
     <string name="txtPasoSensibilidad3">3. El volumen del teléfono debe estar al 100%</string>
+    
+     <!-- Instrucciones Sensibilidad de oídos -->
+     <string name="lblInstruExamenSensibiOido">Indique en que oído percibió el sonido</string>
+     <string name="lblExamenSensibiOidoIzq">Oído izquierdo</string>
+     <string name="lblExamenSensibiOidoDer">Oído derecho</string>
 
     <!-- Resultado Sensibilidad de oídos Activity -->
     <string name="lblResultadoSensibilidaOido">Resultado del Exam. Sensibilidad de Oído</string>
@@ -126,7 +129,9 @@
     <!-- MENSAJES DE ERROR -->
     <string name="txtPerfilesToastPerfilErrorAlBorrar">Error al borrar el perfil</string>
     <string name="txtMantenimientoPerfilesToastErrorParsearDatos">Error al transformar datos del perfil</string>
+    
+    
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_sensibilidad_oido_examen">Sensibilidad de Oídos</string>
 
 </resources>

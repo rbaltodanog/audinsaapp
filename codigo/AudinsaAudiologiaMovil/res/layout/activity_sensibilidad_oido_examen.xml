@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SensibilidadOidoExamen" >
+
+    <TextView
+        android:id="@+id/lblInstruExamenSensibiOido"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imgBtnLeftEar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="35dp"
+        android:background="@drawable/header_circular_sensibilidadoido"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/lblInstruExamenSensibiOido"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/imgBtnLeftEar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:baselineAlignBottom="false"
+        android:cropToPadding="false"
+        android:maxHeight="160dp"
+        android:maxWidth="160dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/left_ear" />
+
+    <ImageButton
+        android:id="@+id/imgBtnRightEar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:baselineAlignBottom="false"
+        android:cropToPadding="false"
+        android:maxHeight="172dp"
+        android:maxWidth="160dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/right_ear" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/imgBtnLeftEar"
+        android:layout_below="@+id/imgBtnLeftEar"
+        android:layout_marginRight="24dp"
+        android:text="@string/lblExamenSensibiOidoIzq"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ed8b33"
+        android:typeface="normal" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/imgBtnRightEar"
+        android:layout_marginRight="24dp"
+        android:text="@string/lblExamenSensibiOidoDer"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ed8b33" />
+
+</RelativeLayout>

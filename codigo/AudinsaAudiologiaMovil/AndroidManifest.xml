@@ -93,6 +93,10 @@
             android:name="audinsa.audiologia.HablaEnRuidoInstruccionesActivity"
             android:label="@string/title_activity_habla_en_ruido_instrucciones" >
         </activity>
+        <activity
+            android:name="audinsa.audiologia.SensibilidadOidoExamen"
+            android:label="@string/title_activity_sensibilidad_oido_examen" >
+        </activity>
     </application>
 
 </manifest>

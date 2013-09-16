@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.graphics.drawable.AnimationDrawable;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -63,5 +64,8 @@ public class CuestionarioResultadoActivity extends Activity {
 		frameAnimation.setVisible(true, true);
 		frameAnimation.start();
 	}
-
+	
+	public void onRegresarClick(View view) {
+		this.finish();
+	}
 }
