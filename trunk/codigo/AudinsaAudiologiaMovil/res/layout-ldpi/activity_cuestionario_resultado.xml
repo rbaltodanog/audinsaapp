@@ -4,12 +4,12 @@
     android:layout_height="match_parent" >
 
     <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
 
         <TextView
             android:id="@+id/lblSuResultado"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_span="1"
             android:gravity="center"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:adjustViewBounds="true"
-            android:maxHeight="70dp"
+            android:maxHeight="130dp"
             android:scaleType="fitStart"
             android:src="@drawable/animation_resultado_aprobado" />
     </TableRow>
@@ -43,8 +43,8 @@
 
         <TextView
             android:id="@+id/txtResultadoDescription"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="bottom|center"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -92,7 +92,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/lblContactarClinica"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
         </TableRow>
 
         <TableRow
@@ -126,7 +126,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/lblBorrar"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
         </TableRow>
 
         <TableRow
@@ -160,7 +160,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/lblCompartir"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
         </TableRow>
 
         <TableRow
@@ -185,9 +185,8 @@
             android:id="@+id/btnRegresar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onRegresarClick"
-            android:text="Regresar" />
-
+            android:text="Regresar"
+            android:onClick="onRegresarClick" />
     </TableRow>
 
 </TableLayout>

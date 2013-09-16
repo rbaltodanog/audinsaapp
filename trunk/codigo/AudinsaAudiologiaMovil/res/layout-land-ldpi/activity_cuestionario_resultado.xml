@@ -18,7 +18,7 @@
     <TableLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:orientation="horizontal"
         android:padding="1dp" >
 
@@ -39,7 +39,7 @@
                     android:layout_height="fill_parent"
                     android:layout_gravity="center"
                     android:layout_span="1"
-                    android:text="Su calificación"
+                    android:text="@string/strCalificacion"
                     android:textSize="25sp" />
             </FrameLayout>
 
@@ -90,7 +90,7 @@
                         android:layout_centerVertical="false"
                         android:layout_gravity="center_horizontal"
                         android:adjustViewBounds="true"
-                        android:maxHeight="135dp"
+                        android:maxHeight="90dp"
                         android:scaleType="centerInside"
                         android:src="@drawable/animation_resultado_aprobado" />
 
@@ -104,7 +104,8 @@
                         android:gravity="bottom|center"
                         android:text="Consulte a un especialista"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textStyle="italic" />
+                        android:textStyle="italic"
+                        android:textSize="15sp" />
 
                 </RelativeLayout>
 
@@ -136,13 +137,13 @@
                             <TextView
                                 android:id="@+id/lblContactarClinica"
                                 android:layout_width="wrap_content"
-                                android:layout_height="40dp"
+                                android:layout_height="20dp"
                                 android:layout_marginBottom="10dp"
                                 android:layout_marginTop="10dp"
                                 android:gravity="center_vertical"
                                 android:text="@string/lblContactarClinica"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textSize="25sp" />
+                                android:textSize="15sp" />
 
                         </TableRow>
 
@@ -174,13 +175,13 @@
                             <TextView
                                 android:id="@+id/lblBorrar"
                                 android:layout_width="wrap_content"
-                                android:layout_height="40dp"
+                                android:layout_height="20dp"
                                 android:layout_marginBottom="10dp"
                                 android:layout_marginTop="10dp"
                                 android:gravity="center_vertical"
                                 android:text="@string/lblBorrar"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textSize="25sp" />
+                                android:textSize="15sp" />
 
                         </TableRow>
 
@@ -212,13 +213,13 @@
                             <TextView
                                 android:id="@+id/lblCompartir"
                                 android:layout_width="wrap_content"
-                                android:layout_height="40dp"
+                                android:layout_height="20dp"
                                 android:layout_marginBottom="10dp"
                                 android:layout_marginTop="10dp"
                                 android:gravity="center_vertical"
                                 android:text="@string/lblCompartir"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textSize="25sp" />
+                                android:textSize="15sp" />
 
                         </TableRow>
 
@@ -240,16 +241,15 @@
     </TableLayout>
 
     <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center_vertical|center_horizontal"
         android:padding="1dip" >
 
         <Button
             android:id="@+id/btnRegresar"
-            android:onClick="onRegresarClick"
-            android:text="Regresar" />
-
+            android:text="Regresar"
+            android:onClick="onRegresarClick" />
     </TableRow>
 
 </TableLayout>
