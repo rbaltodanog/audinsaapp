@@ -64,6 +64,8 @@ public class CuestionarioExamenActivity extends Activity {
 			intent.putExtra("strResultado", negativo);
 			intent.putExtra("bolAprobado", true);
 		}
+		
+		
 		startActivity(intent);
 		this.finish();
 	}
