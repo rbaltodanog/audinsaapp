@@ -24,8 +24,7 @@ public class ResultadoDataSource {
 	private String[] allColumns = { MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID,
 			MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL,
 			MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_EXAMEN,    
-			MySQLiteHelper.TABLA_RESULTADO_COLUMNA_VALOR_EXAMEN,
-			MySQLiteHelper.TABLA_RESULTADO_COLUMNA_DURACION_REAL};
+			MySQLiteHelper.TABLA_RESULTADO_COLUMNA_VALOR_EXAMEN};
 
 	public ResultadoDataSource(Context context) {
 		dbHelper = new MySQLiteHelper(context);
@@ -50,12 +49,12 @@ public class ResultadoDataSource {
 		
 		Duration duracionExamen = new Duration(fechaHoraInicio, DateTime.now());
 
-		String duracionReal = duracionExamen.getStandardMinutes() + " minutos : " + duracionExamen.getStandardSeconds() + " segundos";
+		//String duracionReal = duracionExamen.getStandardMinutes() + " minutos : " + duracionExamen.getStandardSeconds() + " segundos";
 
 		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_ID_TIPO_EXAMEN, idTipoExamen);
-		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_FECHA_INICIO,fechaInicio);
-		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_DURACION_REAL,0);
-		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_PORCENTAJE_COMPLETADO,100);
+		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_FECHA_INICIO, fechaInicio);
+		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_DURACION_REAL, duracionExamen.getStandardSeconds());
+		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_PORCENTAJE_COMPLETADO, 100);
 		//TODO FALTA DURACION APROX Y PORC DE EXAMEN
 
 		long idExamen=database.insert(MySQLiteHelper.TABLA_EXAMEN, null,values);
@@ -66,7 +65,6 @@ public class ResultadoDataSource {
 			values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL, idPerfil);
 			values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_EXAMEN, idExamen);
 			values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_VALOR_EXAMEN, valor_examen);
-			values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_DURACION_REAL, duracionReal);
 
 			database.insert(MySQLiteHelper.TABLA_RESULTADO, null,values);
 		}

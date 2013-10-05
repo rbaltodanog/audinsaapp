@@ -1,6 +1,8 @@
 package audinsa.audiologia.businessdomain;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Perfil {
 	private int idPerfil;
@@ -26,7 +28,7 @@ public class Perfil {
 		this.idPerfil = idPerfil;
 	}
 	public String getNombre() {
-		return nombre;
+		return nombre.trim();
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -34,11 +36,15 @@ public class Perfil {
 	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
+	public String getFechaNacimientoText() {
+		SimpleDateFormat dtFormat = new SimpleDateFormat("d/M/yyyy", Locale.US);
+		return dtFormat.format(fechaNacimiento).trim();
+	}
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	public String getCorreoElectronico() {
-		return correoElectronico;
+		return correoElectronico.trim();
 	}
 	public void setCorreoElectronico(String correoElectronico) {
 		this.correoElectronico = correoElectronico;
