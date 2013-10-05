@@ -3,10 +3,10 @@ package audinsa.audiologia;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.media.*;
 
 
 public class SensibilidadOidoExamen extends Activity {
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -20,7 +20,12 @@ public class SensibilidadOidoExamen extends Activity {
 				menu);
 		return true;
 	}
-
+	
+	private void PlayRandomSound()
+	{
+		//Arraylist<string> frequencies;
+		
+	}
 	
 
 	

@@ -37,7 +37,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	public static final String TABLA_RESULTADO_COLUMNA_ID_PERFIL = "id_perfil";
 	public static final String TABLA_RESULTADO_COLUMNA_ID_EXAMEN = "id_examen";
 	public static final String TABLA_RESULTADO_COLUMNA_VALOR_EXAMEN = "valor_examen";
-	public static final String TABLA_RESULTADO_COLUMNA_DURACION_REAL = "duracion_real";
 		
 	// Database creation sql statement
 	private static final String CREAR_TABLA_PERFIL = "create table "
@@ -63,8 +62,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 			+ " integer primary key autoincrement, "
 			+ TABLA_EXAMEN_COLUMNA_ID_TIPO_EXAMEN + " integer not null,"
 			+ TABLA_EXAMEN_COLUMNA_FECHA_INICIO + " text not null,"
-		    + TABLA_EXAMEN_COLUMNA_DURACION_REAL +" text not null,"
-		    + TABLA_EXAMEN_COLUMNA_PORCENTAJE_COMPLETADO +" real not null,"
+		    + TABLA_EXAMEN_COLUMNA_DURACION_REAL +" integer not null,"
+		    + TABLA_EXAMEN_COLUMNA_PORCENTAJE_COMPLETADO +" integer not null,"
 		    + "foreign key (" +TABLA_EXAMEN_COLUMNA_ID_TIPO_EXAMEN +") References "+TABLA_TIPO_EXAMEN +"("+TABLA_TIPO_EXAMEN_COLUMNA_ID +")"
 		    + " );";
 	

@@ -45,13 +45,9 @@ public class CuestionarioExamenActivity extends Activity {
 
 	private void guardarResultado(View view) {
 		long idPerfil, idTipoExamen;
+		int valor_examen = 0;
 		idPerfil = getIntent().getLongExtra("idPerfil", 0);
 		idTipoExamen = getIntent().getLongExtra("idTipoExamen", 0);
-		dataSource = new ResultadoDataSource(this);
-		dataSource.open();
-		dataSource.crearResultado(idPerfil, idTipoExamen, puntaje,
-				DateTime.now());
-		dataSource.close();
 
 		Intent intent = new Intent(view.getContext(),
 				CuestionarioResultadoActivity.class);
@@ -59,13 +55,20 @@ public class CuestionarioExamenActivity extends Activity {
 			String positivo = this.getString(R.string.strResultadoNegativo);
 			intent.putExtra("strResultado", positivo);
 			intent.putExtra("bolAprobado", false);
+			valor_examen = 1;
 		} else {
 			String negativo = this.getString(R.string.strResultadoPositivo);
 			intent.putExtra("strResultado", negativo);
 			intent.putExtra("bolAprobado", true);
 		}
 		
+		dataSource = new ResultadoDataSource(this);
+		dataSource.open();
+		dataSource.crearResultado(idPerfil, idTipoExamen, valor_examen,
+				DateTime.now());
+		dataSource.close();
 		
+		intent.putExtra("idPerfil", idPerfil);
 		startActivity(intent);
 		this.finish();
 	}
