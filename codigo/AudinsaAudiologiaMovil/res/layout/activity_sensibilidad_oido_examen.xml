@@ -71,4 +71,22 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ed8b33" />
 
+    
+    <ImageView
+                android:id="@+id/imgContactarClinica"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:contentDescription="@string/imgContactarClinicaContentDescription"
+                android:src="@drawable/ic_contactar_clinica" 
+                android:clickable="true"  
+                android:onClick="Compartir"/>
+
+    
+        <Button
+            android:id="@+id/btnRegresar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRegresarClick"
+            android:text="Regresar" />
+    
 </RelativeLayout>

@@ -82,8 +82,17 @@
                 android:id="@+id/imgContactarClinica"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
+                android:onClick="onCompartir"
                 android:contentDescription="@string/imgContactarClinicaContentDescription"
                 android:src="@drawable/ic_contactar_clinica" />
+            <!--   <Button
+                android:id="@+id/btnCancelar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_button_questionare"
+                android:onClick="onCompartir"
+                android:text="cc" /> -->
+            
 
             <TextView
                 android:id="@+id/lblContactarClinica"

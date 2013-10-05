@@ -3,9 +3,13 @@ package audinsa.audiologia;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import audinsa.audiologia.businessdomain.Perfil;
+import audinsa.audiologia.datasources.PerfilDataSource;
+
 
 public class CuestionarioInstruccionesActivity extends Activity {
 

@@ -48,6 +48,8 @@
                 android:background="@drawable/shape_button_questionare"
                 android:onClick="onCancelarClick"
                 android:text="@string/btnCancelar" />
+            
+          
         </TableRow>
     </TableLayout>
 
