@@ -52,7 +52,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 			+ " integer primary key autoincrement, " 
 			+ TABLA_RESULTADO_COLUMNA_ID_PERFIL + " integer not null,"
 		    + TABLA_RESULTADO_COLUMNA_ID_EXAMEN +" integer not null,"
-		    + TABLA_RESULTADO_COLUMNA_VALOR_EXAMEN + " real not null,"
+		    + TABLA_RESULTADO_COLUMNA_VALOR_EXAMEN + " integer not null,"
 		    + "foreign key (" +TABLA_RESULTADO_COLUMNA_ID_PERFIL +") References "+TABLA_PERFIL +"("+TABLA_PERFIL_COLUMNA_ID +") ON DELETE CASCADE,"			
 			+ "foreign key (" +TABLA_RESULTADO_COLUMNA_ID_EXAMEN +") References "+TABLA_EXAMEN 	+"("+TABLA_EXAMEN_COLUMNA_ID +") ON DELETE CASCADE"
 			+ " );";

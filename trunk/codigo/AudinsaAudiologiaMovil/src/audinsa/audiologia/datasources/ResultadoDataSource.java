@@ -13,6 +13,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import audinsa.audiologia.businessdomain.Resultado;
 
 public class ResultadoDataSource {
@@ -40,9 +41,9 @@ public class ResultadoDataSource {
 
 
 	//Almacena primero el examen luego el resultado
-	public void crearResultado(long idPerfil,long idTipoExamen,int valor_examen, DateTime fechaHoraInicio) {
+	public long crearResultado(long idPerfil,long idTipoExamen,int valor_examen, DateTime fechaHoraInicio) {
 		ContentValues values = new ContentValues();	    
-
+		long idResultado=0;
 		// Convierte fecha inicio para almacenar en bd
 		DateTimeFormatter dateFormat = DateTimeFormat.forPattern("MM/dd/yyyy HH:mm:ss");
 		String fechaInicio = dateFormat.print(fechaHoraInicio);
@@ -57,17 +58,26 @@ public class ResultadoDataSource {
 		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_PORCENTAJE_COMPLETADO, 100);
 		//TODO FALTA DURACION APROX Y PORC DE EXAMEN
 
+
+		try {
+		
 		long idExamen=database.insert(MySQLiteHelper.TABLA_EXAMEN, null,values);
 
-		if (idExamen > 0)
-		{
-			values = new ContentValues();	  		
-			values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL, idPerfil);
-			values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_EXAMEN, idExamen);
-			values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_VALOR_EXAMEN, valor_examen);
-
-			database.insert(MySQLiteHelper.TABLA_RESULTADO, null,values);
+			if (idExamen > 0)
+			{
+				values = new ContentValues();	  		
+				values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL, idPerfil);
+				values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_EXAMEN, idExamen);
+				values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_VALOR_EXAMEN, valor_examen);
+	
+				idResultado = database.insert(MySQLiteHelper.TABLA_RESULTADO, null,values);
+			}
 		}
+		catch(Exception ex){
+			Log.v("Error almacenando el resultado del examen","Excepción: " + ex.getMessage());
+		}
+		return idResultado;
+		
 
 	}
 
