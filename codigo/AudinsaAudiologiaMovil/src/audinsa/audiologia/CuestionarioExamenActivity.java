@@ -64,11 +64,12 @@ public class CuestionarioExamenActivity extends Activity {
 		
 		dataSource = new ResultadoDataSource(this);
 		dataSource.open();
-		dataSource.crearResultado(idPerfil, idTipoExamen, valor_examen,
-				DateTime.now());
+		long resultado=dataSource.crearResultado(idPerfil, idTipoExamen, valor_examen,	DateTime.now());
 		dataSource.close();
 		
 		intent.putExtra("idPerfil", idPerfil);
+		intent.putExtra("idResultado", resultado);
+		
 		startActivity(intent);
 		this.finish();
 	}

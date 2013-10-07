@@ -8,12 +8,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
 import audinsa.audiologia.businessdomain.Perfil;
-import audinsa.audiologia.businessdomain.Resultado;
 import audinsa.audiologia.datasources.PerfilDataSource;
 
 public class CuestionarioResultadoActivity extends Activity {
@@ -27,27 +25,26 @@ public class CuestionarioResultadoActivity extends Activity {
 		TextView txtResultadoDescription = (TextView) findViewById(R.id.txtResultadoDescription);
 		String strResultado = getIntent().getStringExtra("strResultado");
 		txtResultadoDescription.setText(strResultado);
-		// Cambia la imagen del semaforo si esta aprobado o reprobado
+		// Cambia la imagen del semáforo si esta aprobado o reprobado
 		boolean aprobado = getIntent().getBooleanExtra("bolAprobado", true);
 		ImageView img = (ImageView) findViewById(R.id.imgViewCuestionarioAprobado);
-		if (aprobado) {
+	 	if (aprobado) {
 			img.setImageResource(R.drawable.animation_resultado_aprobado);
 		} else {
 			img.setImageResource(R.drawable.animation_resultado_reprobado);
 		}
 		
-		TableRow rowContactarClinica = (TableRow)findViewById(R.id.row_contactar_clinica);	
-		
+		TableRow rowContactarClinica = (TableRow)findViewById(R.id.row_contactar_clinica);			
 		rowContactarClinica.setClickable(true);
 		rowContactarClinica.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
+				String estado=(getIntent().getBooleanExtra("bolAprobado", true)) ? "Aprobado" : "Contacte un especialista";
 				Intent contactIntent = new Intent(Intent.ACTION_SEND);
 				contactIntent.setType("message/rfc822"); //set the email recipient
 				long idPerfil = getIntent().getLongExtra("idPerfil", 0);
 				Perfil p = onGetPerfil(idPerfil);
-				String shareBody = "Estoy interesado en obtener una cita médica. Mis datos son: " +
-						"Nombre: " + p.toString() + ", Fecha de nacimiento: " + p.getFechaNacimiento() + ", Correo Electrónico: " + 
-						p.getCorreoElectronico();
+				String shareBody = "He realizado el exámen: Cuestionario. Mi calificación es: "+ estado + ".Estoy interesado en obtener una cita médica. Mis datos son: " +
+				"Nombre: " + p.toString() + ", Fecha de nacimiento: " + p.getFechaNacimiento() + ", Correo Electrónico: " +	p.getCorreoElectronico();
 				contactIntent.putExtra(Intent.EXTRA_SUBJECT, "Consulta");
 				contactIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
 				String[] mail = { "info@clinicaaudinsa.com", "" };
@@ -114,6 +111,7 @@ public class CuestionarioResultadoActivity extends Activity {
 	
 	public void borrarResultado(){
 		long idPerfil = getIntent().getLongExtra("idPerfil", 0);
+		long idResultado = getIntent().getLongExtra("idResultado", 0);
 		Perfil p = onGetPerfil(idPerfil);
 	} 
 	
