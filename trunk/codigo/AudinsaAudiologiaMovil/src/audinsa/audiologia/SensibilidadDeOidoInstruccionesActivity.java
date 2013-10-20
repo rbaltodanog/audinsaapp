@@ -1,38 +1,25 @@
 package audinsa.audiologia;
 
-import android.media.AudioManager;
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 public class SensibilidadDeOidoInstruccionesActivity extends Activity {
-	private AudioManager _audioManager; 
 	private HeadSetReceiver _headSetReceiver;
+	private boolean _headphoneIsConnected;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sensibilidad_de_oido_instrucciones);
 		// Check if the headphones are connected
-		_audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-		// Check the checkbox by default
-		CheckBox chkPaso2InstrSensibilidad = (CheckBox)findViewById(R.id.chkPaso2InstrSensibilidad);
-		
 		_headSetReceiver = new HeadSetReceiver();
-		if (_audioManager.isWiredHeadsetOn())
-		{
-			chkPaso2InstrSensibilidad.setChecked(true);
-		}
-		else
-		{
-			chkPaso2InstrSensibilidad.setChecked(false);
-		}		
 	}
 
 	@Override
@@ -61,10 +48,21 @@ public class SensibilidadDeOidoInstruccionesActivity extends Activity {
 	}
 
 	public void onEmpezarClick(View view) {
+		if (!_headphoneIsConnected)
+		{
+			Toast.makeText(
+					getBaseContext(),
+					getBaseContext()
+							.getResources()
+							.getString(
+									R.string.txtSensibOidosSegundoCheck)
+							, Toast.LENGTH_SHORT)
+					.show();
+			return;
+		}
 		
 		long perfil = getIntent().getLongExtra("idPerfil", 0);
-		long tipoExamen = getIntent().getLongExtra("idTipoExamen", 0);
-
+		long tipoExamen = getIntent().getLongExtra("idTipoExamen", 0);		
 		Intent intent = new Intent(view.getContext(),
 				SensibilidadOidoExamen.class);
 		intent.putExtra("idPerfil", perfil);
@@ -76,5 +74,19 @@ public class SensibilidadDeOidoInstruccionesActivity extends Activity {
 	    IntentFilter filter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
 	    registerReceiver(_headSetReceiver, filter);
 	    super.onResume();
+	}
+	
+	public void checkHeadphoneInstructions()
+	{
+		CheckBox chkPaso2InstrSensibilidad = (CheckBox)findViewById(R.id.chkPaso2InstrSensibilidad);
+		chkPaso2InstrSensibilidad.setChecked(true);
+		_headphoneIsConnected = true;
+	}
+	
+	public void uncheckHeadphoneInstructions()
+	{
+		CheckBox chkPaso2InstrSensibilidad = (CheckBox)findViewById(R.id.chkPaso2InstrSensibilidad);
+		chkPaso2InstrSensibilidad.setChecked(false);
+		_headphoneIsConnected = false;
 	}
 }

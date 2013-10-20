@@ -7,15 +7,17 @@ import android.content.Intent;
 public class HeadSetReceiver extends BroadcastReceiver {
     @Override public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals(Intent.ACTION_HEADSET_PLUG)) {
+        	SensibilidadDeOidoInstruccionesActivity activity = (SensibilidadDeOidoInstruccionesActivity)context;
             int state = intent.getIntExtra("state", -1);
             switch (state) {
             case 0:
-            	intent.putExtra("headsetPluggedIn", false);
+            	activity.uncheckHeadphoneInstructions();
                 break;
-            case 1:
-            	intent.putExtra("headsetPluggedIn", true);
+            default:
+            	activity.checkHeadphoneInstructions();
                 break;
             }
+            
         }
     }
 }

@@ -49,9 +49,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="@string/txtPasoSensibilidad2" 
-                android:checked="true"
-            />
+                android:checked="false"
+                android:clickable="false"
+                android:text="@string/txtPasoSensibilidad2" />
+
         </TableRow>
 
         <TableRow>
@@ -60,9 +61,10 @@
                 android:id="@+id/chkPaso3InstrSensibilidad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txtPasoSensibilidad3"
-                android:checked="true"
-             />
+                android:checked="false"
+                android:clickable="false"
+                android:text="@string/txtPasoSensibilidad3" />
+
         </TableRow>
     </TableLayout>
 

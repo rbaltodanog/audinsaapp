@@ -1,13 +1,6 @@
 package audinsa.audiologia.businessdomain;
 
-import audinsa.audiologia.datasources.PerfilDataSource;
-import audinsa.audiologia.datasources.TipoExamenDataSource;
-
 public class ResultadoCuestionario {
-
-	PerfilDataSource  dataSourcePerfil;
-	TipoExamenDataSource dataSourceExamen;
-	
 		public ResultadoCuestionario()
 		{
 			//dataSource= new PerfilDataSource();
