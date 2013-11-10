@@ -1,6 +1,5 @@
 package audinsa.audiologia;
 
-import org.joda.time.DateTimeZone;
 import org.joda.time.DateTime;
 import android.os.Bundle;
 import android.app.Activity;

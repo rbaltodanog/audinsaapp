@@ -15,7 +15,6 @@ import audinsa.audiologia.businessdomain.ResultadoSensibilidadOido;
 public class SensibilidadOidoExamen extends Activity {
 	private ArrayList<ResultadoSensibilidadOido> _sonidos;
 	public ResultadoSensibilidadOido _currentSound;
-	//private SoundPool _soundPool;
 	private MediaPlayer _mPlayer;
 
 	@Override
@@ -23,7 +22,6 @@ public class SensibilidadOidoExamen extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sensibilidad_oido_examen);
 		_sonidos = new ArrayList<ResultadoSensibilidadOido>();
-		//_soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
 		_mPlayer = new MediaPlayer();
 		FillSoundsArray();
 		PlayRandomSound();
@@ -74,7 +72,6 @@ public class SensibilidadOidoExamen extends Activity {
 	}
 
 	public void Sound(int soundID, boolean derecho){
-		AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 		_mPlayer = MediaPlayer.create(getBaseContext(), soundID);
 		_mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
 			public void onCompletion(MediaPlayer player) {
@@ -83,18 +80,15 @@ public class SensibilidadOidoExamen extends Activity {
 				PlayRandomSound();
 			}
 		});
-		float volume = (float)audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 		if (derecho)
 		{
-			_mPlayer.setVolume(0.0f, volume);
+			_mPlayer.setVolume(0.0f, 1.0f);
 			_mPlayer.start();
-			//_soundPool.play(soundID, 0, volume, 1, 0, 1f);
 		}
 		else
 		{
-			_mPlayer.setVolume(volume, 0.0f);
+			_mPlayer.setVolume(1.0f, 0.0f);
 			_mPlayer.start();
-			//_soundPool.play(soundID, volume, 0, 1, 0, 1f);
 		}
 	};
 }
