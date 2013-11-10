@@ -97,6 +97,10 @@
             android:name="audinsa.audiologia.SensibilidadOidoExamen"
             android:label="@string/title_activity_sensibilidad_oido_examen" >
         </activity>
+        <activity
+            android:name="audinsa.audiologia.ResultadoPerfilActivity"
+            android:label="@string/title_activity_resultado_perfil" >
+        </activity>
     </application>
 
 </manifest>

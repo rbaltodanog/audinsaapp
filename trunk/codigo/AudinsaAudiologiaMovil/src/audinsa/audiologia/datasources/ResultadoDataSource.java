@@ -1,13 +1,12 @@
 package audinsa.audiologia.datasources;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
+import org.joda.time.ReadableInstant;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -55,7 +54,7 @@ public class ResultadoDataSource {
 		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_ID_TIPO_EXAMEN, idTipoExamen);
 		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_FECHA_INICIO, fechaInicio);
 		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_DURACION_REAL, duracionExamen.getStandardSeconds());
-		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_PORCENTAJE_COMPLETADO, 100);
+		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_PORCENTAJE_COMPLETADO, valor_examen);
 		//TODO FALTA DURACION APROX Y PORC DE EXAMEN
 
 
@@ -72,12 +71,15 @@ public class ResultadoDataSource {
 	
 				idResultado = database.insert(MySQLiteHelper.TABLA_RESULTADO, null,values);
 			}
+			else{
+				Log.v("else de Error almacenando el resultado del examen","Excepción: " );
+			}
 		}
 		catch(Exception ex){
 			Log.v("Error almacenando el resultado del examen","Excepción: " + ex.getMessage());
 		}
 		return idResultado;
-		
+			
 
 	}
 
@@ -100,8 +102,8 @@ public class ResultadoDataSource {
 				+ " = " + id, null);
 	}
 
-	public List<Resultado> obtenerTodosLosResultados() {
-		List<Resultado> resultados = new ArrayList<Resultado>();
+	public ArrayList<Resultado> obtenerTodosLosResultados() {
+		ArrayList<Resultado> resultados = new ArrayList<Resultado>();
 
 		Cursor cursor = database.query(MySQLiteHelper.TABLA_RESULTADO,
 				allColumns, null, null, null, null, null);
@@ -115,6 +117,7 @@ public class ResultadoDataSource {
 		// Make sure to close the cursor
 		cursor.close();
 		return resultados;
+				
 	}
 	
 	private Resultado cursorAResultado(Cursor cursor) {

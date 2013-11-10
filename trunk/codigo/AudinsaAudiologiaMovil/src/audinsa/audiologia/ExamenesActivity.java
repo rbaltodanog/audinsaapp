@@ -109,7 +109,15 @@ public class ExamenesActivity extends Activity {
                  startActivity(intent);
                  
                  return true;
-	        case R.id.menu_localizar:		        	
+                 
+	        case R.id.menu_resultados:
+	        	 perfil=getIntent().getLongExtra("idPerfil",0);
+			     intent = new Intent();
+	        	 intent.setClass(ExamenesActivity.this,ResultadoPerfilActivity.class);
+	        	 intent.putExtra("idPerfil", perfil);
+	        	 startActivity(intent);
+             
+		        case R.id.menu_localizar:		        	
 	        	 perfil=getIntent().getLongExtra("idPerfil",0);
 			   try{
 				   intent = new Intent();
@@ -119,7 +127,7 @@ public class ExamenesActivity extends Activity {
 	        	 }
 	        	 catch(Exception e){
 	        		 
-	        		 
+        		 
 	        	 }
 	        	 
 	        	  return true;
