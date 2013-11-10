@@ -1,5 +1,6 @@
 package audinsa.audiologia;
 
+import org.joda.time.DateTimeZone;
 import org.joda.time.DateTime;
 import android.os.Bundle;
 import android.app.Activity;
@@ -64,11 +65,11 @@ public class CuestionarioExamenActivity extends Activity {
 		
 		dataSource = new ResultadoDataSource(this);
 		dataSource.open();
-		long resultado=dataSource.crearResultado(idPerfil, idTipoExamen, valor_examen,	DateTime.now());
+		long idResultado=dataSource.crearResultado(idPerfil, idTipoExamen, valor_examen,DateTime.now());
 		dataSource.close();
-		
+			
 		intent.putExtra("idPerfil", idPerfil);
-		intent.putExtra("idResultado", resultado);
+		intent.putExtra("idResultado", idResultado);
 		
 		startActivity(intent);
 		this.finish();
