@@ -70,16 +70,16 @@ public class ResultadosItemAdapter extends ArrayAdapter<Resultado> {
 			}
 
 			Resultado resultado = getItem(position);
-			holder.txtValorResultado.setText(resultado.getValor_examen());
+			holder.txtNombreExamen.setText(resultado.getValor_examen());
 
 			return row;
 		}
 		
 		static class ResultadoHolder
 		{
-			TextView txtValorResultado;
+			//TextView txtValorResultado;
 			TextView txtNombreExamen;			
-			ImageView txtDescripcionExamen;
+			//ImageView txtDescripcionExamen;
 			
 			
 		}

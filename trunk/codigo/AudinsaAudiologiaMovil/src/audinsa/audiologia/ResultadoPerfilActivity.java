@@ -3,6 +3,7 @@ package audinsa.audiologia;
 import java.util.ArrayList;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,8 +30,9 @@ public class ResultadoPerfilActivity extends Activity {
 	
 	private void loadData() {
 		dataSource = new ResultadoDataSource(this);
-		
-		ArrayList<Resultado> resultados = dataSource.obtenerTodosLosResultados();
+			    
+     	long idPerfil=getIntent().getLongExtra("idPerfil",0);
+		ArrayList<Resultado> resultados = dataSource.obtenerTodosLosResultados(idPerfil);
 
 		ResultadosItemAdapter adapter = new ResultadosItemAdapter(this,R.layout.listview_resultados_item_row,resultados);
 		ListView listView = (ListView) findViewById(R.id.listResultados);
