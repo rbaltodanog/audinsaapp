@@ -101,11 +101,13 @@ public class ResultadoDataSource {
 				+ " = " + id, null);
 	}
 
-	public ArrayList<Resultado> obtenerTodosLosResultados() {
+	public ArrayList<Resultado> obtenerTodosLosResultados(long idPerfil) {
+		//busca todos los resultados para el perfil enviado
+		
 		ArrayList<Resultado> resultados = new ArrayList<Resultado>();
-
+		 open();
 		Cursor cursor = database.query(MySQLiteHelper.TABLA_RESULTADO,
-				allColumns, null, null, null, null, null);
+				allColumns,  MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL + " = " + idPerfil, null, null, null, null);
 
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
@@ -115,9 +117,12 @@ public class ResultadoDataSource {
 		}
 		// Make sure to close the cursor
 		cursor.close();
+		close();
 		return resultados;
 				
 	}
+	
+	
 	
 	private Resultado cursorAResultado(Cursor cursor) {
 		Resultado resultado = new Resultado();

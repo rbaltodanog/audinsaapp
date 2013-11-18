@@ -114,10 +114,11 @@ public class ExamenesActivity extends Activity {
 	        	 perfil=getIntent().getLongExtra("idPerfil",0);
 			     intent = new Intent();
 	        	 intent.setClass(ExamenesActivity.this,ResultadoPerfilActivity.class);
+	        	 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);                 
 	        	 intent.putExtra("idPerfil", perfil);
 	        	 startActivity(intent);
-             
-		        case R.id.menu_localizar:		        	
+	        	  return true;
+		    case R.id.menu_localizar:		        	
 	        	 perfil=getIntent().getLongExtra("idPerfil",0);
 			   try{
 				   intent = new Intent();
