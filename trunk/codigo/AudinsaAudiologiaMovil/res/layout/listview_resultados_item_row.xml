@@ -22,24 +22,9 @@
             android:id="@+id/imgTipoExamen"
             android:layout_width="50dip"
             android:layout_height="50dip"
-            android:contentDescription="@string/imgPerfilContentDescription"
-            android:src="@drawable/ic_test" />
- 
-    </LinearLayout>
+            android:src="@drawable/ic_perfil" />
+            
 
-
-   <!--  <TextView
-        android:id="@+id/valorExamen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="5dip"
-        android:gravity="right|center_horizontal"
-        android:text="nota"
-        android:textColor="#10bcc9"
-        android:textSize="10sp"
-        android:textStyle="bold" />--> 
 
      <TextView
          android:id="@+id/txtNombreExamen"
@@ -48,12 +33,27 @@
          android:layout_centerVertical="false"
          android:layout_toRightOf="@+id/thumbnail"
          android:gravity="center_vertical"
-         android:text="Nombre exam"
          android:textColor="#040404"
          android:textSize="18sp"
          android:textStyle="bold"
          android:typeface="sans" />
+    
      
-
+     
+     
+   <TextView
+        android:id="@+id/txtValorExamen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dip"
+        android:gravity="right|center_horizontal"
+        android:textColor="#10bcc9"
+        android:textSize="10sp"
+        android:textStyle="bold" /> 
+     
+   </LinearLayout>
+     
  
 </RelativeLayout>
