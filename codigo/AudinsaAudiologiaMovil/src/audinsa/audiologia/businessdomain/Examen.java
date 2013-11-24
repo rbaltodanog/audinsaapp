@@ -30,7 +30,7 @@ public class Examen {
 	public void setId_examen(int id_examen) {
 		this.id_examen = id_examen;
 	}
-	public long getId_tipo_examen() {
+	public int getId_tipo_examen() {
 		return id_tipo_examen;
 	}
 	public void setId_tipo_examen(int id_tipo_examen) {

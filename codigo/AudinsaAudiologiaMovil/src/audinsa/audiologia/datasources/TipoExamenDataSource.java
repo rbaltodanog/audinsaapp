@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import audinsa.audiologia.businessdomain.Resultado;
 import audinsa.audiologia.businessdomain.TipoExamen;
 
 public class TipoExamenDataSource {
@@ -47,6 +48,18 @@ public class TipoExamenDataSource {
 		return tiposExamenes;
 	}
 
+	public TipoExamen buscarTipoExamen(int idTipoExamen){
+		//busca un tipo de exámen por el id
+		open();
+		Cursor cursor = database.query(MySQLiteHelper.TABLA_TIPO_EXAMEN,
+				allColumns, MySQLiteHelper.TABLA_TIPO_EXAMEN_COLUMNA_ID + " = " + idTipoExamen, null,
+				null, null, null);
+		cursor.moveToFirst();
+		TipoExamen tipoExamen = cursorATipoExamen(cursor);
+		cursor.close();
+		return tipoExamen;
+
+	}
 	private TipoExamen cursorATipoExamen(Cursor cursor) {
 		TipoExamen tipoExamen = new TipoExamen();
 		tipoExamen.setIdTipoExamen(cursor.getLong(0));

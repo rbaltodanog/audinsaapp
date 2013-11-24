@@ -36,7 +36,7 @@ public class ExamenDataSource {
 
 
 	public Examen buscarExamen(int insertId){
-
+		 open();
 		Cursor cursor = database.query(MySQLiteHelper.TABLA_EXAMEN,
 				allColumns, MySQLiteHelper.TABLA_EXAMEN_COLUMNA_ID + " = " + insertId, null,
 				null, null, null);

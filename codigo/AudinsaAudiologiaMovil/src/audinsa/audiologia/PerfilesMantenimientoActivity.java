@@ -228,7 +228,7 @@ public class PerfilesMantenimientoActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 
 		switch (item.getItemId()) {
-		case R.id.menu_regresar:
+		case R.id.menu_salir:
 			finish();
 			return true;
 		default:
@@ -236,5 +236,7 @@ public class PerfilesMantenimientoActivity extends Activity {
 
 		}
 	}
+	
+	
 
 }
