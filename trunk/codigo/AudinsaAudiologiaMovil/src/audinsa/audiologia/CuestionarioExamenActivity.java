@@ -54,12 +54,12 @@ public class CuestionarioExamenActivity extends Activity {
 		if (puntaje >= 8) {
 			String positivo = this.getString(R.string.strResultadoNegativo);
 			intent.putExtra("strResultado", positivo);
-			intent.putExtra("bolAprobado", false);
+			intent.putExtra("bolAprobado", true);
 			valor_examen = 1;
 		} else {
 			String negativo = this.getString(R.string.strResultadoPositivo);
 			intent.putExtra("strResultado", negativo);
-			intent.putExtra("bolAprobado", true);
+			intent.putExtra("bolAprobado", false);
 		}
 		
 		dataSource = new ResultadoDataSource(this);
@@ -80,9 +80,6 @@ public class CuestionarioExamenActivity extends Activity {
 			// TODO:guardar resultado e Ir a pantalla de resultados
 			guardarResultado(view);
 		} else {
-			puntaje = cuestionario.getPuntaje();
-			puntaje++;
-			cuestionario.setPuntaje(puntaje);
 			obtenerSiguientePregunta();
 
 		}
@@ -92,6 +89,9 @@ public class CuestionarioExamenActivity extends Activity {
 		if (cuestionario.getPreguntas().size() == 0) {
 			guardarResultado(view);
 		} else {
+			puntaje = cuestionario.getPuntaje();
+			puntaje++;
+			cuestionario.setPuntaje(puntaje);
 			obtenerSiguientePregunta();
 		}
 	}
