@@ -1,7 +1,12 @@
 package audinsa.audiologia.Adapters;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
+
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import audinsa.audiologia.R;
+import audinsa.audiologia.businessdomain.Examen;
 import audinsa.audiologia.businessdomain.Resultado;
 import audinsa.audiologia.businessdomain.TipoExamen;
 import audinsa.audiologia.datasources.ExamenDataSource;
@@ -17,111 +23,111 @@ import audinsa.audiologia.datasources.TipoExamenDataSource;
 public class ResultadosItemAdapter extends ArrayAdapter<Resultado> {
 
 	private Context context;
-		int layoutResourceId;
-		private ArrayList<Resultado> resultados;
+	int layoutResourceId;
+	private ArrayList<Resultado> resultados;
 
+	public ResultadosItemAdapter(Context context, int layoutResourceId, ArrayList<Resultado> resultados) {
+		super(context, layoutResourceId, resultados);
+		this.context = context;
+		this.layoutResourceId = layoutResourceId;
+		this.resultados = resultados;
+	}
 
-		
-		public ResultadosItemAdapter(Context context, int layoutResourceId, ArrayList<Resultado> resultados) {
-			super(context, layoutResourceId, resultados);
-			this.context = context;
-			this.layoutResourceId = layoutResourceId;
-			this.resultados = resultados;
-		}
+	public int getCount() {
+		return resultados.size();
+	}
 
-		public int getCount() {
-			return resultados.size();
-		}
+	public Resultado getItem(int position) {
+		return resultados.get(position);
+	}
 
-		public Resultado getItem(int position) {
-			return resultados.get(position);
-		}
-		
-		public Resultado getItemById(long id) {
-			for(int i = 0; i < getCount(); i++)
+	public Resultado getItemById(long id) {
+		for(int i = 0; i < getCount(); i++)
+		{
+			if (getItem(i).getId_resultado() == id)
 			{
-				if (getItem(i).getId_resultado() == id)
-				{
-					return getItem(i);
-				}
+				return getItem(i);
 			}
-			return null;
 		}
-		
-		public long getItemId(int position) {
-			return resultados.get(position).getId_resultado();
+		return null;
+	}
+
+	public long getItemId(int position) {
+		return resultados.get(position).getId_resultado();
+	}
+
+	public View getView(int position, View convertView, ViewGroup parent) {
+		View row = convertView;
+		ResultadoHolder holder = null;
+		ExamenDataSource datasourceExamen = new ExamenDataSource(context);
+		TipoExamenDataSource datasourceTipoExamen = new TipoExamenDataSource(context);
+
+
+		if(row == null)
+		{
+			LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+			row = inflater.inflate(layoutResourceId, parent, false);
+
+			holder = new ResultadoHolder();
+			holder.txtValorExamen = (TextView)row.findViewById(R.id.txtValorExamen);
+			holder.txtNombreExamen = (TextView)row.findViewById(R.id.txtNombreExamen);
+			holder.txtFechaDeRealizacion = (TextView)row.findViewById(R.id.txtFechaDeRealizacion);
+			holder.imgTipoExamen = (ImageView)row.findViewById(R.id.imgTipoExamen);
+			row.setTag(holder);			
+
+		}
+		else
+		{
+			holder = (ResultadoHolder)row.getTag();
 		}
 
-		public View getView(int position, View convertView, ViewGroup parent) {
-			View row = convertView;
-			ResultadoHolder holder = null;
-			int idtipoExamen=0;
-			int idExamen=0;
-			String nomExamen;
-			ExamenDataSource datasourceExamen = new ExamenDataSource(context);
-			TipoExamenDataSource datasourceTipoExamen = new TipoExamenDataSource(context);
-			
-			
-			if(row == null)
+		Resultado resultado = getItem(position);
+		Examen examen = datasourceExamen.buscarExamen(resultado.getId_examen());
+		TipoExamen tipoExamen = datasourceTipoExamen.buscarTipoExamen(examen.getId_tipo_examen());
+		DateFormat df = new SimpleDateFormat("d/M/yyyy hh:mm", Locale.US);
+
+		try{
+			if(resultado.getValor_examen() == 1)
 			{
-				LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-				row = inflater.inflate(layoutResourceId, parent, false);
-
-				holder = new ResultadoHolder();
-				holder.txtValorExamen = (TextView)row.findViewById(R.id.txtValorExamen);
-				holder.txtNombreExamen = (TextView)row.findViewById(R.id.txtNombreExamen);
-			    holder.imgTipoExamen = (ImageView)row.findViewById(R.id.imgTipoExamen);
-				row.setTag(holder);			
-			
+				holder.txtValorExamen.setText("Aprobado");
+				holder.txtValorExamen.setTextColor(Color.GREEN);
 			}
 			else
 			{
-				holder = (ResultadoHolder)row.getTag();
+				holder.txtValorExamen.setText("Reprobado");
+				holder.txtValorExamen.setTextColor(Color.RED);
 			}
+			holder.txtNombreExamen.setText(tipoExamen.getNombreExamen());
+			holder.txtFechaDeRealizacion.setText("Realizado el " + df.format(examen.getFecha_inicio()));
+			switch ((int)tipoExamen.getIdTipoExamen()){
+			case 1:
+				holder.imgTipoExamen.setImageResource(R.drawable.ic_hearing_sensibility);
+				break;
+			case 2:
+				holder.imgTipoExamen.setImageResource(R.drawable.ic_hablaenruido);
+				break;
+			case 3:
+				holder.imgTipoExamen.setImageResource(R.drawable.ic_test);
+				break;
+			default:
+				break;
 
-			Resultado resultado = getItem(position);
-			try{
-				
-				holder.txtValorExamen.setText(Integer.toString(resultado.getValor_examen()));
-			   //Permite obtener los valores para ir a obtener el nombre del
-				//Tipo de exam.
-				idExamen=resultado.getId_examen();
-			    idtipoExamen= (datasourceExamen.buscarExamen(idExamen)).getId_tipo_examen();//obtiene el idtipoexamen del exam del resultado
-			    nomExamen= (datasourceTipoExamen.buscarTipoExamen(idtipoExamen)).getNombreExamen();
-			    holder.txtNombreExamen.setText(nomExamen);
-			     
-			    switch (idtipoExamen){
-			    case 1:
-			    	 holder.imgTipoExamen.setImageResource(R.drawable.ic_hearing_sensibility);
-					   break;
-			    case 2:
-			    	 holder.imgTipoExamen.setImageResource(R.drawable.ic_hablaenruido);
-					   break;
-			    case 3:
-			    	 holder.imgTipoExamen.setImageResource(R.drawable.ic_test);
-					   break;
-			    default:
-			    	break;
-			    
-			    }
-			    
-			  
 			}
-			catch(Exception e ){
-				e.getMessage();
-				
-			}		
-			
+		}
+		catch(Exception e ){
+			e.getMessage();
 
-			return row;
-		}
-		
-		static class ResultadoHolder
-		{
-			TextView txtValorExamen;
-			TextView txtNombreExamen;			
-			ImageView imgTipoExamen;
-			
-			
-		}
+		}		
+		return row;
 	}
+
+	static class ResultadoHolder
+	{
+		TextView txtValorExamen;
+		TextView txtNombreExamen;
+		TextView txtFechaDeRealizacion;
+		ImageView imgTipoExamen;
+
+
+	}
+}

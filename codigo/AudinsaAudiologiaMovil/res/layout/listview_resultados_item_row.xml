@@ -23,25 +23,10 @@
             android:layout_width="50dip"
             android:layout_height="50dip"
             android:src="@drawable/ic_perfil" />
-            
-
-
-     <TextView
-         android:id="@+id/txtNombreExamen"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_centerVertical="false"
-         android:layout_toRightOf="@+id/thumbnail"
-         android:gravity="center_vertical"
-         android:textColor="#040404"
-         android:textSize="18sp"
-         android:textStyle="bold"
-         android:typeface="sans" />
-    
      
-     
-     
-   <TextView
+   </LinearLayout>
+   
+    <TextView
         android:id="@+id/txtValorExamen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,11 +34,44 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="5dip"
         android:gravity="right|center_horizontal"
+        android:text="5 minutos"
         android:textColor="#10bcc9"
         android:textSize="10sp"
-        android:textStyle="bold" /> 
-     
-   </LinearLayout>
-     
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/txtValorExamen"
+        android:layout_toRightOf="@+id/thumbnail" >
+
+        <TextView
+            android:id="@+id/txtFechaDeRealizacion"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="false"
+            android:layout_below="@id/txtNombreExamen"
+            android:gravity="center_vertical"
+            android:text="16 de Mayo de 1987"
+            android:textColor="#040404"
+            android:textSize="14sp"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/txtNombreExamen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical"
+            android:text="Sensibilidad de oido"
+            android:textColor="#040404"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+    </RelativeLayout>
  
 </RelativeLayout>
