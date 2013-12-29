@@ -108,11 +108,6 @@ public class CuestionarioResultadoActivity extends Activity {
 		}
 		return p;
 	}
-	
-	public void borrarResultado(){
-		long idPerfil = getIntent().getLongExtra("idPerfil", 0);
-		long idResultado = getIntent().getLongExtra("idResultado", 0);
-		Perfil p = onGetPerfil(idPerfil);
-	} 
+
 	
 }

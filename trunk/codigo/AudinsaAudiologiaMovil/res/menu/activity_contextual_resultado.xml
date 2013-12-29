@@ -1,0 +1,22 @@
+<menu  xmlns:android="http://schemas.android.com/apk/res/android"  >
+
+
+<item
+        android:id="@+id/menu_borrar"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/menu_borrar"/>    
+
+<item
+        android:id="@+id/menu_compartir"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/menu_compartir"/> 
+<item
+        android:id="@+id/menu_contactar"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/menu_contactar"/>    
+         
+        
+</menu>

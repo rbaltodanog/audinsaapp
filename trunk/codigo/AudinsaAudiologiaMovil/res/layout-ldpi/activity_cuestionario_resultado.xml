@@ -62,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_span="1"
-            android:text="Acciones"
+            android:text="@string/strAcciones"
             android:textSize="20sp" />
     </TableRow>
 
@@ -103,30 +103,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_span="2" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/row_borrar_resultado"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:gravity="center_vertical" >
-
-            <ImageView
-                android:id="@+id/imgBorrarResultado"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:contentDescription="@string/imgBorrarContentDescription"
-                android:src="@drawable/ic_borrar" />
-
-            <TextView
-                android:id="@+id/lblBorrar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="@string/lblBorrar"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textSize="16sp" />
         </TableRow>
 
         <TableRow
@@ -185,7 +161,7 @@
             android:id="@+id/btnRegresar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Regresar"
+            android:text="@string/strRegresar"
             android:onClick="onRegresarClick" />
     </TableRow>
 
