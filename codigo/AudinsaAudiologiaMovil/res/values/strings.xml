@@ -68,7 +68,10 @@
     <string name="strResultadoPositivo">Usted no presenta una dificultad auditiva. Le recomendamos una valoración anual</string>
     <string name="imgBorrarContentDescription">Icono para borrar el resultado</string>
     <string name="strCalificacion">De acuerdo a sus respuestas</string>
-
+    <string name="strAcciones">Acciones</string>
+    <string name="strRegresar">Regresar</string>
+       
+    
     <!-- Articulos Activity -->
     <string name="title_activity_articulos">Artículos</string>
     <string name="lblCargandoArticulos">Cargando artículos</string>
@@ -81,7 +84,11 @@
 
     <!-- Generales Para Resultado de Exam. -->
     <string name="lblResultado">Resultado</string>
-
+    <string name="menu_borrar">Borrar</string>
+    <string name="menu_compartir">Compartir</string>
+    <string name="menu_contactar">Contactar</string>
+    <string name="menu_titulo">Opciones</string>
+   
     <!-- Resultado Cuestionario Activity -->
     <string name="lblResultadoCuestionario">Resultado del cuestionario</string>
 
@@ -132,7 +139,7 @@
     <string name="txtSensibOidosSegundoCheck">Por favor conecte los audífonos al teléfono</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_sensibilidad_oido_examen">Sensibilidad de Oídos</string>
-    <string name="title_activity_resultado_perfil">ResultadoPerfilActivity</string>
+    <string name="title_activity_resultado_perfil">Resultados</string>
     <string name="hello_world">Hello world!</string>
 
 </resources>

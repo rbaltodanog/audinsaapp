@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import audinsa.audiologia.Adapters.ResultadosItemAdapter;
 import audinsa.audiologia.businessdomain.Resultado;
@@ -62,6 +65,7 @@ public class ResultadoPerfilActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_resultado_perfil, menu);
 		return true;
 	}
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -74,4 +78,36 @@ public class ResultadoPerfilActivity extends Activity {
 
 		}
 	}
+	
+    @Override  
+    public void onCreateContextMenu(ContextMenu menu, View v,ContextMenuInfo menuInfo) {  
+    super.onCreateContextMenu(menu, v, menuInfo);  
+        
+		getMenuInflater().inflate(R.menu.activity_contextual_resultado, menu);
+	  
+		 menu.setHeaderTitle(R.string.menu_titulo);  
+  }  
+  
+    @Override  
+    public boolean onContextItemSelected(MenuItem item) {  
+     
+       
+	switch (item.getItemId()) {
+	case R.id.menu_borrar:
+		finish();
+		return true;
+	case R.id.menu_compartir:
+		finish();
+		return true;
+	case R.id.menu_contactar:
+		finish();
+		return true;
+
+	default:
+		return super.onOptionsItemSelected(item);
+
+	}
+    
+    }  
+	
 }

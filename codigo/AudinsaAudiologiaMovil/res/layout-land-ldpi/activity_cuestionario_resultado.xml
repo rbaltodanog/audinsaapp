@@ -16,7 +16,6 @@
     </TableRow>
 
     <TableLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="200dp"
         android:orientation="horizontal"
@@ -55,14 +54,13 @@
                     android:layout_height="fill_parent"
                     android:layout_gravity="center"
                     android:layout_span="1"
-                    android:text="Acciones"
+                    android:text="@string/strAcciones"
                     android:textSize="25sp" />
             </FrameLayout>
         </TableRow>
 
         <TableLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
+           android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="horizontal"
             android:padding="0dp" >
@@ -116,7 +114,6 @@
                     android:layout_weight="1" >
 
                     <TableLayout
-                        xmlns:android="http://schemas.android.com/apk/res/android"
                         android:layout_width="fill_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
@@ -248,7 +245,7 @@
 
         <Button
             android:id="@+id/btnRegresar"
-            android:text="Regresar"
+            android:text="@string/strRegresar"
             android:onClick="onRegresarClick" />
     </TableRow>
 
