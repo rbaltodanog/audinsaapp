@@ -3,17 +3,21 @@ package audinsa.audiologia;
 import java.util.ArrayList;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+//import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import audinsa.audiologia.Adapters.ResultadosItemAdapter;
+import audinsa.audiologia.businessdomain.Perfil;
 import audinsa.audiologia.businessdomain.Resultado;
 import audinsa.audiologia.datasources.ResultadoDataSource;
 
@@ -50,6 +54,20 @@ public class ResultadoPerfilActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
+				long idPerfil,idResultado,idExamen = 0;
+				idPerfil = ((Resultado) parent.getItemAtPosition(position))
+						.getId_perfil();
+				idResultado = ((Resultado) parent.getItemAtPosition(position))
+						.getId_resultado();
+				idExamen = ((Resultado) parent.getItemAtPosition(position))
+						.getId_examen();
+				Intent intent = new Intent(view.getContext(),
+						ExamenesActivity.class);
+				intent.putExtra("idPerfil", idPerfil);
+				intent.putExtra("idResultado", idResultado);
+				intent.putExtra("idExamen", idExamen);
+				
+				startActivity(intent);
 			
 			
 			}
@@ -91,9 +109,16 @@ public class ResultadoPerfilActivity extends Activity {
     @Override  
     public boolean onContextItemSelected(MenuItem item) {  
      
-       
+    	long idPerfil = getIntent().getLongExtra("idPerfil", 0);
+		long idResultado = getIntent().getLongExtra("idResultado", 0);
+		long idExamen = getIntent().getLongExtra("idExamen", 0);
+		//TODO FALTA QUE ELIMINE PRIMERO DE EXAMEN.
+		boolean resultado= false;
+		
 	switch (item.getItemId()) {
 	case R.id.menu_borrar:
+		resultado= dataSource.borrarResultado(idResultado, idPerfil);
+		mostrarMensaje(resultado);
 		finish();
 		return true;
 	case R.id.menu_compartir:
@@ -107,7 +132,26 @@ public class ResultadoPerfilActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 
 	}
+}
     
-    }  
+
+	
+public void mostrarMensaje(boolean resultado){
+	AlertDialog.Builder popupBuilder = new AlertDialog.Builder(this);
+	TextView myMsg = new TextView(this);
+	
+	if (resultado == false){
+		myMsg.setText("No fue posible borrar el resultado");
+	}
+	else{			
+		myMsg.setText("El resultado ha sido borrado");			
+	}
+	myMsg.setGravity(Gravity.CENTER_HORIZONTAL);
+	popupBuilder.setView(myMsg);
+	
+	
+	
+}
+    
 	
 }

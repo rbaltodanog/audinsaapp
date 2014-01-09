@@ -220,6 +220,7 @@ public class PerfilesMantenimientoActivity extends Activity {
 		} catch (Exception ex) {
 			Log.w(PerfilDataSource.class.getName(),
 					"Error tratando de obtener el perfil.");
+			
 		}
 		return p;
 	}

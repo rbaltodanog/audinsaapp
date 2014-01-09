@@ -6,12 +6,17 @@ import org.joda.time.DateTime;
 import org.joda.time.Duration;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.view.Gravity;
+import android.widget.TextView;
+import audinsa.audiologia.businessdomain.Perfil;
 import audinsa.audiologia.businessdomain.Resultado;
 
 public class ResultadoDataSource {
@@ -84,7 +89,7 @@ public class ResultadoDataSource {
 
 	public Resultado buscarResultado(int insertId){
 		//busca todos los resultados para el perfil enviado
-
+		open();
 		Cursor cursor = database.query(MySQLiteHelper.TABLA_RESULTADO,
 				allColumns, MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL + " = " + insertId, null,
 				null, null, null);
@@ -95,10 +100,26 @@ public class ResultadoDataSource {
 
 	}
 
-	public void borrarResultado(Resultado resultado) {
-		int id = resultado.getId_resultado();
-		database.delete(MySQLiteHelper.TABLA_RESULTADO, MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID
-				+ " = " + id, null);
+//	public void borrarResultado(Resultado resultado) {
+//		int id = resultado.getId_resultado();
+	//	database.delete(MySQLiteHelper.TABLA_RESULTADO, MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID
+	//			+ " = " + id, null);
+	//}
+	public boolean borrarResultado(long idResultado,long idPerfil) {
+	 boolean resultado = true;
+	 open();
+		try{
+		database.delete(MySQLiteHelper.TABLA_RESULTADO,MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL + " = " + idPerfil  + " AND "  +
+				MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID+ " = " + idResultado, null);
+		}	
+		catch(Exception ex){
+			
+			Log.w(ResultadoDataSource.class.getName(),
+						ex.getMessage());
+			resultado=false;		
+		}
+	close();		
+		return resultado;	
 	}
 
 	public ArrayList<Resultado> obtenerTodosLosResultados(long idPerfil) {
@@ -121,9 +142,7 @@ public class ResultadoDataSource {
 		return resultados;
 				
 	}
-	
-	
-	
+		
 	private Resultado cursorAResultado(Cursor cursor) {
 		Resultado resultado = new Resultado();
 
