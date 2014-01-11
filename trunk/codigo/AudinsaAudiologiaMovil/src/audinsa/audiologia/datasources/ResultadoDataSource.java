@@ -50,7 +50,7 @@ public class ResultadoDataSource {
 		// Convierte fecha inicio para almacenar en bd
 		DateTimeFormatter dateFormat = DateTimeFormat.forPattern("MM/dd/yyyy HH:mm:ss");
 		String fechaInicio = dateFormat.print(fechaHoraInicio);
-		
+
 		Duration duracionExamen = new Duration(fechaHoraInicio, DateTime.now());
 
 		//String duracionReal = duracionExamen.getStandardMinutes() + " minutos : " + duracionExamen.getStandardSeconds() + " segundos";
@@ -63,8 +63,8 @@ public class ResultadoDataSource {
 
 
 		try {
-		
-		long idExamen=database.insert(MySQLiteHelper.TABLA_EXAMEN, null,values);
+
+			long idExamen=database.insert(MySQLiteHelper.TABLA_EXAMEN, null,values);
 
 			if (idExamen > 0)
 			{
@@ -72,7 +72,7 @@ public class ResultadoDataSource {
 				values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL, idPerfil);
 				values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_EXAMEN, idExamen);
 				values.put(MySQLiteHelper.TABLA_RESULTADO_COLUMNA_VALOR_EXAMEN, valor_examen);
-	
+
 				idResultado = database.insert(MySQLiteHelper.TABLA_RESULTADO, null,values);
 			}
 			else{
@@ -83,7 +83,7 @@ public class ResultadoDataSource {
 			Log.v("Error almacenando el resultado del examen","Excepción: " + ex.getMessage());
 		}
 		return idResultado;
-			
+
 
 	}
 
@@ -100,33 +100,33 @@ public class ResultadoDataSource {
 
 	}
 
-//	public void borrarResultado(Resultado resultado) {
-//		int id = resultado.getId_resultado();
+	//	public void borrarResultado(Resultado resultado) {
+	//		int id = resultado.getId_resultado();
 	//	database.delete(MySQLiteHelper.TABLA_RESULTADO, MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID
 	//			+ " = " + id, null);
 	//}
 	public boolean borrarResultado(long idResultado,long idPerfil) {
-	 boolean resultado = true;
-	 open();
+		boolean resultado = true;
+		open();
 		try{
-		database.delete(MySQLiteHelper.TABLA_RESULTADO,MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL + " = " + idPerfil  + " AND "  +
-				MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID+ " = " + idResultado, null);
+			resultado = database.delete(MySQLiteHelper.TABLA_RESULTADO,MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL + " = " + idPerfil  + " AND "  +
+					MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID+ " = " + idResultado, null) > 0;
 		}	
 		catch(Exception ex){
-			
+
 			Log.w(ResultadoDataSource.class.getName(),
-						ex.getMessage());
-			resultado=false;		
+					ex.getMessage());
+			resultado = false;		
 		}
-	close();		
+		close();		
 		return resultado;	
 	}
 
 	public ArrayList<Resultado> obtenerTodosLosResultados(long idPerfil) {
 		//busca todos los resultados para el perfil enviado
-		
+
 		ArrayList<Resultado> resultados = new ArrayList<Resultado>();
-		 open();
+		open();
 		Cursor cursor = database.query(MySQLiteHelper.TABLA_RESULTADO,
 				allColumns,  MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL + " = " + idPerfil, null, null, null, null);
 
@@ -140,9 +140,9 @@ public class ResultadoDataSource {
 		cursor.close();
 		close();
 		return resultados;
-				
+
 	}
-		
+
 	private Resultado cursorAResultado(Cursor cursor) {
 		Resultado resultado = new Resultado();
 

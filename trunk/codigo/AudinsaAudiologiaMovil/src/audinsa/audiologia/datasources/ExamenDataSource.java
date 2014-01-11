@@ -80,4 +80,12 @@ public class ExamenDataSource {
 
 		return examen;
 	}
+
+	public boolean borrarExamen(long idExamen) {
+		open();
+		boolean resultado = database.delete(MySQLiteHelper.TABLA_EXAMEN, MySQLiteHelper.TABLA_EXAMEN_COLUMNA_ID
+				+ " = " + idExamen, null) > 0;
+		close();
+		return resultado;
+	}
 }

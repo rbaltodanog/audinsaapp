@@ -88,6 +88,7 @@
     <string name="menu_compartir">Compartir</string>
     <string name="menu_contactar">Contactar</string>
     <string name="menu_titulo">Opciones</string>
+    <string name="lblListViewVacioResultado">No hay resultados a mostrar</string>
    
     <!-- Resultado Cuestionario Activity -->
     <string name="lblResultadoCuestionario">Resultado del cuestionario</string>
