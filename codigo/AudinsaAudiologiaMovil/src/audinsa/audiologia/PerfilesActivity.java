@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -23,6 +24,7 @@ import audinsa.audiologia.datasources.PerfilDataSource;
 
 public class PerfilesActivity extends Activity {
 	private PerfilDataSource dataSource;
+	private Context context;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,7 @@ public class PerfilesActivity extends Activity {
 	private void loadData() {
 		dataSource = new PerfilDataSource(this);
 		ArrayList<Perfil> perfiles = dataSource.obtenerTodosLosPerfiles();
-
+		context = this;
 		ProfileItemAdapter adapter = new ProfileItemAdapter(this,
 				R.layout.listview_perfiles_item_row, perfiles);
 		ListView listView = (ListView) findViewById(R.id.listPerfiles);
@@ -128,7 +130,7 @@ public class PerfilesActivity extends Activity {
 							public void onClick(DialogInterface dialog,
 									int which) {
 								try {
-									dataSource.borrarPerfil(id);
+									dataSource.borrarPerfil(id, context);
 									loadData();
 									Toast.makeText(
 											getBaseContext(),

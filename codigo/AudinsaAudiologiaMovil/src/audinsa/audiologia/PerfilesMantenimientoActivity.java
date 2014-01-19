@@ -170,6 +170,8 @@ public class PerfilesMantenimientoActivity extends Activity {
 								.getString(
 										R.string.txtMantenimientoPerfilesToastPerfilActualizado),
 						Toast.LENGTH_SHORT).show();
+			
+			
 		} else {
 			dataSource.crearPerfil(nombre, fechaNacimiento, correoElectronico);
 			Toast.makeText(
@@ -179,20 +181,19 @@ public class PerfilesMantenimientoActivity extends Activity {
 							.getString(
 									R.string.txtMantenimientoPerfilesToastPerfilAgregado),
 					Toast.LENGTH_SHORT).show();
+			
 		}
+		finish();
 		}
 		else{			
 			
-			AlertDialog.Builder popupBuilder = new AlertDialog.Builder(this);
-			TextView myMsg = new TextView(this);
-			myMsg.setText("Debe de completar la información solicitada");
-			myMsg.setGravity(Gravity.CENTER_HORIZONTAL);
-			popupBuilder.setView(myMsg);
+			Toast.makeText(
+						getBaseContext(),
+						"Debe de completar la información solicitada",
+						Toast.LENGTH_SHORT).show();
 		}
-
-		this.finish();
+		
 	}
-
 		
 	
 	private boolean validarPerfil(String nombre,String correoElectronico) {
@@ -200,8 +201,7 @@ public class PerfilesMantenimientoActivity extends Activity {
 		
 		if(nombre.trim().length()<= 0  || correoElectronico.trim().length()<= 0 )
 		   bandera=false;
-		
-		
+				
 		return bandera;
 	}
 
