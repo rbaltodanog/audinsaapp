@@ -152,4 +152,18 @@ public class ResultadoDataSource {
 		resultado.setValor_examen(cursor.getInt(3));
 		return resultado;
 	}
+
+	public boolean borrarTodosResultado(long idPerfil) {
+		boolean resultado = false;
+		open();
+		try{
+			resultado = database.delete(MySQLiteHelper.TABLA_RESULTADO,MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL + " = " + idPerfil , null) > 0;
+		}	
+		catch(Exception ex){
+
+			resultado = false;		
+		}
+		close();		
+		return resultado;	
+		}
 }

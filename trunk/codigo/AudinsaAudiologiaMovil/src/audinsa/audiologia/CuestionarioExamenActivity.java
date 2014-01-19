@@ -52,12 +52,12 @@ public class CuestionarioExamenActivity extends Activity {
 		Intent intent = new Intent(view.getContext(),
 				CuestionarioResultadoActivity.class);
 		if (puntaje >= 8) {
-			String positivo = this.getString(R.string.strResultadoNegativo);
+			String positivo = this.getString(R.string.strResultadoPositivo);
 			intent.putExtra("strResultado", positivo);
 			intent.putExtra("bolAprobado", true);
 			valor_examen = 1;
 		} else {
-			String negativo = this.getString(R.string.strResultadoPositivo);
+			String negativo = this.getString(R.string.strResultadoNegativo);
 			intent.putExtra("strResultado", negativo);
 			intent.putExtra("bolAprobado", false);
 		}

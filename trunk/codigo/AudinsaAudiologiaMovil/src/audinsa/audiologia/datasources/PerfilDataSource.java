@@ -75,14 +75,40 @@ public class PerfilDataSource {
 
 	}
 
-	public boolean borrarPerfil(long id) {
-		open();
-		boolean resultado = database.delete(MySQLiteHelper.TABLA_PERFIL, MySQLiteHelper.TABLA_PERFIL_COLUMNA_ID
-				+ " = " + id, null) > 0;
-		close();
+	public boolean borrarPerfil(long idPerfil, Context context) {
+		boolean resultadoEliminarPerfil = false;
+		
+		try {
+		
+			if(borrarDependenciasPerfil(idPerfil,context)){	
+				 // si ya elimina las dependencias debe de intentar eliminar el perfil
+				resultadoEliminarPerfil= eliminarPerfil(idPerfil) ;
+			 }
+		}
+		catch(Exception ex){		
+			resultadoEliminarPerfil = false;			
+		}
+		
+		return resultadoEliminarPerfil;
+}
+	private boolean borrarDependenciasPerfil(long idPerfil,Context context) {
+		boolean resultado = false;
+		ResultadoDataSource dataSourceResultado= new ResultadoDataSource(context);
+		resultado = dataSourceResultado.borrarTodosResultado(idPerfil);
+		//	if(dataSourceResultadoExamnen.(idPerfil)){
+
 		return resultado;
 	}
 
+	public boolean  eliminarPerfil(long idPerfil) {
+		boolean r= false;  	
+		 open();
+		 r= database.delete(MySQLiteHelper.TABLA_PERFIL, MySQLiteHelper.TABLA_PERFIL_COLUMNA_ID + " = " + idPerfil, null) > 0;
+		 close();
+		 
+		 return r;
+	}
+	
 	public ArrayList<Perfil> obtenerTodosLosPerfiles() {
 		open();
 		ArrayList<Perfil> perfiles = new ArrayList<Perfil>();
