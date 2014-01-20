@@ -6,17 +6,14 @@ import org.joda.time.DateTime;
 import org.joda.time.Duration;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-
-import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.view.Gravity;
 import android.widget.TextView;
-import audinsa.audiologia.businessdomain.Perfil;
+
 import audinsa.audiologia.businessdomain.Resultado;
 
 public class ResultadoDataSource {
@@ -42,7 +39,6 @@ public class ResultadoDataSource {
 		dbHelper.close();
 	}
 
-
 	//Almacena primero el examen luego el resultado
 	public long crearResultado(long idPerfil,long idTipoExamen,int valor_examen, DateTime fechaHoraInicio) {
 		ContentValues values = new ContentValues();	    
@@ -60,12 +56,12 @@ public class ResultadoDataSource {
 		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_DURACION_REAL, duracionExamen.getStandardSeconds());
 		values.put(MySQLiteHelper.TABLA_EXAMEN_COLUMNA_PORCENTAJE_COMPLETADO, valor_examen);
 		//TODO FALTA DURACION APROX Y PORC DE EXAMEN
+		long idExamen=database.insert(MySQLiteHelper.TABLA_EXAMEN, null,values);
 
 
 		try {
 
-			long idExamen=database.insert(MySQLiteHelper.TABLA_EXAMEN, null,values);
-
+			
 			if (idExamen > 0)
 			{
 				values = new ContentValues();	  		
@@ -87,7 +83,7 @@ public class ResultadoDataSource {
 
 	}
 
-	public Resultado buscarResultado(int insertId){
+/*	public Resultado buscarResultado(int insertId){
 		//busca todos los resultados para el perfil enviado
 		open();
 		Cursor cursor = database.query(MySQLiteHelper.TABLA_RESULTADO,
@@ -98,7 +94,7 @@ public class ResultadoDataSource {
 		cursor.close();
 		return resultado;
 
-	}
+	}*/
 
 	//	public void borrarResultado(Resultado resultado) {
 	//		int id = resultado.getId_resultado();
@@ -157,6 +153,7 @@ public class ResultadoDataSource {
 		boolean resultado = false;
 		open();
 		try{
+	        
 			resultado = database.delete(MySQLiteHelper.TABLA_RESULTADO,MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL + " = " + idPerfil , null) > 0;
 		}	
 		catch(Exception ex){
@@ -166,4 +163,18 @@ public class ResultadoDataSource {
 		close();		
 		return resultado;	
 		}
+	
+	//Invoca al DS de examen, el mismo borra todos los exam asociados a un resultado
+
+	public boolean borrarExamen(long idPerfil,Context context) {
+		ExamenDataSource dataSourceExamen= new ExamenDataSource(context);
+		boolean resultado= false;
+		ArrayList<Resultado> ArregloResultados= obtenerTodosLosResultados(idPerfil);
+			for (int i = 0; i < ArregloResultados.size(); i++) {
+				 int idExamen=ArregloResultados.get(i).getId_examen();
+				 resultado= dataSourceExamen.borrarExamen(idExamen);
+				
+			}
+		return resultado;
+	}
 }
