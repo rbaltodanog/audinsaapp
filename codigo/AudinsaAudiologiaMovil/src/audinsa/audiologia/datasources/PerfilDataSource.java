@@ -13,7 +13,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import audinsa.audiologia.businessdomain.Perfil;
-
+ 
 public class PerfilDataSource {
 	// Database fields
 	private SQLiteDatabase database;
@@ -82,7 +82,7 @@ public class PerfilDataSource {
 		
 			if(borrarDependenciasPerfil(idPerfil,context)){	
 				 // si ya elimina las dependencias debe de intentar eliminar el perfil
-				resultadoEliminarPerfil= eliminarPerfil(idPerfil) ;
+				resultadoEliminarPerfil= eliminarPerfil(idPerfil);
 			 }
 		}
 		catch(Exception ex){		
@@ -94,8 +94,8 @@ public class PerfilDataSource {
 	private boolean borrarDependenciasPerfil(long idPerfil,Context context) {
 		boolean resultado = false;
 		ResultadoDataSource dataSourceResultado= new ResultadoDataSource(context);
+	    dataSourceResultado.borrarExamen(idPerfil,context);      	
 		resultado = dataSourceResultado.borrarTodosResultado(idPerfil);
-		//	if(dataSourceResultadoExamnen.(idPerfil)){
 
 		return resultado;
 	}

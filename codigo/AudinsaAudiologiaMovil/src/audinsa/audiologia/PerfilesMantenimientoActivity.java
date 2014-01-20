@@ -8,11 +8,9 @@ import java.util.Date;
 import java.util.Locale;
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -237,7 +235,6 @@ public class PerfilesMantenimientoActivity extends Activity {
 
 		}
 	}
-	
 	
 
 }
