@@ -83,18 +83,18 @@ public class ResultadoDataSource {
 
 	}
 
-/*	public Resultado buscarResultado(int insertId){
+	public Resultado buscarResultado(long  idResultado,long idPerfil){
 		//busca todos los resultados para el perfil enviado
 		open();
 		Cursor cursor = database.query(MySQLiteHelper.TABLA_RESULTADO,
-				allColumns, MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL + " = " + insertId, null,
+				allColumns, MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL + " = " + idPerfil  + "AND" + MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID + " = " + idResultado, null,
 				null, null, null);
 		cursor.moveToFirst();
 		Resultado resultado = cursorAResultado(cursor);
 		cursor.close();
 		return resultado;
 
-	}*/
+	}
 
 	//	public void borrarResultado(Resultado resultado) {
 	//		int id = resultado.getId_resultado();

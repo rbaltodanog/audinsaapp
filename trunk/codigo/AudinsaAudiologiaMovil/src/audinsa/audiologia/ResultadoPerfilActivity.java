@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.util.Log;
 //import android.content.res.Resources;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -18,8 +19,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import audinsa.audiologia.Adapters.ResultadosItemAdapter;
+import audinsa.audiologia.businessdomain.Perfil;
 import audinsa.audiologia.businessdomain.Resultado;
 import audinsa.audiologia.datasources.ExamenDataSource;
+import audinsa.audiologia.datasources.PerfilDataSource;
 import audinsa.audiologia.datasources.ResultadoDataSource;
 
 public class ResultadoPerfilActivity extends Activity {
@@ -130,8 +133,10 @@ public class ResultadoPerfilActivity extends Activity {
 			loadData();
 			return true;
 		case R.id.menu_compartir:
+			 
 			return true;
 		case R.id.menu_contactar:
+			contactarCLinica(idResultado, idPerfil);
 			return true;
 
 		default:
@@ -139,6 +144,44 @@ public class ResultadoPerfilActivity extends Activity {
 
 		}
 	}
+
+	private void contactarCLinica(long idResultado, long idPerfil) {
+		Intent contactIntent = new Intent(Intent.ACTION_SEND);
+		contactIntent.setType("message/rfc822"); //set the email recipient
+		Perfil p = onGetPerfil(idPerfil);
+		Resultado r = onGetResultado(idResultado,idPerfil);
+		String shareBody = "He realizado el exámen: Cuestionario. Mi calificación es: "+ r.getValorResultado_examen() + ".Estoy interesado en obtener una cita médica. Mis datos son: " +
+		"Nombre: " + p.toString() + ", Fecha de nacimiento: " + p.getFechaNacimiento() + ", Correo Electrónico: " +	p.getCorreoElectronico();
+		contactIntent.putExtra(Intent.EXTRA_SUBJECT, "Consulta");
+		contactIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+		String[] mail = { "info@clinicaaudinsa.com", "" };
+		contactIntent.putExtra(Intent.EXTRA_EMAIL, mail);   
+        startActivity(Intent.createChooser(contactIntent, "Compartir usando"));
+
+		
+	}
+	private Perfil onGetPerfil(long idPerfil) {
+		PerfilDataSource dataSource = new PerfilDataSource(this);
+		Perfil p = new Perfil();
+		try {
+			p = dataSource.buscarPerfil(idPerfil);
+		} catch (Exception ex) {
+			Log.w(PerfilDataSource.class.getName(),
+					"Error tratando de obtener el perfil.");
+		}
+		return p;
+	}
+	private Resultado onGetResultado(long idResultado, long idPerfil) {
+		Resultado r = new Resultado();
+		try {
+			r = resultadoDataSource.buscarResultado(idResultado,idPerfil);
+		} catch (Exception ex) {
+			Log.w(PerfilDataSource.class.getName(),
+					"Error tratando de obtener el perfil.");
+		}
+		return r;
+	}
+
 
 	public void mostrarMensaje(boolean resultado){
 		AlertDialog.Builder popupBuilder = new AlertDialog.Builder(this);

@@ -44,4 +44,13 @@ public class Resultado {
 	public void setValor_examen(int valor_examen) {
 		this.valor_examen = valor_examen;
 	}
+	public String getValorResultado_examen() {
+		int vExamen =getValor_examen();
+		if ( vExamen == 1) {
+			return "Aprobado";
+		}
+		else
+			return "Contacte un especialista";
+		
+	}
 }
