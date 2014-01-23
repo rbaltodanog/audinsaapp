@@ -156,7 +156,7 @@ public class ResultadoPerfilActivity extends Activity {
 		contactIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
 		String[] mail = { "info@clinicaaudinsa.com", "" };
 		contactIntent.putExtra(Intent.EXTRA_EMAIL, mail);   
-        startActivity(Intent.createChooser(contactIntent, "Compartir usando"));
+        startActivity(Intent.createChooser(contactIntent, "Enviar información usando"));
 
 		
 	}
