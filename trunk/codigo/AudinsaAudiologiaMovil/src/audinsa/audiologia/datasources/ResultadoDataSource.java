@@ -87,7 +87,7 @@ public class ResultadoDataSource {
 		//busca todos los resultados para el perfil enviado
 		open();
 		Cursor cursor = database.query(MySQLiteHelper.TABLA_RESULTADO,
-				allColumns, MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL + " = " + idPerfil  + "AND" + MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID + " = " + idResultado, null,
+				allColumns, MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL + " = " + idPerfil  + " AND " + MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID + " = " + idResultado, null,
 				null, null, null);
 		cursor.moveToFirst();
 		Resultado resultado = cursorAResultado(cursor);
