@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
 import audinsa.audiologia.businessdomain.Perfil;
+import audinsa.audiologia.businessdomain.Resultado;
 import audinsa.audiologia.datasources.PerfilDataSource;
 
 public class CuestionarioResultadoActivity extends Activity {
@@ -50,6 +51,20 @@ public class CuestionarioResultadoActivity extends Activity {
 				String[] mail = { "info@clinicaaudinsa.com", "" };
 				contactIntent.putExtra(Intent.EXTRA_EMAIL, mail);   
 	            startActivity(Intent.createChooser(contactIntent, "Enviar información usando"));
+			}
+		});		
+		
+		TableRow rowCompartirResultado = (TableRow)findViewById(R.id.row_compartir_resultado);			
+		rowCompartirResultado.setClickable(true);
+		rowCompartirResultado.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				String estado=(getIntent().getBooleanExtra("bolAprobado", true)) ? "Aprobado" : "Contacte un especialista";
+				Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+				sharingIntent.setType("text/plain");
+				String shareBody = "Estoy usando la aplicación de Audinsa S.A. para revisar mi audición. Mi calificación es: "+ estado;
+				sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Compartir");
+				sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+				startActivity(Intent.createChooser(sharingIntent, "Compartiendo información usando"));
 			}
 		});
 	}

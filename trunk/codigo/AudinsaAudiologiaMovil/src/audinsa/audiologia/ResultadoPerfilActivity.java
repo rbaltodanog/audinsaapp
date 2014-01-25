@@ -133,7 +133,7 @@ public class ResultadoPerfilActivity extends Activity {
 			loadData();
 			return true;
 		case R.id.menu_compartir:
-			 
+			 compartirInformacion(idResultado, idPerfil);
 			return true;
 		case R.id.menu_contactar:
 			contactarCLinica(idResultado, idPerfil);
@@ -145,6 +145,16 @@ public class ResultadoPerfilActivity extends Activity {
 		}
 	}
 
+	private void compartirInformacion(long idResultado, long idPerfil) {
+		Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+		sharingIntent.setType("text/plain");
+		Resultado r = onGetResultado(idResultado,idPerfil);
+		String shareBody = "Estoy usando la aplicación de Audinsa S.A. para revisar mi audición. Mi calificación es: "+ r.getValorResultado_examen();
+		sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Compartir");
+		sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+		startActivity(Intent.createChooser(sharingIntent, "Enviar información usando"));
+	}
+	
 	private void contactarCLinica(long idResultado, long idPerfil) {
 		Intent contactIntent = new Intent(Intent.ACTION_SEND);
 		contactIntent.setType("message/rfc822"); //set the email recipient
@@ -156,10 +166,9 @@ public class ResultadoPerfilActivity extends Activity {
 		contactIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
 		String[] mail = { "info@clinicaaudinsa.com", "" };
 		contactIntent.putExtra(Intent.EXTRA_EMAIL, mail);   
-        startActivity(Intent.createChooser(contactIntent, "Enviar información usando"));
-
-		
+        startActivity(Intent.createChooser(contactIntent, "Enviar información usando"));		
 	}
+	
 	private Perfil onGetPerfil(long idPerfil) {
 		PerfilDataSource dataSource = new PerfilDataSource(this);
 		Perfil p = new Perfil();
@@ -171,6 +180,7 @@ public class ResultadoPerfilActivity extends Activity {
 		}
 		return p;
 	}
+	
 	private Resultado onGetResultado(long idResultado, long idPerfil) {
 		Resultado r = new Resultado();
 		try {
@@ -181,7 +191,6 @@ public class ResultadoPerfilActivity extends Activity {
 		}
 		return r;
 	}
-
 
 	public void mostrarMensaje(boolean resultado){
 		AlertDialog.Builder popupBuilder = new AlertDialog.Builder(this);
@@ -201,9 +210,6 @@ public class ResultadoPerfilActivity extends Activity {
 		}
 		myMsg.setGravity(Gravity.CENTER_HORIZONTAL);
 		popupBuilder.setView(myMsg);
-
-
-
 	}
 
 
