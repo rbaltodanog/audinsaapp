@@ -3,25 +3,34 @@ package audinsa.audiologia;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Currency;
 import java.util.Random;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.View;
 import android.media.*;
 import audinsa.audiologia.businessdomain.ResultadoSensibilidadOido;
+
+import org.joda.time.DateTime;
+import org.joda.time.Duration;
 
 
 public class SensibilidadOidoExamen extends Activity {
 	private ArrayList<ResultadoSensibilidadOido> _sonidos;
-	public ResultadoSensibilidadOido _currentSound;
+	private ArrayList<ResultadoSensibilidadOido> _sonidosFinales;
+	private ResultadoSensibilidadOido _currentSound;
 	private MediaPlayer _mPlayer;
+	private DateTime _soundStarted;
+	private Duration _timeToBeHeardDuration;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sensibilidad_oido_examen);
 		_sonidos = new ArrayList<ResultadoSensibilidadOido>();
+		_sonidosFinales = new ArrayList<ResultadoSensibilidadOido>();
 		_mPlayer = new MediaPlayer();
 		FillSoundsArray();
 		PlayRandomSound();
@@ -44,6 +53,7 @@ public class SensibilidadOidoExamen extends Activity {
 			_currentSound = _sonidos.get(0);
 			_sonidos.remove(0);
 			Sound(_currentSound.getResId(),_currentSound.isDerecho());
+			_soundStarted = DateTime.now();
 		}
 		else
 		{
@@ -59,8 +69,8 @@ public class SensibilidadOidoExamen extends Activity {
 			String filename = fields[i].getName();
 			int frecuencia = Integer.parseInt(filename.substring(filename.indexOf("_") + 1, filename.indexOf("hz")));
 			try {
-				_sonidos.add(new ResultadoSensibilidadOido(false, true, fields[i].getInt(fields[i]), frecuencia, 0));
-				_sonidos.add(new ResultadoSensibilidadOido(true, false, fields[i].getInt(fields[i]), frecuencia, 0));
+				_sonidos.add(new ResultadoSensibilidadOido(false, true, fields[i].getInt(fields[i]), frecuencia, 0, false));
+				_sonidos.add(new ResultadoSensibilidadOido(true, false, fields[i].getInt(fields[i]), frecuencia, 0, false));
 			} catch (IllegalArgumentException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -76,8 +86,6 @@ public class SensibilidadOidoExamen extends Activity {
 		_mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
 			public void onCompletion(MediaPlayer player) {
 				player.stop();
-				player.release();
-				PlayRandomSound();
 			}
 		});
 		if (derecho)
@@ -90,5 +98,51 @@ public class SensibilidadOidoExamen extends Activity {
 			_mPlayer.setVolume(1.0f, 0.0f);
 			_mPlayer.start();
 		}
-	};
+	}
+	
+	public void onIzquierdoClick(View view) {
+		_mPlayer.stop();
+		_timeToBeHeardDuration = new Duration(_soundStarted, DateTime.now());
+		if (_currentSound.isIzquierdo())
+		{
+			_currentSound.setEquivocado(false);
+		}
+		else
+		{
+			_currentSound.setEquivocado(true);
+		}
+		_currentSound.setTiempoParaSerOido(_timeToBeHeardDuration.getMillis());
+		_sonidosFinales.add(_currentSound);
+		if (_sonidos.size() == 0)
+		{
+			// Redireccionar a resultado
+		}
+		else
+		{
+			PlayRandomSound();
+		}
+	}
+	
+	public void onDerechoClick(View view) {
+		_mPlayer.stop();
+		_timeToBeHeardDuration = new Duration(_soundStarted, DateTime.now());
+		if (_currentSound.isDerecho())
+		{
+			_currentSound.setEquivocado(false);
+		}
+		else
+		{
+			_currentSound.setEquivocado(true);
+		}
+		_currentSound.setTiempoParaSerOido(_timeToBeHeardDuration.getMillis());
+		_sonidosFinales.add(_currentSound);
+		if (_sonidos.size() == 0)
+		{
+			// Redireccionar a resultado
+		}
+		else
+		{
+			PlayRandomSound();
+		}
+	}
 }
