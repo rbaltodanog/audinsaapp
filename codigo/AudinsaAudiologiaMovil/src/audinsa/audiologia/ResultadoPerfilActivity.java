@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import audinsa.audiologia.Adapters.ResultadosItemAdapter;
+import audinsa.audiologia.businessdomain.CompartirResultado;
 import audinsa.audiologia.businessdomain.Perfil;
 import audinsa.audiologia.businessdomain.Resultado;
 import audinsa.audiologia.datasources.ExamenDataSource;
@@ -28,7 +29,9 @@ import audinsa.audiologia.datasources.ResultadoDataSource;
 public class ResultadoPerfilActivity extends Activity {
 	private ResultadoDataSource resultadoDataSource;
 	private ExamenDataSource examenDataSource;
-	ArrayList<Resultado> resultados;
+	private ArrayList<Resultado> resultados;
+	private CompartirResultado C;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -136,7 +139,7 @@ public class ResultadoPerfilActivity extends Activity {
 			 compartirInformacion(idResultado, idPerfil);
 			return true;
 		case R.id.menu_contactar:
-			contactarCLinica(idResultado, idPerfil);
+			contactarClinica(idResultado, idPerfil);
 			return true;
 
 		default:
@@ -146,27 +149,17 @@ public class ResultadoPerfilActivity extends Activity {
 	}
 
 	private void compartirInformacion(long idResultado, long idPerfil) {
-		Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-		sharingIntent.setType("text/plain");
+		
 		Resultado r = onGetResultado(idResultado,idPerfil);
-		String shareBody = "Estoy usando la aplicación de Audinsa S.A. para revisar mi audición. Mi calificación es: "+ r.getValorResultado_examen();
-		sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Compartir");
-		sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-		startActivity(Intent.createChooser(sharingIntent, "Enviar información usando"));
+		String estado= r.getValorResultado_examen();
+		C.compartirInformacion(estado,this.getBaseContext());
 	}
 	
-	private void contactarCLinica(long idResultado, long idPerfil) {
-		Intent contactIntent = new Intent(Intent.ACTION_SEND);
-		contactIntent.setType("message/rfc822"); //set the email recipient
+	private void contactarClinica(long idResultado, long idPerfil) {
 		Perfil p = onGetPerfil(idPerfil);
 		Resultado r = onGetResultado(idResultado,idPerfil);
-		String shareBody = "He realizado el exámen: Cuestionario. Mi calificación es: "+ r.getValorResultado_examen() + ".Estoy interesado en obtener una cita médica. Mis datos son: " +
-		"Nombre: " + p.toString() + ", Fecha de nacimiento: " + p.getFechaNacimiento() + ", Correo Electrónico: " +	p.getCorreoElectronico();
-		contactIntent.putExtra(Intent.EXTRA_SUBJECT, "Consulta");
-		contactIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-		String[] mail = { "info@clinicaaudinsa.com", "" };
-		contactIntent.putExtra(Intent.EXTRA_EMAIL, mail);   
-        startActivity(Intent.createChooser(contactIntent, "Enviar información usando"));		
+		String estado= r.getValorResultado_examen();
+		C.contactarClinica(estado, p);
 	}
 	
 	private Perfil onGetPerfil(long idPerfil) {
