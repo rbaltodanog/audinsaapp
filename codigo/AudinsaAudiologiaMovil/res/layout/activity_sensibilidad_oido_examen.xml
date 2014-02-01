@@ -30,6 +30,7 @@
         android:cropToPadding="false"
         android:maxHeight="160dp"
         android:maxWidth="160dp"
+        android:onClick="onIzquierdoClick"
         android:scaleType="fitStart"
         android:src="@drawable/left_ear" />
 
@@ -45,6 +46,7 @@
         android:cropToPadding="false"
         android:maxHeight="172dp"
         android:maxWidth="160dp"
+        android:onClick="onDerechoClick"
         android:scaleType="fitStart"
         android:src="@drawable/right_ear" />
 

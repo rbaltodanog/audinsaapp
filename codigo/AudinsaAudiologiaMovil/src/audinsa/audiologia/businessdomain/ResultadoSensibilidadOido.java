@@ -5,26 +5,28 @@ public class ResultadoSensibilidadOido {
 	private boolean derecho;
 	private int resId;
 	private int frecuencia;
-	private float tiempoParaSerOido;
+	private long tiempoParaSerOido;
+	private boolean equivocado;
 	
 	public ResultadoSensibilidadOido()
 	{
 	}
 	
 	public ResultadoSensibilidadOido(boolean izquierdo, boolean derecho,
-			int resId, int frecuencia, float tiempoParaSerOido) {
+			int resId, int frecuencia, long tiempoParaSerOido, boolean equivocado) {
 		super();
 		this.izquierdo = izquierdo;
 		this.derecho = derecho;
 		this.resId = resId;
 		this.frecuencia = frecuencia;
 		this.tiempoParaSerOido = tiempoParaSerOido;
+		this.equivocado = equivocado;
 	}
 	
-	public float getTiempoParaSerOido() {
+	public long getTiempoParaSerOido() {
 		return tiempoParaSerOido;
 	}
-	public void setTiempoParaSerOido(float tiempoParaSerOido) {
+	public void setTiempoParaSerOido(long tiempoParaSerOido) {
 		this.tiempoParaSerOido = tiempoParaSerOido;
 	}
 	public int getFrecuencia() {
@@ -50,5 +52,13 @@ public class ResultadoSensibilidadOido {
 	}
 	public void setIzquierdo(boolean izquierdo) {
 		this.izquierdo = izquierdo;
+	}
+
+	public boolean isEquivocado() {
+		return equivocado;
+	}
+
+	public void setEquivocado(boolean equivocado) {
+		this.equivocado = equivocado;
 	}
 }
