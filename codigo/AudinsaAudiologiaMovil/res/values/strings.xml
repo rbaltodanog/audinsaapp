@@ -100,7 +100,11 @@
     <string name="lblCompartir">Compartir</string>
     <string name="lblBorrar">Borrar</string>
     <string name="menu_settings">Settings</string>
+    <string name="txtResultadosDialogoDeseaEliminar">¿Está seguro que desea eliminar este resultado? (Esta acción no se puede revertir)</string>
+    <string name="txtResultadoDialogoTituloDeseaEliminar">Eliminar Resultado</string>
     <string name="title_activity_cuestionario_resultado">Resultado Cuestionario</string>
+    <string name="title_activity_sensibilidad_oido_resultado">Resultado Sensibilidad de Oido</string>
+    <string name="title_activity_habla_ruido_resultado">Resultado Habla en Ruido</string>
 
     <!-- Mapa Localización -->
     <string name="title_activity_mapa_localizacion">Localización Clínica</string>
@@ -141,6 +145,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_sensibilidad_oido_examen">Sensibilidad de Oídos</string>
     <string name="title_activity_resultado_perfil">Resultados</string>
+    <string name="txtResultadoErrorAlBorrar">Error al borrar el resultado</string>
     <string name="hello_world">Hello world!</string>
 
 </resources>

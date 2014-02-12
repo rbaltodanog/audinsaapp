@@ -157,32 +157,6 @@
                         </TableRow>
 
                         <TableRow
-                            android:id="@+id/row_borrar_resultado"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical" >
-
-                            <ImageView
-                                android:id="@+id/imgBorrarResultado"
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
-                                android:contentDescription="@string/imgBorrarContentDescription"
-                                android:src="@drawable/ic_borrar" />
-
-                            <TextView
-                                android:id="@+id/lblBorrar"
-                                android:layout_width="wrap_content"
-                                android:layout_height="20dp"
-                                android:layout_marginBottom="10dp"
-                                android:layout_marginTop="10dp"
-                                android:gravity="center_vertical"
-                                android:text="@string/lblBorrar"
-                                android:textAppearance="?android:attr/textAppearanceSmall"
-                                android:textSize="15sp" />
-
-                        </TableRow>
-
-                        <TableRow
                             android:layout_height="1dp"
                             android:background="#BDBDBD" >
 

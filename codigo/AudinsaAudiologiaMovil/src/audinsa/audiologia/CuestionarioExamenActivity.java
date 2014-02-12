@@ -69,6 +69,7 @@ public class CuestionarioExamenActivity extends Activity {
 			
 		intent.putExtra("idPerfil", idPerfil);
 		intent.putExtra("idResultado", idResultado);
+		intent.putExtra("idTipoExamen", idTipoExamen);
 		
 		startActivity(intent);
 		this.finish();

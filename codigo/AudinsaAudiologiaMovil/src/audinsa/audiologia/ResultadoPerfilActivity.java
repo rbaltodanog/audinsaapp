@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.util.Log;
 //import android.content.res.Resources;
 import android.view.ContextMenu;
@@ -41,8 +43,8 @@ public class ResultadoPerfilActivity extends Activity {
 		ListView listView = (ListView) findViewById(R.id.listResultados);
 		listView.setEmptyView(findViewById(R.id.lblResultadosVacio));
 		registerForContextMenu(listView);
-		setOnListViewItemClickListener();	
-
+		setOnListViewItemClickListener();
+		C = new CompartirResultado();
 	}
 
 
@@ -119,21 +121,53 @@ public class ResultadoPerfilActivity extends Activity {
 	public boolean onContextItemSelected(MenuItem item) {  
 		AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 		Resultado resultadoSeleccionado = resultados.get(info.position);
+		Resources res = this.getResources();
 
-		long idPerfil = resultadoSeleccionado.getId_perfil();
-		long idResultado = resultadoSeleccionado.getId_resultado();
-		long idExamen = resultadoSeleccionado.getId_examen();
-		boolean resultado= false;
+		final long idPerfil = resultadoSeleccionado.getId_perfil();
+		final long idResultado = resultadoSeleccionado.getId_resultado();
+		final long idExamen = resultadoSeleccionado.getId_examen();
 
 		switch (item.getItemId()) {
 		case R.id.menu_borrar:
-			resultado = resultadoDataSource.borrarResultado(idResultado, idPerfil);
-			if (resultado)
-			{
-				examenDataSource.borrarExamen(idExamen); 
-			}
-			mostrarMensaje(resultado);
-			loadData();
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle(res.getString(R.string.txtResultadoDialogoTituloDeseaEliminar))
+					.setMessage(res.getString(R.string.txtResultadosDialogoDeseaEliminar))
+					.setCancelable(false)
+					.setPositiveButton(
+							res.getString(R.string.txtPerfilesDialogoOk),
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int which) {
+									try {
+										boolean resultado= false;
+										resultado = resultadoDataSource.borrarResultado(idResultado, idPerfil);
+										if (resultado)
+										{
+											examenDataSource.borrarExamen(idExamen); 
+										}
+										mostrarMensaje(resultado);
+										loadData();
+									} catch (Exception ex) {
+										Toast.makeText(
+												getBaseContext(),
+												getBaseContext()
+														.getResources()
+														.getString(
+																R.string.txtResultadoErrorAlBorrar)
+														+ ": " + ex.getMessage(),
+												Toast.LENGTH_SHORT).show();
+									}
+								}
+							})
+					.setNegativeButton(
+							res.getString(R.string.txtPerfilesDialogoCancel),
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int id) {
+									dialog.cancel();
+								}
+							});
+			AlertDialog alert = builder.create();
+			alert.show();
 			return true;
 		case R.id.menu_compartir:
 			 compartirInformacion(idResultado, idPerfil);

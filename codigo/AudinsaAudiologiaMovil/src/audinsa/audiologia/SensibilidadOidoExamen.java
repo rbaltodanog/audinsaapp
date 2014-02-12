@@ -3,15 +3,16 @@ package audinsa.audiologia;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Currency;
 import java.util.Random;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.media.*;
 import audinsa.audiologia.businessdomain.ResultadoSensibilidadOido;
+import audinsa.audiologia.datasources.ResultadoDataSource;
 
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
@@ -24,7 +25,9 @@ public class SensibilidadOidoExamen extends Activity {
 	private MediaPlayer _mPlayer;
 	private DateTime _soundStarted;
 	private Duration _timeToBeHeardDuration;
-
+	int puntaje = 8;
+	private ResultadoDataSource dataSource;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -54,10 +57,6 @@ public class SensibilidadOidoExamen extends Activity {
 			_sonidos.remove(0);
 			Sound(_currentSound.getResId(),_currentSound.isDerecho());
 			_soundStarted = DateTime.now();
-		}
-		else
-		{
-			// Redireccionar a resultado
 		}
 
 	}
@@ -110,12 +109,13 @@ public class SensibilidadOidoExamen extends Activity {
 		else
 		{
 			_currentSound.setEquivocado(true);
+			puntaje--;
 		}
 		_currentSound.setTiempoParaSerOido(_timeToBeHeardDuration.getMillis());
 		_sonidosFinales.add(_currentSound);
 		if (_sonidos.size() == 0)
 		{
-			// Redireccionar a resultado
+			guardarResultado(view);
 		}
 		else
 		{
@@ -133,16 +133,49 @@ public class SensibilidadOidoExamen extends Activity {
 		else
 		{
 			_currentSound.setEquivocado(true);
+			puntaje--;
 		}
 		_currentSound.setTiempoParaSerOido(_timeToBeHeardDuration.getMillis());
 		_sonidosFinales.add(_currentSound);
 		if (_sonidos.size() == 0)
 		{
-			// Redireccionar a resultado
+			guardarResultado(view);
 		}
 		else
 		{
 			PlayRandomSound();
 		}
+	}
+	
+	private void guardarResultado(View view) {
+		long idPerfil, idTipoExamen;
+		int valor_examen = 0;
+		idPerfil = getIntent().getLongExtra("idPerfil", 0);
+		idTipoExamen = getIntent().getLongExtra("idTipoExamen", 0);
+
+		Intent intent = new Intent(view.getContext(),
+				CuestionarioResultadoActivity.class);
+		if (puntaje == 8) {
+			String positivo = this.getString(R.string.strResultadoPositivo);
+			intent.putExtra("strResultado", positivo);
+			intent.putExtra("bolAprobado", true);
+			valor_examen = 1;
+		} else {
+			String negativo = this.getString(R.string.strResultadoNegativo);
+			intent.putExtra("strResultado", negativo);
+			intent.putExtra("bolAprobado", false);
+		}
+		
+		dataSource = new ResultadoDataSource(this);
+		dataSource.open();
+		long idResultado=dataSource.crearResultado(idPerfil, idTipoExamen, valor_examen,DateTime.now());
+		dataSource.close();
+			
+		intent.putExtra("idPerfil", idPerfil);
+		intent.putExtra("idResultado", idResultado);
+		intent.putExtra("idTipoExamen", idTipoExamen);
+		
+		startActivity(intent);
+		this.finish();
 	}
 }
