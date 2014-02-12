@@ -20,7 +20,7 @@ public class CuestionarioResultadoActivity extends Activity {
 
 	private CompartirResultado C;
 	private PerfilDataSource dataSource;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// pantalla vertical
@@ -29,16 +29,31 @@ public class CuestionarioResultadoActivity extends Activity {
 
 		TextView txtResultadoDescription = (TextView) findViewById(R.id.txtResultadoDescription);
 		String strResultado = getIntent().getStringExtra("strResultado");
+		long tipoExamen = getIntent().getLongExtra("idTipoExamen", 0);
 		txtResultadoDescription.setText(strResultado);
 		// Cambia la imagen del semáforo si esta aprobado o reprobado
 		boolean aprobado = getIntent().getBooleanExtra("bolAprobado", true);
 		ImageView img = (ImageView) findViewById(R.id.imgViewCuestionarioAprobado);
-	 	if (aprobado) {
+		if (aprobado) {
 			img.setImageResource(R.drawable.animation_resultado_aprobado);
 		} else {
 			img.setImageResource(R.drawable.animation_resultado_reprobado);
 		}
-		
+
+		//Cambia el titulo del activity en base en el tipo de examen
+		if (tipoExamen == 1)
+		{
+			setTitle(R.string.title_activity_sensibilidad_oido_resultado);
+		}
+		if (tipoExamen == 2)
+		{
+			setTitle(R.string.title_activity_habla_ruido_resultado);
+		}
+		if (tipoExamen == 3)
+		{
+			setTitle(R.string.title_activity_cuestionario_resultado);
+		}
+
 		TableRow rowContactarClinica = (TableRow)findViewById(R.id.row_contactar_clinica);			
 		rowContactarClinica.setClickable(true);
 		rowContactarClinica.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +64,7 @@ public class CuestionarioResultadoActivity extends Activity {
 				C.contactarClinica(estado,p);
 			}
 		});		
-		
+
 		TableRow rowCompartirResultado = (TableRow)findViewById(R.id.row_compartir_resultado);			
 		rowCompartirResultado.setClickable(true);
 		rowCompartirResultado.setOnClickListener(new View.OnClickListener() {
@@ -94,11 +109,11 @@ public class CuestionarioResultadoActivity extends Activity {
 		frameAnimation.setVisible(true, true);
 		frameAnimation.start();
 	}
-	
+
 	public void onRegresarClick(View view) {
 		this.finish();
 	}
-	
+
 
 
 	// Obtiene el perfil por compartir
@@ -114,5 +129,5 @@ public class CuestionarioResultadoActivity extends Activity {
 		return p;
 	}
 
-	
+
 }
