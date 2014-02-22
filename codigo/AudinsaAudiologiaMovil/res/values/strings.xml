@@ -142,6 +142,7 @@
     <string name="txtPerfilesToastPerfilErrorAlBorrar">Error al borrar el perfil</string>
     <string name="txtMantenimientoPerfilesToastErrorParsearDatos">Error al transformar datos del perfil</string>
     <string name="txtSensibOidosSegundoCheck">Por favor conecte los audífonos al teléfono</string>
+    <string name="txtSensibOidosTercerCheck">Por favor establezca el volumen del teléfono al máximo usando la barra deslizadora</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_sensibilidad_oido_examen">Sensibilidad de Oídos</string>
     <string name="title_activity_resultado_perfil">Resultados</string>
