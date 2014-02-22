@@ -66,6 +66,14 @@
                 android:text="@string/txtPasoSensibilidad3" />
 
         </TableRow>
+         <TableRow>
+
+             <SeekBar
+                 android:id="@+id/volumeBarSensibility"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content" />
+
+        </TableRow>
     </TableLayout>
 
     <TableLayout
