@@ -61,7 +61,7 @@
             android:label="@string/title_activity_articulos" >
         </activity>
         <activity
-            android:name="audinsa.audiologia.CuestionarioResultadoActivity"
+            android:name="audinsa.audiologia.ResultadoActivity"
             android:label="@string/title_activity_cuestionario_resultado" >
         </activity>
         <activity
