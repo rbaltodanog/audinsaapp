@@ -43,7 +43,7 @@ public class ResultadoPerfilActivity extends Activity {
 		ListView listView = (ListView) findViewById(R.id.listResultados);
 		listView.setEmptyView(findViewById(R.id.lblResultadosVacio));
 		registerForContextMenu(listView);
-		setOnListViewItemClickListener();
+		addOnClickListener();
 		C = new CompartirResultado();
 	}
 
@@ -61,7 +61,7 @@ public class ResultadoPerfilActivity extends Activity {
 
 
 	}
-	private void setOnListViewItemClickListener() {
+	private void addOnClickListener() {
 		ListView lstView = (ListView) findViewById(R.id.listResultados);
 		OnItemClickListener listener = new OnItemClickListener() {
 			@Override
@@ -80,8 +80,9 @@ public class ResultadoPerfilActivity extends Activity {
 				intent.putExtra("idResultado", idResultado);
 				intent.putExtra("idExamen", idExamen);
 
-				startActivity(intent);
-
+				//startActivity(intent);
+				view.setLongClickable(false);  
+	            openContextMenu(view);
 
 			}
 		};

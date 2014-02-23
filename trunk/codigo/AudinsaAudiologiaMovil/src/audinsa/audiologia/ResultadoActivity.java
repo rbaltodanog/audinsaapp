@@ -16,7 +16,7 @@ import audinsa.audiologia.businessdomain.Perfil;
 //mport audinsa.audiologia.businessdomain.Resultado;
 import audinsa.audiologia.datasources.PerfilDataSource;
 
-public class CuestionarioResultadoActivity extends Activity {
+public class ResultadoActivity extends Activity {
 
 	private CompartirResultado C;
 	private PerfilDataSource dataSource;
@@ -25,7 +25,7 @@ public class CuestionarioResultadoActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// pantalla vertical
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_cuestionario_resultado);
+		setContentView(R.layout.activity_resultado);
 
 		TextView txtResultadoDescription = (TextView) findViewById(R.id.txtResultadoDescription);
 		String strResultado = getIntent().getStringExtra("strResultado");
@@ -114,6 +114,7 @@ public class CuestionarioResultadoActivity extends Activity {
 		this.finish();
 	}
 
+	
 
 
 	// Obtiene el perfil por compartir

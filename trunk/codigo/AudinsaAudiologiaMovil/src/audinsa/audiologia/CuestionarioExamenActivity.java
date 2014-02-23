@@ -50,7 +50,7 @@ public class CuestionarioExamenActivity extends Activity {
 		idTipoExamen = getIntent().getLongExtra("idTipoExamen", 0);
 
 		Intent intent = new Intent(view.getContext(),
-				CuestionarioResultadoActivity.class);
+				ResultadoActivity.class);
 		if (puntaje >= 8) {
 			String positivo = this.getString(R.string.strResultadoPositivo);
 			intent.putExtra("strResultado", positivo);
@@ -97,7 +97,7 @@ public class CuestionarioExamenActivity extends Activity {
 		}
 	}
 
-	// Obtiene la siguiente pregunta válida del arreglo y la elimina del mismo.
+	// Obtiene la siguiente pregunta valida del arreglo y la elimina del mismo.
 	public void obtenerSiguientePregunta() {
 		lblPregunta.setText(cuestionario.getPreguntas().get(0));
 		cuestionario.getPreguntas().remove(0);

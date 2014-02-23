@@ -12,7 +12,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.widget.TextView;
+//import android.widget.TextView;
 
 import audinsa.audiologia.businessdomain.Resultado;
 
@@ -96,11 +96,6 @@ public class ResultadoDataSource {
 
 	}
 
-	//	public void borrarResultado(Resultado resultado) {
-	//		int id = resultado.getId_resultado();
-	//	database.delete(MySQLiteHelper.TABLA_RESULTADO, MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID
-	//			+ " = " + id, null);
-	//}
 	public boolean borrarResultado(long idResultado,long idPerfil) {
 		boolean resultado = true;
 		open();

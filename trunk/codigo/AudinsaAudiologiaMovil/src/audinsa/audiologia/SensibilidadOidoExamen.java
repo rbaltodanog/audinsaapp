@@ -154,7 +154,7 @@ public class SensibilidadOidoExamen extends Activity {
 		idTipoExamen = getIntent().getLongExtra("idTipoExamen", 0);
 
 		Intent intent = new Intent(view.getContext(),
-				CuestionarioResultadoActivity.class);
+				ResultadoActivity.class);
 		if (puntaje == 8) {
 			String positivo = this.getString(R.string.strResultadoPositivo);
 			intent.putExtra("strResultado", positivo);
