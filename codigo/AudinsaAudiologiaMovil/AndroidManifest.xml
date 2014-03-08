@@ -94,6 +94,9 @@
             android:name="audinsa.audiologia.ResultadoPerfilActivity"
             android:label="@string/title_activity_resultado_perfil" >
         </activity>
+        <meta-data 
+           	android:name="com.facebook.sdk.ApplicationId" 
+           	android:value="@string/app_id"/>
     </application>
 
 </manifest>
