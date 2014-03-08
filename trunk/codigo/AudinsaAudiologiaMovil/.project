@@ -3,6 +3,7 @@
 	<name>AudinsaApp</name>
 	<comment></comment>
 	<projects>
+		<project>facebook</project>
 		<project>google-play-services_lib</project>
 	</projects>
 	<buildSpec>
