@@ -78,6 +78,135 @@
 	exportControl 	"Public"
 	global     	TRUE
 	logical_models 	(list unit_reference_list
+	    (object Class "Cliente"
+		quid       	"5328FCA4023F"
+		stereotype 	"Actor")
+	    (object UseCase "Realizar Prueba"
+		quid       	"5328FCB801E7")
+	    (object UseCase "Obtener Artículos"
+		quid       	"5328FCF7019A")
+	    (object UseCase "Obtener Perfiles"
+		quid       	"5328FD100242")
+	    (object UseCase "Borrar Perfil"
+		quid       	"5328FD3A00A3")
+	    (object UseCase "Modificar Perfil"
+		quid       	"5328FD450240")
+	    (object UseCase "Localizar consultorio"
+		quid       	"5328FDA4017A")
+	    (object UseCase "Crear Perfil"
+		quid       	"5328FE020308")
+	    (object UseCase "Obtener Resultados"
+		quid       	"5328FEA9009E")
+	    (object UseCase "Manejar Resultado"
+		quid       	"5328FF7A00E8")
+	    (object Association "$UNNAMED$0"
+		quid       	"532900050275"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$1"
+			quid       	"5329000601F6"
+			supplier   	"Use Case View::Realizar Prueba"
+			quidu      	"5328FCB801E7"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$2"
+			quid       	"5329000601F8"
+			supplier   	"Use Case View::Cliente"
+			quidu      	"5328FCA4023F")))
+	    (object Association "$UNNAMED$3"
+		quid       	"5329000B0244"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$4"
+			quid       	"5329000E026C"
+			supplier   	"Use Case View::Localizar consultorio"
+			quidu      	"5328FDA4017A"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$5"
+			quid       	"5329000E026E"
+			supplier   	"Use Case View::Cliente"
+			quidu      	"5328FCA4023F")))
+	    (object Association "$UNNAMED$6"
+		quid       	"5329001D000B"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$7"
+			quid       	"5329001D02E3"
+			supplier   	"Use Case View::Crear Perfil"
+			quidu      	"5328FE020308"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$8"
+			quid       	"5329001D02E5"
+			supplier   	"Use Case View::Cliente"
+			quidu      	"5328FCA4023F")))
+	    (object Association "$UNNAMED$9"
+		quid       	"532900220297"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$10"
+			quid       	"532900230279"
+			supplier   	"Use Case View::Borrar Perfil"
+			quidu      	"5328FD3A00A3"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$11"
+			quid       	"53290023027B"
+			supplier   	"Use Case View::Cliente"
+			quidu      	"5328FCA4023F")))
+	    (object Association "$UNNAMED$12"
+		quid       	"532900270259"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$13"
+			quid       	"532900280279"
+			supplier   	"Use Case View::Modificar Perfil"
+			quidu      	"5328FD450240"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$14"
+			quid       	"53290028027C"
+			supplier   	"Use Case View::Cliente"
+			quidu      	"5328FCA4023F")))
+	    (object Association "$UNNAMED$15"
+		quid       	"5329002B03CD"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$16"
+			quid       	"5329002D0093"
+			supplier   	"Use Case View::Obtener Perfiles"
+			quidu      	"5328FD100242"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$17"
+			quid       	"5329002D0095"
+			supplier   	"Use Case View::Cliente"
+			quidu      	"5328FCA4023F")))
+	    (object Association "$UNNAMED$18"
+		quid       	"5329002F0372"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$19"
+			quid       	"53290030025B"
+			supplier   	"Use Case View::Manejar Resultado"
+			quidu      	"5328FF7A00E8"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$20"
+			quid       	"53290030025D"
+			supplier   	"Use Case View::Cliente"
+			quidu      	"5328FCA4023F")))
+	    (object Association "$UNNAMED$21"
+		quid       	"5329003400CB"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$22"
+			quid       	"532900350026"
+			supplier   	"Use Case View::Obtener Artículos"
+			quidu      	"5328FCF7019A"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$23"
+			quid       	"532900350029"
+			supplier   	"Use Case View::Cliente"
+			quidu      	"5328FCA4023F")))
+	    (object Association "$UNNAMED$24"
+		quid       	"5329003800CF"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$25"
+			quid       	"5329003B0059"
+			supplier   	"Use Case View::Obtener Resultados"
+			quidu      	"5328FEA9009E"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$26"
+			quid       	"5329003B005B"
+			supplier   	"Use Case View::Cliente"
+			quidu      	"5328FCA4023F")))
 	    (object Class_Category "NewPackage"
 		quid       	"50AC4B050329"
 		exportControl 	"Public"
@@ -107,11 +236,11 @@
 		zoom       	100
 		max_height 	28350
 		max_width  	21600
-		origin_x   	0
-		origin_y   	525
+		origin_x   	59
+		origin_y   	144
 		items      	(list diagram_item_list
 		    (object NoteView @1
-			location   	(2256, 192)
+			location   	(2672, 352)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -123,7 +252,7 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@1
-			    location   	(1931, 126)
+			    location   	(2347, 286)
 			    fill_color 	13434879
 			    nlines     	3
 			    max_width  	615
@@ -134,7 +263,7 @@
 			width      	675
 			height     	145)
 		    (object NoteView @2
-			location   	(2752, 736)
+			location   	(2736, 1002)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -146,18 +275,18 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@2
-			    location   	(2402, 675)
+			    location   	(2386, 941)
 			    fill_color 	13434879
 			    nlines     	2
 			    max_width  	665
 			    justify    	1
-			    label      	"Borra el perfil seleccionado")
+			    label      	"Modifcar el perfil seleccionado")
 			line_color 	3342489
 			fill_color 	13434879
 			width      	725
 			height     	135)
 		    (object NoteView @3
-			location   	(432, 2032)
+			location   	(432, 1312)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -169,18 +298,18 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@3
-			    location   	(202, 1973)
+			    location   	(202, 1253)
 			    fill_color 	13434879
 			    nlines     	2
 			    max_width  	425
 			    justify    	1
-			    label      	"Analiza los resultados de la aplicación")
+			    label      	"Obtiene los resultados de un perfil")
 			line_color 	3342489
 			fill_color 	13434879
 			width      	485
 			height     	130)
 		    (object NoteView @4
-			location   	(2528, 2048)
+			location   	(2736, 1280)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -192,18 +321,18 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@4
-			    location   	(2178, 1982)
+			    location   	(2373, 1217)
 			    fill_color 	13434879
-			    nlines     	3
-			    max_width  	665
+			    nlines     	2
+			    max_width  	690
 			    justify    	1
-			    label      	"Contacta al cliente en caso de que requiera una cita médica")
+			    label      	"Obtiene la lista de perfiles")
 			line_color 	3342489
 			fill_color 	13434879
-			width      	725
-			height     	145)
+			width      	750
+			height     	138)
 		    (object NoteView @5
-			location   	(2000, 1424)
+			location   	(352, 982)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -215,18 +344,18 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@5
-			    location   	(1587, 1350)
+			    location   	(17, 911)
 			    fill_color 	13434879
 			    nlines     	3
-			    max_width  	790
+			    max_width  	635
 			    justify    	1
-			    label      	"Obtiene la lista de perfiles")
+			    label      	"Obtiene los artículos del repositorio de datos")
 			line_color 	3342489
 			fill_color 	13434879
-			width      	850
-			height     	160)
+			width      	695
+			height     	155)
 		    (object NoteView @6
-			location   	(1008, 1424)
+			location   	(320, 400)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -238,18 +367,18 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@6
-			    location   	(673, 1353)
+			    location   	(20, 326)
 			    fill_color 	13434879
 			    nlines     	3
-			    max_width  	635
+			    max_width  	565
 			    justify    	1
-			    label      	"Obtiene los artículos del repositorio de datos")
+			    label      	"Realiza la prueba seleccionada de audiología")
 			line_color 	3342489
 			fill_color 	13434879
-			width      	695
-			height     	155)
+			width      	625
+			height     	160)
 		    (object NoteView @7
-			location   	(384, 464)
+			location   	(1552, 1616)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -261,16 +390,738 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@7
-			    location   	(84, 390)
+			    location   	(1214, 1550)
 			    fill_color 	13434879
-			    nlines     	3
-			    max_width  	565
+			    nlines     	2
+			    max_width  	640
 			    justify    	1
-			    label      	"Realiza la prueba seleccionada de audiología")
+			    label      	"Compartir o borrar el resultado")
 			line_color 	3342489
 			fill_color 	13434879
-			width      	625
-			height     	160)))))
+			width      	700
+			height     	144)
+		    (object UseCaseView "Use Case View::Realizar Prueba" @8
+			location   	(880, 400)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@8
+			    location   	(880, 538)
+			    anchor_loc 	1
+			    nlines     	2
+			    max_width  	630
+			    justify    	0
+			    label      	"Realizar Prueba")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5328FCB801E7"
+			height     	118)
+		    (object UseCaseView "Use Case View::Localizar consultorio" @9
+			location   	(928, 688)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@9
+			    location   	(928, 826)
+			    anchor_loc 	1
+			    nlines     	2
+			    max_width  	630
+			    justify    	0
+			    label      	"Localizar consultorio")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5328FDA4017A"
+			height     	118)
+		    (object UseCaseView "Use Case View::Crear Perfil" @10
+			location   	(2128, 352)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@10
+			    location   	(2128, 490)
+			    anchor_loc 	1
+			    nlines     	2
+			    max_width  	630
+			    justify    	0
+			    label      	"Crear Perfil")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5328FE020308"
+			height     	118)
+		    (object UseCaseView "Use Case View::Borrar Perfil" @11
+			location   	(2144, 688)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@11
+			    location   	(2144, 826)
+			    anchor_loc 	1
+			    nlines     	2
+			    max_width  	630
+			    justify    	0
+			    label      	"Borrar Perfil")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5328FD3A00A3"
+			height     	118)
+		    (object UseCaseView "Use Case View::Modificar Perfil" @12
+			location   	(2144, 992)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@12
+			    location   	(2144, 1130)
+			    anchor_loc 	1
+			    nlines     	2
+			    max_width  	630
+			    justify    	0
+			    label      	"Modificar Perfil")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5328FD450240"
+			height     	118)
+		    (object UseCaseView "Use Case View::Obtener Perfiles" @13
+			location   	(2128, 1264)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@13
+			    location   	(2128, 1402)
+			    anchor_loc 	1
+			    nlines     	2
+			    max_width  	630
+			    justify    	0
+			    label      	"Obtener Perfiles")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5328FD100242"
+			height     	118)
+		    (object UseCaseView "Use Case View::Manejar Resultado" @14
+			location   	(1552, 1280)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@14
+			    location   	(1552, 1418)
+			    anchor_loc 	1
+			    nlines     	2
+			    max_width  	630
+			    justify    	0
+			    label      	"Manejar Resultado")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5328FF7A00E8"
+			height     	118)
+		    (object UseCaseView "Use Case View::Obtener Artículos" @15
+			location   	(944, 1040)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@15
+			    location   	(944, 1178)
+			    anchor_loc 	1
+			    nlines     	2
+			    max_width  	630
+			    justify    	0
+			    label      	"Obtener Artículos")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5328FCF7019A"
+			height     	118)
+		    (object ClassView "Class" "Use Case View::Cliente" @16
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(1536, 408)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@16
+			    location   	(1536, 568)
+			    anchor_loc 	1
+			    nlines     	2
+			    max_width  	325
+			    justify    	0
+			    label      	"Cliente")
+			icon       	"Actor"
+			icon_style 	"Icon"
+			line_color 	3342489
+			quidu      	"5328FCA4023F"
+			annotation 	8
+			autoResize 	TRUE)
+		    (object AssociationViewNew "$UNNAMED$0" @17
+			location   	(1231, 401)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"532900050275"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$1" @18
+				Parent_View 	@17
+				location   	(-305, -15)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5329000601F6"
+				client     	@17
+				supplier   	@8
+				vertices   	(list Points
+				    (1231, 401)
+				    (988, 399))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$2" @19
+				Parent_View 	@17
+				location   	(-305, -15)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5329000601F8"
+				client     	@17
+				supplier   	@16
+				vertices   	(list Points
+				    (1231, 401)
+				    (1475, 404))
+				line_style 	0)))
+		    (object AssociationViewNew "$UNNAMED$3" @20
+			location   	(1255, 533)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5329000B0244"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$4" @21
+				Parent_View 	@20
+				location   	(-281, 117)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5329000E026C"
+				client     	@20
+				supplier   	@9
+				vertices   	(list Points
+				    (1255, 533)
+				    (1036, 635))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$5" @22
+				Parent_View 	@20
+				location   	(-281, 117)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5329000E026E"
+				client     	@20
+				supplier   	@16
+				vertices   	(list Points
+				    (1255, 533)
+				    (1475, 432))
+				line_style 	0)))
+		    (object AssociationViewNew "$UNNAMED$6" @23
+			location   	(1805, 380)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5329001D000B"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$7" @24
+				Parent_View 	@23
+				location   	(269, -36)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5329001D02E3"
+				client     	@23
+				supplier   	@10
+				vertices   	(list Points
+				    (1805, 380)
+				    (2018, 360))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$8" @25
+				Parent_View 	@23
+				location   	(269, -36)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5329001D02E5"
+				client     	@23
+				supplier   	@16
+				vertices   	(list Points
+				    (1805, 380)
+				    (1593, 400))
+				line_style 	0)))
+		    (object AssociationViewNew "$UNNAMED$9" @26
+			location   	(1813, 533)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"532900220297"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$10" @27
+				Parent_View 	@26
+				location   	(277, 117)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"532900230279"
+				client     	@26
+				supplier   	@11
+				vertices   	(list Points
+				    (1813, 533)
+				    (2033, 635))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$11" @28
+				Parent_View 	@26
+				location   	(277, 117)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"53290023027B"
+				client     	@26
+				supplier   	@16
+				vertices   	(list Points
+				    (1813, 533)
+				    (1593, 432))
+				line_style 	0)))
+		    (object AssociationViewNew "$UNNAMED$12" @29
+			location   	(1837, 697)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"532900270259"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$13" @30
+				Parent_View 	@29
+				location   	(301, 281)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"532900280279"
+				client     	@29
+				supplier   	@12
+				vertices   	(list Points
+				    (1837, 697)
+				    (2082, 933))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$14" @31
+				Parent_View 	@29
+				location   	(301, 281)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"53290028027C"
+				client     	@29
+				supplier   	@16
+				vertices   	(list Points
+				    (1837, 697)
+				    (1593, 462))
+				line_style 	0)))
+		    (object AssociationViewNew "$UNNAMED$15" @32
+			location   	(1844, 856)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5329002B03CD"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$16" @33
+				Parent_View 	@32
+				location   	(308, 440)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5329002D0093"
+				client     	@32
+				supplier   	@13
+				vertices   	(list Points
+				    (1844, 856)
+				    (2086, 1206))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$17" @34
+				Parent_View 	@32
+				location   	(308, 440)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5329002D0095"
+				client     	@32
+				supplier   	@16
+				vertices   	(list Points
+				    (1844, 856)
+				    (1603, 507))
+				line_style 	0)))
+		    (object AssociationViewNew "$UNNAMED$18" @35
+			location   	(1543, 907)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5329002F0372"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$19" @36
+				Parent_View 	@35
+				location   	(7, 491)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"53290030025B"
+				client     	@35
+				supplier   	@14
+				vertices   	(list Points
+				    (1543, 907)
+				    (1548, 1221))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$20" @37
+				Parent_View 	@35
+				location   	(7, 491)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"53290030025D"
+				client     	@35
+				supplier   	@16
+				vertices   	(list Points
+				    (1543, 907)
+				    (1538, 593))
+				line_style 	0)))
+		    (object AssociationViewNew "$UNNAMED$21" @38
+			location   	(1234, 723)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5329003400CB"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$22" @39
+				Parent_View 	@38
+				location   	(-302, 307)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"532900350026"
+				client     	@38
+				supplier   	@15
+				vertices   	(list Points
+				    (1234, 723)
+				    (992, 982))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$23" @40
+				Parent_View 	@38
+				location   	(-302, 307)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"532900350029"
+				client     	@38
+				supplier   	@16
+				vertices   	(list Points
+				    (1234, 723)
+				    (1477, 464))
+				line_style 	0)))
+		    (object UseCaseView "Use Case View::Obtener Resultados" @41
+			location   	(944, 1344)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@41
+			    location   	(944, 1482)
+			    anchor_loc 	1
+			    nlines     	2
+			    max_width  	630
+			    justify    	0
+			    label      	"Obtener Resultados")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5328FEA9009E"
+			height     	118)
+		    (object AssociationViewNew "$UNNAMED$24" @42
+			location   	(1223, 901)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5329003800CF"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$25" @43
+				Parent_View 	@42
+				location   	(-313, 485)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5329003B0059"
+				client     	@42
+				supplier   	@41
+				vertices   	(list Points
+				    (1223, 901)
+				    (978, 1286))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$26" @44
+				Parent_View 	@42
+				location   	(-313, 485)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5329003B005B"
+				client     	@42
+				supplier   	@16
+				vertices   	(list Points
+				    (1223, 901)
+				    (1468, 516))
+				line_style 	0)))
+		    (object AttachView "" @45
+			stereotype 	TRUE
+			line_color 	3342489
+			client     	@6
+			supplier   	@8
+			vertices   	(list Points
+			    (632, 400)
+			    (770, 400))
+			line_style 	0)
+		    (object AttachView "" @46
+			stereotype 	TRUE
+			line_color 	3342489
+			client     	@5
+			supplier   	@15
+			vertices   	(list Points
+			    (699, 1015)
+			    (834, 1024))
+			line_style 	0)
+		    (object AttachView "" @47
+			stereotype 	TRUE
+			line_color 	3342489
+			client     	@3
+			supplier   	@41
+			vertices   	(list Points
+			    (674, 1327)
+			    (833, 1333))
+			line_style 	0)
+		    (object AttachView "" @48
+			stereotype 	TRUE
+			line_color 	3342489
+			client     	@7
+			supplier   	@14
+			vertices   	(list Points
+			    (1552, 1543)
+			    (1552, 1443))
+			line_style 	0)
+		    (object AttachView "" @49
+			stereotype 	TRUE
+			line_color 	3342489
+			client     	@13
+			supplier   	@4
+			vertices   	(list Points
+			    (2236, 1265)
+			    (2360, 1270))
+			line_style 	0)
+		    (object AttachView "" @50
+			stereotype 	TRUE
+			line_color 	3342489
+			client     	@12
+			supplier   	@2
+			vertices   	(list Points
+			    (2252, 991)
+			    (2373, 995))
+			line_style 	0)
+		    (object AttachView "" @51
+			stereotype 	TRUE
+			line_color 	3342489
+			client     	@10
+			supplier   	@1
+			vertices   	(list Points
+			    (2236, 352)
+			    (2334, 352))
+			line_style 	0)
+		    (object NoteView @52
+			location   	(2720, 672)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@52
+			    location   	(2370, 611)
+			    fill_color 	13434879
+			    nlines     	2
+			    max_width  	665
+			    justify    	1
+			    label      	"Borra el perfil seleccionado")
+			line_color 	3342489
+			fill_color 	13434879
+			width      	725
+			height     	135)
+		    (object AttachView "" @53
+			stereotype 	TRUE
+			line_color 	3342489
+			client     	@11
+			supplier   	@52
+			vertices   	(list Points
+			    (2252, 682)
+			    (2357, 682))
+			line_style 	0)
+		    (object NoteView @54
+			location   	(358, 693)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@54
+			    location   	(95, 630)
+			    fill_color 	13434879
+			    nlines     	2
+			    max_width  	491
+			    justify    	1
+			    label      	"Permite acceder a  la ubicación de las clínicas")
+			line_color 	3342489
+			fill_color 	13434879
+			width      	551
+			height     	138)
+		    (object AttachView "" @55
+			stereotype 	TRUE
+			line_color 	3342489
+			client     	@54
+			supplier   	@9
+			vertices   	(list Points
+			    (633, 690)
+			    (818, 687))
+			line_style 	0)))))
     root_category 	(object Class_Category "Logical View"
 	quid       	"39C9260C00D5"
 	exportControl 	"Public"
@@ -301,33 +1152,13 @@
 			quid       	"50AC4DAA0365"
 			exportControl 	"Public"
 			logical_models 	(list unit_reference_list
-			    (object Class "Consejo"
+			    (object Class "Artículo"
 				quid       	"50C3B5C40055"
 				class_attributes 	(list class_attribute_list
 				    (object ClassAttribute "Contenido"
 					quid       	"50C3B5D7031B"
 					type       	"String"
-					exportControl 	"Public")))
-			    (object Class "Grafico"
-				quid       	"50C3B6460075"
-				operations 	(list Operations
-				    (object Operation "Dibujar"
-					quid       	"50C3B7C400CF"
-					concurrency 	"Sequential"
-					opExportControl 	"Public"
-					uid        	0))
-				class_attributes 	(list class_attribute_list
-				    (object ClassAttribute "EjeX"
-					quid       	"50C3B64F03E4"
-					type       	"ArrayList"
-					exportControl 	"Public")
-				    (object ClassAttribute "EjeY"
-					quid       	"50C3B6BA00FF"
-					type       	"ArrayList"
-					exportControl 	"Public")
-				    (object ClassAttribute "Oido"
-					quid       	"50C3B6D002DD"
-					type       	"String"
+					quidu      	"39CD6AE1011A"
 					exportControl 	"Public")))
 			    (object Class "Resultado"
 				quid       	"50C3B6E60051"
@@ -337,12 +1168,6 @@
 					supplier   	"Logical View::audinsa::audiologia::Examen"
 					quidu      	"50C3B7CC03AF"
 					supplier_cardinality 	(value cardinality "1")
-					client_cardinality 	(value cardinality "1"))
-				    (object Uses_Relationship
-					quid       	"50C3B99B03B7"
-					supplier   	"Logical View::audinsa::audiologia::Grafico"
-					quidu      	"50C3B6460075"
-					supplier_cardinality 	(value cardinality "2")
 					client_cardinality 	(value cardinality "1"))
 				    (object Uses_Relationship
 					quid       	"50D27D6C0097"
@@ -373,22 +1198,12 @@
 				    (object ClassAttribute "IdResultado"
 					quid       	"50C3B702022D"
 					type       	"Integer"
+					quidu      	"39CD6BC50328"
 					exportControl 	"Public")
 				    (object ClassAttribute "ValorExamen"
 					quid       	"50C3B721015F"
 					type       	"Integer"
-					exportControl 	"Public")
-				    (object ClassAttribute "DuracionReal"
-					quid       	"50C3B735026F"
-					type       	"Integer"
-					exportControl 	"Public")
-				    (object ClassAttribute "Grafico"
-					quid       	"50C3B74D029B"
-					type       	"ArrayList"
-					exportControl 	"Public")
-				    (object ClassAttribute "Diagnostico"
-					quid       	"50C3B78F0317"
-					type       	"String"
+					quidu      	"39CD6BC50328"
 					exportControl 	"Public")
 				    (object ClassAttribute "Examen"
 					quid       	"50C3B8DD003C"
@@ -397,6 +1212,11 @@
 					exportControl 	"Public")))
 			    (object Class "Examen"
 				quid       	"50C3B7CC03AF"
+				used_nodes 	(list uses_relationship_list
+				    (object Uses_Relationship
+					quid       	"5328F8130233"
+					supplier   	"Logical View::audinsa::audiologia::TipoExamen"
+					quidu      	"5328F5BB0119"))
 				operations 	(list Operations
 				    (object Operation "CalcularResultado"
 					quid       	"50C3B8B60184"
@@ -407,6 +1227,7 @@
 				    (object ClassAttribute "IdExamen"
 					quid       	"50C3B8900138"
 					type       	"Integer"
+					quidu      	"39CD6BC50328"
 					exportControl 	"Public")
 				    (object ClassAttribute "FechaInicio"
 					quid       	"50C3B7D5021E"
@@ -415,18 +1236,31 @@
 				    (object ClassAttribute "Nombre"
 					quid       	"50C3B85D0280"
 					type       	"String"
+					quidu      	"39CD6AE1011A"
 					exportControl 	"Public")
 				    (object ClassAttribute "DuracionAproximada"
 					quid       	"50C3B86D0312"
 					type       	"Integer"
+					quidu      	"39CD6BC50328"
 					exportControl 	"Public")
 				    (object ClassAttribute "Instrucciones"
 					quid       	"50C3B87B02EC"
 					type       	"String"
+					quidu      	"39CD6AE1011A"
 					exportControl 	"Public")
 				    (object ClassAttribute "PorcentajeCompletado"
 					quid       	"50C3B8A50228"
 					type       	"Double"
+					exportControl 	"Public")
+				    (object ClassAttribute "DuracionReal"
+					quid       	"50C3B735026F"
+					type       	"Integer"
+					quidu      	"39CD6BC50328"
+					exportControl 	"Public")
+				    (object ClassAttribute "IdTipoExamen"
+					quid       	"5328F836011D"
+					type       	"TipoExamen"
+					quidu      	"5328F5BB0119"
 					exportControl 	"Public")))
 			    (object Class "Ex1_Cuestionario"
 				quid       	"50C3B8F20280"
@@ -453,22 +1287,12 @@
 				    (object ClassAttribute "Definicion"
 					quid       	"50C3BA2802D4"
 					type       	"String"
+					quidu      	"39CD6AE1011A"
 					exportControl 	"Public")
 				    (object ClassAttribute "Valor"
 					quid       	"50C3BA360178"
 					type       	"Integer"
-					exportControl 	"Public")))
-			    (object Class "SonidoDifFrecuencias"
-				quid       	"50C3BAB5001C"
-				superclasses 	(list inheritance_relationship_list
-				    (object Inheritance_Relationship
-					quid       	"50C3BCEB034E"
-					supplier   	"Logical View::audinsa::audiologia::Sonido"
-					quidu      	"50C3BB2A0238"))
-				class_attributes 	(list class_attribute_list
-				    (object ClassAttribute "ExisteDiferencia"
-					quid       	"50C3BAC602DE"
-					type       	"Boolean"
+					quidu      	"39CD6BC50328"
 					exportControl 	"Public")))
 			    (object Class "SonidoSensibilidadOido"
 				quid       	"50C3BAF20361"
@@ -520,11 +1344,13 @@
 					quid       	"50C3BB5F00CA"
 					documentation 	"En Decibeles"
 					type       	"Integer"
+					quidu      	"39CD6BC50328"
 					exportControl 	"Public")
 				    (object ClassAttribute "NivelFrecuencia"
 					quid       	"50C3BB98035C"
 					documentation 	"En Hertz"
 					type       	"Integer"
+					quidu      	"39CD6BC50328"
 					exportControl 	"Public")))
 			    (object Class "Ex2_SensibilidadOido"
 				quid       	"50C3BD20004B"
@@ -545,26 +1371,7 @@
 					quid       	"50C3BD710018"
 					type       	"ArrayList"
 					exportControl 	"Public")))
-			    (object Class "Ex3_DifFrecuencias"
-				quid       	"50C3BDD70381"
-				superclasses 	(list inheritance_relationship_list
-				    (object Inheritance_Relationship
-					quid       	"50C3BE240302"
-					supplier   	"Logical View::audinsa::audiologia::Examen"
-					quidu      	"50C3B7CC03AF"))
-				used_nodes 	(list uses_relationship_list
-				    (object Uses_Relationship
-					quid       	"50C3BE0D003D"
-					supplier   	"Logical View::audinsa::audiologia::SonidoDifFrecuencias"
-					quidu      	"50C3BAB5001C"
-					supplier_cardinality 	(value cardinality "n")
-					client_cardinality 	(value cardinality "1")))
-				class_attributes 	(list class_attribute_list
-				    (object ClassAttribute "Sonidos"
-					quid       	"50C3BDE9018B"
-					type       	"ArrayList"
-					exportControl 	"Public")))
-			    (object Class "Ex4_HablaEnRuido"
+			    (object Class "Ex3_HablaEnRuido"
 				quid       	"50C3BF1F005B"
 				superclasses 	(list inheritance_relationship_list
 				    (object Inheritance_Relationship
@@ -593,10 +1400,12 @@
 				    (object ClassAttribute "IdPerfil"
 					quid       	"50D27BEE03AE"
 					type       	"Integer"
+					quidu      	"39CD6BC50328"
 					exportControl 	"Public")
 				    (object ClassAttribute "Nombre"
 					quid       	"50D27C1602C2"
 					type       	"String"
+					quidu      	"39CD6AE1011A"
 					exportControl 	"Public")
 				    (object ClassAttribute "FechaNacimiento"
 					quid       	"50D27C2103D1"
@@ -605,10 +1414,29 @@
 				    (object ClassAttribute "CorreoElectronico"
 					quid       	"50D27C2C0009"
 					type       	"String"
+					quidu      	"39CD6AE1011A"
 					exportControl 	"Public")
 				    (object ClassAttribute "Resultados"
 					quid       	"50D27CAE0159"
 					type       	"ArrayList<Resultado>"
+					exportControl 	"Public")))
+			    (object Class "TipoExamen"
+				quid       	"5328F5BB0119"
+				class_attributes 	(list class_attribute_list
+				    (object ClassAttribute "IdTipoExamen"
+					quid       	"5328F6580072"
+					type       	"Integer"
+					quidu      	"39CD6BC50328"
+					exportControl 	"Public")
+				    (object ClassAttribute "Instrucciones"
+					quid       	"5328F68F000E"
+					type       	"String"
+					quidu      	"39CD6AE1011A"
+					exportControl 	"Public")
+				    (object ClassAttribute "Nombre_Examen"
+					quid       	"5328F69E03CA"
+					type       	"String"
+					quidu      	"39CD6AE1011A"
 					exportControl 	"Public"))))
 			logical_presentations 	(list unit_reference_list)))
 		logical_presentations 	(list unit_reference_list)))
@@ -620,9 +1448,9 @@
 		max_height 	28350
 		max_width  	21600
 		origin_x   	0
-		origin_y   	0
+		origin_y   	183
 		items      	(list diagram_item_list
-		    (object ClassView "Class" "Logical View::audinsa::audiologia::Consejo" @8
+		    (object ClassView "Class" "Logical View::audinsa::audiologia::Artículo" @56
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -637,20 +1465,20 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@8
-			    location   	(685, 461)
+			    Parent_View 	@56
+			    location   	(673, 455)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	358
+			    max_width  	382
 			    justify    	0
-			    label      	"Consejo")
+			    label      	"Artículo")
 			icon_style 	"Icon"
 			line_color 	3342489
 			fill_color 	13434879
 			quidu      	"50C3B5C40055"
 			compartment 	(object Compartment
-			    Parent_View 	@8
-			    location   	(685, 561)
+			    Parent_View 	@56
+			    location   	(673, 561)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -666,59 +1494,11 @@
 			    nlines     	2
 			    max_width  	384
 			    justify    	1)
-			width      	376
-			height     	214
+			width      	400
+			height     	234
 			annotation 	8
 			autoResize 	TRUE)
-		    (object ClassView "Class" "Logical View::audinsa::audiologia::Grafico" @9
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(3136, 1024)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@9
-			    location   	(2966, 841)
-			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	340
-			    justify    	0
-			    label      	"Grafico")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"50C3B6460075"
-			compartment 	(object Compartment
-			    Parent_View 	@9
-			    location   	(2966, 941)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    icon_style 	"Icon"
-			    fill_color 	13434879
-			    anchor     	2
-			    nlines     	5
-			    max_width  	381
-			    justify    	1)
-			width      	358
-			height     	382
-			annotation 	8
-			autoResize 	TRUE)
-		    (object ClassView "Class" "Logical View::audinsa::audiologia::Resultado" @10
+		    (object ClassView "Class" "Logical View::audinsa::audiologia::Resultado" @57
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -733,11 +1513,11 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@10
-			    location   	(1820, 691)
+			    Parent_View 	@57
+			    location   	(1819, 765)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	456
+			    max_width  	458
 			    justify    	0
 			    label      	"Resultado")
 			icon_style 	"Icon"
@@ -745,8 +1525,8 @@
 			fill_color 	13434879
 			quidu      	"50C3B6E60051"
 			compartment 	(object Compartment
-			    Parent_View 	@10
-			    location   	(1820, 791)
+			    Parent_View 	@57
+			    location   	(1819, 871)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -759,14 +1539,14 @@
 			    icon_style 	"Icon"
 			    fill_color 	13434879
 			    anchor     	2
-			    nlines     	11
-			    max_width  	508
+			    nlines     	8
+			    max_width  	459
 			    justify    	1)
-			width      	474
-			height     	682
+			width      	476
+			height     	542
 			annotation 	8
 			autoResize 	TRUE)
-		    (object ClassView "Class" "Logical View::audinsa::audiologia::Examen" @11
+		    (object ClassView "Class" "Logical View::audinsa::audiologia::Examen" @58
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -781,8 +1561,8 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@11
-			    location   	(678, 766)
+			    Parent_View 	@58
+			    location   	(678, 715)
 			    fill_color 	13434879
 			    nlines     	1
 			    max_width  	628
@@ -793,8 +1573,8 @@
 			fill_color 	13434879
 			quidu      	"50C3B7CC03AF"
 			compartment 	(object Compartment
-			    Parent_View 	@11
-			    location   	(678, 866)
+			    Parent_View 	@58
+			    location   	(678, 821)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -807,18 +1587,18 @@
 			    icon_style 	"Icon"
 			    fill_color 	13434879
 			    anchor     	2
-			    nlines     	8
-			    max_width  	684
+			    nlines     	10
+			    max_width  	631
 			    justify    	1)
 			width      	646
-			height     	532
+			height     	642
 			annotation 	8
 			autoResize 	TRUE)
-		    (object ClassView "Class" "Logical View::audinsa::audiologia::Pregunta" @12
+		    (object ClassView "Class" "Logical View::audinsa::audiologia::Pregunta" @59
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(512, 2063)
+			location   	(512, 2064)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -829,11 +1609,11 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@12
-			    location   	(338, 1945)
+			    Parent_View 	@59
+			    location   	(326, 1933)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	348
+			    max_width  	372
 			    justify    	0
 			    label      	"Pregunta")
 			icon_style 	"Icon"
@@ -841,8 +1621,8 @@
 			fill_color 	13434879
 			quidu      	"50C3BA210238"
 			compartment 	(object Compartment
-			    Parent_View 	@12
-			    location   	(338, 2045)
+			    Parent_View 	@59
+			    location   	(326, 2039)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -856,13 +1636,13 @@
 			    fill_color 	13434879
 			    anchor     	2
 			    nlines     	3
-			    max_width  	378
+			    max_width  	370
 			    justify    	1)
-			width      	366
-			height     	258
+			width      	390
+			height     	286
 			annotation 	8
 			autoResize 	TRUE)
-		    (object ClassView "Class" "Logical View::audinsa::audiologia::Ex1_Cuestionario" @13
+		    (object ClassView "Class" "Logical View::audinsa::audiologia::Ex1_Cuestionario" @60
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -877,7 +1657,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@13
+			    Parent_View 	@60
 			    location   	(313, 1572)
 			    fill_color 	13434879
 			    nlines     	1
@@ -889,8 +1669,8 @@
 			fill_color 	13434879
 			quidu      	"50C3B8F20280"
 			compartment 	(object Compartment
-			    Parent_View 	@13
-			    location   	(313, 1672)
+			    Parent_View 	@60
+			    location   	(313, 1678)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -910,7 +1690,7 @@
 			height     	240
 			annotation 	8
 			autoResize 	TRUE)
-		    (object UsesView "" @14
+		    (object UsesView "" @61
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -923,17 +1703,17 @@
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"50C3BA4D0388"
-			client     	@13
-			supplier   	@12
+			client     	@60
+			supplier   	@59
 			vertices   	(list Points
 			    (512, 1800)
-			    (512, 1933))
+			    (512, 1920))
 			line_style 	0)
-		    (object ClassView "Class" "Logical View::audinsa::audiologia::SonidoDifFrecuencias" @15
+		    (object ClassView "Class" "Logical View::audinsa::audiologia::SonidoSensibilidadOido" @62
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(991, 2048)
+			location   	(1552, 2048)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -944,56 +1724,8 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@15
-			    location   	(738, 1949)
-			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	506
-			    justify    	0
-			    label      	"SonidoDifFrecuencias")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"50C3BAB5001C"
-			compartment 	(object Compartment
-			    Parent_View 	@15
-			    location   	(738, 2049)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    icon_style 	"Icon"
-			    fill_color 	13434879
-			    anchor     	2
-			    nlines     	2
-			    max_width  	537
-			    justify    	1)
-			width      	524
-			height     	221
-			annotation 	8
-			autoResize 	TRUE)
-		    (object ClassView "Class" "Logical View::audinsa::audiologia::SonidoSensibilidadOido" @16
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(1730, 2048)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@16
-			    location   	(1480, 1949)
+			    Parent_View 	@62
+			    location   	(1302, 1950)
 			    fill_color 	13434879
 			    nlines     	1
 			    max_width  	500
@@ -1004,8 +1736,8 @@
 			fill_color 	13434879
 			quidu      	"50C3BAF20361"
 			compartment 	(object Compartment
-			    Parent_View 	@16
-			    location   	(1480, 2049)
+			    Parent_View 	@62
+			    location   	(1302, 2056)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -1025,11 +1757,11 @@
 			height     	221
 			annotation 	8
 			autoResize 	TRUE)
-		    (object ClassView "Class" "Logical View::audinsa::audiologia::Sonido" @17
+		    (object ClassView "Class" "Logical View::audinsa::audiologia::Sonido" @63
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(1360, 2688)
+			location   	(1552, 2624)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -1040,8 +1772,8 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@17
-			    location   	(1098, 2390)
+			    Parent_View 	@63
+			    location   	(1290, 2327)
 			    fill_color 	13434879
 			    nlines     	1
 			    max_width  	525
@@ -1052,8 +1784,8 @@
 			fill_color 	13434879
 			quidu      	"50C3BB2A0238"
 			compartment 	(object Compartment
-			    Parent_View 	@17
-			    location   	(1098, 2490)
+			    Parent_View 	@63
+			    location   	(1290, 2433)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -1073,11 +1805,11 @@
 			height     	619
 			annotation 	8
 			autoResize 	TRUE)
-		    (object ClassView "Class" "Logical View::audinsa::audiologia::Ex2_SensibilidadOido" @18
+		    (object ClassView "Class" "Logical View::audinsa::audiologia::Ex2_SensibilidadOido" @64
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(1728, 1680)
+			location   	(1552, 1712)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -1088,11 +1820,11 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@18
-			    location   	(1516, 1585)
+			    Parent_View 	@64
+			    location   	(1339, 1607)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	424
+			    max_width  	426
 			    justify    	0
 			    label      	"Ex2_SensibilidadOido")
 			icon_style 	"Icon"
@@ -1100,8 +1832,8 @@
 			fill_color 	13434879
 			quidu      	"50C3BD20004B"
 			compartment 	(object Compartment
-			    Parent_View 	@18
-			    location   	(1516, 1685)
+			    Parent_View 	@64
+			    location   	(1339, 1713)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -1115,13 +1847,13 @@
 			    fill_color 	13434879
 			    anchor     	2
 			    nlines     	2
-			    max_width  	403
+			    max_width  	398
 			    justify    	1)
-			width      	442
-			height     	214
+			width      	444
+			height     	234
 			annotation 	8
 			autoResize 	TRUE)
-		    (object UsesView "" @19
+		    (object UsesView "" @65
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -1134,90 +1866,13 @@
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"50C3BDC2022E"
-			client     	@18
-			supplier   	@16
+			client     	@64
+			supplier   	@62
 			vertices   	(list Points
-			    (1728, 1787)
-			    (1729, 1937))
+			    (1552, 1829)
+			    (1552, 1937))
 			line_style 	0)
-		    (object ClassView "Class" "Logical View::audinsa::audiologia::Ex3_DifFrecuencias" @20
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(991, 1680)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@20
-			    location   	(786, 1571)
-			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	411
-			    justify    	0
-			    label      	"Ex3_DifFrecuencias")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"50C3BDD70381"
-			compartment 	(object Compartment
-			    Parent_View 	@20
-			    location   	(786, 1671)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    icon_style 	"Icon"
-			    fill_color 	13434879
-			    anchor     	2
-			    nlines     	2
-			    max_width  	403
-			    justify    	1)
-			width      	429
-			height     	240
-			annotation 	8
-			autoResize 	TRUE)
-		    (object UsesView "" @21
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"50C3BE0D003D"
-			client     	@20
-			supplier   	@15
-			vertices   	(list Points
-			    (991, 1800)
-			    (991, 1937))
-			line_style 	0)
-		    (object InheritView "" @22
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"50C3BE240302"
-			client     	@20
-			supplier   	@11
-			vertices   	(list Points
-			    (991, 1559)
-			    (991, 1290))
-			line_style 	0)
-		    (object ClassView "Class" "Logical View::audinsa::audiologia::Ex4_HablaEnRuido" @23
+		    (object ClassView "Class" "Logical View::audinsa::audiologia::Ex3_HablaEnRuido" @66
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -1232,20 +1887,20 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@23
-			    location   	(2157, 1585)
+			    Parent_View 	@66
+			    location   	(2157, 1581)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	519
+			    max_width  	518
 			    justify    	0
-			    label      	"Ex4_HablaEnRuido")
+			    label      	"Ex3_HablaEnRuido")
 			icon_style 	"Icon"
 			line_color 	3342489
 			fill_color 	13434879
 			quidu      	"50C3BF1F005B"
 			compartment 	(object Compartment
-			    Parent_View 	@23
-			    location   	(2157, 1685)
+			    Parent_View 	@66
+			    location   	(2157, 1687)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -1261,45 +1916,45 @@
 			    nlines     	3
 			    max_width  	518
 			    justify    	1)
-			width      	537
-			height     	278
+			width      	536
+			height     	286
 			annotation 	8
 			autoResize 	TRUE)
-		    (object InheritTreeView "" @24
-			location   	(990, 1470)
+		    (object InheritTreeView "" @67
+			location   	(992, 1470)
 			line_color 	3342489
 			fill_color 	13434879
-			supplier   	@11
+			supplier   	@58
 			vertices   	(list Points
-			    (990, 1470)
-			    (990, 1290)))
-		    (object InheritView "" @25
+			    (992, 1470)
+			    (992, 1345)))
+		    (object InheritView "" @68
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"50C3BE7503CA"
-			client     	@18
-			supplier   	@11
+			client     	@64
+			supplier   	@58
 			vertices   	(list Points
-			    (1727, 1573)
-			    (1727, 1470))
+			    (1538, 1594)
+			    (1538, 1470))
 			line_style 	3
-			origin_attachment 	(1727, 1573)
-			terminal_attachment 	(1727, 1470)
-			drawSupplier 	@24)
-		    (object InheritView "" @26
+			origin_attachment 	(1538, 1594)
+			terminal_attachment 	(1538, 1470)
+			drawSupplier 	@67)
+		    (object InheritView "" @69
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"50C3BF57010F"
-			client     	@23
-			supplier   	@11
+			client     	@66
+			supplier   	@58
 			vertices   	(list Points
-			    (2397, 1572)
+			    (2397, 1569)
 			    (2397, 1470))
 			line_style 	3
-			origin_attachment 	(2397, 1572)
+			origin_attachment 	(2397, 1569)
 			terminal_attachment 	(2397, 1470)
-			drawSupplier 	@24)
-		    (object ClassView "Class" "Logical View::audinsa::audiologia::Perfil" @27
+			drawSupplier 	@67)
+		    (object ClassView "Class" "Logical View::audinsa::audiologia::Perfil" @70
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -1314,7 +1969,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@27
+			    Parent_View 	@70
 			    location   	(1679, 51)
 			    fill_color 	13434879
 			    nlines     	1
@@ -1326,8 +1981,8 @@
 			fill_color 	13434879
 			quidu      	"50D27BD40012"
 			compartment 	(object Compartment
-			    Parent_View 	@27
-			    location   	(1679, 151)
+			    Parent_View 	@70
+			    location   	(1679, 157)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -1347,7 +2002,7 @@
 			height     	466
 			annotation 	8
 			autoResize 	TRUE)
-		    (object UsesView "" @28
+		    (object UsesView "" @71
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -1360,32 +2015,13 @@
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"50C3B94201A1"
-			client     	@10
-			supplier   	@11
+			client     	@57
+			supplier   	@58
 			vertices   	(list Points
-			    (1810, 1024)
+			    (1809, 1024)
 			    (1315, 1024))
 			line_style 	0)
-		    (object UsesView "" @29
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"50C3B99B03B7"
-			client     	@10
-			supplier   	@9
-			vertices   	(list Points
-			    (2285, 1024)
-			    (2956, 1024))
-			line_style 	0)
-		    (object UsesView "" @30
+		    (object UsesView "" @72
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -1398,45 +2034,91 @@
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"50D27E0A033D"
-			client     	@27
-			supplier   	@10
+			client     	@70
+			supplier   	@57
 			vertices   	(list Points
 			    (2049, 505)
-			    (2048, 682))
+			    (2048, 752))
 			line_style 	0)
-		    (object InheritView "" @31
+		    (object InheritView "" @73
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"50C3BA84039C"
-			client     	@13
-			supplier   	@11
+			client     	@60
+			supplier   	@58
 			vertices   	(list Points
 			    (509, 1559)
 			    (508, 1470)
 			    (990, 1470)
-			    (990, 1290))
+			    (990, 1345))
 			line_style 	0)
-		    (object InheritView "" @32
+		    (object InheritView "" @74
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"50C3BD0F01E8"
-			client     	@16
-			supplier   	@17
+			client     	@62
+			supplier   	@63
 			vertices   	(list Points
-			    (1729, 2158)
-			    (1728, 2680)
-			    (1631, 2682))
+			    (1552, 2158)
+			    (1552, 2314))
 			line_style 	0)
-		    (object InheritView "" @33
+		    (object ClassView "Class" "Logical View::audinsa::audiologia::TipoExamen" @75
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(272, 1088)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@75
+			    location   	(15, 932)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	514
+			    justify    	0
+			    label      	"TipoExamen")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5328F5BB0119"
+			compartment 	(object Compartment
+			    Parent_View 	@75
+			    location   	(15, 1038)
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    icon_style 	"Icon"
+			    fill_color 	13434879
+			    anchor     	2
+			    nlines     	4
+			    max_width  	515
+			    justify    	1)
+			width      	532
+			height     	336
+			annotation 	8
+			autoResize 	TRUE)
+		    (object UsesView "" @76
 			stereotype 	TRUE
 			line_color 	3342489
-			quidu      	"50C3BCEB034E"
-			client     	@15
-			supplier   	@17
+			quidu      	"5328F8130233"
+			client     	@58
+			supplier   	@75
 			vertices   	(list Points
-			    (990, 2158)
-			    (990, 2690)
-			    (1088, 2689))
+			    (668, 1052)
+			    (538, 1064))
 			line_style 	0)))
 	    (object ClassDiagram "Legend"
 		quid       	"39CD51840059"
@@ -1447,7 +2129,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object NoteView @34
+		    (object NoteView @77
 			location   	(224, 624)
 			font       	(object Font
 			    size       	10
@@ -1462,7 +2144,7 @@
 			fill_color 	12632256
 			width      	300
 			height     	132)
-		    (object NoteView @35
+		    (object NoteView @78
 			location   	(704, 624)
 			font       	(object Font
 			    size       	10
@@ -1477,7 +2159,7 @@
 			fill_color 	8421631
 			width      	300
 			height     	132)
-		    (object NoteView @36
+		    (object NoteView @79
 			location   	(1200, 624)
 			font       	(object Font
 			    size       	10
@@ -1492,7 +2174,7 @@
 			fill_color 	12615680
 			width      	300
 			height     	132)
-		    (object NoteView @37
+		    (object NoteView @80
 			location   	(1664, 624)
 			font       	(object Font
 			    size       	10
@@ -1507,7 +2189,7 @@
 			fill_color 	16777215
 			width      	300
 			height     	132)
-		    (object Label @38
+		    (object Label @81
 			location   	(81, 369)
 			font       	(object Font
 			    size       	12
@@ -1522,7 +2204,7 @@
 			max_width  	1163
 			justify    	1
 			label      	"J2EE: Java 2 Platform, Enterprise Edition - v 1.2.1")
-		    (object Label @39
+		    (object Label @82
 			location   	(96, 608)
 			font       	(object Font
 			    size       	10
@@ -1537,7 +2219,7 @@
 			max_width  	268
 			justify    	1
 			label      	"Abstract Class")
-		    (object Label @40
+		    (object Label @83
 			location   	(592, 608)
 			font       	(object Font
 			    size       	10
@@ -1552,7 +2234,7 @@
 			max_width  	225
 			justify    	1
 			label      	"Final Class")
-		    (object Label @41
+		    (object Label @84
 			location   	(1104, 608)
 			font       	(object Font
 			    size       	10
@@ -1567,7 +2249,7 @@
 			max_width  	206
 			justify    	1
 			label      	"Interface")
-		    (object Label @42
+		    (object Label @85
 			location   	(1552, 608)
 			font       	(object Font
 			    size       	10
@@ -2577,7 +3259,7 @@
 		    (object Attribute
 			tool       	"Java"
 			name       	"ClassPath"
-			value      	".;C:\\Program Files (x86)\\Java\\jre7\\lib\\ext\\QTJava.zip")
+			value      	".;C:\\Program Files (x86)\\Java\\jre6\\lib\\ext\\QTJava.zip")
 		    (object Attribute
 			tool       	"Java"
 			name       	"EditorType"
