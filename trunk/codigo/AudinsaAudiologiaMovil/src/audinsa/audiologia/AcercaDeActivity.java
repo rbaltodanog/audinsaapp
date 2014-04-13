@@ -3,6 +3,7 @@ package audinsa.audiologia;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.Window;
 
 public class AcercaDeActivity extends Activity {
@@ -20,6 +21,19 @@ public class AcercaDeActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_acerca_de, menu);
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()) {
+		case R.id.menu_regresar:
+			finish();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+
+		}
 	}
 
 }

@@ -1,6 +1,8 @@
 package audinsa.audiologia;
 
 import org.joda.time.DateTime;
+import org.joda.time.Duration;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -17,11 +19,12 @@ public class CuestionarioExamenActivity extends Activity {
 	private ResultadoDataSource dataSource;
 	int puntaje = 0;
 	TextView lblPregunta = null;
+	DateTime fechaInicioExamen;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		String[] preguntas = null;
-
+		fechaInicioExamen = DateTime.now();
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cuestionario_examen);
 		cuestionario = new Cuestionario();
@@ -64,12 +67,14 @@ public class CuestionarioExamenActivity extends Activity {
 		
 		dataSource = new ResultadoDataSource(this);
 		dataSource.open();
-		long idResultado=dataSource.crearResultado(idPerfil, idTipoExamen, valor_examen,DateTime.now());
+		Duration duracionExamen = new Duration(fechaInicioExamen, DateTime.now());
+		long idResultado=dataSource.crearResultado(idPerfil, idTipoExamen, valor_examen,fechaInicioExamen);
 		dataSource.close();
 			
 		intent.putExtra("idPerfil", idPerfil);
 		intent.putExtra("idResultado", idResultado);
 		intent.putExtra("idTipoExamen", idTipoExamen);
+		intent.putExtra("duracionExamen", duracionExamen.getStandardSeconds());
 		
 		startActivity(intent);
 		this.finish();

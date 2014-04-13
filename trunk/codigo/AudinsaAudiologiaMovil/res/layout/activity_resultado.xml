@@ -174,5 +174,20 @@
             android:text="@string/strRegresar" />
 
     </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="0dp"
+        android:gravity="center_horizontal|bottom" >
+
+        <TextView
+            android:id="@+id/lblDuracionExamen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Duración del examen: 125 segundos"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    </TableRow>
 
 </TableLayout>

@@ -60,7 +60,7 @@
         </TableRow>
 
         <TableLayout
-           android:layout_width="fill_parent"
+            android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="horizontal"
             android:padding="0dp" >
@@ -102,9 +102,8 @@
                         android:gravity="bottom|center"
                         android:text="Consulte a un especialista"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textStyle="italic"
-                        android:textSize="15sp" />
-
+                        android:textSize="15sp"
+                        android:textStyle="italic" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -141,7 +140,6 @@
                                 android:text="@string/lblContactarClinica"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                 android:textSize="15sp" />
-
                         </TableRow>
 
                         <TableRow
@@ -191,7 +189,6 @@
                                 android:text="@string/lblCompartir"
                                 android:textAppearance="?android:attr/textAppearanceSmall"
                                 android:textSize="15sp" />
-
                         </TableRow>
 
                         <TableRow
@@ -204,6 +201,22 @@
                                 android:layout_span="2"
                                 android:text="" >
                             </TextView>
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_margin="0dp"
+                            android:gravity="center_horizontal|bottom" >
+
+                            <TextView
+                                android:id="@+id/lblDuracionExamen"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:layout_span="2"
+                                android:text="Duración del examen: 125 segundos"
+                                android:textAppearance="?android:attr/textAppearanceSmall" />
                         </TableRow>
                     </TableLayout>
                 </RelativeLayout>
@@ -219,8 +232,8 @@
 
         <Button
             android:id="@+id/btnRegresar"
-            android:text="@string/strRegresar"
-            android:onClick="onRegresarClick" />
+            android:onClick="onRegresarClick"
+            android:text="@string/strRegresar" />
     </TableRow>
 
 </TableLayout>

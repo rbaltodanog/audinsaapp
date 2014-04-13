@@ -100,6 +100,8 @@ public class PerfilesActivity extends Activity {
 				.getString(R.string.txtPerfilesMenuContextualTitulo));
 		menu.add(0, 0, 0,
 				res.getString(R.string.txtPerfilesMenuContextualEliminar));
+		menu.add(1, 1, 1,
+				res.getString(R.string.txtPerfilesMenuContextualModificar));
 	}
 
 	@Override
@@ -111,7 +113,18 @@ public class PerfilesActivity extends Activity {
 		if (item.getTitle() == res
 				.getString(R.string.txtPerfilesMenuContextualEliminar)) {
 			eliminarPerfil(id);
-		} else {
+		} else if (item.getTitle() == res
+				.getString(R.string.txtPerfilesMenuContextualModificar)) {
+			Intent intent = new Intent();
+			intent.setClass(this.getBaseContext(), PerfilesMantenimientoActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.putExtra("idPerfil", id);
+			intent.putExtra("actualizacion", true);
+			startActivity(intent);
+			return true;
+		}
+		else
+		{
 			return false;
 		}
 		return true;
@@ -121,43 +134,43 @@ public class PerfilesActivity extends Activity {
 		Resources res = this.getResources();
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle(res.getString(R.string.txtPerfilesDialogoTitulo))
-				.setMessage(
-						res.getString(R.string.txtPerfilesDialogoDeseaEliminar))
+		.setMessage(
+				res.getString(R.string.txtPerfilesDialogoDeseaEliminar))
 				.setCancelable(false)
-				.setPositiveButton(
-						res.getString(R.string.txtPerfilesDialogoOk),
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int which) {
-								try {
-									dataSource.borrarPerfil(id, context);
-									loadData();
-									Toast.makeText(
-											getBaseContext(),
-											getBaseContext()
-													.getResources()
-													.getString(
-															R.string.txtPerfilesToastPerfilEliminado),
-											Toast.LENGTH_SHORT).show();
-								} catch (Exception ex) {
-									Toast.makeText(
-											getBaseContext(),
-											getBaseContext()
-													.getResources()
-													.getString(
-															R.string.txtPerfilesToastPerfilErrorAlBorrar)
-													+ ": " + ex.getMessage(),
-											Toast.LENGTH_SHORT).show();
-								}
-							}
-						})
 				.setNegativeButton(
 						res.getString(R.string.txtPerfilesDialogoCancel),
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
 								dialog.cancel();
 							}
-						});
+						})
+						.setPositiveButton(
+								res.getString(R.string.txtPerfilesDialogoOk),
+								new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog,
+											int which) {
+										try {
+											dataSource.borrarPerfil(id, context);
+											loadData();
+											Toast.makeText(
+													getBaseContext(),
+													getBaseContext()
+													.getResources()
+													.getString(
+															R.string.txtPerfilesToastPerfilEliminado),
+															Toast.LENGTH_SHORT).show();
+										} catch (Exception ex) {
+											Toast.makeText(
+													getBaseContext(),
+													getBaseContext()
+													.getResources()
+													.getString(
+															R.string.txtPerfilesToastPerfilErrorAlBorrar)
+															+ ": " + ex.getMessage(),
+															Toast.LENGTH_SHORT).show();
+										}
+									}
+								});
 		AlertDialog alert = builder.create();
 		alert.show();
 	}

@@ -79,11 +79,11 @@ public class PerfilDataSource {
 		boolean resultadoEliminarPerfil = false;
 		
 		try {
-		
-			if(borrarDependenciasPerfil(idPerfil,context)){	
-				 // si ya elimina las dependencias debe de intentar eliminar el perfil
-				resultadoEliminarPerfil= eliminarPerfil(idPerfil);
-			 }
+			// Primero se borran los resultados ligados al perfil
+			borrarDependenciasPerfil(idPerfil,context);	
+			
+			// si ya elimina las dependencias debe de eliminar el perfil
+			resultadoEliminarPerfil= eliminarPerfil(idPerfil);
 		}
 		catch(Exception ex){		
 			resultadoEliminarPerfil = false;			
