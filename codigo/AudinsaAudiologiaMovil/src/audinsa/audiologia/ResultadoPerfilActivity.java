@@ -29,7 +29,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -37,7 +36,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import audinsa.audiologia.Adapters.ResultadosItemAdapter;
-import audinsa.audiologia.businessdomain.CompartirResultado;
 import audinsa.audiologia.businessdomain.Perfil;
 import audinsa.audiologia.businessdomain.Resultado;
 import audinsa.audiologia.datasources.ExamenDataSource;
@@ -48,7 +46,6 @@ public class ResultadoPerfilActivity extends Activity {
 	private ResultadoDataSource resultadoDataSource;
 	private ExamenDataSource examenDataSource;
 	private ArrayList<Resultado> resultados;
-	private CompartirResultado C;
 	private UiLifecycleHelper uiHelper;
 	SharedPreferences sPrefs;
 
@@ -62,7 +59,6 @@ public class ResultadoPerfilActivity extends Activity {
 		listView.setEmptyView(findViewById(R.id.lblResultadosVacio));
 		registerForContextMenu(listView);
 		addOnClickListener();
-		C = new CompartirResultado();
 		uiHelper = new UiLifecycleHelper(this, null);
 		uiHelper.onCreate(savedInstanceState);
 	}
@@ -238,7 +234,7 @@ public class ResultadoPerfilActivity extends Activity {
 		Perfil p = onGetPerfil(idPerfil);
 		Resultado r = onGetResultado(idResultado,idPerfil);
 		String estado= r.getValorResultado_examen();
-		C.contactarClinica(estado, p);
+		contactarClinicaAction(estado, p);
 	}
 
 	private Perfil onGetPerfil(long idPerfil) {
@@ -471,6 +467,18 @@ public class ResultadoPerfilActivity extends Activity {
 			finish();
 			return;
 		}
+	}
+	
+	public void contactarClinicaAction(String estado, Perfil p) {
+		Intent contactIntent = new Intent(Intent.ACTION_SEND);
+		contactIntent.setType("message/rfc822"); //set the email recipient
+		String shareBody = "He realizado el exámen: Cuestionario. Mi calificación es: "+ estado + ".Estoy interesado en obtener una cita médica. Mis datos son: " +
+				"Nombre: " + p.toString() + ", Fecha de nacimiento: " + p.getFechaNacimiento() + ", Correo Electrónico: " +	p.getCorreoElectronico();
+		contactIntent.putExtra(Intent.EXTRA_SUBJECT, "Consulta");
+		contactIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+		String[] mail = { "info@clinicaaudinsa.com", "" };
+		contactIntent.putExtra(Intent.EXTRA_EMAIL, mail);   
+		startActivity(Intent.createChooser(contactIntent, "Enviar información usando"));
 	}
 
 	@Override

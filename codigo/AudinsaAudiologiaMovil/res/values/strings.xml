@@ -25,6 +25,7 @@
     <!-- Menu contextual y cuadros de dialogo para los perfiles -->
     <string name="txtPerfilesMenuContextualTitulo">Acciones</string>
     <string name="txtPerfilesMenuContextualEliminar">Eliminar Perfil</string>
+    <string name="txtPerfilesMenuContextualModificar">Modificar Perfil</string>
     <string name="txtPerfilesDialogoTitulo">Confirmar acción</string>
     <string name="txtPerfilesDialogoDeseaEliminar">¿Está seguro que desea eliminar el perfil? (Esta acción no se puede revertir)</string>
     <string name="txtPerfilesToastPerfilEliminado">Perfil eliminado exitosamente</string>
@@ -134,6 +135,7 @@
 
     <!-- Acerca de Activity -->
     <string name="title_activity_acerca_de">Acerca De</string>
+    <string name="lblSustituirPruebasAudiologoText">Esta aplicación no pretende sustituir las pruebas realizadas por un audiólogo</string>    
 
     <!-- MENSAJES DE INFORMACION -->
     <string name="txtMantenimientoPerfilesToastPerfilAgregado">Perfil agregado satisfactoriamente</string>

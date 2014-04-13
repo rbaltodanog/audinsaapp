@@ -13,4 +13,18 @@
         android:layout_centerVertical="true"
         android:src="@drawable/audinsa_acerca_de_logo" />
 
+    <TextView
+        android:id="@+id/lblSustituirPruebasAudiologo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/imageView1"
+        android:gravity="bottom|center_horizontal"
+        android:text="@string/lblSustituirPruebasAudiologoText"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp" />
+
 </RelativeLayout>

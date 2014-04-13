@@ -112,7 +112,7 @@
                     android:layout_weight="1" >
 
                     <TableLayout
-                      android:layout_width="fill_parent"
+                        android:layout_width="fill_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
                         android:padding="1dp" >
@@ -151,7 +151,6 @@
                             </TextView>
                         </TableRow>
 
-                  
                         <TableRow
                             android:layout_height="1dp"
                             android:background="#BDBDBD" >
@@ -198,6 +197,22 @@
                                 android:text="" >
                             </TextView>
                         </TableRow>
+
+                        <TableRow
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_margin="0dp"
+                            android:gravity="center_horizontal|bottom" >
+
+                            <TextView
+                                android:id="@+id/lblDuracionExamen"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_span="2"
+                                android:gravity="center_horizontal"
+                                android:text="Duración del examen: 125 segundos"
+                                android:textAppearance="?android:attr/textAppearanceSmall" />
+                        </TableRow>
                     </TableLayout>
                 </RelativeLayout>
             </TableRow>
@@ -214,7 +229,6 @@
             android:id="@+id/btnRegresar"
             android:onClick="onRegresarClick"
             android:text="@string/strRegresar" />
-
     </TableRow>
 
 </TableLayout>

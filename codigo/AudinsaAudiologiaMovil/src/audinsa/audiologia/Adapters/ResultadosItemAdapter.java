@@ -73,6 +73,8 @@ public class ResultadosItemAdapter extends ArrayAdapter<Resultado> {
 			holder.txtNombreExamen = (TextView)row.findViewById(R.id.txtNombreExamen);
 			holder.txtFechaDeRealizacion = (TextView)row.findViewById(R.id.txtFechaDeRealizacion);
 			holder.imgTipoExamen = (ImageView)row.findViewById(R.id.imgTipoExamen);
+			holder.txtDuracionExamenResultado = (TextView)row.findViewById(R.id.txtDuracionExamenResultado);
+			
 			row.setTag(holder);			
 
 		}
@@ -99,6 +101,7 @@ public class ResultadosItemAdapter extends ArrayAdapter<Resultado> {
 			}
 			holder.txtNombreExamen.setText(tipoExamen.getNombreExamen());
 			holder.txtFechaDeRealizacion.setText("Realizado el " + df.format(examen.getFecha_inicio()));
+			holder.txtDuracionExamenResultado.setText("Duración: " + examen.getDuracion_real() + " segundos");
 			switch ((int)tipoExamen.getIdTipoExamen()){
 			case 1:
 				holder.imgTipoExamen.setImageResource(R.drawable.ic_hearing_sensibility);
@@ -126,6 +129,7 @@ public class ResultadosItemAdapter extends ArrayAdapter<Resultado> {
 		TextView txtValorExamen;
 		TextView txtNombreExamen;
 		TextView txtFechaDeRealizacion;
+		TextView txtDuracionExamenResultado;
 		ImageView imgTipoExamen;
 
 

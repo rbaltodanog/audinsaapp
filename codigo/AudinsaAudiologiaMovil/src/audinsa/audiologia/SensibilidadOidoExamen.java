@@ -27,9 +27,11 @@ public class SensibilidadOidoExamen extends Activity {
 	private Duration _timeToBeHeardDuration;
 	int puntaje = 8;
 	private ResultadoDataSource dataSource;
+	private DateTime fechaInicioExamen;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		fechaInicioExamen = DateTime.now();
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sensibilidad_oido_examen);
 		_sonidos = new ArrayList<ResultadoSensibilidadOido>();
@@ -166,14 +168,17 @@ public class SensibilidadOidoExamen extends Activity {
 			intent.putExtra("bolAprobado", false);
 		}
 		
+		Duration duracionExamen = new Duration(fechaInicioExamen, DateTime.now());
+		
 		dataSource = new ResultadoDataSource(this);
 		dataSource.open();
-		long idResultado=dataSource.crearResultado(idPerfil, idTipoExamen, valor_examen,DateTime.now());
+		long idResultado=dataSource.crearResultado(idPerfil, idTipoExamen, valor_examen, fechaInicioExamen);
 		dataSource.close();
 			
 		intent.putExtra("idPerfil", idPerfil);
 		intent.putExtra("idResultado", idResultado);
 		intent.putExtra("idTipoExamen", idTipoExamen);
+		intent.putExtra("duracionExamen", duracionExamen.getStandardSeconds());
 		
 		startActivity(intent);
 		this.finish();
