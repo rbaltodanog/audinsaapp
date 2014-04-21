@@ -1,5 +1,8 @@
 package audinsa.audiologia.businessdomain;
 
+import audinsa.audiologia.R;
+import audinsa.audiologia.R.string;
+
 
 public class Resultado {
 
@@ -47,10 +50,10 @@ public class Resultado {
 	public String getValorResultado_examen() {
 		int vExamen =getValor_examen();
 		if ( vExamen == 1) {
-			return "Aprobado";
+			return "Pasa la prueba";
 		}
 		else
-			return "Contacte un especialista";
+			return "Falla la prueba";
 		
 	}
 }

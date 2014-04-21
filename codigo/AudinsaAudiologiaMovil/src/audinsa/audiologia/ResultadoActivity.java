@@ -1,5 +1,6 @@
 package audinsa.audiologia;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import com.facebook.UiLifecycleHelper;
@@ -39,6 +40,7 @@ public class ResultadoActivity extends Activity {
 	private UiLifecycleHelper uiHelper;
 	SharedPreferences sPrefs;
 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// pantalla vertical
@@ -77,10 +79,11 @@ public class ResultadoActivity extends Activity {
 		rowContactarClinica.setClickable(true);
 		rowContactarClinica.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				String estado=(getIntent().getBooleanExtra("bolAprobado", true)) ? "Aprobado" : "Contacte un especialista";
+				boolean  bolEstado=getIntent().getBooleanExtra("bolAprobado", true);
+				String estado=(bolEstado) ? "Pasa la prueba" : "Falla la prueba";
 				long idPerfil = getIntent().getLongExtra("idPerfil", 0);
 				Perfil p = onGetPerfil(idPerfil);
-				contactarClinica(estado , p);
+				contactarClinica(estado,p,bolEstado);
 			}
 		});		
 
@@ -88,7 +91,7 @@ public class ResultadoActivity extends Activity {
 		rowCompartirResultado.setClickable(true);
 		rowCompartirResultado.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				String estado=(getIntent().getBooleanExtra("bolAprobado", true)) ? "Aprobado" : "Contacte un especialista";
+				String estado=(getIntent().getBooleanExtra("bolAprobado", true)) ? "Pasa la prueba" : "Contacte un especialista";
 				compartirInformacion(estado, v.getContext());
 			}
 		});
@@ -343,15 +346,27 @@ public class ResultadoActivity extends Activity {
 		}
 	}
 	
-	public void contactarClinica(String estado, Perfil p) {
-		Intent contactIntent = new Intent(Intent.ACTION_SEND);
-		contactIntent.setType("message/rfc822"); //set the email recipient
-		String shareBody = "He realizado el exámen: Cuestionario. Mi calificación es: "+ estado + ".Estoy interesado en obtener una cita médica. Mis datos son: " +
-				"Nombre: " + p.toString() + ", Fecha de nacimiento: " + p.getFechaNacimiento() + ", Correo Electrónico: " +	p.getCorreoElectronico();
-		contactIntent.putExtra(Intent.EXTRA_SUBJECT, "Consulta");
-		contactIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-		String[] mail = { "info@clinicaaudinsa.com", "" };
-		contactIntent.putExtra(Intent.EXTRA_EMAIL, mail);   
-		startActivity(Intent.createChooser(contactIntent, "Enviar información usando"));
-	}
+	  public void contactarClinica(String estado, Perfil p, boolean val_examen) {
+			Intent contactIntent = new Intent(Intent.ACTION_SEND);
+			contactIntent.setType("message/rfc822"); //set the email recipient
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String fecha = sdf.format(p.getFechaNacimiento());
+			String shareBody;
+			
+			if(val_examen){
+			 shareBody = "He realizado el exámen: Cuestionario.Mi RESULTADO ES: "+ estado + ".Estoy interesado en obtener una cita audiológica para mi valoración anual.Mis datos sonn: " +
+					"Nombre: " + p.toString() + ", Fecha de nacimiento: " + fecha + ", Correo Electrónico: " +	p.getCorreoElectronico();
+			
+			}
+			else{
+			 shareBody = "He realizado el exámen: Cuestionario.Mi RESULTADO ES:Contacte a un especialista. Estoy interesado en obtener una cita audiológica para mi valoración auditiva.Mis datos son" +
+						"Nombre: " + p.toString() + ", Fecha de nacimiento: " + fecha + ", Correo Electrónico: " +	p.getCorreoElectronico();
+							
+			}
+			contactIntent.putExtra(Intent.EXTRA_SUBJECT, "Consulta");
+			contactIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+			String[] mail = { "info@clinicaaudinsa.com", "" };
+			contactIntent.putExtra(Intent.EXTRA_EMAIL, mail);   
+			startActivity(Intent.createChooser(contactIntent, "Enviar información usando"));
+		}
 }

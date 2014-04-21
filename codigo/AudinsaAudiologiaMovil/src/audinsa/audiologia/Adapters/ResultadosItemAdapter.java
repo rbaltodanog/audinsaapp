@@ -91,12 +91,12 @@ public class ResultadosItemAdapter extends ArrayAdapter<Resultado> {
 		try{
 			if(resultado.getValor_examen() == 1)
 			{
-				holder.txtValorExamen.setText("Aprobado");
+				holder.txtValorExamen.setText("Pasa la prueba");
 				holder.txtValorExamen.setTextColor(Color.GREEN);
 			}
 			else
 			{
-				holder.txtValorExamen.setText("Reprobado");
+				holder.txtValorExamen.setText("Falla la prueba");
 				holder.txtValorExamen.setTextColor(Color.RED);
 			}
 			holder.txtNombreExamen.setText(tipoExamen.getNombreExamen());
