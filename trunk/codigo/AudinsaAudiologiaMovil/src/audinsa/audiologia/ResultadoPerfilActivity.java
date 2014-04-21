@@ -3,8 +3,12 @@ package audinsa.audiologia;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import com.facebook.UiLifecycleHelper;
+import com.facebook.model.GraphObject;
+import com.facebook.model.OpenGraphAction;
+import com.facebook.model.OpenGraphObject;
 import com.facebook.widget.FacebookDialog;
 
 import android.os.Bundle;
@@ -400,7 +404,30 @@ public class ResultadoPerfilActivity extends Activity {
 					// Si es Facebook, compartir usando el SDK de Facebook
 					if (packageClassName.contains("com.facebook.katana"))
 					{
-						FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(ResultadoPerfilActivity.this)
+						/*OpenGraphObject meal = OpenGraphObject.Factory.createForPost("audinsa:take");
+						meal.setProperty("title", "Buffalo Tacos");
+						meal.setProperty("image", "http://example.com/cooking-app/images/buffalo-tacos.png");
+						meal.setProperty("url", "https://example.com/cooking-app/meal/Buffalo-Tacos.html");
+						meal.setProperty("description", "Leaner than beef and great flavor.");
+
+						OpenGraphAction action = GraphObject.Factory.create(OpenGraphAction.class);
+						action.setProperty("hearing_test", meal);
+
+						FacebookDialog shareDialog = new FacebookDialog.OpenGraphActionDialogBuilder(ResultadoPerfilActivity.this, action, "audinsa:take", "hearing_test")
+						        .build();
+						uiHelper.trackPendingDialogCall(shareDialog.present());*/
+						
+						OpenGraphAction action = GraphObject.Factory.create(OpenGraphAction.class);
+						action.setProperty("hearing_test", "https://www.clinicaaudinsa.com/");
+						action.setType("hearing_test.take");
+
+						@SuppressWarnings("deprecation")
+						FacebookDialog shareDialog = new FacebookDialog.
+								OpenGraphActionDialogBuilder(ResultadoPerfilActivity.this, action, "hearing_test")
+						        .build();
+						uiHelper.trackPendingDialogCall(shareDialog.present());
+						
+						/*FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(ResultadoPerfilActivity.this)
 						.setApplicationName("Aplicación móvil de Audiología - Audinsa")
 				        .setLink("http://www.clinicaaudinsa.com/espanol/index.htm")
 				        .setDescription(linkDescription)
@@ -408,7 +435,7 @@ public class ResultadoPerfilActivity extends Activity {
 				        .setName(linkDescription)
 				        .build();
 						
-						uiHelper.trackPendingDialogCall(shareDialog.present());
+						uiHelper.trackPendingDialogCall(shareDialog.present());*/
 					}
 					else // De lo contrario, mande la información normal a otro tipo de aplicación
 					{
@@ -475,8 +502,8 @@ public class ResultadoPerfilActivity extends Activity {
   public void contactarClinica(String estado, Perfil p, int val_examen) {
 		Intent contactIntent = new Intent(Intent.ACTION_SEND);
 		contactIntent.setType("message/rfc822"); //set the email recipient
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String fecha = sdf.format(p.getFechaNacimiento());
+		SimpleDateFormat sdf = new SimpleDateFormat("d/M/yyyy", Locale.US);
+		String fecha = sdf.format(p.getFechaNacimiento()) + " (día/mes/año)";
 		String shareBody;
 		
 		if(val_examen==1){

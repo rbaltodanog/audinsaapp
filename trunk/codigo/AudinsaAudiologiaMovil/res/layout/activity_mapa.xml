@@ -11,13 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         class="com.google.android.gms.maps.SupportMapFragment" >
-        
+          
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnAudinsaHeredia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="animateCamera"
-            android:text="A mi posición" />
+            android:onClick="animateCameraToHeredia"
+            android:text="Audinsa Heredia" />
+        
+        <Button
+            android:id="@+id/btnAudinsaGuadalupe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="animateCameraToGuadalupe"
+            android:text="Audinsa Guadalupe" />
     </fragment>
 
 </RelativeLayout>

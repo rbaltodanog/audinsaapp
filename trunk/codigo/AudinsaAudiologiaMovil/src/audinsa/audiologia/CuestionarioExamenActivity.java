@@ -92,12 +92,12 @@ public class CuestionarioExamenActivity extends Activity {
 	}
 
 	public void btnNoClick(View view) {
+		puntaje = cuestionario.getPuntaje();
+		puntaje++;
+		cuestionario.setPuntaje(puntaje);
 		if (cuestionario.getPreguntas().size() == 0) {
 			guardarResultado(view);
 		} else {
-			puntaje = cuestionario.getPuntaje();
-			puntaje++;
-			cuestionario.setPuntaje(puntaje);
 			obtenerSiguientePregunta();
 		}
 	}

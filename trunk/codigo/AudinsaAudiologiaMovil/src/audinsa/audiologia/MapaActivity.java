@@ -15,9 +15,10 @@ import android.view.View;
 
 public class MapaActivity extends FragmentActivity implements
 		OnMapClickListener {
-	private final LatLng UPV = new LatLng(9.949407, -84.058312);
-	private final LatLng UPV2 = new LatLng(9.975042, -84.118026);
-	private static String title = "Contacto: Silvia Bonilla, Tel:(506)-(88959807)";
+	private final LatLng UPV = new LatLng(9.944686, -84.057486);
+	private final LatLng UPV2 = new LatLng(9.992335, -84.121982);
+	private static String titleGuadalupe = "150 metros Este de la Municipalidad en Centro Médico Santa Clara. 2560-5580/ 4000-1126";
+	private static String titleHeredia = "Frente al Hospital San Vicente de Paúl. 2560-5580/ 4000-1126";
 	private GoogleMap mapa;
 
 	@Override
@@ -35,8 +36,8 @@ public class MapaActivity extends FragmentActivity implements
 		// Marcador Audinsa Guadalupe
 		mapa.addMarker(new MarkerOptions()
 				.position(UPV)
-				.title(title)
-				.snippet("Audinsa-Guadalupe")
+				.title(titleGuadalupe)
+				.snippet("Audinsa Guadalupe")
 				.icon(BitmapDescriptorFactory
 						.fromResource(R.drawable.ic_launcher))
 				.anchor(0.5f, 0.5f));
@@ -44,8 +45,8 @@ public class MapaActivity extends FragmentActivity implements
 		// Marcador Audinsa Heredia
 		mapa.addMarker(new MarkerOptions()
 				.position(UPV2)
-				.title(title)
-				.snippet("Audinsa-Heredia")
+				.title(titleHeredia)
+				.snippet("Audinsa Heredia")
 				.icon(BitmapDescriptorFactory
 						.fromResource(R.drawable.ic_launcher))
 				.anchor(0.5f, 0.5f));
@@ -62,6 +63,14 @@ public class MapaActivity extends FragmentActivity implements
 			mapa.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
 					mapa.getMyLocation().getLatitude(), mapa.getMyLocation()
 							.getLongitude()), 15));
+	}
+	
+	public void animateCameraToHeredia(View view) {
+		mapa.animateCamera(CameraUpdateFactory.newLatLngZoom(UPV2, 15));
+	}
+	
+	public void animateCameraToGuadalupe(View view) {
+		mapa.animateCamera(CameraUpdateFactory.newLatLngZoom(UPV, 15));
 	}
 
 	public void addMarker(View view) {

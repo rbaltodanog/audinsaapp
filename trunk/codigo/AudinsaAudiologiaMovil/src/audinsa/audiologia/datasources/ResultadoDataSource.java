@@ -121,12 +121,15 @@ public class ResultadoDataSource {
 		Cursor cursor = database.query(MySQLiteHelper.TABLA_RESULTADO,
 				allColumns,  MySQLiteHelper.TABLA_RESULTADO_COLUMNA_ID_PERFIL + " = " + idPerfil, null, null, null, null);
 
-		cursor.moveToFirst();
-		while (!cursor.isAfterLast()) {
+		cursor.moveToLast();
+		while (!cursor.isFirst()) {
 			Resultado resultado = cursorAResultado(cursor);
 			resultados.add(resultado);
-			cursor.moveToNext();
+			cursor.moveToPrevious();
 		}
+		// We still need to add the first one
+		Resultado resultado = cursorAResultado(cursor);
+		resultados.add(resultado);
 		// Make sure to close the cursor
 		cursor.close();
 		close();
@@ -160,7 +163,6 @@ public class ResultadoDataSource {
 		}
 	
 	//Invoca al DS de examen, el mismo borra todos los exam asociados a un resultado
-
 	public boolean borrarExamen(long idPerfil,Context context) {
 		ExamenDataSource dataSourceExamen= new ExamenDataSource(context);
 		boolean resultado= false;

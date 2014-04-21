@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.media.*;
 import audinsa.audiologia.businessdomain.ResultadoSensibilidadOido;
@@ -28,6 +29,19 @@ public class SensibilidadOidoExamen extends Activity {
 	int puntaje = 8;
 	private ResultadoDataSource dataSource;
 	private DateTime fechaInicioExamen;
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()) {
+		case R.id.menu_regresar:
+			finish();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+
+		}
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

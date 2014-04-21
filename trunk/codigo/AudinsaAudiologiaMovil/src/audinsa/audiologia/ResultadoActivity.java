@@ -2,6 +2,7 @@ package audinsa.audiologia;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import com.facebook.UiLifecycleHelper;
 import com.facebook.widget.FacebookDialog;
@@ -349,8 +350,8 @@ public class ResultadoActivity extends Activity {
 	  public void contactarClinica(String estado, Perfil p, boolean val_examen) {
 			Intent contactIntent = new Intent(Intent.ACTION_SEND);
 			contactIntent.setType("message/rfc822"); //set the email recipient
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			String fecha = sdf.format(p.getFechaNacimiento());
+			SimpleDateFormat sdf = new SimpleDateFormat("d/M/yyyy", Locale.US);
+			String fecha = sdf.format(p.getFechaNacimiento()) + " (día/mes/año)";
 			String shareBody;
 			
 			if(val_examen){
