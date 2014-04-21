@@ -1,5 +1,6 @@
 package audinsa.audiologia;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -233,8 +234,9 @@ public class ResultadoPerfilActivity extends Activity {
 	private void contactarClinica(long idResultado, long idPerfil) {
 		Perfil p = onGetPerfil(idPerfil);
 		Resultado r = onGetResultado(idResultado,idPerfil);
+		int val_examen= r.getValor_examen();
 		String estado= r.getValorResultado_examen();
-		contactarClinicaAction(estado, p);
+		contactarClinica(estado, p,val_examen);
 	}
 
 	private Perfil onGetPerfil(long idPerfil) {
@@ -391,7 +393,7 @@ public class ResultadoPerfilActivity extends Activity {
 					editor.commit();
 
 					dialog.dismiss();
-					String shareBody = "Estoy usando la aplicación de Audinsa S.A. para revisar mi audición. Mi calificación es: "+ estado;
+					String shareBody = "Estoy usando la aplicación de Audinsa S.A. para revisar mi audición. Mi RESULTADO ES: "+ estado;
 					String linkDescription = "Página de la Clínica Auditiva Audinsa";
 					String packageClassName = items[which].packageClassName;
 					
@@ -403,6 +405,7 @@ public class ResultadoPerfilActivity extends Activity {
 				        .setLink("http://www.clinicaaudinsa.com/espanol/index.htm")
 				        .setDescription(linkDescription)
 				        .setPicture("http://i232.photobucket.com/albums/ee68/rbaltodanog/ic_launcher_zps6d218b2a.png")
+				        .setName(linkDescription)
 				        .build();
 						
 						uiHelper.trackPendingDialogCall(shareDialog.present());
@@ -469,11 +472,23 @@ public class ResultadoPerfilActivity extends Activity {
 		}
 	}
 	
-	public void contactarClinicaAction(String estado, Perfil p) {
+  public void contactarClinica(String estado, Perfil p, int val_examen) {
 		Intent contactIntent = new Intent(Intent.ACTION_SEND);
 		contactIntent.setType("message/rfc822"); //set the email recipient
-		String shareBody = "He realizado el exámen: Cuestionario. Mi calificación es: "+ estado + ".Estoy interesado en obtener una cita médica. Mis datos son: " +
-				"Nombre: " + p.toString() + ", Fecha de nacimiento: " + p.getFechaNacimiento() + ", Correo Electrónico: " +	p.getCorreoElectronico();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String fecha = sdf.format(p.getFechaNacimiento());
+		String shareBody;
+		
+		if(val_examen==1){
+		 shareBody = "He realizado el exámen: Cuestionario.Mi RESULTADO ES: "+ estado + ".Estoy interesado en obtener una cita audiológica para mi valoración anual.Mis datos son: " +
+				"Nombre: " + p.toString() + ", Fecha de nacimiento: " + fecha + ", Correo Electrónico: " +	p.getCorreoElectronico();
+		
+		}
+		else{
+		 shareBody = "He realizado el exámen: Cuestionario.Mi RESULTADO ES:Contacte a un especialista. Estoy interesado en obtener una cita audiológica para mi valoración auditiva.Mis datos son" +
+					"Nombre: " + p.toString() + ", Fecha de nacimiento: " + fecha + ", Correo Electrónico: " +	p.getCorreoElectronico();
+						
+		}
 		contactIntent.putExtra(Intent.EXTRA_SUBJECT, "Consulta");
 		contactIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
 		String[] mail = { "info@clinicaaudinsa.com", "" };
