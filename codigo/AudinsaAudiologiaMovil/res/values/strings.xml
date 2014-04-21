@@ -35,7 +35,7 @@
 
     <!-- Perfiles Mantenimiento Activity -->
     <string name="lblNombre">Nombre</string>
-    <string name="lblFechaNacimiento">Fecha de nacimiento</string>
+    <string name="lblFechaNacimiento">Fecha de nacimiento (día/mes/año)</string>
     <string name="lblCorreoElectronico">Correo electrónico</string>
     <string name="btnAceptarAgregar">Agregar</string>
     <string name="btnAceptarModificar">Modificar</string>
