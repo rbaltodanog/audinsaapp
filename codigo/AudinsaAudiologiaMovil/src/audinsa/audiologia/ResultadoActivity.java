@@ -39,6 +39,8 @@ public class ResultadoActivity extends Activity {
 
 	private PerfilDataSource dataSource;
 	private UiLifecycleHelper uiHelper;
+	private long tipoExamen;
+	
 	SharedPreferences sPrefs;
 
 	
@@ -50,7 +52,7 @@ public class ResultadoActivity extends Activity {
 
 		TextView txtResultadoDescription = (TextView) findViewById(R.id.txtResultadoDescription);
 		String strResultado = getIntent().getStringExtra("strResultado");
-		long tipoExamen = getIntent().getLongExtra("idTipoExamen", 0);
+		tipoExamen = getIntent().getLongExtra("idTipoExamen", 0);
 		long duracionExamen = getIntent().getLongExtra("duracionExamen", 0);
 		txtResultadoDescription.setText(strResultado);
 		// Cambia la imagen del semáforo si esta aprobado o reprobado
@@ -81,7 +83,8 @@ public class ResultadoActivity extends Activity {
 		rowContactarClinica.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				boolean  bolEstado=getIntent().getBooleanExtra("bolAprobado", true);
-				String estado=(bolEstado) ? "Pasa la prueba" : "Falla la prueba";
+				String estadoContactar=(bolEstado) ? getString(R.string.strContactarResultadoPositivo) : getString(R.string.strContactarResultadoNegativo) ;
+				String estado= estadoContactar.toString();
 				long idPerfil = getIntent().getLongExtra("idPerfil", 0);
 				Perfil p = onGetPerfil(idPerfil);
 				contactarClinica(estado,p,bolEstado);
@@ -92,7 +95,8 @@ public class ResultadoActivity extends Activity {
 		rowCompartirResultado.setClickable(true);
 		rowCompartirResultado.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				String estado=(getIntent().getBooleanExtra("bolAprobado", true)) ? "Pasa la prueba" : "Contacte un especialista";
+				//String estado=(getIntent().getBooleanExtra("bolAprobado", true)) ? "Pasa la prueba" : "Contacte un especialista";
+				String estado=(getIntent().getBooleanExtra("bolAprobado", true)) ? getString(R.string.strCompartirResultadoPositivo) : getString(R.string.strCompartirResultadoNegativo);
 				compartirInformacion(estado, v.getContext());
 			}
 		});
@@ -269,7 +273,7 @@ public class ResultadoActivity extends Activity {
 					editor.commit();
 
 					dialog.dismiss();
-					String shareBody = "Estoy usando la aplicación de Audinsa S.A. para revisar mi audición. Mi calificación es: "+ estado;
+					String shareBody = "Estoy usando la aplicación de Audinsa S.A. para revisar mi audición. Mi resultado es: "+ estado;
 					String linkDescription = "Página de la Clínica Auditiva Audinsa";
 					String packageClassName = items[which].packageClassName;
 					
@@ -347,23 +351,35 @@ public class ResultadoActivity extends Activity {
 		}
 	}
 	
-	  public void contactarClinica(String estado, Perfil p, boolean val_examen) {
+	  public void contactarClinica( String estado, Perfil p, boolean val_examen) {
 			Intent contactIntent = new Intent(Intent.ACTION_SEND);
 			contactIntent.setType("message/rfc822"); //set the email recipient
 			SimpleDateFormat sdf = new SimpleDateFormat("d/M/yyyy", Locale.US);
 			String fecha = sdf.format(p.getFechaNacimiento()) + " (día/mes/año)";
 			String shareBody;
-			
-			if(val_examen){
-			 shareBody = "He realizado el exámen: Cuestionario.Mi RESULTADO ES: "+ estado + ".Estoy interesado en obtener una cita audiológica para mi valoración anual.Mis datos sonn: " +
-					"Nombre: " + p.toString() + ", Fecha de nacimiento: " + fecha + ", Correo Electrónico: " +	p.getCorreoElectronico();
-			
+			String desExam="";
+			//Cambia el titulo del activity en base en el tipo de examen
+			if (tipoExamen == 1)
+			{
+				desExam=getString(R.string.title_activity_sensibilidad_oido_resultado);					
 			}
-			else{
-			 shareBody = "He realizado el exámen: Cuestionario.Mi RESULTADO ES:Contacte a un especialista. Estoy interesado en obtener una cita audiológica para mi valoración auditiva.Mis datos son" +
-						"Nombre: " + p.toString() + ", Fecha de nacimiento: " + fecha + ", Correo Electrónico: " +	p.getCorreoElectronico();
-							
+			if (tipoExamen == 2)
+			{
+				desExam=getString(R.string.title_activity_habla_ruido_resultado);
 			}
+			if (tipoExamen == 3)
+			{
+				desExam=getString(R.string.title_activity_cuestionario_resultado);
+			}
+	
+			//if(val_examen){
+	
+			shareBody = "He realizado el exámen:"+desExam +".Mi RESULTADO ES:" + estado  +"Nombre: " + p.toString() + ", Fecha de nacimiento: " + fecha + ", Correo Electrónico: " +	p.getCorreoElectronico();
+						 
+				//}
+			//	else{
+			//	 shareBody = "He realizado el exámen: "+desExam.toString() +"Mi RESULTADO ES:"+ estado+ "Nombre: " + p.toString() + ", Fecha de nacimiento: " + fecha + ", Correo Electrónico: " +	p.getCorreoElectronico();
+			//}	
 			contactIntent.putExtra(Intent.EXTRA_SUBJECT, "Consulta");
 			contactIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
 			String[] mail = { "info@clinicaaudinsa.com", "" };
@@ -371,3 +387,5 @@ public class ResultadoActivity extends Activity {
 			startActivity(Intent.createChooser(contactIntent, "Enviar información usando"));
 		}
 }
+
+

@@ -55,6 +55,7 @@ public class SensibilidadDeOidoInstruccionesActivity extends Activity {
 	}
 
 	public void onEmpezarClick(View view) {
+		
 		if (!_headphoneIsConnected)
 		{
 			Toast.makeText(

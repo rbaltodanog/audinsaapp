@@ -66,14 +66,12 @@
 
     <!-- Cuestionario Resultado Activity -->
 
-    <!--  <string name="strResultadoNegativo">Usted podría estar presentando una dificultad auditiva. Le recomendamos contactar a la clínica</string>
-    <string name="strResultadoPositivo">Usted no presenta una dificultad auditiva. Le recomendamos una valoración anual</string>
-  -->
-    <string name="strResultadoNegativo">Contacte a un especialista para realizar una valoración auditiva, su audición podría estar presentando una alteración.</string>
-    <string name="strResultadoPositivo">PASA, se recomienda una valoración auditiva anual aplicada por un especialista, si no ha realizado la suya contáctenos.</string>
-  
+
+    <string name="strContactarResultadoPositivo">PASA.Estoy interesado en obtener una cita audiológica para mi valoración anual, mis datos son: "</string>    
+    <string name="strContactarResultadoNegativo">Contacte a un especialista.Estoy interesado en obtener una cita audiológica para mi valoración auditiva,mis datos son: "</string>    
     
-	
+    <string name="strCompartirResultadoPositivo">Pasa,lo que sugiere que mi audición se encuentra en buenas condiciones, se recomienda una valoración auditiva anual aplicada por un especialista, contáctenos.</string>    
+    <string name="strCompartirResultadoNegativo">Falla,lo que sugiere que presento algún tipo de alteración audición y debo contactar a un especialista.</string>    
     
     <string name="imgBorrarContentDescription">Icono para borrar el resultado</string>
     <string name="strCalificacion">De acuerdo a sus respuestas</string>
@@ -92,6 +90,11 @@
     <string name="imgBlogContentDescription">Avatar del blog</string>
 
     <!-- Generales Para Resultado de Exam. -->
+    
+    <string name="strResultadoNegativoExamen">Contacte a un especialista para realizar una valoración auditiva, su audición podría estar presentando una alteración.</string>
+    <string name="strResultadoPositivoExamen">Pasa,se recomienda una valoración auditiva anual aplicada por un especialista, si no ha realizado la suya contáctenos.</string>
+  
+    
     <string name="lblResultado">Resultado</string>
     <string name="menu_borrar">Borrar</string>
     <string name="menu_compartir">Compartir</string>
