@@ -152,6 +152,9 @@
     <!-- MENSAJES DE INFORMACION -->
     <string name="txtMantenimientoPerfilesToastPerfilAgregado">Perfil agregado satisfactoriamente</string>
     <string name="txtMantenimientoPerfilesToastPerfilActualizado">Perfil actualizado satisfactoriamente</string>
+    <string name="cuestionario_nombre">Cuestionario</string>
+    <string name="sensibilidad_oido_nombre">Sensibilidad de Oido</string>
+    <string name="habla_ruido_nombre">Habla en Ruido</string>
 
     <!-- MENSAJES DE ERROR -->
     <string name="txtPerfilesToastPerfilErrorAlBorrar">Error al borrar el perfil</string>

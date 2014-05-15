@@ -46,6 +46,7 @@ import audinsa.audiologia.businessdomain.Resultado;
 import audinsa.audiologia.datasources.ExamenDataSource;
 import audinsa.audiologia.datasources.PerfilDataSource;
 import audinsa.audiologia.datasources.ResultadoDataSource;
+import audinsa.audiologia.businessdomain.Examen;
 
 public class ResultadoPerfilActivity extends Activity {
 	private ResultadoDataSource resultadoDataSource;
@@ -53,6 +54,7 @@ public class ResultadoPerfilActivity extends Activity {
 	private ArrayList<Resultado> resultados;
 	private UiLifecycleHelper uiHelper;
 	SharedPreferences sPrefs;
+	private int tipoExamen;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -112,13 +114,15 @@ public class ResultadoPerfilActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				long idPerfil,idResultado,idExamen = 0;
+				long idPerfil,idResultado,idExamen;
 				idPerfil = ((Resultado) parent.getItemAtPosition(position))
 						.getId_perfil();
 				idResultado = ((Resultado) parent.getItemAtPosition(position))
 						.getId_resultado();
 				idExamen = ((Resultado) parent.getItemAtPosition(position))
 						.getId_examen();
+				tipoExamen = ((Examen)examenDataSource.
+						buscarExamen(Integer.parseInt(Long.toString(idExamen)))).getId_tipo_examen();
 				Intent intent = new Intent(view.getContext(),
 						ExamenesActivity.class);
 				intent.putExtra("idPerfil", idPerfil);
@@ -397,7 +401,7 @@ public class ResultadoPerfilActivity extends Activity {
 					editor.commit();
 
 					dialog.dismiss();
-					String shareBody = "Estoy usando la aplicación de Audinsa S.A. para revisar mi audición. Mi RESULTADO ES: "+ estado;
+					String shareBody = "Estoy usando la aplicación de Audinsa S.A. para revisar mi audición. Mi resultado es: "+ estado;
 					String linkDescription = "Página de la Clínica Auditiva Audinsa";
 					String packageClassName = items[which].packageClassName;
 					
@@ -505,17 +509,28 @@ public class ResultadoPerfilActivity extends Activity {
 		SimpleDateFormat sdf = new SimpleDateFormat("d/M/yyyy", Locale.US);
 		String fecha = sdf.format(p.getFechaNacimiento()) + " (día/mes/año)";
 		String shareBody;
+		String desExam="";
+		//Cambia el titulo del activity en base en el tipo de examen
 		
-		if(val_examen==1){
-		 shareBody = "He realizado el exámen: Cuestionario.Mi RESULTADO ES: "+ estado + ".Estoy interesado en obtener una cita audiológica para mi valoración anual.Mis datos son: " +
-				"Nombre: " + p.toString() + ", Fecha de nacimiento: " + fecha + ", Correo Electrónico: " +	p.getCorreoElectronico();
+		if (tipoExamen == 1)
+		{
+			desExam=getString(R.string.sensibilidad_oido_nombre);					
+		}
+		if (tipoExamen == 2)
+		{
+			desExam=getString(R.string.habla_ruido_nombre);
+		}
+		if (tipoExamen == 3)
+		{
+			desExam=getString(R.string.cuestionario_nombre);
+		}
 		
-		}
-		else{
-		 shareBody = "He realizado el exámen: Cuestionario.Mi RESULTADO ES:Contacte a un especialista. Estoy interesado en obtener una cita audiológica para mi valoración auditiva.Mis datos son" +
-					"Nombre: " + p.toString() + ", Fecha de nacimiento: " + fecha + ", Correo Electrónico: " +	p.getCorreoElectronico();
-						
-		}
+		shareBody = "He realizado el exámen:"+desExam +
+				".Mi RESULTADO ES:" + estado  +
+				". Nombre: " + p.toString() + 
+				", Fecha de nacimiento: " + fecha + 
+				", Correo Electrónico: " +	p.getCorreoElectronico();
+		
 		contactIntent.putExtra(Intent.EXTRA_SUBJECT, "Consulta");
 		contactIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
 		String[] mail = { "info@clinicaaudinsa.com", "" };
