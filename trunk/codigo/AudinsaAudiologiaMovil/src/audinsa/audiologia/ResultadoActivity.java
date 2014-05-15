@@ -361,20 +361,20 @@ public class ResultadoActivity extends Activity {
 			//Cambia el titulo del activity en base en el tipo de examen
 			if (tipoExamen == 1)
 			{
-				desExam=getString(R.string.title_activity_sensibilidad_oido_resultado);					
+				desExam=getString(R.string.sensibilidad_oido_nombre);					
 			}
 			if (tipoExamen == 2)
 			{
-				desExam=getString(R.string.title_activity_habla_ruido_resultado);
+				desExam=getString(R.string.habla_ruido_nombre);
 			}
 			if (tipoExamen == 3)
 			{
-				desExam=getString(R.string.title_activity_cuestionario_resultado);
+				desExam=getString(R.string.cuestionario_nombre);
 			}
 	
 			//if(val_examen){
 	
-			shareBody = "He realizado el exámen:"+desExam +".Mi RESULTADO ES:" + estado  +"Nombre: " + p.toString() + ", Fecha de nacimiento: " + fecha + ", Correo Electrónico: " +	p.getCorreoElectronico();
+			shareBody = "He realizado el exámen:"+desExam +".Mi RESULTADO ES:" + estado  +". Nombre: " + p.toString() + ", Fecha de nacimiento: " + fecha + ", Correo Electrónico: " +	p.getCorreoElectronico();
 						 
 				//}
 			//	else{
