@@ -23,55 +23,98 @@ import audinsa.audiologia.datasources.TipoExamenDataSource;
 public class ExamenesActivity extends Activity {
 	private TipoExamenDataSource dataSource;
 	private long perfil=0;
-	private static final int[] ITEM_DRAWABLES = { R.drawable.audinsa_acerca_de_logo, R.drawable.audinsa_acerca_de_logo,
-		R.drawable.audinsa_acerca_de_logo, R.drawable.audinsa_acerca_de_logo,R.drawable.audinsa_acerca_de_logo,R.drawable.audinsa_acerca_de_logo };
+	private static final int[] ITEM_DRAWABLES = { R.drawable.ic_perfil_menu, R.drawable.ic_resultados_menu,
+		R.drawable.ic_consultorios_menu, R.drawable.ic_acerca_de_menu,R.drawable.ic_salir_menu};
 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_examenes);
-		
-	  ArcMenu arcMenu2 = (ArcMenu) findViewById(R.id.arc_menu_2);
 
-        initArcMenu(arcMenu2, ITEM_DRAWABLES);
+		ArcMenu arcMenu2 = (ArcMenu) findViewById(R.id.arc_menu_2);
+
+
+		initArcMenu(arcMenu2, ITEM_DRAWABLES);
 
 		//RayMenu rayMenu = (RayMenu) findViewById(R.id.ray_menu);
-        final int itemCount = ITEM_DRAWABLES.length;
+		final int itemCount = ITEM_DRAWABLES.length;
 		for (int i = 0; i < itemCount; i++) {
 			ImageView item = new ImageView(this);
 			item.setImageResource(ITEM_DRAWABLES[i]);
 
 			final int position = i;
-			}
+		}
 
 		loadData();
 		setOnListViewItemClickListener();
 	}
-    private void initArcMenu(ArcMenu menu, int[] itemDrawables) {
-        final int itemCount = itemDrawables.length;
-        for (int i = 0; i < itemCount; i++) {
-            ImageView item = new ImageView(this);
-            item.setImageResource(itemDrawables[i]);
+	private void initArcMenu(ArcMenu menu, int[] itemDrawables) {
+		final int itemCount = itemDrawables.length;
+		for (int i = 0; i < itemCount; i++) {
+			ImageView item = new ImageView(this);
+			item.setImageResource(itemDrawables[i]);
 
-            final int position = i;
-            menu.addItem(item, new OnClickListener() {
+			final int position = i;
+			menu.addItem(item, new OnClickListener() {
 
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(ExamenesActivity.this, "position:" + position, Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-    }
-	
+				@Override
+				public void onClick(View v) {
+					Intent intent;
+					switch (position) {
+
+					case 0://Position 0 corresponde a Perfiles
+					perfil=getIntent().getLongExtra("idPerfil",0);
+					intent = new Intent();
+					intent.setClass(ExamenesActivity.this,PerfilesMantenimientoActivity.class);
+					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					intent.putExtra("idPerfil", perfil);
+					intent.putExtra("actualizacion", true);
+					startActivity(intent);
+						break;
+					case 1://Position 1 corresponde a obtener Resultados
+						perfil=getIntent().getLongExtra("idPerfil",0);
+						intent = new Intent();
+						intent.setClass(ExamenesActivity.this,ResultadoPerfilActivity.class);
+						intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);                 
+						intent.putExtra("idPerfil", perfil);
+						startActivity(intent);
+						break;
+					case 2://Position 2 corresponde a Ver Consultorios
+						perfil=getIntent().getLongExtra("idPerfil",0);
+						try{
+							intent = new Intent();
+							intent.setClass(ExamenesActivity.this,MapaActivity.class);
+
+							startActivity(intent);
+						}
+						catch(Exception e){				        		 
+							Toast.makeText(ExamenesActivity.this, "Problema al mostrar el mapa.Verifique su conexión a internet", Toast.LENGTH_SHORT).show();
+						}
+						break;
+					case 3://Position 3 corresponde a la opción AcercaDe
+						intent = new Intent(v.getContext(), AcercaDeActivity.class);
+						startActivity(intent);
+						break;
+					case 4://Position 4 corresponde a la opción de salir
+						finish();
+						break;
+					default:
+						break;
+
+					}
+				}
+			});
+		}
+	}
+
 	private void loadData()
 	{
 		dataSource = new TipoExamenDataSource(this);
 		ArrayList<TipoExamen> tipoExamenes = dataSource.obtenerTodosLosTiposExamenes();
 
 		TestItemAdapter adapter = new TestItemAdapter(this, 
-		tipoExamenes);
+				tipoExamenes);
 		ListView listView = (ListView) findViewById(R.id.listExamenes);
 		listView.setAdapter(adapter);
 	}
@@ -122,60 +165,60 @@ public class ExamenesActivity extends Activity {
 		};
 		lstView.setOnItemClickListener(listener);
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent intent=null;
 		//	Handle item selection
-	    switch (item.getItemId()) {
-	        case R.id.menu_regresar:
-	            finish();
-	            return true;
-	        case R.id.menu_articulos:
-	        	intent = new Intent(this.getBaseContext(), ArticulosActivity.class);
+		switch (item.getItemId()) {
+		case R.id.menu_regresar:
+			finish();
+			return true;
+		case R.id.menu_articulos:
+			intent = new Intent(this.getBaseContext(), ArticulosActivity.class);
+			startActivity(intent);
+			return true;
+		case R.id.menu_acerca_de:
+			intent = new Intent(this.getBaseContext(), AcercaDeActivity.class);
+			startActivity(intent);
+			return true;
+		case R.id.menu_perfil:	        	
+			perfil=getIntent().getLongExtra("idPerfil",0);
+			intent = new Intent();
+			intent.setClass(ExamenesActivity.this,PerfilesMantenimientoActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.putExtra("idPerfil", perfil);
+			intent.putExtra("actualizacion", true);
+			startActivity(intent);
+
+			return true;
+
+		case R.id.menu_resultados:
+			perfil=getIntent().getLongExtra("idPerfil",0);
+			intent = new Intent();
+			intent.setClass(ExamenesActivity.this,ResultadoPerfilActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);                 
+			intent.putExtra("idPerfil", perfil);
+			startActivity(intent);
+			return true;
+		case R.id.menu_localizar:		        	
+			perfil=getIntent().getLongExtra("idPerfil",0);
+			try{
+				intent = new Intent();
+				intent.setClass(ExamenesActivity.this,MapaActivity.class);
+
 				startActivity(intent);
-	            return true;
-	        case R.id.menu_acerca_de:
-	        	intent = new Intent(this.getBaseContext(), AcercaDeActivity.class);
-				startActivity(intent);
-	            return true;
-	        case R.id.menu_perfil:	        	
-	        	 perfil=getIntent().getLongExtra("idPerfil",0);
-			     intent = new Intent();
-	        	 intent.setClass(ExamenesActivity.this,PerfilesMantenimientoActivity.class);
-                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                 intent.putExtra("idPerfil", perfil);
-                 intent.putExtra("actualizacion", true);
-                 startActivity(intent);
-                 
-                 return true;
-                 
-	        case R.id.menu_resultados:
-	        	 perfil=getIntent().getLongExtra("idPerfil",0);
-			     intent = new Intent();
-	        	 intent.setClass(ExamenesActivity.this,ResultadoPerfilActivity.class);
-	        	 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);                 
-	        	 intent.putExtra("idPerfil", perfil);
-	        	 startActivity(intent);
-	        	  return true;
-		    case R.id.menu_localizar:		        	
-	        	 perfil=getIntent().getLongExtra("idPerfil",0);
-			   try{
-				   intent = new Intent();
-		        	 intent.setClass(ExamenesActivity.this,MapaActivity.class);
-		        	
-	        		 startActivity(intent);
-	        	 }
-	        	 catch(Exception e){
-	        		 
-        		 
-	        	 }
-	        	 
-	        	  return true;
-	        default:
-	            return super.onOptionsItemSelected(item);
-	            
-	            
-	    }
+			}
+			catch(Exception e){
+
+
+			}
+
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+
+
+		}
 	}
 }
