@@ -1,11 +1,18 @@
 package audinsa.audiologia;
 import java.util.ArrayList;
-import android.os.Bundle;
+
 import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.capricorn.ArcMenu;
+import com.capricorn.RayMenu;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -16,14 +23,47 @@ import audinsa.audiologia.datasources.TipoExamenDataSource;
 public class ExamenesActivity extends Activity {
 	private TipoExamenDataSource dataSource;
 	private long perfil=0;
+	private static final int[] ITEM_DRAWABLES = { R.drawable.audinsa_acerca_de_logo, R.drawable.audinsa_acerca_de_logo,
+		R.drawable.audinsa_acerca_de_logo, R.drawable.audinsa_acerca_de_logo,R.drawable.audinsa_acerca_de_logo,R.drawable.audinsa_acerca_de_logo };
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_examenes);
+		
+	  ArcMenu arcMenu2 = (ArcMenu) findViewById(R.id.arc_menu_2);
+
+        initArcMenu(arcMenu2, ITEM_DRAWABLES);
+
+		//RayMenu rayMenu = (RayMenu) findViewById(R.id.ray_menu);
+        final int itemCount = ITEM_DRAWABLES.length;
+		for (int i = 0; i < itemCount; i++) {
+			ImageView item = new ImageView(this);
+			item.setImageResource(ITEM_DRAWABLES[i]);
+
+			final int position = i;
+			}
+
 		loadData();
 		setOnListViewItemClickListener();
 	}
+    private void initArcMenu(ArcMenu menu, int[] itemDrawables) {
+        final int itemCount = itemDrawables.length;
+        for (int i = 0; i < itemCount; i++) {
+            ImageView item = new ImageView(this);
+            item.setImageResource(itemDrawables[i]);
+
+            final int position = i;
+            menu.addItem(item, new OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(ExamenesActivity.this, "position:" + position, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
 	
 	private void loadData()
 	{
