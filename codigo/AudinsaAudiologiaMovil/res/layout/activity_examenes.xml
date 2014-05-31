@@ -14,24 +14,25 @@
         tools:listitem="@android:layout/simple_list_item_2" >
 
     </ListView>
-<ScrollView
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-
     
-    <LinearLayout
-        android:layout_width="fill_parent"
+    <com.capricorn.ArcMenu
+        android:id="@+id/arc_menu_2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        
-         <com.capricorn.ArcMenu
-            android:id="@+id/arc_menu_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            arc:fromDegrees="@dimen/menuFromDegrees"
-            arc:toDegrees="@dimen/menuToDegrees"
-            arc:childSize="@dimen/menuChildSize"/>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        arc:childSize="@dimen/menuChildSize"
+        arc:fromDegrees="@dimen/menuFromDegrees"
+        arc:toDegrees="@dimen/menuToDegrees" />
 
-    </LinearLayout>
-</ScrollView>
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:paddingBottom="25dp"
+        android:text="Menú"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
 </RelativeLayout>
