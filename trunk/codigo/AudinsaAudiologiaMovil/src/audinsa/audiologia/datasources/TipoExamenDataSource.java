@@ -39,7 +39,9 @@ public class TipoExamenDataSource {
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			TipoExamen tipoExamen = cursorATipoExamen(cursor);
+			if(cursor.getLong(0) != 2){ //Evita obtener el tipo 2 Habla en ruido por falta de definición del usuario
 			tiposExamenes.add(tipoExamen);
+			}
 			cursor.moveToNext();
 		}
 		// Make sure to close the cursor

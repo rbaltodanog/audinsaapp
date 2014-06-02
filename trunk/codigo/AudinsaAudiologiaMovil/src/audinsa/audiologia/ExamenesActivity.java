@@ -7,9 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.capricorn.ArcMenu;
-import com.capricorn.RayMenu;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,17 +31,12 @@ public class ExamenesActivity extends Activity {
 		setContentView(R.layout.activity_examenes);
 
 		ArcMenu arcMenu2 = (ArcMenu) findViewById(R.id.arc_menu_2);
-
-
 		initArcMenu(arcMenu2, ITEM_DRAWABLES);
 
-		//RayMenu rayMenu = (RayMenu) findViewById(R.id.ray_menu);
 		final int itemCount = ITEM_DRAWABLES.length;
 		for (int i = 0; i < itemCount; i++) {
 			ImageView item = new ImageView(this);
 			item.setImageResource(ITEM_DRAWABLES[i]);
-
-			final int position = i;
 		}
 
 		loadData();
@@ -153,13 +146,26 @@ public class ExamenesActivity extends Activity {
 					intent.putExtra("idPerfil", perfil);
 					intent.putExtra("idTipoExamen", idTipoExamen);
 					startActivity(intent);
-				} else if (examen.equals("Habla en ruido")) {
+				}
+				else if (examen.equals("Artículos")) {
+						Intent intent ;
+						//= new Intent(view.getContext(),
+						//		HablaEnRuidoInstruccionesActivity.class);
+						//intent.putExtra("idPerfil", perfil);
+						//intent.putExtra("idTipoExamen", idTipoExamen);
+						//startActivity(intent);
+						intent = new Intent(view.getContext(), ArticulosActivity.class);
+						startActivity(intent);
+						//return true;
+						}
+				/*Se comenta mientras el usuario define este examen
+				  	else if (examen.equals("Habla en ruido")) {
 					Intent intent = new Intent(view.getContext(),
 							HablaEnRuidoInstruccionesActivity.class);
 					intent.putExtra("idPerfil", perfil);
 					intent.putExtra("idTipoExamen", idTipoExamen);
 					startActivity(intent);
-				}
+				}*/
 			}
 
 		};

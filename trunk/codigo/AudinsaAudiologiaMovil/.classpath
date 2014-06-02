@@ -8,6 +8,8 @@
 	<classpathentry exported="true" kind="lib" path="libs/joda-time-2.2.jar"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/facebook"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ArcMenuLibrary"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/FacebookSDK"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/google-play-services_lib"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
