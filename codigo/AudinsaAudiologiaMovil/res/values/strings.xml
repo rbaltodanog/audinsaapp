@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Audinsa Audiología Movil</string>
+    <string name="app_name">Audinsa Audiología Móvil</string>
     <string name="app_id">597009720379617</string>
     <string name="txtPerfilesDialogoOk">Aceptar</string>
     <string name="txtPerfilesDialogoCancel">Cancelar</string>
@@ -32,6 +32,8 @@
 
     <!-- Examenes Activity -->
     <string name="title_activity_examenes">Exámenes</string>
+  
+   
 
     <!-- Perfiles Mantenimiento Activity -->
     <string name="lblNombre">Nombre</string>
@@ -89,7 +91,9 @@
     <!-- ListView Articles Item Row -->
     <string name="imgBlogContentDescription">Avatar del blog</string>
 
-    <!-- Generales Para Resultado de Exam. -->
+  <!-- Artículos del menú principal -->
+      <string name="strTxtInformacion">Conozca información importante acerca de su audición</string>
+  <!-- Generales Para Resultado de Exam. -->
     
     <string name="strResultadoNegativoExamen">Contacte a un especialista para realizar una valoración auditiva, su audición podría estar presentando una alteración.</string>
     <string name="strResultadoPositivoExamen">Pasa,se recomienda una valoración auditiva anual aplicada por un especialista, si no ha realizado la suya contáctenos.</string>

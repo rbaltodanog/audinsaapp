@@ -22,13 +22,16 @@ public class TestItemAdapter extends ArrayAdapter<TipoExamen> {
 	private ArrayList<TipoExamen> tipoExamenes;
 
 	public TestItemAdapter(Context context, ArrayList<TipoExamen> tipoExamenes) {
-		super(context, R.layout.listview_hablaruido_item_row, tipoExamenes);
+		super(context, R.layout.listview_sensibilidadoido_item_row, tipoExamenes);
 		this.context = context;
 		this.tipoExamenes = tipoExamenes;
 		testLayouts = new Hashtable<String, Integer>();
 		testLayouts.put("sensibilidad de oído", R.layout.listview_sensibilidadoido_item_row);
+	/* Se comenta mientras el usuario define el examen
 		testLayouts.put("habla en ruido", R.layout.listview_hablaruido_item_row);
-		testLayouts.put("cuestionario", R.layout.listview_cuestionario_item_row);
+	*/	testLayouts.put("cuestionario", R.layout.listview_cuestionario_item_row);
+		testLayouts.put("artículos", R.layout.listview_articulos_item_row);
+		
 	}
 
 	public int getCount() {

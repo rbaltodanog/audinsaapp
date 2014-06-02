@@ -67,8 +67,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 		    + "foreign key (" +TABLA_EXAMEN_COLUMNA_ID_TIPO_EXAMEN +") References "+TABLA_TIPO_EXAMEN +"("+TABLA_TIPO_EXAMEN_COLUMNA_ID +")"
 		    + " );";
 	
-	
-
 	private static final String CREAR_TABLA_TIPO_EXAMEN = "create table "
 			+ TABLA_TIPO_EXAMEN + "(" + TABLA_TIPO_EXAMEN_COLUMNA_ID
 			+ " integer primary key autoincrement, " + TABLA_TIPO_EXAMEN_COLUMNA_NOMBRE_EXAMEN
@@ -84,15 +82,14 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 			+ " (" + TABLA_TIPO_EXAMEN_COLUMNA_NOMBRE_EXAMEN + "," + TABLA_TIPO_EXAMEN_COLUMNA_INSTRUCCIONES + ")"
 			+ " values ('Habla en ruido', '¿Que tan bien oye en ruido?');";
 	
-	/*private static final String CREAR_TIPO_EXAMEN_DIF_FRECUENCIAS = "insert into " + TABLA_TIPO_EXAMEN 
-			+ " (" + TABLA_TIPO_EXAMEN_COLUMNA_NOMBRE_EXAMEN + "," + TABLA_TIPO_EXAMEN_COLUMNA_INSTRUCCIONES + ")"
-			+ " values ('Diferenciación de frecuencias', '¿Cuál es la más baja diferencia entre frecuencias que puede notar?');";*/
-	
-	
 	private static final String CREAR_TIPO_EXAMEN_CUESTIONARIO = "insert into " + TABLA_TIPO_EXAMEN 
 			+ " (" + TABLA_TIPO_EXAMEN_COLUMNA_NOMBRE_EXAMEN + "," + TABLA_TIPO_EXAMEN_COLUMNA_INSTRUCCIONES + ")"
 			+ " values ('Cuestionario', 'Preguntas acerca de su escucha diaria');";
 
+	private static final String CREAR_TIPO_EXAMEN_ARTICULOS = "insert into " + TABLA_TIPO_EXAMEN 
+			+ " (" + TABLA_TIPO_EXAMEN_COLUMNA_NOMBRE_EXAMEN + "," + TABLA_TIPO_EXAMEN_COLUMNA_INSTRUCCIONES + ")"
+			+ " values ('Artículos', 'Conozca información importante acerca de su audición');";
+	
 	public MySQLiteHelper(Context context) {
 		super(context, NOMBRE_BASEDATOS, null, VERSION_BASEDATOS);
 	}
@@ -104,14 +101,12 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 		database.execSQL(CREAR_TABLA_TIPO_EXAMEN);
 		database.execSQL(CREAR_TABLA_EXAMEN);
 		database.execSQL(CREAR_TABLA_RESULTADO);
-		
-
-		
+			
 		/*insert*/
 		database.execSQL(CREAR_TIPO_EXAMEN_SENSIBILIDAD_OIDO);
 		database.execSQL(CREAR_TIPO_EXAMEN_HABLA_RUIDO);
-		//database.execSQL(CREAR_TIPO_EXAMEN_DIF_FRECUENCIAS);
 		database.execSQL(CREAR_TIPO_EXAMEN_CUESTIONARIO);
+		database.execSQL(CREAR_TIPO_EXAMEN_ARTICULOS);
 	}
 
 	@Override
