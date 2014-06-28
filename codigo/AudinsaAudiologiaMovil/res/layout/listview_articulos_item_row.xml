@@ -23,7 +23,7 @@
             android:layout_width="50dip"
             android:layout_height="50dip"
             android:contentDescription="@string/imgPerfilContentDescription"
-            android:src="@drawable/ic_test" />
+            android:src="@drawable/ic_articulos" />
  
     </LinearLayout>
  
