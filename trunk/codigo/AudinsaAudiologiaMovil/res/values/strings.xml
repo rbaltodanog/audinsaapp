@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Audinsa Audiología Móvil</string>
+    <string name="app_name">AUDINSA Salud Auditiva</string>
     <string name="app_id">597009720379617</string>
     <string name="txtPerfilesDialogoOk">Aceptar</string>
     <string name="txtPerfilesDialogoCancel">Cancelar</string>

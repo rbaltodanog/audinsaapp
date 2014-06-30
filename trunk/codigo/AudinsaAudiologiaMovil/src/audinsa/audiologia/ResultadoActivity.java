@@ -4,8 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
-import com.facebook.UiLifecycleHelper;
-import com.facebook.widget.FacebookDialog;
+import com.facebook.Session;
+import com.facebook.widget.WebDialog;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -38,12 +38,12 @@ import audinsa.audiologia.datasources.PerfilDataSource;
 public class ResultadoActivity extends Activity {
 
 	private PerfilDataSource dataSource;
-	private UiLifecycleHelper uiHelper;
+	//private UiLifecycleHelper uiHelper;
 	private long tipoExamen;
-	
+
 	SharedPreferences sPrefs;
 
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// pantalla vertical
@@ -100,13 +100,13 @@ public class ResultadoActivity extends Activity {
 				compartirInformacion(estado, v.getContext());
 			}
 		});
-		
+
 		TextView lblDuracionExamen = (TextView)findViewById(R.id.lblDuracionExamen);
 		if (lblDuracionExamen != null)
 		{
 			lblDuracionExamen.setText("Duración del examen: " + String.valueOf(duracionExamen) + " segundos");
 		}
-		
+
 		sPrefs = PreferenceManager.getDefaultSharedPreferences(ResultadoActivity.this);
 	}
 
@@ -236,7 +236,7 @@ public class ResultadoActivity extends Activity {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle("Escoja la aplicación:");
 			builder.setIcon(R.drawable.ic_compartir);
-			
+
 			// Si se descomenta esto, sale un checkbox en la pantalla de
 			// escoger aplicacion a compartir y permite establecer
 			// una aplicación por defecto para compartir
@@ -274,20 +274,33 @@ public class ResultadoActivity extends Activity {
 
 					dialog.dismiss();
 					String shareBody = "Estoy usando la aplicación de Audinsa S.A. para revisar mi audición. Mi resultado es: "+ estado;
+					String shareLink = "http://www.clinicaaudinsa.com";
 					String linkDescription = "Página de la Clínica Auditiva Audinsa";
 					String packageClassName = items[which].packageClassName;
-					
+
 					// Si es Facebook, compartir usando el SDK de Facebook
 					if (packageClassName.contains("com.facebook.katana"))
 					{
-						FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(ResultadoActivity.this)
-						.setApplicationName("Aplicación móvil de Audiología - Audinsa")
-				        .setLink("http://www.clinicaaudinsa.com/espanol/index.htm")
-				        .setDescription(linkDescription)
-				        .setPicture("http://i232.photobucket.com/albums/ee68/rbaltodanog/ic_launcher_zps6d218b2a.png")
-				        .build();
-						
-						uiHelper.trackPendingDialogCall(shareDialog.present());
+						/*if (FacebookDialog.canPresentShareDialog(getApplicationContext(),
+								FacebookDialog.ShareDialogFeature.SHARE_DIALOG)) {
+							// Publish the post using the Share Dialog
+							FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(ResultadoActivity.this)
+							.setLink("https://developers.facebook.com/android")
+							.build();
+							uiHelper.trackPendingDialogCall(shareDialog.present());
+
+						} else {
+							// Fallback. For example, publish the post using the Feed Dialog
+							publishFeedDialog();
+						}*/
+						// Start the selected activity sending it the URLs of the resized images
+						Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+						sharingIntent.setType("text/plain");
+						sharingIntent.putExtra(Intent.EXTRA_SUBJECT, linkDescription);
+						sharingIntent.putExtra(Intent.EXTRA_TEXT, shareLink);
+						sharingIntent.setClassName(items[which].context, items[which].packageClassName);
+						startActivity(sharingIntent);
+						finish();
 					}
 					else // De lo contrario, mande la información normal a otro tipo de aplicación
 					{
@@ -350,42 +363,57 @@ public class ResultadoActivity extends Activity {
 			return;
 		}
 	}
-	
-	  public void contactarClinica( String estado, Perfil p, boolean val_examen) {
-			Intent contactIntent = new Intent(Intent.ACTION_SEND);
-			contactIntent.setType("message/rfc822"); //set the email recipient
-			SimpleDateFormat sdf = new SimpleDateFormat("d/M/yyyy", Locale.US);
-			String fecha = sdf.format(p.getFechaNacimiento()) + " (día/mes/año)";
-			String shareBody;
-			String desExam="";
-			//Cambia el titulo del activity en base en el tipo de examen
-			if (tipoExamen == 1)
-			{
-				desExam=getString(R.string.sensibilidad_oido_nombre);					
-			}
-			if (tipoExamen == 2)
-			{
-				desExam=getString(R.string.habla_ruido_nombre);
-			}
-			if (tipoExamen == 3)
-			{
-				desExam=getString(R.string.cuestionario_nombre);
-			}
-	
-			//if(val_examen){
-	
-			shareBody = "He realizado el exámen:"+desExam +".Mi RESULTADO ES:" + estado  +". Nombre: " + p.toString() + ", Fecha de nacimiento: " + fecha + ", Correo Electrónico: " +	p.getCorreoElectronico();
-						 
-				//}
-			//	else{
-			//	 shareBody = "He realizado el exámen: "+desExam.toString() +"Mi RESULTADO ES:"+ estado+ "Nombre: " + p.toString() + ", Fecha de nacimiento: " + fecha + ", Correo Electrónico: " +	p.getCorreoElectronico();
-			//}	
-			contactIntent.putExtra(Intent.EXTRA_SUBJECT, "Consulta");
-			contactIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-			String[] mail = { "info@clinicaaudinsa.com", "" };
-			contactIntent.putExtra(Intent.EXTRA_EMAIL, mail);   
-			startActivity(Intent.createChooser(contactIntent, "Enviar información usando"));
+
+	public void contactarClinica( String estado, Perfil p, boolean val_examen) {
+		Intent contactIntent = new Intent(Intent.ACTION_SEND);
+		contactIntent.setType("message/rfc822"); //set the email recipient
+		SimpleDateFormat sdf = new SimpleDateFormat("d/M/yyyy", Locale.US);
+		String fecha = sdf.format(p.getFechaNacimiento()) + " (día/mes/año)";
+		String shareBody;
+		String desExam="";
+		//Cambia el titulo del activity en base en el tipo de examen
+		if (tipoExamen == 1)
+		{
+			desExam=getString(R.string.sensibilidad_oido_nombre);					
 		}
+		if (tipoExamen == 2)
+		{
+			desExam=getString(R.string.habla_ruido_nombre);
+		}
+		if (tipoExamen == 3)
+		{
+			desExam=getString(R.string.cuestionario_nombre);
+		}
+
+		//if(val_examen){
+
+		shareBody = "He realizado el exámen:"+desExam +".Mi RESULTADO ES:" + estado  +". Nombre: " + p.toString() + ", Fecha de nacimiento: " + fecha + ", Correo Electrónico: " +	p.getCorreoElectronico();
+
+		//}
+		//	else{
+		//	 shareBody = "He realizado el exámen: "+desExam.toString() +"Mi RESULTADO ES:"+ estado+ "Nombre: " + p.toString() + ", Fecha de nacimiento: " + fecha + ", Correo Electrónico: " +	p.getCorreoElectronico();
+		//}	
+		contactIntent.putExtra(Intent.EXTRA_SUBJECT, "Consulta");
+		contactIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+		String[] mail = { "info@clinicaaudinsa.com", "" };
+		contactIntent.putExtra(Intent.EXTRA_EMAIL, mail);   
+		startActivity(Intent.createChooser(contactIntent, "Enviar información usando"));
+	}
+	
+	private void publishFeedDialog() {
+	    Bundle params = new Bundle();
+	    params.putString("name", "Facebook SDK for Android");
+	    params.putString("caption", "Build great social apps and get more installs.");
+	    params.putString("description", "The Facebook SDK for Android makes it easier and faster to develop Facebook integrated Android apps.");
+	    params.putString("link", "https://developers.facebook.com/android");
+	    params.putString("picture", "https://raw.github.com/fbsamples/ios-3.x-howtos/master/Images/iossdk_logo.png");
+
+	    WebDialog feedDialog = (
+	            new WebDialog.FeedDialogBuilder(ResultadoActivity.this,
+	                    Session.getActiveSession(),
+	                    params)).build();
+	    feedDialog.show();
+	}
 }
 
 

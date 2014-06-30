@@ -402,6 +402,7 @@ public class ResultadoPerfilActivity extends Activity {
 
 					dialog.dismiss();
 					String shareBody = "Estoy usando la aplicación de Audinsa S.A. para revisar mi audición. Mi resultado es: "+ estado;
+					String shareLink = "http://www.clinicaaudinsa.com";
 					String linkDescription = "Página de la Clínica Auditiva Audinsa";
 					String packageClassName = items[which].packageClassName;
 					
@@ -421,7 +422,8 @@ public class ResultadoPerfilActivity extends Activity {
 						        .build();
 						uiHelper.trackPendingDialogCall(shareDialog.present());*/
 						
-						OpenGraphAction action = GraphObject.Factory.create(OpenGraphAction.class);
+						// ESTE ES EL CODIGO MAS PROXIMO PARA USAR EL SHARE DE FACEBOOK
+						/*OpenGraphAction action = GraphObject.Factory.create(OpenGraphAction.class);
 						action.setProperty("hearing_test", "https://www.clinicaaudinsa.com/");
 						action.setType("hearing_test.take");
 
@@ -429,17 +431,15 @@ public class ResultadoPerfilActivity extends Activity {
 						FacebookDialog shareDialog = new FacebookDialog.
 								OpenGraphActionDialogBuilder(ResultadoPerfilActivity.this, action, "hearing_test")
 						        .build();
-						uiHelper.trackPendingDialogCall(shareDialog.present());
-						
-						/*FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(ResultadoPerfilActivity.this)
-						.setApplicationName("Aplicación móvil de Audiología - Audinsa")
-				        .setLink("http://www.clinicaaudinsa.com/espanol/index.htm")
-				        .setDescription(linkDescription)
-				        .setPicture("http://i232.photobucket.com/albums/ee68/rbaltodanog/ic_launcher_zps6d218b2a.png")
-				        .setName(linkDescription)
-				        .build();
-						
 						uiHelper.trackPendingDialogCall(shareDialog.present());*/
+						// Start the selected activity sending it the URLs of the resized images
+						Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+						sharingIntent.setType("text/plain");
+						sharingIntent.putExtra(Intent.EXTRA_SUBJECT, linkDescription);
+						sharingIntent.putExtra(Intent.EXTRA_TEXT, shareLink);
+						sharingIntent.setClassName(items[which].context, items[which].packageClassName);
+						startActivity(sharingIntent);
+						finish();
 					}
 					else // De lo contrario, mande la información normal a otro tipo de aplicación
 					{
