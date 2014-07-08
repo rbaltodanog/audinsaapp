@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="audinsa.audiologia"
+    package="clinicaaudinsa.audiologia"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -11,10 +11,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <permission
-        android:name="audinsa.audiologia.permission.MAPS_RECEIVE"
+        android:name="clinicaaudinsa.audiologia.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="audinsa.audiologia.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="clinicaaudinsa.audiologia.permission.MAPS_RECEIVE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -32,7 +32,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="audinsa.audiologia.PerfilesActivity"
+            android:name="clinicaaudinsa.audiologia.PerfilesActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,35 +41,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="audinsa.audiologia.PerfilesMantenimientoActivity"
+            android:name="clinicaaudinsa.audiologia.PerfilesMantenimientoActivity"
             android:label="@string/title_activity_perfiles_mantenimiento" >
         </activity>
         <activity
-            android:name="audinsa.audiologia.ExamenesActivity"
+            android:name="clinicaaudinsa.audiologia.ExamenesActivity"
             android:label="@string/title_activity_examenes" >
         </activity>
         <activity
-            android:name="audinsa.audiologia.CuestionarioInstruccionesActivity"
+            android:name="clinicaaudinsa.audiologia.CuestionarioInstruccionesActivity"
             android:label="@string/title_activity_cuestionario_instrucciones" >
         </activity>
         <activity
-            android:name="audinsa.audiologia.CuestionarioExamenActivity"
+            android:name="clinicaaudinsa.audiologia.CuestionarioExamenActivity"
             android:label="@string/title_activity_cuestionario_examen" >
         </activity>
         <activity
-            android:name="audinsa.audiologia.ArticulosActivity"
+            android:name="clinicaaudinsa.audiologia.ArticulosActivity"
             android:label="@string/title_activity_articulos" >
         </activity>
         <activity
-            android:name="audinsa.audiologia.ResultadoActivity"
+            android:name="clinicaaudinsa.audiologia.ResultadoActivity"
             android:label="@string/title_activity_cuestionario_resultado" >
         </activity>
         <activity
-            android:name="audinsa.audiologia.SensibilidadDeOidoInstruccionesActivity"
+            android:name="clinicaaudinsa.audiologia.SensibilidadDeOidoInstruccionesActivity"
             android:label="@string/title_activity_sensibilidad_oidos_instrucciones" >
         </activity>
         <activity
-            android:name="audinsa.audiologia.MapaActivity"
+            android:name="clinicaaudinsa.audiologia.MapaActivity"
             android:label="@string/title_activity_mapa_localizacion" >
         </activity>
 
@@ -78,20 +78,20 @@
             android:value="AIzaSyCa3cziD2eqoyP1qMQB_dIHHZi-R9S9SAo" />
 
         <activity
-            android:name="audinsa.audiologia.AcercaDeActivity"
+            android:name="clinicaaudinsa.audiologia.AcercaDeActivity"
             android:label="@string/title_activity_acerca_de" >
         </activity>
        
         <activity
-            android:name="audinsa.audiologia.HablaEnRuidoInstruccionesActivity"
+            android:name="clinicaaudinsa.audiologia.HablaEnRuidoInstruccionesActivity"
             android:label="@string/title_activity_habla_en_ruido_instrucciones" >
         </activity>
         <activity
-            android:name="audinsa.audiologia.SensibilidadOidoExamen"
+            android:name="clinicaaudinsa.audiologia.SensibilidadOidoExamen"
             android:label="@string/title_activity_sensibilidad_oido_examen" >
         </activity>
         <activity
-            android:name="audinsa.audiologia.ResultadoPerfilActivity"
+            android:name="clinicaaudinsa.audiologia.ResultadoPerfilActivity"
             android:label="@string/title_activity_resultado_perfil" >
         </activity>
         <meta-data 
