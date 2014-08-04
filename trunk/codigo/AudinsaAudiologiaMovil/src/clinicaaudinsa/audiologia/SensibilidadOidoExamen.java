@@ -4,18 +4,27 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.media.*;
 import clinicaaudinsa.audiologia.R;
 
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
+
+import com.pheelicks.visualizer.VisualizerView;
+import com.pheelicks.visualizer.renderer.LineRenderer;
 
 import clinicaaudinsa.audiologia.businessdomain.ResultadoSensibilidadOido;
 import clinicaaudinsa.audiologia.datasources.ResultadoDataSource;
@@ -26,12 +35,15 @@ public class SensibilidadOidoExamen extends Activity {
 	private ArrayList<ResultadoSensibilidadOido> _sonidosFinales;
 	private ResultadoSensibilidadOido _currentSound;
 	private MediaPlayer _mPlayer;
+	private VisualizerView mVisualizerView;
 	private DateTime _soundStarted;
 	private Duration _timeToBeHeardDuration;
 	int puntaje = 8;
+	int contadorSonidos = 1;
 	private ResultadoDataSource dataSource;
 	private DateTime fechaInicioExamen;
-	
+	private ProgressDialog progress;
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -44,7 +56,7 @@ public class SensibilidadOidoExamen extends Activity {
 
 		}
 	}
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		fechaInicioExamen = DateTime.now();
@@ -54,6 +66,8 @@ public class SensibilidadOidoExamen extends Activity {
 		_sonidosFinales = new ArrayList<ResultadoSensibilidadOido>();
 		_mPlayer = new MediaPlayer();
 		FillSoundsArray();
+		//initTunnelPlayerWorkaround();
+		//init();
 		PlayRandomSound();
 	}
 
@@ -73,7 +87,7 @@ public class SensibilidadOidoExamen extends Activity {
 		{
 			_currentSound = _sonidos.get(0);
 			_sonidos.remove(0);
-			Sound(_currentSound.getResId(),_currentSound.isDerecho());
+			Sound(_currentSound.getResId(),_currentSound.isDerecho(), _currentSound.getFrecuencia());
 			_soundStarted = DateTime.now();
 		}
 
@@ -98,25 +112,60 @@ public class SensibilidadOidoExamen extends Activity {
 		}
 	}
 
-	public void Sound(int soundID, boolean derecho){
+	public void Sound(int soundID, boolean derecho, int frequency){
 		_mPlayer = MediaPlayer.create(getBaseContext(), soundID);
-		_mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
-			public void onCompletion(MediaPlayer player) {
-				player.stop();
-			}
-		});
+		TextView txtSonidoId = (TextView) findViewById(R.id.txtSonidoId);
 		if (derecho)
 		{
-			_mPlayer.setVolume(0.0f, 1.0f);
-			_mPlayer.start();
+			_mPlayer.setVolume(0.0f, 1.0f);			
 		}
 		else
 		{
 			_mPlayer.setVolume(1.0f, 0.0f);
-			_mPlayer.start();
 		}
+		
+		_mPlayer.start();
+		
+		Timer timer = new Timer();
+		TimerTask task = new TimerTask() {
+		    @Override
+		    public void run() {
+		    	progress.dismiss();
+		    }
+		};
+		
+		_mPlayer.start();
+
+		//Show Progress dialog
+		progress = ProgressDialog.show(this, "Sonido en progreso",
+				  "Escuche el sonido", false);
+		
+		timer.schedule(task, 2000);
+		
+		txtSonidoId.setText(Integer.toString(frequency) + "hz (" + Integer.toString(contadorSonidos) + ")");
+		mVisualizerView = (VisualizerView) findViewById(R.id.visualizerView);
+		mVisualizerView.setBackgroundColor(Color.rgb(227, 227, 227));
+		mVisualizerView.link(_mPlayer);
+		contadorSonidos++;
+		// Start with just line renderer
+		addLineRenderer();
 	}
-	
+
+	private void addLineRenderer()
+	{
+		Paint linePaint = new Paint();
+		linePaint.setStrokeWidth(5f);
+		linePaint.setAntiAlias(true);
+		linePaint.setColor(Color.RED);
+
+		Paint lineFlashPaint = new Paint();
+		lineFlashPaint.setStrokeWidth(5f);
+		lineFlashPaint.setAntiAlias(true);
+		lineFlashPaint.setColor(Color.RED);
+		LineRenderer lineRenderer = new LineRenderer(linePaint, lineFlashPaint, false);
+		mVisualizerView.addRenderer(lineRenderer);
+	}
+
 	public void onIzquierdoClick(View view) {
 		_mPlayer.stop();
 		_timeToBeHeardDuration = new Duration(_soundStarted, DateTime.now());
@@ -140,7 +189,7 @@ public class SensibilidadOidoExamen extends Activity {
 			PlayRandomSound();
 		}
 	}
-	
+
 	public void onDerechoClick(View view) {
 		_mPlayer.stop();
 		_timeToBeHeardDuration = new Duration(_soundStarted, DateTime.now());
@@ -164,7 +213,7 @@ public class SensibilidadOidoExamen extends Activity {
 			PlayRandomSound();
 		}
 	}
-	
+
 	private void guardarResultado(View view) {
 		long idPerfil, idTipoExamen;
 		int valor_examen = 0;
@@ -183,19 +232,19 @@ public class SensibilidadOidoExamen extends Activity {
 			intent.putExtra("strResultado", negativo);
 			intent.putExtra("bolAprobado", false);
 		}
-		
+
 		Duration duracionExamen = new Duration(fechaInicioExamen, DateTime.now());
-		
+
 		dataSource = new ResultadoDataSource(this);
 		dataSource.open();
 		long idResultado=dataSource.crearResultado(idPerfil, idTipoExamen, valor_examen, fechaInicioExamen);
 		dataSource.close();
-			
+
 		intent.putExtra("idPerfil", idPerfil);
 		intent.putExtra("idResultado", idResultado);
 		intent.putExtra("idTipoExamen", idTipoExamen);
 		intent.putExtra("duracionExamen", duracionExamen.getStandardSeconds());
-		
+
 		startActivity(intent);
 		this.finish();
 	}
