@@ -8,6 +8,8 @@ import clinicaaudinsa.audiologia.businessdomain.Blog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -38,10 +40,26 @@ public class ArticulosActivity extends Activity {
 		findViewById(R.id.lblCargandoArticulos).setVisibility(View.INVISIBLE);
 		findViewById(R.id.prgCargaArticulos).setVisibility(View.INVISIBLE);
 		findViewById(R.id.lstTweets).setVisibility(View.VISIBLE);
+		
+		if (tweets.size() == 0)
+		{
+			new AlertDialog.Builder(this)
+		    .setTitle("Error al extraer los artículos")
+		    .setMessage("Ha ocurrido un error al extraer los artículos. Inténtelo de nuevo.")
+		    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+		        public void onClick(DialogInterface dialog, int which) { 
+		            // Close the activity
+		        	finish();
+		        }
+		     })
+		    .setIcon(android.R.drawable.ic_dialog_alert)
+		    .show();
+		}
 
 		BlogItemAdapter adapter = new BlogItemAdapter(this, 
 				R.layout.listview_articles_item_row, tweets);
 		ListView listView = (ListView) findViewById(R.id.lstTweets);
+		
 		View header = (View)getLayoutInflater().inflate(R.layout.listview_articles_header_row, null);
 		listView.addHeaderView(header);
 		listView.setAdapter(adapter);

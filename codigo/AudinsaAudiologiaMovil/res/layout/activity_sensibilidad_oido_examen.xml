@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SensibilidadOidoExamen" >
-
+    
     <TextView
         android:id="@+id/lblInstruExamenSensibiOido"
         android:layout_width="fill_parent"
@@ -73,4 +73,28 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ed8b33" />
     
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="15dp"
+        android:background="#000" >
+
+        <com.pheelicks.visualizer.VisualizerView
+            android:id="@+id/visualizerView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+        </com.pheelicks.visualizer.VisualizerView>
+
+        <TextView
+            android:id="@+id/txtSonidoId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="500hz (1)"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000000"
+            android:typeface="monospace" />
+
+    </FrameLayout>
 </RelativeLayout>

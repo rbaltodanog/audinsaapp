@@ -9,7 +9,8 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ArcMenuLibrary"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/FacebookSDK"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/google-play-services_lib"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/facebook"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Music Visualizer"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

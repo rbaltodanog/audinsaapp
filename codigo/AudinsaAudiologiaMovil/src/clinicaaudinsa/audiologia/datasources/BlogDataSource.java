@@ -42,6 +42,7 @@ public class BlogDataSource {
 			responseBody = client.execute(get, responseHandler);
 		} catch(Exception ex) {
 			ex.printStackTrace();
+			return blogs;
 		}
 
 		JSONObject jObj = null;
