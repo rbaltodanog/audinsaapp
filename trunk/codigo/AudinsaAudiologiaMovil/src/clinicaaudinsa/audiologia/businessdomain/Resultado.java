@@ -1,9 +1,5 @@
 package clinicaaudinsa.audiologia.businessdomain;
 
-import clinicaaudinsa.audiologia.R;
-import clinicaaudinsa.audiologia.R.string;
-
-
 public class Resultado {
 
 	private int id_resultado;	

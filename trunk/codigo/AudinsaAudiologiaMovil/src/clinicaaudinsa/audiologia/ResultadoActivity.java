@@ -19,7 +19,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.AnimationDrawable;
@@ -342,7 +341,7 @@ public class ResultadoActivity extends Activity {
 
 			// Check app is still installed
 			try {
-				ApplicationInfo info = getPackageManager().getApplicationInfo(defaultSendApplicationPackageContext, 0);
+				getPackageManager().getApplicationInfo(defaultSendApplicationPackageContext, 0);
 			} catch (PackageManager.NameNotFoundException e){
 				Toast.makeText(getApplicationContext(),  "Can't find app: " + defaultSendApplicationName +
 						" (" + defaultSendApplicationPackageClassName + ")", Toast.LENGTH_LONG).show();
@@ -402,6 +401,7 @@ public class ResultadoActivity extends Activity {
 		startActivity(Intent.createChooser(contactIntent, "Enviar información usando"));
 	}
 	
+	@SuppressWarnings("unused")
 	private void publishFeedDialog() {
 	    Bundle params = new Bundle();
 	    params.putString("name", "Facebook SDK for Android");

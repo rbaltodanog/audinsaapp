@@ -151,15 +151,15 @@ public class ExamenesActivity extends Activity {
 				}
 				else if (examen.equals("Artículos")) {
 						Intent intent ;
-						//= new Intent(view.getContext(),
-						//		HablaEnRuidoInstruccionesActivity.class);
-						//intent.putExtra("idPerfil", perfil);
-						//intent.putExtra("idTipoExamen", idTipoExamen);
-						//startActivity(intent);
 						intent = new Intent(view.getContext(), ArticulosActivity.class);
 						startActivity(intent);
-						//return true;
 						}
+				else if (examen.equals("Mensajería")) {
+					Intent intent;
+					intent = new Intent(view.getContext(), MessagesActivity.class);
+					intent.putExtra("idPerfil", perfil);
+					startActivity(intent);
+				}
 				/*Se comenta mientras el usuario define este examen
 				  	else if (examen.equals("Habla en ruido")) {
 					Intent intent = new Intent(view.getContext(),

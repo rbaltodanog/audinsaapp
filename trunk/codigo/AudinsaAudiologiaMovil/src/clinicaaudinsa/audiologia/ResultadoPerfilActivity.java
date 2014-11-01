@@ -14,9 +14,6 @@ import clinicaaudinsa.audiologia.datasources.PerfilDataSource;
 import clinicaaudinsa.audiologia.datasources.ResultadoDataSource;
 
 import com.facebook.UiLifecycleHelper;
-import com.facebook.model.GraphObject;
-import com.facebook.model.OpenGraphAction;
-import com.facebook.model.OpenGraphObject;
 import com.facebook.widget.FacebookDialog;
 
 import android.os.Bundle;
@@ -28,7 +25,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
@@ -481,7 +477,7 @@ public class ResultadoPerfilActivity extends Activity {
 
 			// Check app is still installed
 			try {
-				ApplicationInfo info = getPackageManager().getApplicationInfo(defaultSendApplicationPackageContext, 0);
+				getPackageManager().getApplicationInfo(defaultSendApplicationPackageContext, 0);
 			} catch (PackageManager.NameNotFoundException e){
 				Toast.makeText(getApplicationContext(),  "Can't find app: " + defaultSendApplicationName +
 						" (" + defaultSendApplicationPackageClassName + ")", Toast.LENGTH_LONG).show();

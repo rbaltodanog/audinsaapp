@@ -26,9 +26,17 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	public static final String TABLA_TIPO_EXAMEN_COLUMNA_ID = "id_tipo_examen";
 	public static final String TABLA_TIPO_EXAMEN_COLUMNA_NOMBRE_EXAMEN = "nombre_examen";
 	public static final String TABLA_TIPO_EXAMEN_COLUMNA_INSTRUCCIONES = "instrucciones";
+	
+	/* TABLA MENSAJE */
+	public static final String TABLA_MENSAJE = "mensaje";
+	public static final String TABLA_MENSAJE_COLUMNA_ID = "id_mensaje";
+	public static final String TABLA_MENSAJE_COLUMNA_LEIDO = "leido";
+	public static final String TABLA_MENSAJE_COLUMNA_FECHA_MENSAJE = "fecha_mensaje";
+	public static final String TABLA_MENSAJE_COLUMNA_TEXTO = "texto";
+
 
 	private static final String NOMBRE_BASEDATOS = "audinsaaudiologia.db";
-	private static final int VERSION_BASEDATOS = 1;
+	private static final int VERSION_BASEDATOS = 2;
 
 	
 	/*TABLA RESULTADO*/
@@ -73,6 +81,13 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 			+ " text not null, " + TABLA_TIPO_EXAMEN_COLUMNA_INSTRUCCIONES
 			+ " text not null);";
 	
+	private static final String CREAR_TABLA_MENSAJE = "create table "
+			+ TABLA_MENSAJE + "(" + TABLA_MENSAJE_COLUMNA_ID
+			+ " integer primary key autoincrement, " + TABLA_MENSAJE_COLUMNA_LEIDO
+			+ " integer not null, " + TABLA_MENSAJE_COLUMNA_FECHA_MENSAJE
+			+ " text not null, " + TABLA_MENSAJE_COLUMNA_TEXTO
+			+ " text not null);";
+	
 	private static final String CREAR_TIPO_EXAMEN_SENSIBILIDAD_OIDO = "insert into " + TABLA_TIPO_EXAMEN 
 			+ " (" + TABLA_TIPO_EXAMEN_COLUMNA_NOMBRE_EXAMEN + "," + TABLA_TIPO_EXAMEN_COLUMNA_INSTRUCCIONES + ")"
 			+ " values ('Sensibilidad de oído', '¿Cuál es el sonido más bajo/alto que puede oír?');";
@@ -90,6 +105,10 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 			+ " (" + TABLA_TIPO_EXAMEN_COLUMNA_NOMBRE_EXAMEN + "," + TABLA_TIPO_EXAMEN_COLUMNA_INSTRUCCIONES + ")"
 			+ " values ('Artículos', 'Conozca información importante acerca de su audición');";
 	
+	private static final String CREAR_OPCION_MENSAJERIA = "insert into " + TABLA_TIPO_EXAMEN 
+			+ " (" + TABLA_TIPO_EXAMEN_COLUMNA_NOMBRE_EXAMEN + "," + TABLA_TIPO_EXAMEN_COLUMNA_INSTRUCCIONES + ")"
+			+ " values ('Mensajería', 'Ver mensajes de la Clínica Audinsa');";
+	
 	public MySQLiteHelper(Context context) {
 		super(context, NOMBRE_BASEDATOS, null, VERSION_BASEDATOS);
 	}
@@ -101,12 +120,15 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 		database.execSQL(CREAR_TABLA_TIPO_EXAMEN);
 		database.execSQL(CREAR_TABLA_EXAMEN);
 		database.execSQL(CREAR_TABLA_RESULTADO);
+		database.execSQL(CREAR_TABLA_MENSAJE);
 			
 		/*insert*/
 		database.execSQL(CREAR_TIPO_EXAMEN_SENSIBILIDAD_OIDO);
 		database.execSQL(CREAR_TIPO_EXAMEN_HABLA_RUIDO);
 		database.execSQL(CREAR_TIPO_EXAMEN_CUESTIONARIO);
 		database.execSQL(CREAR_TIPO_EXAMEN_ARTICULOS);
+		database.execSQL(CREAR_OPCION_MENSAJERIA);
+		database.setVersion(VERSION_BASEDATOS);
 	}
 
 	@Override
@@ -116,6 +138,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 						+ newVersion + ", lo cual destruira la informacion contenida");
 		db.execSQL("DROP TABLE IF EXISTS " + TABLA_PERFIL);
 		db.execSQL("DROP TABLE IF EXISTS " + TABLA_TIPO_EXAMEN);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLA_MENSAJE);
 		onCreate(db);
 	}
 } 

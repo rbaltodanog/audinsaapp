@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_selector_articulos"
+    android:orientation="horizontal"
+    android:padding="5dip" >
+    <!--  ListRow Left sied Thumbnail image -->
+
+    <LinearLayout
+        android:id="@+id/thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="5dip"
+        android:background="@null"
+        android:contentDescription="@string/imgPerfilContentDescription"
+        android:padding="3dip" >
+ 
+        <ImageView
+            android:id="@+id/imgTipoExamen"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:contentDescription="@string/imgPerfilContentDescription"
+            android:src="@drawable/ic_message" />
+ 
+    </LinearLayout>
+ 
+    <!-- Title Of Song-->
+ 
+    <!-- Rightend Duration -->
+
+     <TextView
+         android:id="@+id/txtFechaMensaje"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_centerVertical="false"
+         android:layout_toRightOf="@+id/thumbnail"
+         android:gravity="center_vertical"
+         android:text="30/08/2014 - 12:15pm"
+         android:textColor="#040404"
+         android:textSize="18sp"
+         android:textStyle="bold"
+         android:typeface="sans" />
+     
+     <TextView
+         android:id="@+id/txtTextoMensaje"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignBottom="@+id/thumbnail"
+         android:layout_below="@+id/txtFechaMensaje"
+         android:layout_centerInParent="false"
+         android:layout_toRightOf="@+id/thumbnail"
+         android:gravity="center_vertical"
+         android:text="Texto Mensaje"
+         android:textColor="#040404"
+         android:textSize="14sp"
+         android:typeface="sans" />
+
+</RelativeLayout>

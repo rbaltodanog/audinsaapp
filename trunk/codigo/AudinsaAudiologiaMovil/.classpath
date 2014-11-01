@@ -12,5 +12,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/google-play-services_lib"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/facebook"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Music Visualizer"/>
+	<classpathentry exported="true" kind="lib" path="libs/gcm.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
