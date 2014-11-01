@@ -38,6 +38,8 @@ public class PerfilesActivity extends Activity {
 		setOnListViewItemClickListener();
 	}
 
+
+
 	// Will be called via the onClick attribute
 	// of the buttons in main.xml
 	public void onAgregarPerfilClick(View view) {

@@ -32,6 +32,7 @@ public class TestItemAdapter extends ArrayAdapter<TipoExamen> {
 		testLayouts.put("habla en ruido", R.layout.listview_hablaruido_item_row);
 	*/	testLayouts.put("cuestionario", R.layout.listview_cuestionario_item_row);
 		testLayouts.put("artículos", R.layout.listview_articulos_item_row);
+		testLayouts.put("mensajería", R.layout.listview_mensajeria_item_row);
 		
 	}
 

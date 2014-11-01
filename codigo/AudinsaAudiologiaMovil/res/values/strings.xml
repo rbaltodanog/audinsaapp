@@ -32,8 +32,6 @@
 
     <!-- Examenes Activity -->
     <string name="title_activity_examenes">Exámenes</string>
-  
-   
 
     <!-- Perfiles Mantenimiento Activity -->
     <string name="lblNombre">Nombre</string>
@@ -68,19 +66,15 @@
 
     <!-- Cuestionario Resultado Activity -->
 
-
-    <string name="strContactarResultadoPositivo">PASA.Estoy interesado en obtener una cita audiológica para mi valoración anual, mis datos son: "</string>    
-    <string name="strContactarResultadoNegativo">Contacte a un especialista.Estoy interesado en obtener una cita audiológica para mi valoración auditiva,mis datos son: "</string>    
-    
-    <string name="strCompartirResultadoPositivo">Pasa,lo que sugiere que mi audición se encuentra en buenas condiciones, se recomienda una valoración auditiva anual aplicada por un especialista, contáctenos.</string>    
-    <string name="strCompartirResultadoNegativo">Falla,lo que sugiere que presento algún tipo de alteración audición y debo contactar a un especialista.</string>    
-    
+    <string name="strContactarResultadoPositivo">PASA.Estoy interesado en obtener una cita audiológica para mi valoración, mis datos son: "</string>
+    <string name="strContactarResultadoNegativo">Contacte a un especialista.Estoy interesado en obtener una cita audiológica para mi valoración auditiva,mis datos son: "</string>
+    <string name="strCompartirResultadoPositivo">Pasa,lo que sugiere que mi audición se encuentra en buenas condiciones, se recomienda una valoración auditiva aplicada por un especialista, contáctenos.</string>
+    <string name="strCompartirResultadoNegativo">Falla,lo que sugiere que presento algún tipo de alteración audición y debo contactar a un especialista.</string>
     <string name="imgBorrarContentDescription">Icono para borrar el resultado</string>
     <string name="strCalificacion">De acuerdo a sus respuestas</string>
     <string name="strAcciones">Acciones</string>
     <string name="strRegresar">Regresar</string>
-       
-    
+
     <!-- Articulos Activity -->
     <string name="title_activity_articulos">Artículos</string>
     <string name="lblCargandoArticulos">Cargando artículos</string>
@@ -91,14 +85,12 @@
     <!-- ListView Articles Item Row -->
     <string name="imgBlogContentDescription">Avatar del blog</string>
 
-  <!-- Artículos del menú principal -->
-      <string name="strTxtInformacion">Conozca información importante acerca de su audición</string>
-  <!-- Generales Para Resultado de Exam. -->
-    
+    <!-- Artículos del menú principal -->
+    <string name="strTxtInformacion">Conozca información importante acerca de su audición</string>
+    <!-- Generales Para Resultado de Exam. -->
+
     <string name="strResultadoNegativoExamen">Contacte a un especialista para realizar una valoración auditiva, su audición podría estar presentando una alteración.</string>
-    <string name="strResultadoPositivoExamen">Pasa,se recomienda una valoración auditiva anual aplicada por un especialista, si no ha realizado la suya contáctenos.</string>
-  
-    
+    <string name="strResultadoPositivoExamen">Pasa,se recomienda una valoración auditiva aplicada por un especialista, si no ha realizado la suya contáctenos.</string>
     <string name="lblResultado">Resultado</string>
     <string name="menu_borrar">Borrar</string>
     <string name="menu_compartir">Compartir</string>
@@ -107,7 +99,7 @@
     <string name="lblListViewVacioResultado">No hay resultados a mostrar</string>
     <string name="strAprobado">Pasa la prueba</string>
     <string name="strReprobado">Falla la prueba</string>
-   
+
     <!-- Resultado Cuestionario Activity -->
     <string name="lblResultadoCuestionario">Resultado del cuestionario</string>
 
@@ -151,7 +143,7 @@
 
     <!-- Acerca de Activity -->
     <string name="title_activity_acerca_de">Acerca De</string>
-    <string name="lblSustituirPruebasAudiologoText">Esta aplicación no pretende sustituir las pruebas realizadas por un audiólogo</string>    
+    <string name="lblSustituirPruebasAudiologoText">Esta aplicación no pretende sustituir las pruebas realizadas por un audiólogo</string>
 
     <!-- MENSAJES DE INFORMACION -->
     <string name="txtMantenimientoPerfilesToastPerfilAgregado">Perfil agregado satisfactoriamente</string>
@@ -159,6 +151,18 @@
     <string name="cuestionario_nombre">Cuestionario</string>
     <string name="sensibilidad_oido_nombre">Sensibilidad de Oido</string>
     <string name="habla_ruido_nombre">Habla en Ruido</string>
+    <string name="server_registering">Intento (%1$d/%2$d) de registrar en el servidor de Audinsa.</string>
+    <string name="server_registered">Registrado en el servidor de Audinsa</string>
+    <string name="server_register_error">No se pudo registrar en el servidor de Audinsa después de %1$d intento(s).</string>
+    <string name="server_unregister_error">No se pudo desregistrar en el servidor de Audinsa (%1$s).</string>
+    <string name="server_unregistered">Dispositivo desregistrado del servidor de Audinsa</string>
+    <string name="gcm_registered">Registrado en el servidor de Google Messaging</string>
+    <string name="gcm_unregistered">Desregistrado en el servidor de Google Messaging</string>
+    <string name="gcm_message">Mensaje nuevo</string>
+    <string name="gcm_error">Error de Google Messaging: (%1$s).</string>
+    <string name="gcm_recoverable_error">Error de Google Messaging recuperable (%1$s).</string>
+    <string name="gcm_deleted">Google Messaging borró %1$d mensaje(s) pendiente(s).</string>
+    <string name="lblListViewVacioMensaje">No hay mensajes a mostrar</string>
 
     <!-- MENSAJES DE ERROR -->
     <string name="txtPerfilesToastPerfilErrorAlBorrar">Error al borrar el perfil</string>
@@ -170,5 +174,10 @@
     <string name="title_activity_resultado_perfil">Resultados</string>
     <string name="txtResultadoErrorAlBorrar">Error al borrar el resultado</string>
     <string name="hello_world">Hello world!</string>
+    
+    <!-- Mensajeria Activity -->
+    <string name="title_activity_messages">Mensajería</string>
+    <string name="title_activity_messages_instructions">Ver mensajes de la Clínica Audinsa</string>
+    <string name="lblTitleMessageDialog">Texto del mensaje:</string>
 
 </resources>
